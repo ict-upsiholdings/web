@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About UPSI | UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .top-bar{background:#1a237e;padding:8px 0;}
+    .top-bar-content{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .top-bar-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .top-bar-left a{color:rgba(255,255,255,0.85);font-size:0.8rem;font-family:'Roboto',sans-serif;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+    .top-bar-left a:hover{color:#fff;}
+    .top-bar-right{display:flex;align-items:center;gap:14px;}
+    .top-social a{color:rgba(255,255,255,0.65);font-size:0.75rem;text-decoration:none;padding:3px 8px;border-radius:4px;transition:background 0.2s,color 0.2s;font-family:'Roboto',sans-serif;}
+    .top-social a:hover{background:rgba(255,255,255,0.15);color:#fff;}
+    .top-cta{background:#fff;color:#1a237e !important;padding:5px 16px;border-radius:20px;font-weight:700;font-size:0.78rem;text-decoration:none;font-family:'Poppins',sans-serif;transition:background 0.2s;white-space:nowrap;}
+    .top-cta:hover{background:#e8eaf6;}
+    
+    
+    
+    
+    
+    nav{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,0.10);position:sticky;top:0;z-index:900;}
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;}
+    .logo-section{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+    .company-info h1{font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:800;color:#1a237e;letter-spacing:0.04em;line-height:1.1;}
+    .company-info p{font-size:0.6rem;color:#888;font-family:'Roboto',sans-serif;line-height:1.2;}
+    .nav-menu{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center;}
+    .nav-menu>li{position:relative;}
+    .nav-menu>li>a{display:flex;align-items:center;gap:4px;padding:8px 13px;font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:600;color:#333;text-decoration:none;border-radius:6px;transition:background 0.2s,color 0.2s;white-space:nowrap;}
+    .nav-menu>li>a:hover,.nav-menu>li.active>a{color:#1a237e;background:#e8eaf6;}
+    .nav-menu>li>a .arrow{font-size:0.6rem;margin-top:1px;transition:transform 0.25s;display:inline-block;}
+    .nav-menu>li:hover>a .arrow{transform:rotate(180deg);}
+    .dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border-radius:10px;min-width:230px;box-shadow:0 8px 32px rgba(0,0,0,0.13);border:1px solid #e8eaf6;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.22s,transform 0.22s,visibility 0.22s;z-index:1000;padding:6px 0;}
+    .nav-menu>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+    .dropdown a{display:flex;align-items:center;gap:10px;padding:10px 18px;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:500;color:#444;text-decoration:none;transition:background 0.18s,color 0.18s;}
+    .dropdown a:hover{background:#e8eaf6;color:#1a237e;}
+    .dropdown a .di{font-size:0.95rem;width:20px;text-align:center;flex-shrink:0;}
+    .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+    .nav-contact-btn{background:#1a237e;color:#fff;padding:8px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;font-family:'Poppins',sans-serif;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+    .nav-contact-btn:hover{background:#1565c0;}
+    .page-hero{position:relative;padding:100px 24px 70px;text-align:center;overflow:hidden;background-image:url('image/pice.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:0;pointer-events:none;}
+    .page-hero>*{position:relative;z-index:1;}
+    .page-hero .breadcrumb{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);padding:6px 18px;border-radius:50px;font-size:0.78rem;color:rgba(255,255,255,0.85);margin-bottom:20px;font-family:'Poppins',sans-serif;}
+    .page-hero .breadcrumb a{color:rgba(255,255,255,0.85);text-decoration:none;}
+    .page-hero .breadcrumb a:hover{color:#fff;}
+    .page-hero .page-icon{font-size:3rem;display:block;margin-bottom:16px;}
+    .page-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:12px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+    .page-hero p{color:rgba(255,255,255,0.8);font-size:1rem;max-width:480px;margin:0 auto;font-family:'Roboto',sans-serif;}
+    .about-upsi-section{position:relative;background-image:url('image/OFFICE.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
+    .about-upsi-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+    .about-upsi-section .container{position:relative;z-index:1;}
+    
+        /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+        .nav-lang-dropdown { position: relative; }
+        .nav-lang-btn {
+            display: flex; align-items: center; gap: 6px;
+            background: none; border: 1.5px solid #e0e4f0;
+            cursor: pointer; font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem; font-weight: 600; color: #1a237e;
+            padding: 7px 13px; border-radius: 8px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+        .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+        .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+        .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+        .nav-lang-menu {
+            display: none; position: absolute; right: 0; top: calc(100% + 8px);
+            background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+            box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+            overflow: hidden; z-index: 9999;
+        }
+        .nav-lang-dropdown.open .nav-lang-menu { display: block; }
+        .nav-lang-menu button {
+            display: flex; align-items: center; gap: 10px;
+            width: 100%; padding: 11px 16px; background: none; border: none;
+            font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+            color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+        }
+        .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+        .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+        .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+        .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> <span id="top-email-text">info@upsiholdings.com</span></a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"></span> <span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"></span> <span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"></span> <span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan &amp; Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan &amp; Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit &amp; Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"> <span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+        
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu" id="navLangMenu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+            <!-- END LANGUAGE DROPDOWN -->
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> &#8250; <a href="#" id="bc-about-el">Tentang Kami</a> &#8250; <span id="bc-current-el">Tentang UPSI</span></div>
+    <h1 id="hero-title-el">Tentang UPSI</h1>
+    <p id="hero-desc-el">Universiti Pendidikan Sultan Idris — Universiti Pendidikan Terulung Malaysia</p>
+</section>
+
+<section class="about-upsi-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag" id="sec-tag-el">Institusi Induk Kami</span>
+            <h2 class="section-title" id="sec-title-el">Universiti Pendidikan Sultan Idris</h2>
+            <p class="section-description" id="sec-desc-el">Warisan kecemerlangan dalam pendidikan sejak 1922</p>
+        </div>
+        <div class="upsi-content">
+            <div class="upsi-intro">
+                <h3 id="heritage-title-el">Warisan</h3>
+                <p id="heritage-p1-el">Universiti Pendidikan Sultan Idris (UPSI) mempunyai sejarah yang kaya bermula pada tahun 1922 apabila ditubuhkan sebagai Sultan Idris Training College (SITC). Pada tahun 1997, ia mencapai status universiti, menjadi satu-satunya universiti di Malaysia yang memfokuskan kepada pendidikan guru dan kepimpinan pendidikan.</p>
+                <p id="heritage-p2-el">Dinamakan sempena Sultan Idris Murshidul Adzam Shah, Sultan Perak ke-28, UPSI meneruskan tradisi mulia menghasilkan pendidik berkualiti yang telah membentuk landskap pendidikan Malaysia selama lebih dari seabad.</p>
+            </div>
+            <div class="upsi-vision-mission">
+                <div class="vm-box"><h3>🎯 <span id="vision-label-el">Visi</span></h3><p id="vision-text-el">"Menjadi entiti korporat yang berdaya saing, berorientasikan peluang dan dipandu oleh keperluan pelanggan dalaman &amp; luaran."</p></div>
+                <div class="vm-box"><h3>🚀 <span id="mission-label-el">Misi</span></h3><p id="mission-text-el">"Pemangkin kepada aktiviti komersial UPSI."</p></div>
+            </div>
+            <div class="upsi-stats">
+                <h3 id="glance-title-el">UPSI Sekilas Pandang</h3>
+                <div class="stats-grid">
+                    <div class="stat-item"><div class="stat-number">1922</div><div class="stat-label" id="stat-founded-el">Diasaskan</div></div>
+                    <div class="stat-item"><div class="stat-number">9</div><div class="stat-label" id="stat-faculties-el">Fakulti</div></div>
+                    <div class="stat-item"><div class="stat-number">10,000+</div><div class="stat-label" id="stat-students-el">Pelajar</div></div>
+                    <div class="stat-item"><div class="stat-number">1,000+</div><div class="stat-label" id="stat-staff-el">Staf Akademik</div></div>
+                </div>
+            </div>
+            <div class="faculties-section">
+                <h3 id="faculties-title-el">Fakulti di UPSI</h3>
+                <div class="faculties-grid">
+                    <div class="faculty-card"><div class="faculty-icon">📚</div><h4 id="fac1-title-el">Fakulti Bahasa dan Komunikasi</h4><p id="fac1-desc-el">Kecemerlangan dalam pendidikan bahasa dan pengajian komunikasi</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🔬</div><h4 id="fac2-title-el">Fakulti Sains dan Matematik</h4><p id="fac2-desc-el">Memajukan pendidikan dan penyelidikan STEM</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🎨</div><h4 id="fac3-title-el">Fakulti Muzik dan Seni Persembahan</h4><p id="fac3-desc-el">Memupuk kecemerlangan artistik dan kreativiti</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">💻</div><h4 id="fac4-title-el">Fakulti Komputeran dan Meta Teknologi</h4><p id="fac4-desc-el">Terkemuka dalam teknologi pendidikan dan inovasi</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🏃</div><h4 id="fac5-title-el">Fakulti Sains Sukan dan Kejurulatihan</h4><p id="fac5-desc-el">Membangunkan pendidikan sukan dan kesihatan</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🎓</div><h4 id="fac6-title-el">Fakulti Pembangunan Manusia</h4><p id="fac6-desc-el">Kepakaran dalam psikologi, kaunseling, dan pembangunan manusia</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🎭</div><h4 id="fac7-title-el">Fakulti Pengurusan dan Ekonomi</h4><p id="fac7-desc-el">Pendidikan perniagaan dan keusahawanan</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🌍</div><h4 id="fac8-title-el">Fakulti Sains Sosial dan Kemanusiaan</h4><p id="fac8-desc-el">Memahami masyarakat dan budaya</p></div>
+                    <div class="faculty-card"><div class="faculty-icon">🖼️</div><h4 id="fac9-title-el">Fakulti Seni, Komputeran dan Industri Kreatif</h4><p id="fac9-desc-el">Menggabungkan seni dengan teknologi dan inovasi</p></div>
+                </div>
+            </div>
+            <div class="campus-info">
+                <h3 id="campus-title-el">Kampus &amp; Kemudahan</h3>
+                <p id="campus-desc-el">Kampus utama UPSI terletak di Tanjong Malim, Perak, bersempadan di kaki Banjaran Titiwangsa yang indah. Kampus ini merangkumi lebih 600 hektar.</p>
+                <div class="facilities-list">
+                    <div class="facility-item"><span class="facility-icon">🏛️</span><div><h4 id="fac-campus1-title-el">Kampus Sultan Azlan Shah</h4><p id="fac-campus1-desc-el">Kampus utama dengan kemudahan akademik bertaraf dunia</p></div></div>
+                    <div class="facility-item"><span class="facility-icon">📖</span><div><h4 id="fac-campus2-title-el">Perpustakaan Tuanku Bainun</h4><p id="fac-campus2-desc-el">Koleksi sumber yang luas dan arkib digital</p></div></div>
+                    <div class="facility-item"><span class="facility-icon">🏟️</span><div><h4 id="fac-campus3-title-el">Kompleks Sukan</h4><p id="fac-campus3-desc-el">Kemudahan bertaraf dunia untuk pelbagai sukan dan rekreasi</p></div></div>
+                    <div class="facility-item"><span class="facility-icon">🔬</span><div><h4 id="fac-campus4-title-el">Pusat Penyelidikan</h4><p id="fac-campus4-desc-el">Pelbagai pusat kecemerlangan dalam pelbagai bidang</p></div></div>
+                    <div class="facility-item"><span class="facility-icon">🏘️</span><div><h4 id="fac-campus5-title-el">Penginapan Pelajar</h4><p id="fac-campus5-desc-el">Kolej kediaman yang selesa untuk pelajar</p></div></div>
+                    <div class="facility-item"><span class="facility-icon">🎪</span><div><h4 id="fac-campus6-title-el">Pusat Konvensyen &amp; Pameran</h4><p id="fac-campus6-desc-el">Venue untuk persidangan, seminar, dan acara</p></div></div>
+                </div>
+            </div>
+            <div class="achievements-section">
+                <h3 id="achievements-title-el">Pencapaian &amp; Pengiktirafan</h3>
+                <div class="achievements-grid">
+                    <div class="achievement-box"><h4 id="ach1-title-el">🏆 Penarafan Universiti Dunia QS</h4><p id="ach1-desc-el">Secara konsisten berada dalam kalangan universiti terkemuka dalam pendidikan</p></div>
+                    <div class="achievement-box"><h4 id="ach2-title-el">⭐ Penarafan MyRA 5 Bintang</h4><p id="ach2-desc-el">Kecemerlangan dalam penyelidikan dan inovasi</p></div>
+                    <div class="achievement-box"><h4 id="ach3-title-el">🌟 Kecemerlangan dalam Pengajaran</h4><p id="ach3-desc-el">Menghasilkan lebih 100,000 guru berkelayakan</p></div>
+                    <div class="achievement-box"><h4 id="ach4-title-el">🔬 Impak Penyelidikan</h4><p id="ach4-desc-el">Penyelidikan terkemuka dalam pendidikan dan pedagogi</p></div>
+                </div>
+            </div>
+            <div class="connection-section">
+                <h3 id="connection-title-el">Hubungan UPSI Holdings &amp; UPSI</h3>
+                <p id="connection-desc-el">UPSI Holdings Sdn Bhd berkhidmat sebagai sayap pengkomersialan UPSI, menjembatani jurang antara kecemerlangan akademik dan aplikasi perniagaan praktikal.</p>
+                <ul class="connection-list">
+                    <li><strong id="conn1-label-el">Kepakaran Akademik:</strong> <span id="conn1-desc-el">Mengambil manfaat daripada pengetahuan dan kemahiran ahli fakulti UPSI yang terkemuka</span></li>
+                    <li><strong id="conn2-label-el">Penyelidikan &amp; Inovasi:</strong> <span id="conn2-desc-el">Menterjemah dapatan penyelidikan kepada penyelesaian praktikal untuk industri dan komuniti</span></li>
+                    <li><strong id="conn3-label-el">Kemudahan &amp; Sumber:</strong> <span id="conn3-desc-el">Menggunakan kemudahan bertaraf dunia untuk latihan, hospitaliti, dan acara</span></li>
+                    <li><strong id="conn4-label-el">Modal Insan:</strong> <span id="conn4-desc-el">Memanfaatkan kolam bakat pelajar dan alumni untuk pelbagai inisiatif</span></li>
+                    <li><strong id="conn5-label-el">Rangkaian &amp; Perkongsian:</strong> <span id="conn5-desc-el">Membina hubungan tempatan dan antarabangsa yang luas melalui UPSI</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                </div>
+                <div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">&#120143;</a><a href="#" class="social-link">in</a><a href="#" class="social-link">&#9654;</a></div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="about-upsi.html" id="footer-upsi-el">Tentang UPSI</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan &amp; Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">&#169; Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div>
+    </div>
+</footer>
+
+
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+</script>
+<script>
+const T = {
+
+bm: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+    "top-cta-el": "Hubungi Kami",
+    "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Laman Utama",
+    "nav-about-el": "Tentang Kami",
+    "nav-services-el": "Perkhidmatan",
+    "nav-products-el": "Produk Kami",
+    "nav-ads-el": "Iklan",
+    "nav-career-el": "Kerjaya",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Hubungi Kami",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Lembaga Pengarah",
+    "dd-leaders-el": "Pemimpin",
+    "dd-upsi-el": "Tentang UPSI",
+    "dd-edu-el": "Pendidikan & Latihan",
+    "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+    "dd-retail-el": "Runcit & Perkhidmatan",
+    "dd-projects-el": "Konsultasi Projek",
+    "dd-solar-el": "Penyelesaian Tenaga Solar",
+    "dd-facility-el": "Pengurusan Kemudahan",
+    "dd-gallery-el": "Galeri",
+    "dd-news-el": "Berita",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Laman Utama",
+    "bc-about-el": "Tentang Kami",
+    "bc-current-el": "Tentang UPSI",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "Tentang UPSI",
+    "hero-desc-el": "Universiti Pendidikan Sultan Idris — Universiti Pendidikan Terulung Malaysia",
+
+    /* ================= SECTION UPSI ================= */
+    "sec-tag-el": "Institusi Induk Kami",
+    "sec-title-el": "Universiti Pendidikan Sultan Idris",
+    "sec-desc-el": "Warisan kecemerlangan dalam pendidikan sejak 1922",
+
+    /* ================= HERITAGE ================= */
+    "heritage-title-el": "Warisan",
+    "heritage-p1-el": "Universiti Pendidikan Sultan Idris (UPSI) mempunyai sejarah yang kaya bermula pada tahun 1922 apabila ditubuhkan sebagai Sultan Idris Training College (SITC). Pada tahun 1997, ia mencapai status universiti, menjadi satu-satunya universiti di Malaysia yang memfokuskan kepada pendidikan guru dan kepimpinan pendidikan.",
+    "heritage-p2-el": "Dinamakan sempena Sultan Idris Murshidul Adzam Shah, Sultan Perak ke-28, UPSI meneruskan tradisi mulia menghasilkan pendidik berkualiti yang telah membentuk landskap pendidikan Malaysia selama lebih dari seabad.",
+
+    /* ================= VISION MISSION ================= */
+    "vision-label-el": "Visi",
+    "vision-text-el": "'Menjadi entiti korporat yang berdaya saing, berorientasikan peluang dan dipandu oleh keperluan pelanggan dalaman & luaran.'",
+    "mission-label-el": "Misi",
+    "mission-text-el": "'Pemangkin kepada aktiviti komersial UPSI.'",
+
+    /* ================= STATS ================= */
+    "glance-title-el": "UPSI Sekilas Pandang",
+    "stat-founded-el": "Diasaskan",
+    "stat-faculties-el": "Fakulti",
+    "stat-students-el": "Pelajar",
+    "stat-staff-el": "Staf Akademik",
+
+    /* ================= FACULTIES ================= */
+    "faculties-title-el": "Fakulti di UPSI",
+    "fac1-title-el": "Fakulti Bahasa dan Komunikasi",
+    "fac1-desc-el": "Kecemerlangan dalam pendidikan bahasa dan pengajian komunikasi",
+    "fac2-title-el": "Fakulti Sains dan Matematik",
+    "fac2-desc-el": "Memajukan pendidikan dan penyelidikan STEM",
+    "fac3-title-el": "Fakulti Muzik dan Seni Persembahan",
+    "fac3-desc-el": "Memupuk kecemerlangan artistik dan kreativiti",
+    "fac4-title-el": "Fakulti Komputeran dan Meta Teknologi",
+    "fac4-desc-el": "Terkemuka dalam teknologi pendidikan dan inovasi",
+    "fac5-title-el": "Fakulti Sains Sukan dan Kejurulatihan",
+    "fac5-desc-el": "Membangunkan pendidikan sukan dan kesihatan",
+    "fac6-title-el": "Fakulti Pembangunan Manusia",
+    "fac6-desc-el": "Kepakaran dalam psikologi, kaunseling, dan pembangunan manusia",
+    "fac7-title-el": "Fakulti Pengurusan dan Ekonomi",
+    "fac7-desc-el": "Pendidikan perniagaan dan keusahawanan",
+    "fac8-title-el": "Fakulti Sains Sosial dan Kemanusiaan",
+    "fac8-desc-el": "Memahami masyarakat dan budaya",
+    "fac9-title-el": "Fakulti Seni, Komputeran dan Industri Kreatif",
+    "fac9-desc-el": "Menggabungkan seni dengan teknologi dan inovasi",
+
+    /* ================= CAMPUS ================= */
+    "campus-title-el": "Kampus & Kemudahan",
+    "campus-desc-el": "Kampus utama UPSI terletak di Tanjong Malim, Perak, bersempadan di kaki Banjaran Titiwangsa yang indah. Kampus ini merangkumi lebih 600 hektar.",
+    "fac-campus1-title-el": "Kampus Sultan Azlan Shah",
+    "fac-campus1-desc-el": "Kampus utama dengan kemudahan akademik bertaraf dunia",
+    "fac-campus2-title-el": "Perpustakaan Tuanku Bainun",
+    "fac-campus2-desc-el": "Koleksi sumber yang luas dan arkib digital",
+    "fac-campus3-title-el": "Kompleks Sukan",
+    "fac-campus3-desc-el": "Kemudahan bertaraf dunia untuk pelbagai sukan dan rekreasi",
+    "fac-campus4-title-el": "Pusat Penyelidikan",
+    "fac-campus4-desc-el": "Pelbagai pusat kecemerlangan dalam pelbagai bidang",
+    "fac-campus5-title-el": "Penginapan Pelajar",
+    "fac-campus5-desc-el": "Kolej kediaman yang selesa untuk pelajar",
+    "fac-campus6-title-el": "Pusat Konvensyen & Pameran",
+    "fac-campus6-desc-el": "Venue untuk persidangan, seminar, dan acara",
+
+    /* ================= ACHIEVEMENTS ================= */
+    "achievements-title-el": "Pencapaian & Pengiktirafan",
+    "ach1-title-el": "🏆 Penarafan Universiti Dunia QS",
+    "ach1-desc-el": "Secara konsisten berada dalam kalangan universiti terkemuka dalam pendidikan",
+    "ach2-title-el": "⭐ Penarafan MyRA 5 Bintang",
+    "ach2-desc-el": "Kecemerlangan dalam penyelidikan dan inovasi",
+    "ach3-title-el": "🌟 Kecemerlangan dalam Pengajaran",
+    "ach3-desc-el": "Menghasilkan lebih 100,000 guru berkelayakan",
+    "ach4-title-el": "🔬 Impak Penyelidikan",
+    "ach4-desc-el": "Penyelidikan terkemuka dalam pendidikan dan pedagogi",
+
+    /* ================= CONNECTION ================= */
+    "connection-title-el": "Hubungan UPSI Holdings & UPSI",
+    "connection-desc-el": "UPSI Holdings Sdn Bhd berkhidmat sebagai sayap pengkomersialan UPSI, menjembatani jurang antara kecemerlangan akademik dan aplikasi perniagaan praktikal.",
+    "conn1-label-el": "Kepakaran Akademik:",
+    "conn1-desc-el": "Mengambil manfaat daripada pengetahuan dan kemahiran ahli fakulti UPSI yang terkemuka",
+    "conn2-label-el": "Penyelidikan & Inovasi:",
+    "conn2-desc-el": "Menterjemah dapatan penyelidikan kepada penyelesaian praktikal untuk industri dan komuniti",
+    "conn3-label-el": "Kemudahan & Sumber:",
+    "conn3-desc-el": "Menggunakan kemudahan bertaraf dunia untuk latihan, hospitaliti, dan acara",
+    "conn4-label-el": "Modal Insan:",
+    "conn4-desc-el": "Memanfaatkan kolam bakat pelajar dan alumni untuk pelbagai inisiatif",
+    "conn5-label-el": "Rangkaian & Perkongsian:",
+    "conn5-desc-el": "Membina hubungan tempatan dan antarabangsa yang luas melalui UPSI",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+    "footer-address-label-el": "Pejabat Utama:",
+    "footer-phone-label-el": "Telefon:",
+    "footer-about-head-el": "Tentang",
+    "footer-bod-el": "Lembaga Pengarah",
+    "footer-leaders-el": "Pemimpin",
+    "footer-upsi-el": "Tentang UPSI",
+    "footer-gallery-el": "Galeri",
+    "footer-svc-head-el": "Perkhidmatan",
+    "footer-svc1-el": "Pendidikan & Latihan",
+    "footer-svc2-el": "Hospitaliti",
+    "footer-svc3-el": "Perkhidmatan Runcit",
+    "footer-svc4-el": "Konsultasi",
+    "footer-res-head-el": "Sumber",
+    "footer-career-el": "Kerjaya",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "Berita",
+    "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+
+},
+
+bi: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Got Questions? Call us: 012-2525 843",
+    "top-cta-el": "Contact Us",
+    "company-tagline": "Synergy of Resources & UPSI Expertise",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Home",
+    "nav-about-el": "About Us",
+    "nav-services-el": "Services",
+    "nav-products-el": "Our Products",
+    "nav-ads-el": "Ads",
+    "nav-career-el": "Career",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Contact Us",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Board of Directors",
+    "dd-leaders-el": "Leaders",
+    "dd-upsi-el": "About UPSI",
+    "dd-edu-el": "Education & Training",
+    "dd-hosp-el": "Training Center & Hospitality",
+    "dd-retail-el": "Retail & Services",
+    "dd-projects-el": "Projects Consultation",
+    "dd-solar-el": "Solar Energy Solutions",
+    "dd-facility-el": "Facility Management",
+    "dd-gallery-el": "Gallery",
+    "dd-news-el": "News",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Home",
+    "bc-about-el": "About Us",
+    "bc-current-el": "About UPSI",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "About UPSI",
+    "hero-desc-el": "Universiti Pendidikan Sultan Idris — Malaysia's Premier Teacher Education University",
+
+    /* ================= SECTION UPSI ================= */
+    "sec-tag-el": "Our Parent Institution",
+    "sec-title-el": "Universiti Pendidikan Sultan Idris",
+    "sec-desc-el": "A legacy of excellence in education since 1922",
+
+    /* ================= HERITAGE ================= */
+    "heritage-title-el": "The Heritage",
+    "heritage-p1-el": "Universiti Pendidikan Sultan Idris (UPSI) has a rich history dating back to 1922, when it was established as Sultan Idris Training College (SITC). In 1997, it achieved university status, becoming the only university in Malaysia solely dedicated to teacher education and educational leadership.",
+    "heritage-p2-el": "Named after Sultan Idris Murshidul Adzam Shah, the 28th Sultan of Perak, UPSI continues its noble tradition of producing quality educators who have shaped Malaysia's education landscape for over a century.",
+
+    /* ================= VISION MISSION ================= */
+    "vision-label-el": "Vision",
+    "vision-text-el": "'To be a competitive corporate entity, opportunity-oriented and guided by the needs of internal & external customers.'",
+    "mission-label-el": "Mission",
+    "mission-text-el": "'A catalyst for UPSI's commercial activities.'",
+
+    /* ================= STATS ================= */
+    "glance-title-el": "UPSI at a Glance",
+    "stat-founded-el": "Founded",
+    "stat-faculties-el": "Faculties",
+    "stat-students-el": "Students",
+    "stat-staff-el": "Academic Staff",
+
+    /* ================= FACULTIES ================= */
+    "faculties-title-el": "Faculties at UPSI",
+    "fac1-title-el": "Faculty of Languages and Communication",
+    "fac1-desc-el": "Excellence in language education and communication studies",
+    "fac2-title-el": "Faculty of Science and Mathematics",
+    "fac2-desc-el": "Advancing STEM education and research",
+    "fac3-title-el": "Faculty of Music and Performing Arts",
+    "fac3-desc-el": "Nurturing artistic excellence and creativity",
+    "fac4-title-el": "Faculty of Computing and Meta Technology",
+    "fac4-desc-el": "Leading in educational technology and innovation",
+    "fac5-title-el": "Faculty of Sports Science and Coaching",
+    "fac5-desc-el": "Developing sports and health education",
+    "fac6-title-el": "Faculty of Human Development",
+    "fac6-desc-el": "Expertise in psychology, counseling, and human development",
+    "fac7-title-el": "Faculty of Management and Economics",
+    "fac7-desc-el": "Business and entrepreneurship education",
+    "fac8-title-el": "Faculty of Social Sciences and Humanities",
+    "fac8-desc-el": "Understanding society and culture",
+    "fac9-title-el": "Faculty of Art, Computing and Creative Industry",
+    "fac9-desc-el": "Merging art with technology and innovation",
+
+    /* ================= CAMPUS ================= */
+    "campus-title-el": "Campus & Facilities",
+    "campus-desc-el": "UPSI's main campus is located in Tanjong Malim, Perak, nestled at the foothills of the beautiful Titiwangsa Range. The campus spans over 600 hectares.",
+    "fac-campus1-title-el": "Sultan Azlan Shah Campus",
+    "fac-campus1-desc-el": "Main campus with world-class academic facilities",
+    "fac-campus2-title-el": "Tuanku Bainun Library",
+    "fac-campus2-desc-el": "Extensive resource collection and digital archive",
+    "fac-campus3-title-el": "Sports Complex",
+    "fac-campus3-desc-el": "World-class facilities for various sports and recreation",
+    "fac-campus4-title-el": "Research Centres",
+    "fac-campus4-desc-el": "Multiple centres of excellence across various fields",
+    "fac-campus5-title-el": "Student Accommodation",
+    "fac-campus5-desc-el": "Comfortable residential colleges for students",
+    "fac-campus6-title-el": "Convention & Exhibition Centre",
+    "fac-campus6-desc-el": "Venue for conferences, seminars, and events",
+
+    /* ================= ACHIEVEMENTS ================= */
+    "achievements-title-el": "Achievements & Recognition",
+    "ach1-title-el": "🏆 QS World University Rankings",
+    "ach1-desc-el": "Consistently ranked among the top universities in education",
+    "ach2-title-el": "⭐ MyRA 5-Star Rating",
+    "ach2-desc-el": "Excellence in research and innovation",
+    "ach3-title-el": "🌟 Teaching Excellence",
+    "ach3-desc-el": "Producing over 100,000 qualified teachers",
+    "ach4-title-el": "🔬 Research Impact",
+    "ach4-desc-el": "Leading research in education and pedagogy",
+
+    /* ================= CONNECTION ================= */
+    "connection-title-el": "UPSI Holdings & UPSI Connection",
+    "connection-desc-el": "UPSI Holdings Sdn Bhd serves as the commercialization arm of UPSI, bridging the gap between academic excellence and practical business applications.",
+    "conn1-label-el": "Academic Expertise:",
+    "conn1-desc-el": "Leveraging the knowledge and skills of UPSI's distinguished faculty members",
+    "conn2-label-el": "Research & Innovation:",
+    "conn2-desc-el": "Translating research findings into practical solutions for industry and community",
+    "conn3-label-el": "Facilities & Resources:",
+    "conn3-desc-el": "Utilizing world-class facilities for training, hospitality, and events",
+    "conn4-label-el": "Human Capital:",
+    "conn4-desc-el": "Tapping into the pool of student and alumni talent for various initiatives",
+    "conn5-label-el": "Network & Partnerships:",
+    "conn5-desc-el": "Building extensive local and international connections through UPSI",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+    "footer-address-label-el": "Main Office:",
+    "footer-phone-label-el": "Phone:",
+    "footer-about-head-el": "About",
+    "footer-bod-el": "Board of Directors",
+    "footer-leaders-el": "Leaders",
+    "footer-upsi-el": "About UPSI",
+    "footer-gallery-el": "Gallery",
+    "footer-svc-head-el": "Services",
+    "footer-svc1-el": "Education & Training",
+    "footer-svc2-el": "Hospitality",
+    "footer-svc3-el": "Retail Services",
+    "footer-svc4-el": "Consultation",
+    "footer-res-head-el": "Resources",
+    "footer-career-el": "Career",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "News",
+    "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+
+}
+
+};
+function setLang(lang) {
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t = T[lang]; if (!t) return;
+    Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', () => { setLang(localStorage.getItem('upsi-lang') || 'bm'); });
+</script>
+</body>
+</html>

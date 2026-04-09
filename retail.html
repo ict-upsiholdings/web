@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runcit & Perkhidmatan - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <link rel="stylesheet" href="service-cards.css">
+<style>
+/* ─── Page Background ─────────────────────────────────────────────────── */
+.service-details-section{position:relative;background-image:url('image/building.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
+.service-details-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+.service-details-section .container{position:relative;z-index:1;}
+
+/* ─── Card hover ──────────────────────────────────────────────────────── */
+.program-card{cursor:pointer;transition:transform 0.22s cubic-bezier(.34,1.56,.64,1),box-shadow 0.22s;}
+.program-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.14);}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MODAL OVERLAY
+═══════════════════════════════════════════════════════════════════════ */
+.edu-modal-overlay{
+    display:none;position:fixed;inset:0;z-index:9999;
+    align-items:center;justify-content:center;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(6px);
+    padding:16px;
+}
+.edu-modal-overlay.active{display:flex;}
+
+/* ─── Modal Box — image only ─────────────────────────────────────────── */
+.edu-modal-box{
+    position:relative;z-index:1;
+    background:#000;
+    width:100%;max-width:960px;
+    max-height:92vh;
+    overflow:hidden;
+    border-radius:6px;
+    animation:eduFadeIn 0.28s cubic-bezier(.34,1.2,.64,1);
+    box-shadow:0 32px 80px rgba(0,0,0,0.55);
+}
+@keyframes eduFadeIn{
+    from{opacity:0;transform:scale(0.96);}
+    to{opacity:1;transform:scale(1);}
+}
+@media(max-width:600px){.edu-modal-box{max-height:96vh;border-radius:3px;}}
+
+/* ─── Close Button ────────────────────────────────────────────────────── */
+.edu-modal-close{
+    position:absolute;top:14px;right:16px;
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,0.60);color:#fff;
+    border:1.5px solid rgba(255,255,255,0.30);
+    cursor:pointer;font-size:1rem;
+    z-index:10;transition:background 0.2s,transform 0.15s;
+}
+.edu-modal-close:hover{background:rgba(0,0,0,0.90);transform:scale(1.08);}
+
+/* ─── Body hidden — images only ──────────────────────────────────────── */
+.edu-modal-body{display:none;}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   IMAGE SLIDER — full height
+═══════════════════════════════════════════════════════════════════════ */
+.modal-slider{
+    position:relative;
+    width:100%;
+    height:88vh;
+    overflow:hidden;
+    background:#000;
+}
+@media(max-width:600px){.modal-slider{height:82vh;}}
+
+.slider-track{
+    display:flex;
+    height:100%;
+    transition:transform 0.50s cubic-bezier(.77,0,.18,1);
+    will-change:transform;
+}
+.slider-slide{
+    min-width:100%;height:100%;
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:#000;
+}
+.slider-slide img{
+    width:100%;height:100%;
+    object-fit:contain;
+    display:block;
+    transition:transform 7s ease;
+    transform:scale(1.03);
+}
+.slider-slide.is-active img{transform:scale(1);}
+
+/* Prev/Next arrows */
+.slider-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(0,0,0,0.45);
+    border:1.5px solid rgba(255,255,255,0.35);
+    color:#fff;font-size:1.15rem;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:5;
+    transition:background 0.2s,transform 0.2s;
+    backdrop-filter:blur(4px);
+    line-height:1;
+}
+.slider-arrow:hover{background:rgba(0,0,0,0.78);}
+.slider-arrow.prev{left:16px;}
+.slider-arrow.next{right:16px;}
+.slider-arrow.prev:hover{transform:translateY(-50%) translateX(-2px);}
+.slider-arrow.next:hover{transform:translateY(-50%) translateX(2px);}
+@media(max-width:480px){.slider-arrow{width:36px;height:36px;font-size:0.9rem;}}
+
+/* Dots */
+.slider-dots{
+    position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+    display:flex;gap:8px;z-index:5;
+}
+.slider-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:rgba(255,255,255,0.38);
+    border:none;padding:0;cursor:pointer;
+    transition:background 0.25s,transform 0.25s;
+}
+.slider-dot.is-active{background:#fff;transform:scale(1.4);}
+
+/* Counter badge */
+.slider-counter{
+    position:absolute;bottom:16px;right:18px;
+    background:rgba(0,0,0,0.50);color:#fff;
+    font-size:0.72rem;font-family:'Poppins',sans-serif;font-weight:500;
+    padding:4px 11px;border-radius:20px;z-index:5;
+    backdrop-filter:blur(3px);letter-spacing:0.7px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LANGUAGE DROPDOWN
+═══════════════════════════════════════════════════════════════════════ */
+.nav-lang-dropdown{position:relative;}
+.nav-lang-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px solid #e0e4f0;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;color:#1a237e;padding:7px 13px;border-radius:8px;transition:background 0.2s,border-color 0.2s;}
+.nav-lang-btn:hover{background:#eef0fb;border-color:#c5cae9;}
+.nav-lang-btn .lang-arrow{font-size:0.65rem;color:#9ea8c8;transition:transform 0.2s;}
+.nav-lang-dropdown.open .lang-arrow{transform:rotate(180deg);}
+.nav-lang-flag{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.18);}
+.nav-lang-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1.5px solid #e0e4f0;border-radius:12px;box-shadow:0 10px 32px rgba(26,35,126,0.13);min-width:150px;overflow:hidden;z-index:9999;}
+.nav-lang-dropdown.open .nav-lang-menu{display:block;}
+.nav-lang-menu button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;background:none;border:none;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;color:#333;cursor:pointer;transition:background 0.15s;text-align:left;}
+.nav-lang-menu button:hover{background:#f0f2fb;color:#1a237e;}
+.nav-lang-menu button.active-lang{background:#e8eaf6;color:#1a237e;font-weight:700;}
+.nav-lang-menu button img{width:22px;height:15px;object-fit:cover;border-radius:3px;}
+.nav-lang-menu-divider{height:1px;background:#f0f2f8;margin:2px 0;}
+</style>
+</head>
+<body>
+
+<div class="top-bar"><div class="top-bar-content"><div class="top-bar-left"><a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a><a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a></div><div class="top-bar-right"><div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div><a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a></div></div></div>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;">
+            <div class="company-info"><h1>UPSI HOLDINGS</h1><p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p></div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li><a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li><a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+            <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li><a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu" id="navLangMenu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()"><img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu</button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()"><img src="https://flagcdn.com/w40/gb.png" alt="EN"> English</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero retail-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-svc-el">Perkhidmatan</a> › <span id="bc-current-el">Runcit & Perkhidmatan</span></div>
+    <h1 id="hero-title-el">Runcit & Perkhidmatan</h1>
+    <p id="hero-desc-el">Operasi Perniagaan Pelbagai Untuk Memenuhi Keperluan Komuniti</p>
+</section>
+
+<section class="service-details-section">
+    <div class="container">
+        <div class="service-overview">
+            <h2 id="overview-title-el">Operasi Runcit Kami</h2>
+            <p id="overview-desc-el">UPSI Holdings mengendalikan pelbagai perniagaan runcit dan perkhidmatan yang direka untuk memenuhi keperluan komuniti universiti dan sekitarnya. Daripada perkhidmatan automotif khusus hinggalah kemudahan rekreasi dan keperluan harian, kami menyediakan produk dan perkhidmatan berkualiti dengan layanan pelanggan yang cemerlang.</p>
+        </div>
+
+        <div class="section-title-bar"><span class="title-accent"></span><h2 id="products-title-el">Produk & Perkhidmatan Kami</h2><div class="title-line"></div></div>
+
+        <div class="programs-grid">
+            <div class="program-card" data-index="01" onclick="openEduModal('plate')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🚗</div><h3 id="c1-title">Pengedar Nombor Plat Khas — UG</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m1">Siri UG</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m2">Pengedar Rasmi</span></span></div>
+                <p class="program-desc" id="c1-desc">Pengedar eksklusif untuk nombor pendaftaran kenderaan khas siri UG. Sesuai untuk mereka yang mencari plat nombor unik dan istimewa.</p>
+                <ul class="program-features"><li id="c1-f1">Pilihan luas tersedia</li><li id="c1-f2">Harga kompetitif</li><li id="c1-f3">Bantuan pemindahan</li><li id="c1-f4">Sokongan dokumentasi</li><li id="c1-f5">Penghubung JPJ</li><li id="c1-f6">Permintaan khas</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c1-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="02" onclick="openEduModal('boutique')">
+                <div class="program-icon-wrap"><div class="program-icon-box">👕</div><h3 id="c2-title">Butik UPSI</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m1">Cenderamata Rasmi</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m2">Kampus & Dalam Talian</span></span></div>
+                <p class="program-desc" id="c2-desc">Cenderamata rasmi UPSI termasuk pakaian, aksesori, alat tulis, dan buah tangan.</p>
+                <ul class="program-features"><li id="c2-f1">T-shirt & polo shirt</li><li id="c2-f2">Jaket & hoodie</li><li id="c2-f3">Beg & aksesori</li><li id="c2-f4">Alat tulis</li><li id="c2-f5">Cenderamata & hadiah</li><li id="c2-f6">Cetakan tersuai tersedia</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c2-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="03" onclick="openEduModal('bowl')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🎳</div><h3 id="c3-title">UPSI Sports Bowl</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m1">Lorong Profesional</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m2">Operasi Harian</span></span></div>
+                <p class="program-desc" id="c3-desc">Kemudahan boling moden untuk pelajar, kakitangan, dan orang awam. Sesuai untuk rekreasi dan pertandingan.</p>
+                <ul class="program-features"><li id="c3-f1">Lorong profesional</li><li id="c3-f2">Sistem pemarkahan automatik</li><li id="c3-f3">Sewa kasut</li><li id="c3-f4">Tempahan berkumpulan</li><li id="c3-f5">Pakej hari jadi</li><li id="c3-f6">Pertandingan liga</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c3-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="04" onclick="openEduModal('grocery')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🏪</div><h3 id="c4-title">Runcit UHSB</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m1">Kedai Serbaneka</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m2">Keperluan Harian</span></span></div>
+                <p class="program-desc" id="c4-desc">Kedai runcit mudah diakses untuk keperluan harian komuniti kampus dan pelawat.</p>
+                <ul class="program-features"><li id="c4-f1">Produk segar</li><li id="c4-f2">Snek & minuman</li><li id="c4-f3">Barangan penjagaan diri</li><li id="c4-f4">Bekalan alat tulis</li><li id="c4-f5">Makanan siap saji</li><li id="c4-f6">Harga kompetitif</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c4-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="05" onclick="openEduModal('golf')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🏌️</div><h3 id="c5-title">Driving Range Banjaran UPSI</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m1">Padang Latihan Golf</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m2">Peralatan Tersedia</span></span></div>
+                <p class="program-desc" id="c5-desc">Padang latihan golf dengan pemandangan indah untuk semua peringkat.</p>
+                <ul class="program-features"><li id="c5-f1">Pelbagai bay</li><li id="c5-f2">Sewa kayu golf</li><li id="c5-f3">Pengedar bola</li><li id="c5-f4">Latihan tersedia</li><li id="c5-f5">Lokasi pemandangan indah</li><li id="c5-f6">Pilihan keahlian</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c5-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="06" onclick="openEduModal('vending')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🍫</div><h3 id="c6-title">Mesin Layan Diri</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m1">Pelbagai Lokasi</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m2">Tersedia 24/7</span></span></div>
+                <p class="program-desc" id="c6-desc">Mesin layan diri strategik di seluruh kampus — snek dan minuman sepanjang masa.</p>
+                <ul class="program-features"><li id="c6-f1">Snek & kerepek</li><li id="c6-f2">Minuman sejuk</li><li id="c6-f3">Kopi & teh</li><li id="c6-f4">Mi segera</li><li id="c6-f5">Barangan tandas</li><li id="c6-f6">Pembayaran tanpa tunai</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c6-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="07" onclick="openEduModal('solar')">
+                <div class="program-icon-wrap"><div class="program-icon-box">☀️</div><h3 id="c7-title">Penyelesaian Tenaga Solar</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c7-m1">Tenaga Boleh Diperbaharui</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c7-m2">Pemasangan & Penyelenggaraan</span></span></div>
+                <p class="program-desc" id="c7-desc">Penyelesaian tenaga solar menyeluruh untuk kediaman, komersial, dan institusi.</p>
+                <ul class="program-features"><li id="c7-f1">Pemasangan panel solar</li><li id="c7-f2">Audit tenaga percuma</li><li id="c7-f3">Sistem pemantauan</li><li id="c7-f4">Penyelenggaraan berkala</li><li id="c7-f5">Pakej kediaman & komersial</li><li id="c7-f6">Sokongan teknikal 24/7</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c7-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="08" onclick="openEduModal('myfis')">
+                <div class="program-icon-wrap"><div class="program-icon-box">💻</div><h3 id="c8-title">MyFIS</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c8-m1">Sistem Maklumat</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c8-m2">Penyelesaian Digital</span></span></div>
+                <p class="program-desc" id="c8-desc">Platform sistem maklumat bersepadu untuk pengurusan data institusi secara cekap.</p>
+                <ul class="program-features"><li id="c8-f1">Pengurusan data bersepadu</li><li id="c8-f2">Pelaporan automatik</li><li id="c8-f3">Antaramuka mesra pengguna</li><li id="c8-f4">Keselamatan data tinggi</li><li id="c8-f5">Sokongan pelbagai peranti</li><li id="c8-f6">Latihan & onboarding</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c8-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="09" onclick="openEduModal('facility')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🏢</div><h3 id="c9-title">Pengurusan Kemudahan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c9-m1">Penyelenggaraan Bangunan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c9-m2">Perkhidmatan Menyeluruh</span></span></div>
+                <p class="program-desc" id="c9-desc">Pengurusan kemudahan profesional meliputi penyelenggaraan, kebersihan, dan keselamatan.</p>
+                <ul class="program-features"><li id="c9-f1">Penyelenggaraan bangunan</li><li id="c9-f2">Perkhidmatan kebersihan</li><li id="c9-f3">Sistem keselamatan</li><li id="c9-f4">Pengurusan infrastruktur</li><li id="c9-f5">Pengurusan sisa & kitar semula</li><li id="c9-f6">Laporan kemudahan berkala</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c9-btn">Maklumat Lanjut</span>
+            </div>
+
+            <div class="program-card" data-index="10" onclick="openEduModal('kotameru')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🏫</div><h3 id="c10-title">Kampus Kota Meru</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c10-m1">Cawangan UPSI</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c10-m2">Kota Meru, Selangor</span></span></div>
+                <p class="program-desc" id="c10-desc">Cawangan UPSI Holdings di Kota Meru — pelbagai perkhidmatan untuk komuniti setempat.</p>
+                <ul class="program-features"><li id="c10-f1">Kemudahan pembelajaran</li><li id="c10-f2">Ruang pejabat & persidangan</li><li id="c10-f3">Perkhidmatan komuniti</li><li id="c10-f4">Parkir luas</li><li id="c10-f5">Lokasi strategik</li><li id="c10-f6">Mudah akses pengangkutan awam</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c10-btn">Maklumat Lanjut</span>
+            </div>
+        </div>
+
+        <div class="why-choose-section">
+            <h2 id="why-title-el">Mengapa Membeli-belah Dengan Kami?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><div class="benefit-icon">💰</div><h3 id="ben1-title-el">Harga Kompetitif</h3><p id="ben1-desc-el">Nilai terbaik dengan promosi dan diskaun berkala</p></div>
+                <div class="benefit-item"><div class="benefit-icon">✨</div><h3 id="ben2-title-el">Produk Berkualiti</h3><p id="ben2-desc-el">Item yang dipilih dengan teliti memastikan kualiti dan kepuasan</p></div>
+                <div class="benefit-item"><div class="benefit-icon">📍</div><h3 id="ben3-title-el">Lokasi Mudah Akses</h3><p id="ben3-desc-el">Mudah diakses di seluruh kampus dan kawasan sekitarnya</p></div>
+                <div class="benefit-item"><div class="benefit-icon">🎯</div><h3 id="ben4-title-el">Pilihan Pelbagai</h3><p id="ben4-desc-el">Pelbagai produk dan perkhidmatan untuk semua keperluan anda</p></div>
+            </div>
+        </div>
+
+        <div class="service-cta">
+            <h2 id="cta-title-el">Lawati Kedai Runcit Kami Hari Ini!</h2>
+            <p id="cta-desc-el">Nikmati produk dan perkhidmatan berkualiti pada harga yang berbaloi. Sama ada anda mencari plat kenderaan unik, cenderamata rasmi, atau keperluan harian, kami ada untuk anda.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn1-el">Cari Lokasi</a>
+                <a href="contact.html" class="btn btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn2-el">Hubungi Kami</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>UPSI HOLDINGS SDN BHD</h3><p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p><div class="footer-contact"><div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div><div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div></div><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a></div></div>
+<div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
+</div><div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div></div></footer>
+
+<!-- ══════════════════ MODAL — GAMBAR SAHAJA ══════════════════ -->
+<div class="edu-modal-overlay" id="eduModal">
+    <div class="edu-modal-box">
+        <button class="edu-modal-close" onclick="closeEduModal()" aria-label="Tutup">&#x2715;</button>
+
+        <!-- IMAGE SLIDER PENUH -->
+        <div class="modal-slider">
+            <div class="slider-track" id="sliderTrack"></div>
+            <button class="slider-arrow prev" onclick="slideMove(-1)" aria-label="Sebelumnya">&#8592;</button>
+            <button class="slider-arrow next" onclick="slideMove(1)" aria-label="Seterusnya">&#8594;</button>
+            <div class="slider-dots" id="sliderDots"></div>
+            <div class="slider-counter" id="sliderCounter">1 / 1</div>
+        </div>
+
+        <!-- Teks disembunyikan -->
+        <div class="edu-modal-body"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+/* ── Language Dropdown ── */
+function toggleLangMenu(){document.getElementById('navLangDropdown').classList.toggle('open');}
+function closeLangMenu(){document.getElementById('navLangDropdown').classList.remove('open');}
+document.addEventListener('click',function(e){var d=document.getElementById('navLangDropdown');if(d&&!d.contains(e.target))d.classList.remove('open');});
+
+/* ══════════════════════════════════════════════════════════
+   SLIDER ENGINE
+══════════════════════════════════════════════════════════ */
+var _idx=0,_imgs=[],_timer=null;
+
+function buildSlider(imgs){
+    _imgs=imgs;_idx=0;
+    var track=document.getElementById('sliderTrack');
+    var dots=document.getElementById('sliderDots');
+    track.innerHTML='';dots.innerHTML='';
+    imgs.forEach(function(src,i){
+        var slide=document.createElement('div');
+        slide.className='slider-slide'+(i===0?' is-active':'');
+        var img=document.createElement('img');
+        img.src=src;img.alt='';img.loading=i===0?'eager':'lazy';
+        slide.appendChild(img);track.appendChild(slide);
+        var dot=document.createElement('button');
+        dot.className='slider-dot'+(i===0?' is-active':'');
+        dot.setAttribute('aria-label','Slide '+(i+1));
+        (function(n){dot.addEventListener('click',function(){goTo(n);});})(i);
+        dots.appendChild(dot);
+    });
+    applySlider();startAuto();
+}
+
+function goTo(n){
+    var slides=document.querySelectorAll('.slider-slide');
+    var dots=document.querySelectorAll('.slider-dot');
+    slides[_idx].classList.remove('is-active');
+    dots[_idx].classList.remove('is-active');
+    _idx=(n%_imgs.length+_imgs.length)%_imgs.length;
+    slides[_idx].classList.add('is-active');
+    dots[_idx].classList.add('is-active');
+    applySlider();
+}
+function applySlider(){
+    document.getElementById('sliderTrack').style.transform='translateX(-'+(_idx*100)+'%)';
+    document.getElementById('sliderCounter').textContent=(_idx+1)+' / '+_imgs.length;
+}
+function slideMove(d){clearAuto();goTo(_idx+d);startAuto();}
+function startAuto(){clearAuto();if(_imgs.length>1)_timer=setInterval(function(){goTo(_idx+1);},3800);}
+function clearAuto(){clearInterval(_timer);}
+
+/* swipe support */
+var _tx=0;
+document.getElementById('eduModal').addEventListener('touchstart',function(e){_tx=e.changedTouches[0].screenX;},{passive:true});
+document.getElementById('eduModal').addEventListener('touchend',function(e){var dx=e.changedTouches[0].screenX-_tx;if(Math.abs(dx)>40)slideMove(dx<0?1:-1);},{passive:true});
+
+/* keyboard support */
+document.addEventListener('keydown',function(e){
+    if(!document.getElementById('eduModal').classList.contains('active'))return;
+    if(e.key==='ArrowLeft')slideMove(-1);
+    if(e.key==='ArrowRight')slideMove(1);
+    if(e.key==='Escape')closeEduModal();
+});
+
+/* ══════════════════════════════════════════════════════════
+   CARD DATA — images per card
+══════════════════════════════════════════════════════════ */
+var currentLang='bm';
+
+var cardData={
+    plate:{
+        images:['image/ug1.webp','image/ug2.webp','image/ug3.jpg'],
+        bm:{title:"Nombor Plat Khas — Siri UG",meta:["Siri UG","Pengedar Rasmi","Berdaftar JPJ"],desc:"Sebagai pengedar berlesen rasmi untuk plat pendaftaran kenderaan siri UG, UPSI Holdings menawarkan pelbagai nombor plat khas dan diperibadikan.",list:["<strong>Pilihan Nombor UG Yang Luas:</strong> Inventori nombor plat siri UG tersedia, termasuk nombor satu digit, berulang, dan kombinasi corak pilihan.","<strong>Sokongan Dokumentasi Penuh:</strong> Pasukan kami membantu semua urusan pemindahan JPJ dan pendaftaran pemilikan dari awal hingga selesai.","<strong>Harga Kompetitif & Telus:</strong> Harga pasaran yang adil tanpa caj tersembunyi — hubungi kami untuk senarai ketersediaan penuh."]},
+        bi:{title:"Special Plate Number — UG Series",meta:["UG Series","Official Dealer","JPJ Registered"],desc:"As the official authorized dealer for UG series vehicle registration plates, UPSI Holdings offers an exclusive range of special and personalized plate numbers.",list:["<strong>Wide Selection of UG Numbers:</strong> Browse an extensive inventory of available UG series plate numbers, including single-digit, repeating, and pattern combinations.","<strong>Full Documentation Support:</strong> Our team assists with all JPJ transfer paperwork and ownership registration from start to finish.","<strong>Competitive & Transparent Pricing:</strong> Fair market pricing with no hidden fees — enquire today for a full availability list and price guide."]}
+    },
+    boutique:{
+        images:['image/kedai 1.webp','image/kedai 2.webp','image/kedai 3.webp','image/kedai 4.webp','image/kedai 5.webp'],
+        bm:{title:"Butik UPSI",meta:["Cenderamata Rasmi","Berjenama Berkualiti","Cetakan Tersuai"],desc:"Butik UPSI adalah destinasi serba lengkap untuk cenderamata berjenama UPSI yang asli.",list:["<strong>Pakaian & Aksesori:</strong> T-shirt, polo shirt, hoodie, jaket, topi, dan beg tote berjenama UPSI dalam pelbagai saiz dan warna.","<strong>Alat Tulis & Cenderamata:</strong> Buku nota, pen, gantung kunci, mug, dan barangan peringatan sebagai hadiah untuk graduan dan pelawat.","<strong>Perkhidmatan Cetakan Tersuai:</strong> Cetakan logo dan reka bentuk diperibadikan untuk jabatan, acara, dan hadiah korporat."]},
+        bi:{title:"UPSI Boutique",meta:["Official Merchandise","Quality Branded","Custom Printing"],desc:"The UPSI Boutique is your one-stop destination for authentic UPSI-branded merchandise.",list:["<strong>Apparel & Accessories:</strong> A full range of UPSI-branded T-shirts, polo shirts, hoodies, jackets, caps, and tote bags in various sizes and colours.","<strong>Stationery & Souvenirs:</strong> Notebooks, pens, keychains, mugs, and commemorative items — ideal as gifts for graduates and visitors.","<strong>Custom Printing Services:</strong> Personalised logo and design printing on selected merchandise for departments, events, and corporate gifting."]}
+    },
+    bowl:{
+        images:['image/bowl 1.jpg','image/bowl 2.jpg','image/bowl 3.jpg','image/bowl 4.jpg'],
+        bm:{title:"UPSI Sports Bowl",meta:["Lorong Profesional","Pemarkahan Auto","Tempahan Berkumpulan"],desc:"UPSI Sports Bowl adalah kemudahan boling moden yang terbuka untuk pelajar, kakitangan universiti, dan orang awam.",list:["<strong>Lorong Boling Profesional:</strong> Lorong lengkap dengan sistem pemarkahan automatik, mesin pemulangan bola, dan bumper galas untuk permainan santai.","<strong>Sewa Peralatan & Pakej:</strong> Sewa kasut dan pakej tempahan berkumpulan yang berpatutan untuk majlis hari jadi dan acara jabatan.","<strong>Pertandingan & Liga:</strong> Liga boling dan pertandingan berkala terbuka untuk semua peringkat kemahiran dengan hadiah menarik."]},
+        bi:{title:"UPSI Sports Bowl",meta:["Professional Lanes","Auto-Scoring","Group Bookings"],desc:"UPSI Sports Bowl is a modern bowling facility open to students, university staff, and the general public.",list:["<strong>Professional Bowling Lanes:</strong> Fully equipped lanes with automatic scoring systems, ball return machines, and gutter bumpers for casual play.","<strong>Equipment Rental & Packages:</strong> Affordable shoe rentals and group booking packages for birthday parties, team outings, and department events.","<strong>Competitions & Leagues:</strong> Regular bowling leagues and tournaments open to all skill levels, with prizes and rankings."]}
+    },
+    grocery:{
+        images:['image/grocery1.webp','image/grocery2.webp','image/grocery3.webp','image/grocery4.webp'],
+        bm:{title:"Runcit UHSB",meta:["Kedai Serbaneka","Keperluan Harian","Berasaskan Kampus"],desc:"Runcit UHSB adalah kedai kampus yang mudah diakses dan dilengkapi keperluan harian untuk pelajar, kakitangan, dan pelawat.",list:["<strong>Pelbagai Produk:</strong> Snek segar, minuman, makanan segera, produk penjagaan diri, dan alat tulis di bawah satu bumbung.","<strong>Pilihan Siap Saji:</strong> Makanan bungkus, sandwic, dan minuman panas untuk pelajar dan kakitangan yang sibuk.","<strong>Harga Berorientasikan Komuniti:</strong> Harga yang mengambil kira komuniti kampus dengan promosi berkala sepanjang semester."]},
+        bi:{title:"UHSB Grocery",meta:["Convenience Store","Daily Essentials","Campus-Based"],desc:"UHSB Grocery is a conveniently located campus store stocked with everyday essentials for students, staff, and visitors.",list:["<strong>Wide Range of Products:</strong> Fresh snacks, beverages, instant meals, personal care products, and stationery all under one roof.","<strong>Ready-to-Eat Options:</strong> Packaged meals, sandwiches, and hot beverages for busy students and staff.","<strong>Community-Focused Pricing:</strong> Products priced with the campus community in mind, with regular promotions throughout the semester."]}
+    },
+    golf:{
+        images:['image/golf1.jpeg','image/golf2.jpg','image/golf3.jpg','image/golf4.jpg','image/golf5.webp','image/golf6.webp'],
+        bm:{title:"Driving Range Banjaran UPSI",meta:["Padang Latihan Golf","Pemandangan Indah","Latihan Tersedia"],desc:"Terletak di latar belakang Banjaran Titiwangsa yang indah — persekitaran santai untuk pemain golf dari semua peringkat.",list:["<strong>Pelbagai Bay Latihan:</strong> Bay berteduh yang selesa dengan pengedar bola untuk pemain tangan kanan dan kiri, sesuai untuk pemula dan pemain berpengalaman.","<strong>Sewa Peralatan:</strong> Set kayu golf penuh tersedia untuk disewa — tidak perlu membawa peralatan sendiri.","<strong>Latihan & Keahlian:</strong> Sesi latihan individu dan berkumpulan dengan jurulatih bertauliah serta pilihan keahlian dengan akses diskaun."]},
+        bi:{title:"Driving Range Banjaran UPSI",meta:["Golf Practice Range","Scenic Views","Coaching Available"],desc:"Set against the picturesque backdrop of Banjaran Titiwangsa — a relaxed and scenic environment for golfers of all levels.",list:["<strong>Multiple Practice Bays:</strong> Comfortable covered bays with ball dispensers for right and left-handed players, suitable for all skill levels.","<strong>Equipment Rental:</strong> Full set of golf clubs available for hire — no need to bring your own gear for a great session.","<strong>Coaching & Membership:</strong> Individual and group coaching sessions with a qualified instructor plus discounted membership options."]}
+    },
+    vending:{
+        images:['image/vending1.webp','image/vending2.webp','image/vending3.jpg'],
+        bm:{title:"Mesin Layan Diri",meta:["Tersedia 24/7","Pembayaran Tanpa Tunai","Seluruh Kampus"],desc:"Rangkaian mesin layan diri pintar diletakkan secara strategik di seluruh kampus UPSI untuk akses sepanjang masa.",list:["<strong>Pilihan Produk Pelbagai:</strong> Snek, kerepek, minuman sejuk, kopi, mi segera, dan barangan penjagaan diri yang terpilih.","<strong>Pembayaran Tanpa Tunai & Tanpa Sentuh:</strong> Sokong e-wallet, kod QR, dan kad untuk pengalaman pembelian yang cepat dan mudah.","<strong>Liputan Kampus Strategik:</strong> Diletakkan di blok akademik, asrama, dan kawasan rekreasi untuk kebolehcapaian maksimum."]},
+        bi:{title:"Vending Machines",meta:["24/7 Available","Cashless Payment","Campus-Wide"],desc:"Our network of smart vending machines is strategically positioned throughout the UPSI campus for around-the-clock access.",list:["<strong>Diverse Product Selection:</strong> Each machine stocked with snacks, chips, chilled drinks, coffee, instant noodles, and personal care items.","<strong>Cashless & Contactless Payment:</strong> All machines support e-wallet, QR code, and card payments for a quick and hassle-free experience.","<strong>Strategic Campus Coverage:</strong> Placed at high-traffic locations including academic blocks, hostels, and recreational areas."]}
+    },
+    solar:{
+        images:['image/solar1.jpg','image/solar2.jpg','image/solar3.jpg'],
+        bm:{title:"Penyelesaian Tenaga Solar",meta:["Tenaga Boleh Diperbaharui","Pemasangan & Penyelenggaraan","Penjimatan Kos"],desc:"UPSI Holdings menawarkan penyelesaian tenaga solar yang komprehensif untuk sektor kediaman, komersial, dan institusi.",list:["<strong>Pemasangan Panel Solar:</strong> Pasukan jurutera bertauliah mengendalikan pemasangan sistem fotovoltaik dari penilaian tapak, reka bentuk sistem, hingga pentauliahan.","<strong>Audit Tenaga & Perundingan:</strong> Audit tenaga percuma untuk menilai potensi penjimatan dan mengesyorkan sistem solar yang paling sesuai untuk bajet anda.","<strong>Penyelenggaraan & Pemantauan Berterusan:</strong> Penyelenggaraan preventif dan sistem pemantauan pintar memastikan panel solar beroperasi pada kecekapan optimum."]},
+        bi:{title:"Solar Energy Solutions",meta:["Renewable Energy","Installation & Maintenance","Cost Savings"],desc:"UPSI Holdings offers comprehensive solar energy solutions for residential, commercial, and institutional sectors.",list:["<strong>Solar Panel Installation:</strong> Our certified engineers manage the complete PV system installation — from site assessment and design through to commissioning and handover.","<strong>Energy Audit & Consultation:</strong> A complimentary energy audit to assess your savings potential and recommend the most suitable solar system for your budget.","<strong>Ongoing Maintenance & Monitoring:</strong> Scheduled preventive maintenance and smart monitoring ensure your solar panels operate at peak efficiency."]}
+    },
+    myfis:{
+        images:['image/my1.jpg','image/my2.jpg','image/my3.png'],
+        bm:{title:"MyFIS",meta:["Sistem Maklumat Bersepadu","Penyelesaian Digital","Keselamatan Tinggi"],desc:"MyFIS adalah platform sistem maklumat bersepadu untuk memudahkan pengurusan data, pelaporan, dan operasi harian institusi.",list:["<strong>Pengurusan Data Bersepadu:</strong> Satukan semua data organisasi dalam satu platform terpusat untuk akses mudah dan penjanaan laporan automatik.","<strong>Keselamatan & Pematuhan Data:</strong> Perlindungan data bertingkat, kawalan akses berdasarkan peranan, dan log audit lengkap untuk keselamatan organisasi.","<strong>Latihan & Sokongan Berterusan:</strong> Program onboarding menyeluruh dan sokongan teknikal berterusan dari hari pertama penggunaan."]},
+        bi:{title:"MyFIS",meta:["Integrated Information System","Digital Solutions","High Security"],desc:"MyFIS is an integrated information system platform to streamline data management, reporting, and day-to-day institutional operations.",list:["<strong>Centralised Data Management:</strong> Consolidate all organisational data into a single unified platform for easy access and rapid automated reporting.","<strong>Data Security & Compliance:</strong> Multi-layered data protection, role-based access controls, and comprehensive audit logs to ensure organisational data security.","<strong>Training & Ongoing Support:</strong> A comprehensive onboarding programme and continuous technical support to ensure users maximise the system from day one."]}
+    },
+    facility:{
+        images:['image/fac1.webp','image/fac2.webp','image/fac3.webp','image/fac4.webp','image/fac5.webp'],
+        bm:{title:"Pengurusan Kemudahan",meta:["Penyelenggaraan Bangunan","Keselamatan & Kebersihan","Perkhidmatan Menyeluruh"],desc:"Perkhidmatan pengurusan kemudahan profesional UPSI Holdings meliputi penyelenggaraan bangunan, kebersihan, keselamatan, dan infrastruktur.",list:["<strong>Penyelenggaraan Bangunan Berjadual:</strong> Program penyelenggaraan preventif dan pembaikan komprehensif untuk semua sistem bangunan termasuk sistem mekanikal, elektrikal, dan awam.","<strong>Perkhidmatan Kebersihan & Sanitasi:</strong> Pasukan kebersihan terlatih menyediakan pembersihan harian dan sanitasi menyeluruh untuk persekitaran yang bersih dan sihat.","<strong>Sistem Keselamatan & Kawalan Akses:</strong> Pengurusan CCTV, kawalan akses, dan keselamatan bangunan yang terintegrasi untuk melindungi penghuni dan aset."]},
+        bi:{title:"Facility Management",meta:["Building Maintenance","Safety & Cleanliness","End-to-End Services"],desc:"UPSI Holdings' professional facility management services cover building maintenance, cleaning, security, and infrastructure management.",list:["<strong>Scheduled Building Maintenance:</strong> Comprehensive preventive maintenance and repairs for all building systems including mechanical, electrical, and civil infrastructure.","<strong>Cleaning & Sanitation Services:</strong> Trained cleaning teams providing daily cleaning and thorough sanitation to maintain a hygienic and healthy environment.","<strong>Security Systems & Access Control:</strong> Integrated management of CCTV, access control, and building security to protect occupants, assets, and information."]}
+    },
+    kotameru:{
+        images:['image/meru1.jpeg','image/meru2.jpg','image/meru3.jpg','image/meru4.jpg','image/meru5.jpg'],
+        bm:{title:"Kampus Kota Meru",meta:["Cawangan UPSI Holdings","Kota Meru, Selangor","Kemudahan Lengkap"],desc:"Kampus Kota Meru merupakan cawangan strategik UPSI Holdings di Kota Meru, Selangor — menawarkan perkhidmatan, kemudahan pembelajaran, dan ruang korporat.",list:["<strong>Kemudahan Pembelajaran & Latihan:</strong> Bilik kuliah, makmal komputer, dan ruang latihan lengkap dengan peralatan moden untuk program pendidikan dan latihan korporat.","<strong>Ruang Pejabat & Persidangan:</strong> Pejabat perniagaan dilengkapi sepenuhnya dan dewan persidangan berteknologi tinggi untuk mesyuarat korporat dan seminar.","<strong>Lokasi Strategik & Mudah Akses:</strong> Terletak di kawasan Kota Meru yang berkembang pesat dengan akses mudah melalui lebuh raya utama dan pengangkutan awam."]},
+        bi:{title:"Kampus Kota Meru",meta:["UPSI Holdings Branch","Kota Meru, Selangor","Full Facilities"],desc:"Kampus Kota Meru is a strategic UPSI Holdings branch in Kota Meru, Selangor offering services, learning facilities, and corporate spaces.",list:["<strong>Learning & Training Facilities:</strong> Lecture halls, computer labs, and training rooms with modern technology for academic programmes and corporate training.","<strong>Office & Conference Spaces:</strong> Fully-fitted business offices and high-tech conference halls available for hire for corporate meetings, seminars, and business events.","<strong>Strategic Location & Accessibility:</strong> Situated in the rapidly growing Kota Meru area with excellent access via major highways and public transport links."]}
+    }
+};
+
+/* ══════════════════════════════════════════════════════════
+   OPEN / CLOSE MODAL — GAMBAR SAHAJA
+══════════════════════════════════════════════════════════ */
+function openEduModal(key){
+    var d=cardData[key];if(!d)return;
+    buildSlider(d.images);
+    document.getElementById('eduModal').classList.add('active');
+    document.body.style.overflow='hidden';
+}
+function closeEduModal(){
+    clearAuto();
+    document.getElementById('eduModal').classList.remove('active');
+    document.body.style.overflow='';
+}
+document.getElementById('eduModal').addEventListener('click',function(e){if(e.target===this)closeEduModal();});
+
+/* ── Translation ── */
+var T={
+  bm:{
+    "top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843","top-cta-el":"Hubungi Kami","company-tagline":"Sinergi Sumber & Kepakaran UPSI",
+    "nav-home-el":"Laman Utama","nav-about-el":"Tentang Kami","nav-services-el":"Perkhidmatan","nav-products-el":"Produk Kami","nav-ads-el":"Iklan","nav-career-el":"Kerjaya","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Hubungi Kami",
+    "dd-bod-el":"Lembaga Pengarah","dd-leaders-el":"Pemimpin","dd-upsi-el":"Tentang UPSI","dd-edu-el":"Pendidikan & Latihan","dd-hosp-el":"Pusat Latihan & Hospitaliti","dd-retail-el":"Runcit & Perkhidmatan","dd-projects-el":"Konsultasi Projek","dd-solar-el":"Penyelesaian Tenaga Solar","dd-facility-el":"Pengurusan Kemudahan","dd-gallery-el":"Galeri","dd-news-el":"Berita",
+    "bc-home-el":"Laman Utama","bc-svc-el":"Perkhidmatan","bc-current-el":"Runcit & Perkhidmatan",
+    "hero-title-el":"Runcit & Perkhidmatan","hero-desc-el":"Operasi Perniagaan Pelbagai Untuk Memenuhi Keperluan Komuniti",
+    "overview-title-el":"Operasi Runcit Kami","overview-desc-el":"UPSI Holdings mengendalikan pelbagai perniagaan runcit dan perkhidmatan yang direka untuk memenuhi keperluan komuniti universiti dan sekitarnya.","products-title-el":"Produk & Perkhidmatan Kami",
+    "c1-title":"Pengedar Nombor Plat Khas — UG","c1-m1":"Siri UG","c1-m2":"Pengedar Rasmi","c1-desc":"Pengedar eksklusif untuk nombor pendaftaran kenderaan khas siri UG.","c1-f1":"Pilihan luas tersedia","c1-f2":"Harga kompetitif","c1-f3":"Bantuan pemindahan","c1-f4":"Sokongan dokumentasi","c1-f5":"Penghubung JPJ","c1-f6":"Permintaan khas","c1-btn":"Maklumat Lanjut",
+    "c2-title":"Butik UPSI","c2-m1":"Cenderamata Rasmi","c2-m2":"Kampus & Dalam Talian","c2-desc":"Cenderamata rasmi UPSI termasuk pakaian, aksesori, alat tulis, dan buah tangan.","c2-f1":"T-shirt & polo shirt","c2-f2":"Jaket & hoodie","c2-f3":"Beg & aksesori","c2-f4":"Alat tulis","c2-f5":"Cenderamata & hadiah","c2-f6":"Cetakan tersuai tersedia","c2-btn":"Maklumat Lanjut",
+    "c3-title":"UPSI Sports Bowl","c3-m1":"Lorong Profesional","c3-m2":"Operasi Harian","c3-desc":"Kemudahan boling moden untuk pelajar, kakitangan, dan orang awam.","c3-f1":"Lorong profesional","c3-f2":"Sistem pemarkahan automatik","c3-f3":"Sewa kasut","c3-f4":"Tempahan berkumpulan","c3-f5":"Pakej hari jadi","c3-f6":"Pertandingan liga","c3-btn":"Maklumat Lanjut",
+    "c4-title":"Runcit UHSB","c4-m1":"Kedai Serbaneka","c4-m2":"Keperluan Harian","c4-desc":"Kedai runcit mudah diakses untuk keperluan harian komuniti kampus.","c4-f1":"Produk segar","c4-f2":"Snek & minuman","c4-f3":"Barangan penjagaan diri","c4-f4":"Bekalan alat tulis","c4-f5":"Makanan siap saji","c4-f6":"Harga kompetitif","c4-btn":"Maklumat Lanjut",
+    "c5-title":"Driving Range Banjaran UPSI","c5-m1":"Padang Latihan Golf","c5-m2":"Peralatan Tersedia","c5-desc":"Padang latihan golf dengan pemandangan indah untuk semua peringkat.","c5-f1":"Pelbagai bay","c5-f2":"Sewa kayu golf","c5-f3":"Pengedar bola","c5-f4":"Latihan tersedia","c5-f5":"Lokasi pemandangan indah","c5-f6":"Pilihan keahlian","c5-btn":"Maklumat Lanjut",
+    "c6-title":"Mesin Layan Diri","c6-m1":"Pelbagai Lokasi","c6-m2":"Tersedia 24/7","c6-desc":"Mesin layan diri strategik di seluruh kampus sepanjang masa.","c6-f1":"Snek & kerepek","c6-f2":"Minuman sejuk","c6-f3":"Kopi & teh","c6-f4":"Mi segera","c6-f5":"Barangan tandas","c6-f6":"Pembayaran tanpa tunai","c6-btn":"Maklumat Lanjut",
+    "c7-title":"Penyelesaian Tenaga Solar","c7-m1":"Tenaga Boleh Diperbaharui","c7-m2":"Pemasangan & Penyelenggaraan","c7-desc":"Penyelesaian tenaga solar menyeluruh untuk kediaman, komersial, dan institusi.","c7-f1":"Pemasangan panel solar","c7-f2":"Audit tenaga percuma","c7-f3":"Sistem pemantauan","c7-f4":"Penyelenggaraan berkala","c7-f5":"Pakej kediaman & komersial","c7-f6":"Sokongan teknikal 24/7","c7-btn":"Maklumat Lanjut",
+    "c8-title":"MyFIS","c8-m1":"Sistem Maklumat","c8-m2":"Penyelesaian Digital","c8-desc":"Platform sistem maklumat bersepadu untuk pengurusan data institusi secara cekap.","c8-f1":"Pengurusan data bersepadu","c8-f2":"Pelaporan automatik","c8-f3":"Antaramuka mesra pengguna","c8-f4":"Keselamatan data tinggi","c8-f5":"Sokongan pelbagai peranti","c8-f6":"Latihan & onboarding","c8-btn":"Maklumat Lanjut",
+    "c9-title":"Pengurusan Kemudahan","c9-m1":"Penyelenggaraan Bangunan","c9-m2":"Perkhidmatan Menyeluruh","c9-desc":"Pengurusan kemudahan profesional meliputi penyelenggaraan, kebersihan, dan keselamatan.","c9-f1":"Penyelenggaraan bangunan","c9-f2":"Perkhidmatan kebersihan","c9-f3":"Sistem keselamatan","c9-f4":"Pengurusan infrastruktur","c9-f5":"Pengurusan sisa & kitar semula","c9-f6":"Laporan kemudahan berkala","c9-btn":"Maklumat Lanjut",
+    "c10-title":"Kampus Kota Meru","c10-m1":"Cawangan UPSI","c10-m2":"Kota Meru, Selangor","c10-desc":"Cawangan UPSI Holdings di Kota Meru — pelbagai perkhidmatan untuk komuniti setempat.","c10-f1":"Kemudahan pembelajaran","c10-f2":"Ruang pejabat & persidangan","c10-f3":"Perkhidmatan komuniti","c10-f4":"Parkir luas","c10-f5":"Lokasi strategik","c10-f6":"Mudah akses pengangkutan awam","c10-btn":"Maklumat Lanjut",
+    "why-title-el":"Mengapa Membeli-belah Dengan Kami?","ben1-title-el":"Harga Kompetitif","ben1-desc-el":"Nilai terbaik dengan promosi dan diskaun berkala","ben2-title-el":"Produk Berkualiti","ben2-desc-el":"Item yang dipilih dengan teliti memastikan kualiti dan kepuasan","ben3-title-el":"Lokasi Mudah Akses","ben3-desc-el":"Mudah diakses di seluruh kampus dan kawasan sekitarnya","ben4-title-el":"Pilihan Pelbagai","ben4-desc-el":"Pelbagai produk dan perkhidmatan untuk semua keperluan anda",
+    "cta-title-el":"Lawati Kedai Runcit Kami Hari Ini!","cta-desc-el":"Nikmati produk dan perkhidmatan berkualiti. Kami ada untuk anda.","cta-btn1-el":"Cari Lokasi","cta-btn2-el":"Hubungi Kami",
+    "footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris.","footer-address-label-el":"Pejabat Utama:","footer-phone-label-el":"Telefon:","footer-about-head-el":"Tentang","footer-bod-el":"Lembaga Pengarah","footer-leaders-el":"Pemimpin","footer-gallery-el":"Galeri","footer-svc-head-el":"Perkhidmatan","footer-svc1-el":"Pendidikan & Latihan","footer-svc2-el":"Hospitaliti","footer-svc3-el":"Perkhidmatan Runcit","footer-svc4-el":"Konsultasi","footer-svc5-el":"Tenaga Solar","footer-svc6-el":"Pengurusan Kemudahan","footer-res-head-el":"Sumber","footer-career-el":"Kerjaya","footer-tender-el":"Tender","footer-news-el":"Berita","footer-contact-el":"Hubungi Kami","footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+  },
+  bi:{
+    "top-phone-text":"Got Questions? Call us: 012-2525 843","top-cta-el":"Contact Us","company-tagline":"Synergy of Resources & UPSI Expertise",
+    "nav-home-el":"Home","nav-about-el":"About Us","nav-services-el":"Services","nav-products-el":"Our Products","nav-ads-el":"Ads","nav-career-el":"Career","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Contact Us",
+    "dd-bod-el":"Board of Directors","dd-leaders-el":"Leaders","dd-upsi-el":"About UPSI","dd-edu-el":"Education & Training","dd-hosp-el":"Training Center & Hospitality","dd-retail-el":"Retail & Services","dd-projects-el":"Projects Consultation","dd-solar-el":"Solar Energy Solutions","dd-facility-el":"Facility Management","dd-gallery-el":"Gallery","dd-news-el":"News",
+    "bc-home-el":"Home","bc-svc-el":"Services","bc-current-el":"Retail & Services",
+    "hero-title-el":"Retail & Services","hero-desc-el":"Diverse Business Operations Serving the Community",
+    "overview-title-el":"Our Retail Operations","overview-desc-el":"UPSI Holdings operates various retail and service businesses designed to serve the needs of the university community and beyond.","products-title-el":"Our Products & Services",
+    "c1-title":"Special Plate Number Dealership — UG","c1-m1":"UG Series","c1-m2":"Official Dealer","c1-desc":"Exclusive dealership for UG series special vehicle registration numbers.","c1-f1":"Wide selection available","c1-f2":"Competitive pricing","c1-f3":"Transfer assistance","c1-f4":"Documentation support","c1-f5":"JPJ liaison","c1-f6":"Custom requests","c1-btn":"Learn More",
+    "c2-title":"UPSI Boutique","c2-m1":"Official Merchandise","c2-m2":"Campus & Online","c2-desc":"Official UPSI merchandise including apparel, accessories, stationery, and souvenirs.","c2-f1":"T-shirts & polo shirts","c2-f2":"Jackets & hoodies","c2-f3":"Bags & accessories","c2-f4":"Stationery items","c2-f5":"Souvenirs & gifts","c2-f6":"Custom printing available","c2-btn":"Learn More",
+    "c3-title":"UPSI Sports Bowl","c3-m1":"Professional Lanes","c3-m2":"Daily Operations","c3-desc":"Modern bowling facility for students, staff, and the public.","c3-f1":"Professional lanes","c3-f2":"Auto-scoring system","c3-f3":"Shoe rental","c3-f4":"Group bookings","c3-f5":"Birthday packages","c3-f6":"League competitions","c3-btn":"Learn More",
+    "c4-title":"UHSB Grocery","c4-m1":"Convenience Store","c4-m2":"Daily Essentials","c4-desc":"Convenient grocery store for the campus community and visitors.","c4-f1":"Fresh products","c4-f2":"Snacks & beverages","c4-f3":"Personal care items","c4-f4":"Stationery supplies","c4-f5":"Ready-to-eat meals","c4-f6":"Competitive prices","c4-btn":"Learn More",
+    "c5-title":"Driving Range Banjaran UPSI","c5-m1":"Golf Practice Range","c5-m2":"Equipment Available","c5-desc":"Professional golf driving range with scenic views for all levels.","c5-f1":"Multiple bays","c5-f2":"Club rental","c5-f3":"Ball dispenser","c5-f4":"Coaching available","c5-f5":"Scenic location","c5-f6":"Membership options","c5-btn":"Learn More",
+    "c6-title":"Vending Machines","c6-m1":"Multiple Locations","c6-m2":"24/7 Available","c6-desc":"Strategically placed vending machines throughout campus — always available.","c6-f1":"Snacks & chips","c6-f2":"Cold beverages","c6-f3":"Coffee & tea","c6-f4":"Instant noodles","c6-f5":"Toiletries","c6-f6":"Cashless payment","c6-btn":"Learn More",
+    "c7-title":"Solar Energy Solutions","c7-m1":"Renewable Energy","c7-m2":"Installation & Maintenance","c7-desc":"Comprehensive solar energy solutions for residential, commercial, and institutional sectors.","c7-f1":"Solar panel installation","c7-f2":"Free energy audit","c7-f3":"Monitoring system","c7-f4":"Periodic maintenance","c7-f5":"Residential & commercial packages","c7-f6":"24/7 technical support","c7-btn":"Learn More",
+    "c8-title":"MyFIS","c8-m1":"Information System","c8-m2":"Digital Solutions","c8-desc":"An integrated information system platform for efficient institutional data management.","c8-f1":"Integrated data management","c8-f2":"Automated reporting","c8-f3":"User-friendly interface","c8-f4":"High data security","c8-f5":"Multi-device support","c8-f6":"Training & onboarding","c8-btn":"Learn More",
+    "c9-title":"Facility Management","c9-m1":"Building Maintenance","c9-m2":"End-to-End Services","c9-desc":"Professional facility management covering maintenance, cleaning, and security.","c9-f1":"Building maintenance","c9-f2":"Cleaning services","c9-f3":"Security systems","c9-f4":"Infrastructure management","c9-f5":"Waste & recycling management","c9-f6":"Periodic facility reports","c9-btn":"Learn More",
+    "c10-title":"Kampus Kota Meru","c10-m1":"UPSI Branch","c10-m2":"Kota Meru, Selangor","c10-desc":"UPSI Holdings branch in Kota Meru offering services to the local community.","c10-f1":"Learning facilities","c10-f2":"Office & conference spaces","c10-f3":"Community services","c10-f4":"Ample parking","c10-f5":"Strategic location","c10-f6":"Easy public transport access","c10-btn":"Learn More",
+    "why-title-el":"Why Shop With Us?","ben1-title-el":"Competitive Prices","ben1-desc-el":"Best value for money with regular promotions and discounts","ben2-title-el":"Quality Products","ben2-desc-el":"Carefully selected items ensuring quality and satisfaction","ben3-title-el":"Convenient Locations","ben3-desc-el":"Easy access throughout campus and surrounding areas","ben4-title-el":"Diverse Offerings","ben4-desc-el":"Wide range of products and services for all your needs",
+    "cta-title-el":"Visit Our Retail Outlets Today!","cta-desc-el":"Experience quality products and services at competitive prices. We've got you covered.","cta-btn1-el":"Find Locations","cta-btn2-el":"Contact Us",
+    "footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris.","footer-address-label-el":"Main Office:","footer-phone-label-el":"Phone:","footer-about-head-el":"About","footer-bod-el":"Board of Directors","footer-leaders-el":"Leaders","footer-gallery-el":"Gallery","footer-svc-head-el":"Services","footer-svc1-el":"Education & Training","footer-svc2-el":"Hospitality","footer-svc3-el":"Retail Services","footer-svc4-el":"Consultation","footer-svc5-el":"Solar Energy","footer-svc6-el":"Facility Management","footer-res-head-el":"Resources","footer-career-el":"Career","footer-tender-el":"Tender","footer-news-el":"News","footer-contact-el":"Contact Us","footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+  }
+};
+
+function setLang(lang){
+    currentLang=lang;
+    var f=document.getElementById('lang-flag'),l=document.getElementById('lang-label');
+    if(f&&l){f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';f.alt=lang==='bm'?'MY':'EN';l.textContent=lang==='bm'?'Melayu':'English';}
+    var bm=document.getElementById('menu-btn-bm'),bi=document.getElementById('menu-btn-bi');
+    if(bm)bm.classList.toggle('active-lang',lang==='bm');
+    if(bi)bi.classList.toggle('active-lang',lang==='bi');
+    var t=T[lang];if(!t)return;
+    Object.keys(t).forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=t[id];});
+    document.documentElement.lang=lang==='bm'?'ms':'en';
+    try{localStorage.setItem('upsi-lang',lang);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',function(){setLang(localStorage.getItem('upsi-lang')||'bm');});
+</script>
+</body>
+</html>

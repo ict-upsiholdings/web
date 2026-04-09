@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami | UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 60%, #1565c0 100%);
+            padding: 100px 24px 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .page-hero .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        .page-hero .breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .page-hero .breadcrumb a:hover { color: #fff; }
+        .page-hero h1 { font-family:'Poppins',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;margin-bottom:14px;position:relative; }
+        .page-hero p { color:rgba(255,255,255,0.7);font-size:1.05rem;max-width:500px;margin:0 auto;position:relative;font-family:'Roboto',sans-serif; }
+        .contact-page-section { background:#f5f7fa;padding:70px 0 90px; }
+        .contact-grid { max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start; }
+        @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px;}}
+        .info-panel{display:flex;flex-direction:column;gap:22px;}
+        .info-intro{font-family:'Roboto',sans-serif;font-size:0.97rem;color:#555;line-height:1.75;}
+        .info-intro strong{color:#1a237e;}
+        .office-card{background:#fff;border-radius:14px;padding:26px 26px 26px 30px;border:1px solid #e8ecf0;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.25s;}
+        .office-card:hover{box-shadow:0 10px 35px rgba(26,35,126,0.10);transform:translateY(-2px);}
+        .office-card .side-bar{position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#1a237e,#1565c0);border-radius:4px 0 0 4px;}
+        .office-card h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;color:#1a237e;margin-bottom:16px;}
+        .office-detail{display:flex;gap:13px;align-items:flex-start;margin-bottom:13px;}
+        .office-detail:last-child{margin-bottom:0;}
+        .detail-icon{width:36px;height:36px;background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+        .detail-body{display:flex;flex-direction:column;}
+        .detail-body .dlabel{font-size:0.68rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;font-family:'Poppins',sans-serif;margin-bottom:3px;}
+        .detail-body .dvalue{font-size:0.88rem;color:#555;line-height:1.55;font-family:'Roboto',sans-serif;}
+        .detail-body .dvalue a{color:#1a237e;text-decoration:none;font-weight:500;}
+        .detail-body .dvalue a:hover{color:#1565c0;text-decoration:underline;}
+        .social-title{font-size:0.7rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:0.1em;font-family:'Poppins',sans-serif;margin-bottom:11px;}
+        .social-row{display:flex;gap:10px;flex-wrap:wrap;}
+        .social-btn{display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:9px;font-size:0.8rem;font-weight:600;font-family:'Poppins',sans-serif;text-decoration:none;color:#1a237e;background:#fff;border:1.5px solid #e0e4f0;transition:all 0.22s;}
+        .social-btn:hover{background:#1a237e;color:#fff;border-color:#1a237e;}
+        .form-card{background:#fff;border-radius:18px;padding:42px 40px;border:1px solid #e8ecf0;box-shadow:0 6px 30px rgba(26,35,126,0.07);}
+        @media(max-width:540px){.form-card{padding:28px 20px;}}
+        .form-card h2{font-family:'Poppins',sans-serif;font-size:1.55rem;font-weight:700;color:#1a237e;margin-bottom:6px;}
+        .form-card .form-sub{color:#888;font-size:0.88rem;font-family:'Roboto',sans-serif;margin-bottom:30px;}
+        .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        @media(max-width:520px){.form-row-2{grid-template-columns:1fr;}}
+        .fgroup{display:flex;flex-direction:column;margin-bottom:18px;}
+        .fgroup label{font-size:0.72rem;font-weight:700;color:#1a237e;text-transform:uppercase;letter-spacing:0.07em;font-family:'Poppins',sans-serif;margin-bottom:7px;}
+        .fgroup input,.fgroup select,.fgroup textarea{border:1.5px solid #e0e4f0;border-radius:10px;padding:12px 15px;font-size:0.92rem;font-family:'Roboto',sans-serif;color:#222;background:#f9fafc;transition:border-color 0.2s,box-shadow 0.2s;outline:none;width:100%;}
+        .fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:#1565c0;box-shadow:0 0 0 3px rgba(21,101,192,0.12);background:#fff;}
+        .fgroup textarea{resize:vertical;min-height:130px;}
+        .form-divider{height:1px;background:#eef0f5;margin:6px 0 22px;}
+        .btn-send{width:100%;padding:15px;background:linear-gradient(135deg,#1a237e 0%,#1565c0 100%);color:#fff;border:none;border-radius:12px;font-size:0.95rem;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:0.04em;cursor:pointer;transition:opacity 0.25s,transform 0.15s,box-shadow 0.25s;box-shadow:0 4px 16px rgba(21,101,192,0.3);}
+        .btn-send:hover{opacity:0.92;transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,101,192,0.35);}
+        .success-msg{display:none;text-align:center;padding:32px 16px;}
+        .success-msg .check-circle{width:72px;height:72px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;}
+        .success-msg h3{font-family:'Poppins',sans-serif;font-size:1.3rem;color:#1a237e;margin-bottom:10px;}
+        .success-msg p{color:#777;font-family:'Roboto',sans-serif;font-size:0.9rem;}
+        .map-section{max-width:1160px;margin:60px auto 0;padding:0 24px;}
+        .map-heading{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+        .map-heading h2{font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:700;color:#1a237e;white-space:nowrap;}
+        .map-heading .line{flex:1;height:1px;background:#e0e4f0;}
+        .map-frame{border-radius:18px;overflow:hidden;border:1px solid #e0e4f0;box-shadow:0 6px 24px rgba(26,35,126,0.07);height:420px;}
+        .map-frame iframe{width:100%;height:100%;border:none;display:block;}
+
+        /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: 1.5px solid #e0e4f0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a237e;
+            padding: 7px 13px;
+            border-radius: 8px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .nav-lang-btn:hover {
+            background: #eef0fb;
+            border-color: #c5cae9;
+        }
+        .nav-lang-btn .lang-arrow {
+            font-size: 0.65rem;
+            color: #9ea8c8;
+            transition: transform 0.2s;
+        }
+        .nav-lang-dropdown.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-flag {
+            width: 22px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+        }
+        .nav-lang-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            background: #fff;
+            border: 1.5px solid #e0e4f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 32px rgba(26,35,126,0.13);
+            min-width: 150px;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .nav-lang-dropdown.open .nav-lang-menu {
+            display: block;
+        }
+        .nav-lang-menu button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 11px 16px;
+            background: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.15s;
+            text-align: left;
+        }
+        .nav-lang-menu button:hover {
+            background: #f0f2fb;
+            color: #1a237e;
+        }
+        .nav-lang-menu button.active-lang {
+            background: #e8eaf6;
+            color: #1a237e;
+            font-weight: 700;
+        }
+        .nav-lang-menu button img {
+            width: 22px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .nav-lang-menu-divider {
+            height: 1px;
+            background: #f0f2f8;
+            margin: 2px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px; width:auto; object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"> <span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"> <span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                    <a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</span></a>
+                </div>
+            </li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">▾</span>
+                </button>
+                <div class="nav-lang-menu" id="navLangMenu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+            <!-- END LANGUAGE DROPDOWN -->
+
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a><span>›</span><span id="bc-current-el">Hubungi Kami</span></div>
+    <h1 id="hero-title-el">Hubungi Kami</h1>
+    <p id="hero-desc-el">Untuk sebarang pertanyaan, sila hubungi atau emel kami. Atau isi borang hubungan di bawah.</p>
+</section>
+3
+<section class="contact-page-section">
+    <div class="contact-grid">
+        <div class="info-panel">
+            <p class="info-intro" id="info-intro-el">Kami sedia membantu. Hubungi <strong>UPSI Holdings Sdn Bhd</strong> melalui mana-mana saluran di bawah dan pasukan kami akan membalas secepat mungkin.</p>
+
+            <div class="office-card">
+                <div class="side-bar"></div>
+                <h3 id="hq-title-el">🏛️ Pejabat Utama (HQ)</h3>
+                <div class="office-detail">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-body">
+                        <span class="dlabel" id="hq-addr-label-el">Alamat</span>
+                        <span class="dvalue">Level 1, Scholar's Suites,<br>Sultan Azlan Shah Campus,<br>Universiti Pendidikan Sultan Idris,<br>35900 Tanjong Malim, Perak.</span>
+                    </div>
+                </div>
+                <div class="office-detail">
+                    <div class="detail-icon">📞</div>
+                    <div class="detail-body">
+                        <span class="dlabel" id="hq-phone-label-el">Telefon</span>
+                        <span class="dvalue"><a href="tel:+60122525843">012-2525 843</a></span>
+                    </div>
+                </div>
+                <div class="office-detail">
+                    <div class="detail-icon">📧</div>
+                    <div class="detail-body">
+                        <span class="dlabel" id="hq-email-label-el">E-mel</span>
+                        <span class="dvalue"><a href="mailto:info@upsiholdings.com">info@upsiholdings.com</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div class="side-bar" style="background: linear-gradient(180deg,#0d47a1,#1e88e5);"></div>
+                <h3 id="hosp-title-el">🏨 Scholar's Suites (Hospitaliti)</h3>
+                <div class="office-detail">
+                    <div class="detail-icon">📞</div>
+                    <div class="detail-body">
+                        <span class="dlabel" id="hosp-phone-label-el">Telefon</span>
+                        <span class="dvalue"><a href="tel:+6054481922">05-448 1922</a></span>
+                    </div>
+                </div>
+                <div class="office-detail">
+                    <div class="detail-icon">🕐</div>
+                    <div class="detail-body">
+                        <span class="dlabel" id="hosp-hours-label-el">Waktu Operasi</span>
+                        <span class="dvalue" id="hosp-hours-val-el">Isnin – Jumaat: 8:00 PG – 5:00 PTG<br>Hujung Minggu & Cuti Umum: Mengikut Temujanji</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="social-title" id="social-title-el">Ikuti Kami</p>
+                <div class="social-row">
+                    <a href="#" class="social-btn">Facebook</a>
+                    <a href="#" class="social-btn">X (Twitter)</a>
+                    <a href="#" class="social-btn">LinkedIn</a>
+                    <a href="#" class="social-btn">YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h2 id="form-title-el">Hantar Mesej</h2>
+            <p class="form-sub" id="form-sub-el">Isi borang di bawah dan kami akan menghubungi anda dalam masa 1–2 hari bekerja.</p>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-row-2">
+                    <div class="fgroup"><label for="fname" id="label-name-el">Nama Penuh *</label><input type="text" id="fname" name="name" placeholder="cth. Ahmad Farid" required></div>
+                    <div class="fgroup"><label for="femail" id="label-email-el">E-mel *</label><input type="email" id="femail" name="email" placeholder="anda@email.com" required></div>
+                    <div class="fgroup"><label for="fcompany" id="label-company-el">Syarikat / Organisasi</label><input type="text" id="fcompany" name="company" placeholder="(Pilihan)"></div>
+                    <div class="fgroup"><label for="fphone" id="label-phone-el">No. Telefon</label><input type="tel" id="fphone" name="phone" placeholder="cth. 012-3456789"></div>
+                </div>
+                <div class="fgroup">
+                    <label for="fsubject" id="label-topic-el">Bahagian / Topik *</label>
+                    <select id="fsubject" name="subject" required>
+                        <option value="" disabled selected id="select-placeholder-el">— Pilih topik —</option>
+                        <option id="opt1-el">Pendidikan & Latihan</option>
+                        <option id="opt2-el">Pusat Latihan & Hospitaliti</option>
+                        <option id="opt3-el">Runcit & Perkhidmatan</option>
+                        <option id="opt4-el">Konsultasi Projek</option>
+                        <option id="opt5-el">Tenaga Solar</option>
+                        <option id="opt6-el">Pengurusan Kemudahan</option>
+                        <option id="opt7-el">Pertanyaan Umum</option>
+                        <option id="opt8-el">Lain-lain</option>
+                    </select>
+                </div>
+                <div class="form-divider"></div>
+                <div class="fgroup"><label for="fmessage" id="label-msg-el">Mesej Anda *</label><textarea id="fmessage" name="message" placeholder="Ceritakan bagaimana kami boleh membantu anda…" required></textarea></div>
+                <button type="submit" class="btn-send" id="btn-send-el">Hantar Mesej &nbsp;→</button>
+            </form>
+            <div class="success-msg" id="successMsg">
+                <div class="check-circle">✅</div>
+                <h3 id="success-title-el">Teri ditema Kasih!</h3>
+                <p id="success-desc-el">Mesej anda telahrima. Pasukan kami akan menghubungi anda dalam masa 1–2 hari bekerja.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <div class="map-heading"><h2 id="map-title-el">📍 Lokasi Kami</h2><div class="line"></div></div>
+        <div class="map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d101.5197!3d3.6836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4f4c00000001%3A0x0!2sUniversiti+Pendidikan+Sultan+Idris%2C+35900+Tanjong+Malim%2C+Perak!5e0!3m2!1sen!2smy!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="map-iframe" title="Lokasi UPSI Holdings"></iframe>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, Sultan Idris Education University, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                    <div class="footer-contact-item"><strong id="footer-hosp-label-el">Hospitaliti:</strong><span>05-448 1922 (Scholar's Suites)</span></div>
+                </div>
+                <div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a></div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="about-upsi.html" id="footer-upsi-el">Tentang UPSI</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop</p></div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+/* ===================================================
+   FORM SUBMIT HANDLER
+=================================================== */
+function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+}
+
+/* ===================================================
+   LANGUAGE DROPDOWN TOGGLE
+=================================================== */
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('navLangDropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+    }
+});
+
+/* ===================================================
+   TRANSLATIONS
+=================================================== */
+const T = {
+bm: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+    "top-cta-el": "Hubungi Kami",
+    "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Laman Utama",
+    "nav-about-el": "Tentang Kami",
+    "nav-services-el": "Perkhidmatan",
+    "nav-products-el": "Produk Kami",
+    "nav-ads-el": "Iklan",
+    "nav-career-el": "Kerjaya",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Hubungi Kami",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Lembaga Pengarah",
+    "dd-leaders-el": "Pemimpin",
+    "dd-upsi-el": "Tentang UPSI",
+
+    "dd-edu-el": "Pendidikan & Latihan",
+    "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+    "dd-retail-el": "Runcit & Perkhidmatan",
+    "dd-projects-el": "Konsultasi Projek",
+    "dd-solar-el": "Penyelesaian Tenaga Solar",
+    "dd-facility-el": "Pengurusan Kemudahan",
+
+    "dd-gallery-el": "Galeri",
+    "dd-news-el": "Berita",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Laman Utama",
+    "bc-current-el": "Hubungi Kami",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "Hubungi Kami",
+    "hero-desc-el": "Untuk sebarang pertanyaan, sila hubungi atau emel kami. Atau isi borang hubungan di bawah.",
+
+    /* ================= CONTACT INFO ================= */
+    "info-intro-el": "Kami sedia membantu. Hubungi UPSI Holdings Sdn Bhd melalui mana-mana saluran di bawah dan pasukan kami akan membalas secepat mungkin.",
+
+    "hq-title-el": "🏛️ Pejabat Utama (HQ)",
+    "hq-addr-label-el": "Alamat",
+    "hq-phone-label-el": "Telefon",
+    "hq-email-label-el": "E-mel",
+
+    "hosp-title-el": "🏨 Scholar's Suites (Hospitaliti)",
+    "hosp-phone-label-el": "Telefon",
+    "hosp-hours-label-el": "Waktu Operasi",
+    "hosp-hours-val-el": "Isnin – Jumaat: 8:00 PG – 5:00 PTG\nHujung Minggu & Cuti Umum: Mengikut Temujanji",
+
+    "social-title-el": "Ikuti Kami",
+
+    /* ================= FORM ================= */
+    "form-title-el": "Hantar Mesej",
+    "form-sub-el": "Isi borang di bawah dan kami akan menghubungi anda dalam masa 1–2 hari bekerja.",
+
+    "label-name-el": "Nama Penuh *",
+    "label-email-el": "E-mel *",
+    "label-company-el": "Syarikat / Organisasi",
+    "label-phone-el": "No. Telefon",
+
+    "label-topic-el": "Bahagian / Topik *",
+    "select-placeholder-el": "— Pilih topik —",
+
+    "opt1-el": "Pendidikan & Latihan",
+    "opt2-el": "Pusat Latihan & Hospitaliti",
+    "opt3-el": "Runcit & Perkhidmatan",
+    "opt4-el": "Konsultasi Projek",
+    "opt5-el": "Tenaga Solar",
+    "opt6-el": "Pengurusan Kemudahan",
+    "opt7-el": "Pertanyaan Umum",
+    "opt8-el": "Lain-lain",
+
+    "label-msg-el": "Mesej Anda *",
+    "btn-send-el": "Hantar Mesej →",
+
+    /* ================= SUCCESS MESSAGE ================= */
+    "success-title-el": "Terima Kasih!",
+    "success-desc-el": "Mesej anda telah diterima. Pasukan kami akan menghubungi anda dalam masa 1–2 hari bekerja.",
+
+    /* ================= MAP ================= */
+    "map-title-el": "📍 Lokasi Kami",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+
+    "footer-address-label-el": "Pejabat Utama:",
+    "footer-phone-label-el": "Telefon:",
+    "footer-hosp-label-el": "Hospitaliti:",
+
+    "footer-about-head-el": "Tentang",
+    "footer-bod-el": "Lembaga Pengarah",
+    "footer-leaders-el": "Pemimpin",
+    "footer-upsi-el": "Tentang UPSI",
+    "footer-gallery-el": "Galeri",
+
+    "footer-svc-head-el": "Perkhidmatan",
+    "footer-svc1-el": "Pendidikan & Latihan",
+    "footer-svc2-el": "Hospitaliti",
+    "footer-svc3-el": "Perkhidmatan Runcit",
+    "footer-svc4-el": "Konsultasi",
+
+    "footer-res-head-el": "Sumber",
+    "footer-career-el": "Kerjaya",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "Berita",
+
+    "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop"
+},
+
+bi: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Got Questions? Call us: 012-2525 843",
+    "top-cta-el": "Contact Us",
+    "company-tagline": "Synergy of Resources & UPSI Expertise",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Home",
+    "nav-about-el": "About Us",
+    "nav-services-el": "Services",
+    "nav-products-el": "Our Products",
+    "nav-ads-el": "Ads",
+    "nav-career-el": "Career",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Contact Us",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Board of Directors",
+    "dd-leaders-el": "Leaders",
+    "dd-upsi-el": "About UPSI",
+
+    "dd-edu-el": "Education & Training",
+    "dd-hosp-el": "Training Center & Hospitality",
+    "dd-retail-el": "Retail & Services",
+    "dd-projects-el": "Projects Consultation",
+    "dd-solar-el": "Solar Energy Solutions",
+    "dd-facility-el": "Facility Management",
+
+    "dd-gallery-el": "Gallery",
+    "dd-news-el": "News",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Home",
+    "bc-current-el": "Contact Us",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "Contact Us",
+    "hero-desc-el": "For any inquiries, please call or email us. Alternatively, fill in the contact form below.",
+
+    /* ================= CONTACT INFO ================= */
+    "info-intro-el": "We're here to help. Reach out to UPSI Holdings Sdn Bhd through any of the channels below and our team will respond as soon as possible.",
+
+    "hq-title-el": "🏛️ Main Office (HQ)",
+    "hq-addr-label-el": "Address",
+    "hq-phone-label-el": "Phone",
+    "hq-email-label-el": "Email",
+
+    "hosp-title-el": "🏨 Scholar's Suites (Hospitality)",
+    "hosp-phone-label-el": "Phone",
+    "hosp-hours-label-el": "Operating Hours",
+    "hosp-hours-val-el": "Monday – Friday: 8:00 AM – 5:00 PM\nWeekends & Public Holidays: By Appointment",
+
+    "social-title-el": "Follow Us",
+
+    /* ================= FORM ================= */
+    "form-title-el": "Send a Message",
+    "form-sub-el": "Fill in the form below and we will get back to you within 1–2 working days.",
+
+    "label-name-el": "Full Name *",
+    "label-email-el": "Email *",
+    "label-company-el": "Company / Organisation",
+    "label-phone-el": "Phone Number",
+
+    "label-topic-el": "Department / Topic *",
+    "select-placeholder-el": "— Select a topic —",
+
+    "opt1-el": "Education & Training",
+    "opt2-el": "Training Center & Hospitality",
+    "opt3-el": "Retail & Services",
+    "opt4-el": "Projects Consultation",
+    "opt5-el": "Solar Energy",
+    "opt6-el": "Facility Management",
+    "opt7-el": "General Enquiry",
+    "opt8-el": "Others",
+
+    "label-msg-el": "Your Message *",
+    "btn-send-el": "Send Message →",
+
+    /* ================= SUCCESS MESSAGE ================= */
+    "success-title-el": "Thank You!",
+    "success-desc-el": "Your message has been received. Our team will contact you within 1–2 working days.",
+
+    /* ================= MAP ================= */
+    "map-title-el": "📍 Our Location",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+
+    "footer-address-label-el": "Main Office:",
+    "footer-phone-label-el": "Phone:",
+    "footer-hosp-label-el": "Hospitality:",
+
+    "footer-about-head-el": "About",
+    "footer-bod-el": "Board of Directors",
+    "footer-leaders-el": "Leaders",
+    "footer-upsi-el": "About UPSI",
+    "footer-gallery-el": "Gallery",
+
+    "footer-svc-head-el": "Services",
+    "footer-svc1-el": "Education & Training",
+    "footer-svc2-el": "Hospitality",
+    "footer-svc3-el": "Retail Services",
+    "footer-svc4-el": "Consultation",
+
+    "footer-res-head-el": "Resources",
+    "footer-career-el": "Career",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "News",
+
+    "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved. | Best viewed on desktop site"
+}
+};
+
+/* ===================================================
+   SET LANGUAGE
+=================================================== */
+function setLang(lang) {
+    const t = T[lang];
+    if (!t) return;
+
+    // Update flag & label in navbar button
+    const flagEl = document.getElementById('lang-flag');
+    const labelEl = document.getElementById('lang-label');
+    if (lang === 'bm') {
+        flagEl.src = 'https://flagcdn.com/w40/my.png';
+        flagEl.alt = 'MY';
+        labelEl.textContent = 'Melayu';
+    } else {
+        flagEl.src = 'https://flagcdn.com/w40/gb.png';
+        flagEl.alt = 'EN';
+        labelEl.textContent = 'English';
+    }
+
+    // Highlight active menu item
+    document.getElementById('menu-btn-bm').classList.toggle('active-lang', lang === 'bm');
+    document.getElementById('menu-btn-bi').classList.toggle('active-lang', lang === 'bi');
+
+    // Apply all translations
+    Object.keys(t).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t[id];
+    });
+
+    // Update placeholders
+    document.getElementById('fname').placeholder       = lang === 'bm' ? 'cth. Ahmad Farid'                               : 'e.g. Ahmad Farid';
+    document.getElementById('fcompany').placeholder    = lang === 'bm' ? '(Pilihan)'                                      : '(Optional)';
+    document.getElementById('fphone').placeholder      = lang === 'bm' ? 'cth. 012-3456789'                               : 'e.g. 012-3456789';
+    document.getElementById('fmessage').placeholder    = lang === 'bm' ? 'Ceritakan bagaimana kami boleh membantu anda…'  : 'Tell us how we can help you…';
+    document.getElementById('map-iframe').title        = lang === 'bm' ? 'Lokasi UPSI Holdings'                           : 'UPSI Holdings Location';
+    document.documentElement.lang                      = lang === 'bm' ? 'ms'                                             : 'en';
+
+    // Save preference
+    try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
+}
+
+// Load saved language on page ready
+document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('upsi-lang') || 'bm';
+    setLang(saved);
+});
+</script>
+</body>
+</html>

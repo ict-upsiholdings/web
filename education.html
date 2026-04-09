@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendidikan & Latihan - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <link rel="stylesheet" href="service-cards.css">
+<style>
+.service-details-section{position:relative;background-image:url('image/building.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
+.service-details-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+.service-details-section .container{position:relative;z-index:1;}
+.edu-modal-overlay{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;}
+.edu-modal-overlay.active{display:flex;}
+.edu-modal-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.38);z-index:0;}
+.edu-modal-box{position:relative;z-index:1;background:rgba(255,255,255,0.88);backdrop-filter:blur(6px);max-width:680px;width:92%;max-height:85vh;overflow-y:auto;padding:52px 52px 44px;border-radius:2px;animation:eduFadeIn 0.28s ease;}
+@media(max-width:600px){.edu-modal-box{padding:40px 24px 32px;}}
+@keyframes eduFadeIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.edu-modal-close{position:absolute;top:20px;right:26px;font-size:1.6rem;background:none;border:none;cursor:pointer;color:#555;line-height:1;font-weight:300;}
+.edu-modal-close:hover{color:#000;}
+.edu-modal-title{font-family:'Raleway',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;color:#1a1a1a;line-height:1.2;}
+.edu-modal-divider{width:40px;height:3px;background:#888;margin-bottom:22px;}
+.edu-modal-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.edu-modal-meta span{background:#f0f9f5;color:#2a7d52;border:1px solid #b2e0cb;border-radius:20px;padding:4px 14px;font-size:0.83rem;font-family:'Open Sans',sans-serif;font-weight:500;}
+.edu-modal-desc{font-family:'Open Sans',sans-serif;font-size:0.97rem;line-height:1.8;color:#444;margin-bottom:20px;}
+.edu-modal-list{padding-left:22px;font-family:'Open Sans',sans-serif;font-size:0.93rem;line-height:1.85;color:#444;margin-bottom:28px;}
+.edu-modal-list li{margin-bottom:12px;}
+.edu-modal-list li strong{color:#1a1a1a;}
+.edu-modal-cta{display:inline-block;padding:12px 34px;background:#1a5c38;color:#fff;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;transition:background 0.2s;}
+.edu-modal-cta:hover{background:#134429;}
+.program-card{cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+.program-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12);}
+
+/* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+.nav-lang-dropdown { position: relative; }
+.nav-lang-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1.5px solid #e0e4f0;
+    cursor: pointer; font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem; font-weight: 600; color: #1a237e;
+    padding: 7px 13px; border-radius: 8px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+.nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+.nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+.nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+.nav-lang-menu {
+    display: none; position: absolute; right: 0; top: calc(100% + 8px);
+    background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+    box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+    overflow: hidden; z-index: 9999;
+}
+.nav-lang-dropdown.open .nav-lang-menu { display: block; }
+.nav-lang-menu button {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; padding: 11px 16px; background: none; border: none;
+    font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+    color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+}
+.nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+.nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+.nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+.nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> <span id="top-email-text">info@upsiholdings.com</span></a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu" id="navLangMenu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+            <!-- END LANGUAGE DROPDOWN -->
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero education-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-svc-el">Perkhidmatan</a> › <span id="bc-current-el">Pendidikan & Latihan</span></div>
+    <h1 id="hero-title-el">Pendidikan & Latihan</h1>
+    <p id="hero-desc-el">Program Pendidikan Komprehensif Memanfaatkan Kecemerlangan Akademik UPSI</p>
+</section>
+
+<!-- CONTENT -->
+<section class="service-details-section">
+    <div class="container">
+        <div class="service-overview">
+            <h2 id="overview-title-el">Tentang Program Kami</h2>
+            <p id="overview-desc-el">UPSI Holdings menawarkan pelbagai program pendidikan yang direka untuk membangunkan modal insan dan menyediakan pelajar untuk berjaya di tempat kerja moden. Dengan lebih 100 tahun kecemerlangan pendidikan dari UPSI, kami menyediakan latihan bertaraf dunia merentas pelbagai disiplin.</p>
+        </div>
+        <div class="section-title-bar">
+            <span class="title-accent"></span>
+            <h2 id="programs-title-el">Program Kami</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card" data-index="01" onclick="openEduModal('phd')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🎓</div><h3 id="card-phd-title">Doktor Falsafah (PhD)</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-phd-m1">3–5 Tahun</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-phd-m2">Sepenuh / Separuh Masa</span></span></div>
+                <p class="program-desc" id="card-phd-desc">Program penyelidikan lanjutan dalam pendidikan, perniagaan, dan sains sosial. Bangunkan kemahiran penyelidikan terkini dan sumbang kepada kemajuan ilmu.</p>
+                <ul class="program-features">
+                    <li id="card-phd-f1">Pembelajaran berasaskan penyelidikan</li>
+                    <li id="card-phd-f2">Penyeliaan pakar</li>
+                    <li id="card-phd-f3">Peluang persidangan</li>
+                    <li id="card-phd-f4">Sokongan penerbitan</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-phd-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="02" onclick="openEduModal('med')">
+                <div class="program-icon-wrap"><div class="program-icon-box">📚</div><h3 id="card-med-title">Sarjana Pendidikan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-med-m1">1–2 Tahun</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-med-m2">Sepenuh / Separuh Masa</span></span></div>
+                <p class="program-desc" id="card-med-desc">Program pengajaran khusus untuk pendidik yang ingin memajukan kerjaya dan memperdalam pengetahuan pedagogi mereka.</p>
+                <ul class="program-features">
+                    <li id="card-med-f1">Pelbagai pengkhususan</li>
+                    <li id="card-med-f2">Fokus kepada pengamal</li>
+                    <li id="card-med-f3">Pembelajaran fleksibel</li>
+                    <li id="card-med-f4">Hubungan industri</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-med-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="03" onclick="openEduModal('bed')">
+                <div class="program-icon-wrap"><div class="program-icon-box">👨‍🎓</div><h3 id="card-bed-title">Ijazah Sarjana Muda Pendidikan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-bed-m1">4 Tahun</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-bed-m2">Sepenuh Masa</span></span></div>
+                <p class="program-desc" id="card-bed-desc">Ijazah pengajaran prasiswazah yang menyediakan pelajar untuk kerjaya berjaya dalam pendidikan merentas pelbagai disiplin.</p>
+                <ul class="program-features">
+                    <li id="card-bed-f1">Praktikum pengajaran</li>
+                    <li id="card-bed-f2">Pedagogi moden</li>
+                    <li id="card-bed-f3">Literasi digital</li>
+                    <li id="card-bed-f4">Sokongan penempatan kerja</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-bed-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="04" onclick="openEduModal('mba')">
+                <div class="program-icon-wrap"><div class="program-icon-box">💼</div><h3 id="card-mba-title">Sarjana Pentadbiran Perniagaan (MBA)</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-mba-m1">1.5–2 Tahun</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-mba-m2">Separuh Masa / Hujung Minggu</span></span></div>
+                <p class="program-desc" id="card-mba-desc">Kursus pentadbiran perniagaan direka untuk profesional bekerja yang ingin memajukan kerjaya pengurusan mereka.</p>
+                <ul class="program-features">
+                    <li id="card-mba-f1">Pembangunan kepimpinan</li>
+                    <li id="card-mba-f2">Pemikiran strategik</li>
+                    <li id="card-mba-f3">Peluang rangkaian</li>
+                    <li id="card-mba-f4">Projek industri</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-mba-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="05" onclick="openEduModal('diploma')">
+                <div class="program-icon-wrap"><div class="program-icon-box">👶</div><h3 id="card-dip-title">Diploma Pendidikan Awal Kanak-kanak</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-dip-m1">2–3 Tahun</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-dip-m2">Sepenuh / Separuh Masa</span></span></div>
+                <p class="program-desc" id="card-dip-desc">Program sijil pendidikan awal memfokuskan perkembangan kanak-kanak, teori pembelajaran, dan amalan terbaik.</p>
+                <ul class="program-features">
+                    <li id="card-dip-f1">Psikologi kanak-kanak</li>
+                    <li id="card-dip-f2">Pembelajaran berasaskan bermain</li>
+                    <li id="card-dip-f3">Reka bentuk kurikulum</li>
+                    <li id="card-dip-f4">Latihan amali</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-dip-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="06" onclick="openEduModal('tadika')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🏫</div><h3 id="card-tad-title">Program TADIKA & TASKA</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="card-tad-m1">Umur 2–6</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="card-tad-m2">Sepenuh / Separuh Hari</span></span></div>
+                <p class="program-desc" id="card-tad-desc">Perkhidmatan tadika dan taska berkualiti menyediakan pendidikan awal kanak-kanak dalam persekitaran yang selamat dan menyayangi.</p>
+                <ul class="program-features">
+                    <li id="card-tad-f1">Pembangunan holistik</li>
+                    <li id="card-tad-f2">Pendidik berkelayakan</li>
+                    <li id="card-tad-f3">Kemudahan selamat</li>
+                    <li id="card-tad-f4">Makanan berkhasiat</li>
+                </ul>
+                <div class="card-divider"></div><span class="btn-card" id="card-tad-btn">Maklumat Lanjut</span>
+            </div>
+        </div>
+        <div class="why-choose-section">
+            <h2 id="why-title-el">Mengapa Pilih UPSI Holdings?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><div class="benefit-icon">✨</div><h3 id="ben1-title-el">100+ Tahun Kecemerlangan</h3><p id="ben1-desc-el">Disokong oleh warisan seabad UPSI dalam pendidikan</p></div>
+                <div class="benefit-item"><div class="benefit-icon">👨‍🏫</div><h3 id="ben2-title-el">Fakulti Pakar</h3><p id="ben2-desc-el">Belajar daripada pendidik berpengalaman dan profesional industri</p></div>
+                <div class="benefit-item"><div class="benefit-icon">🏆</div><h3 id="ben3-title-el">Kelayakan Diiktiraf</h3><p id="ben3-desc-el">Program terakreditasi diiktiraf oleh MQA dan badan antarabangsa</p></div>
+                <div class="benefit-item"><div class="benefit-icon">💡</div><h3 id="ben4-title-el">Kemudahan Moden</h3><p id="ben4-desc-el">Persekitaran pembelajaran bertaraf dunia dan sumber yang lengkap</p></div>
+            </div>
+        </div>
+        <div class="service-cta">
+            <h2 id="cta-title-el">Bersedia Untuk Memulakan Perjalanan Pendidikan Anda?</h2>
+            <p id="cta-desc-el">Hubungi kami hari ini untuk mengetahui lebih lanjut tentang program kami dan bagaimana kami dapat membantu anda mencapai matlamat.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn1-el">Daftar Sekarang</a>
+                <a href="contact.html" class="btn btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn2-el">Hubungi Kami</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                    <div class="footer-contact-item"><strong id="footer-hosp-label-el">Hospitaliti:</strong><span>05-448 1922 (Scholar's Suites)</span></div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="edu-modal-overlay" id="eduModal">
+    <div class="edu-modal-bg" id="eduModalBg"></div>
+    <div class="edu-modal-box">
+        <button class="edu-modal-close" onclick="closeEduModal()">&#x2715;</button>
+        <div class="edu-modal-title" id="eduModalTitle"></div>
+        <div class="edu-modal-divider"></div>
+        <div class="edu-modal-meta" id="eduModalMeta"></div>
+        <p class="edu-modal-desc" id="eduModalDesc"></p>
+        <ol class="edu-modal-list" id="eduModalList"></ol>
+        <a href="contact.html" class="edu-modal-cta" id="eduModalCta">Daftar Sekarang</a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeEduModal();}});
+
+const eduDataBM = {
+    phd:{title:"Doktor Falsafah (PhD)",bg:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&q=80",meta:["3–5 Tahun","Sepenuh / Separuh Masa","Berasaskan Penyelidikan"],desc:"Program PhD kami menawarkan peluang penyelidikan lanjutan dalam pendidikan, perniagaan, dan sains sosial. Calon bekerja bersama penyelia pakar untuk membangunkan kemahiran penyelidikan terkini dan menyumbang bermakna kepada pengetahuan akademik.",list:["<strong>Pembelajaran Berasaskan Penyelidikan:</strong> Terlibat dalam penyelidikan bebas yang ketat dengan penyeliaan berstruktur dan bimbingan akademik sepanjang perjalanan anda.","<strong>Penyeliaan Pakar:</strong> Bekerja rapat dengan ahli akademik berpengalaman dan pakar industri yang membimbing hala tuju penyelidikan dan metodologi anda.","<strong>Sokongan Persidangan & Penerbitan:</strong> Mendapat sokongan penuh dalam mempersembahkan penyelidikan di persidangan kebangsaan dan antarabangsa, serta menerbitkan dalam jurnal disemak rakan sejawat."]},
+    med:{title:"Sarjana Pendidikan",bg:"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80",meta:["1–2 Tahun","Sepenuh / Separuh Masa","Fokus Pengamal"],desc:"Direka untuk pendidik bekerja, program Sarjana Pendidikan kami membolehkan profesional memperdalam pengetahuan pedagogi, meneroka bidang khusus, dan memajukan kerjaya pengajaran dengan kelayakan pascasiswazah yang diiktiraf.",list:["<strong>Pelbagai Pengkhususan:</strong> Pilih daripada pelbagai pengkhususan termasuk reka bentuk kurikulum, kepimpinan pendidikan, pendidikan khas, dan TESL.","<strong>Mod Pembelajaran Fleksibel:</strong> Belajar sepenuh masa atau separuh masa dengan kelas hujung minggu dan pilihan pembelajaran campuran disesuaikan untuk profesional bekerja.","<strong>Hubungan Industri:</strong> Mendapat manfaat daripada rangkaian pengamal pendidikan dan alumni di seluruh sektor sekolah dan pendidikan tinggi Malaysia."]},
+    bed:{title:"Ijazah Sarjana Muda Pendidikan",bg:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80",meta:["4 Tahun","Sepenuh Masa","Prasiswazah"],desc:"Program Ijazah Sarjana Muda Pendidikan kami menyediakan guru-guru bakal dengan pengetahuan, kemahiran, dan pengalaman praktikal yang diperlukan untuk cemerlang di bilik darjah di seluruh Malaysia dan luar negara.",list:["<strong>Praktikum Pengajaran:</strong> Dapatkan pengalaman bilik darjah sebenar melalui praktikum pengajaran berstruktur di sekolah rendah dan menengah yang bekerjasama.","<strong>Pedagogi Moden:</strong> Pelajari kaedah pengajaran kontemporari yang berakar pada penyelidikan, pembelajaran berpusatkan pelajar, dan pengajaran berbeza.","<strong>Literasi Digital & Penempatan Kerja:</strong> Lulus dengan kemahiran pengajaran digital yang kukuh dan akses kepada sokongan kerjaya serta rangkaian penempatan kerja kami."]},
+    mba:{title:"Sarjana Pentadbiran Perniagaan",bg:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",meta:["1.5–2 Tahun","Separuh Masa / Hujung Minggu","Profesional"],desc:"Program MBA kami direka untuk profesional bekerja yang ingin meningkatkan keupayaan pengurusan, pemikiran strategik, dan kemahiran kepimpinan tanpa menghentikan kerjaya mereka.",list:["<strong>Pembangunan Kepimpinan:</strong> Bina kompetensi kepimpinan penting melalui kajian kes, simulasi, dan tugasan projek dunia sebenar.","<strong>Pemikiran Perniagaan Strategik:</strong> Bangunkan minda analitikal dan strategik yang diperlukan untuk mengemudi persekitaran perniagaan yang kompleks.","<strong>Rangkaian & Projek Industri:</strong> Berhubung dengan rakan profesional dan pemimpin industri melalui projek kolaboratif, seminar, dan acara rangkaian."]},
+    diploma:{title:"Diploma Pendidikan Awal Kanak-kanak",bg:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&q=80",meta:["2–3 Tahun","Sepenuh / Separuh Masa","Sijil"],desc:"Diploma ini melengkapi pelajar dengan pengetahuan asas dan kemahiran praktikal yang diperlukan untuk memupuk kanak-kanak berusia 0–6 tahun, dengan penekanan pada perkembangan kanak-kanak, pedagogi berasaskan bermain, dan persekitaran pembelajaran yang selamat.",list:["<strong>Psikologi & Perkembangan Kanak-kanak:</strong> Kaji peringkat perkembangan fizikal, kognitif, emosi, dan sosial awal kanak-kanak.","<strong>Pembelajaran Berasaskan Bermain:</strong> Belajar cara mereka bentuk aktiviti menarik dan sesuai dengan usia yang menggalakkan perkembangan holistik melalui bermain berstruktur.","<strong>Reka Bentuk Kurikulum & Latihan Amali:</strong> Bangunkan kurikulum awal kanak-kanak dan terapkan dalam suasana TADIKA dan TASKA dunia sebenar melalui penempatan praktikal."]},
+    tadika:{title:"Program TADIKA & TASKA",bg:"https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=1400&q=80",meta:["Umur 2–6","Sepenuh / Separuh Hari","Pendaftaran Dibuka"],desc:"Program TADIKA dan TASKA kami menyediakan persekitaran pembelajaran awal yang selamat, menyayangi, dan merangsang untuk kanak-kanak berusia 2–6 tahun. Pendidik berkelayakan membimbing perkembangan holistik setiap kanak-kanak melalui aktiviti berstruktur dan penjagaan yang penuh kasih sayang.",list:["<strong>Perkembangan Holistik:</strong> Program direka untuk memupuk pertumbuhan kognitif, fizikal, sosial, emosi, dan kreatif dalam diri setiap kanak-kanak.","<strong>Pendidik Berkelayakan & Penyayang:</strong> Semua guru terlatih dalam pendidikan awal kanak-kanak dengan pelepasan DBS penuh dan sijil pertolongan cemas.","<strong>Kemudahan Selamat & Makanan Berkhasiat:</strong> Kanak-kanak menikmati kemudahan moden dan selamat untuk kanak-kanak dengan makanan sihat dan seimbang yang disediakan segar setiap hari."]}
+};
+const eduDataBI = {
+    phd:{title:"Doctor of Philosophy (PhD)",bg:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&q=80",meta:["3–5 Years","Full / Part-time","Research-based"],desc:"Our PhD programs offer advanced research opportunities in education, business, and social sciences. Candidates work alongside expert supervisors to develop cutting-edge research skills and contribute meaningfully to academic knowledge.",list:["<strong>Research-Based Learning:</strong> Engage in rigorous independent research with structured supervision and academic mentorship throughout your journey.","<strong>Expert Supervision:</strong> Work closely with experienced academics and industry experts who guide your research direction and methodology.","<strong>Conference & Publication Support:</strong> Receive full support in presenting research at national and international conferences, and publishing in peer-reviewed journals."]},
+    med:{title:"Master of Education",bg:"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80",meta:["1–2 Years","Full / Part-time","Practitioner-focused"],desc:"Designed for working educators, our Master of Education programs allow professionals to deepen their pedagogical knowledge, explore specialized fields, and advance their teaching careers with recognized postgraduate qualifications.",list:["<strong>Various Specializations:</strong> Choose from a range of specializations including curriculum design, educational leadership, special education, and TESL.","<strong>Flexible Learning Modes:</strong> Study full-time or part-time with weekend classes and blended learning options tailored to working professionals.","<strong>Industry Connections:</strong> Benefit from a network of education practitioners and alumni across Malaysia's school and higher education sectors."]},
+    bed:{title:"Bachelor of Education",bg:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80",meta:["4 Years","Full-time","Undergraduate"],desc:"Our Bachelor of Education programs prepare aspiring teachers with the knowledge, skills, and practical experience needed to excel in classrooms across Malaysia and beyond.",list:["<strong>Teaching Practicum:</strong> Gain real classroom experience through structured teaching practicums in partnered primary and secondary schools.","<strong>Modern Pedagogy:</strong> Learn contemporary teaching methods rooted in research, student-centred learning, and differentiated instruction.","<strong>Digital Literacy & Job Placement:</strong> Graduate with strong digital teaching skills and access to our career support and job placement network."]},
+    mba:{title:"Master of Business Administration",bg:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",meta:["1.5–2 Years","Part-time / Weekend","Professional"],desc:"Our MBA program is crafted for working professionals who want to elevate their management capabilities, strategic thinking, and leadership skills without pausing their career.",list:["<strong>Leadership Development:</strong> Build essential leadership competencies through case studies, simulations, and real-world project assignments.","<strong>Strategic Business Thinking:</strong> Develop the analytical and strategic mindset required to navigate complex business environments.","<strong>Networking & Industry Projects:</strong> Connect with fellow professionals and industry leaders through collaborative projects, seminars, and networking events."]},
+    diploma:{title:"Diploma in Early Childhood Education",bg:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&q=80",meta:["2–3 Years","Full / Part-time","Certification"],desc:"This diploma equips students with the foundational knowledge and practical skills needed to nurture young children aged 0–6, with an emphasis on child development, play-based pedagogy, and safe learning environments.",list:["<strong>Child Psychology & Development:</strong> Study the physical, cognitive, emotional, and social development stages of early childhood.","<strong>Play-Based Learning:</strong> Learn how to design engaging, age-appropriate activities that promote holistic development through structured play.","<strong>Curriculum Design & Hands-on Training:</strong> Develop early childhood curricula and apply them in real-world TADIKA and TASKA settings through practical placement."]},
+    tadika:{title:"TADIKA & TASKA Programs",bg:"https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=1400&q=80",meta:["Ages 2–6","Full / Half-day","Enrolment Open"],desc:"Our TADIKA and TASKA programs provide a safe, nurturing, and stimulating early learning environment for children aged 2–6. Qualified educators guide each child's holistic development through structured activities and warm care.",list:["<strong>Holistic Development:</strong> Programs designed to foster cognitive, physical, social, emotional, and creative growth in every child.","<strong>Qualified & Caring Educators:</strong> All teachers are trained in early childhood education with full DBS clearance and first-aid certification.","<strong>Safe Facilities & Nutritious Meals:</strong> Children enjoy modern, child-safe facilities with healthy, balanced meals prepared fresh daily."]}
+};
+
+let currentLang = 'bm';
+
+function openEduModal(key){
+    const d = currentLang === 'bm' ? eduDataBM[key] : eduDataBI[key];
+    const ctaText = currentLang === 'bm' ? 'Daftar Sekarang' : 'Apply Now';
+    document.getElementById('eduModalTitle').textContent = d.title;
+    document.getElementById('eduModalBg').style.backgroundImage = `url('${d.bg}')`;
+    document.getElementById('eduModalDesc').textContent = d.desc;
+    document.getElementById('eduModalMeta').innerHTML = d.meta.map(m=>`<span>${m}</span>`).join('');
+    document.getElementById('eduModalList').innerHTML = d.list.map(i=>`<li>${i}</li>`).join('');
+    document.getElementById('eduModalCta').textContent = ctaText;
+    document.getElementById('eduModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeEduModal(){
+    document.getElementById('eduModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+document.getElementById('eduModal').addEventListener('click',function(e){if(e.target===this)closeEduModal();});
+
+const T = {
+
+bm: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+    "top-cta-el": "Hubungi Kami",
+    "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Laman Utama",
+    "nav-about-el": "Tentang Kami",
+    "nav-services-el": "Perkhidmatan",
+    "nav-products-el": "Produk Kami",
+    "nav-ads-el": "Iklan",
+    "nav-career-el": "Kerjaya",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Hubungi Kami",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Lembaga Pengarah",
+    "dd-leaders-el": "Pemimpin",
+    "dd-upsi-el": "Tentang UPSI",
+
+    "dd-edu-el": "Pendidikan & Latihan",
+    "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+    "dd-retail-el": "Runcit & Perkhidmatan",
+    "dd-projects-el": "Konsultasi Projek",
+    "dd-solar-el": "Penyelesaian Tenaga Solar",
+    "dd-facility-el": "Pengurusan Kemudahan",
+
+    "dd-gallery-el": "Galeri",
+    "dd-news-el": "Berita",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Laman Utama",
+    "bc-svc-el": "Perkhidmatan",
+    "bc-current-el": "Pendidikan & Latihan",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "Pendidikan & Latihan",
+    "hero-desc-el": "Program Pendidikan Komprehensif Memanfaatkan Kecemerlangan Akademik UPSI",
+
+    /* ================= OVERVIEW ================= */
+    "overview-title-el": "Tentang Program Kami",
+    "overview-desc-el": "UPSI Holdings menawarkan pelbagai program pendidikan yang direka untuk membangunkan modal insan dan menyediakan pelajar untuk berjaya di tempat kerja moden. Dengan lebih 100 tahun kecemerlangan pendidikan dari UPSI, kami menyediakan latihan bertaraf dunia merentas pelbagai disiplin.",
+
+    /* ================= PROGRAMS ================= */
+    "programs-title-el": "Program Kami",
+
+    /* ----- PhD ----- */
+    "card-phd-title": "Doktor Falsafah (PhD)",
+    "card-phd-m1": "3–5 Tahun",
+    "card-phd-m2": "Sepenuh / Separuh Masa",
+    "card-phd-desc": "Program penyelidikan lanjutan dalam pendidikan, perniagaan, dan sains sosial.",
+    "card-phd-f1": "Pembelajaran berasaskan penyelidikan",
+    "card-phd-f2": "Penyeliaan pakar",
+    "card-phd-f3": "Peluang persidangan",
+    "card-phd-f4": "Sokongan penerbitan",
+    "card-phd-btn": "Maklumat Lanjut",
+
+    /* ----- Master of Education ----- */
+    "card-med-title": "Sarjana Pendidikan",
+    "card-med-m1": "1–2 Tahun",
+    "card-med-m2": "Sepenuh / Separuh Masa",
+    "card-med-desc": "Program pengajaran khusus untuk pendidik yang ingin memajukan kerjaya.",
+    "card-med-f1": "Pelbagai pengkhususan",
+    "card-med-f2": "Fokus kepada pengamal",
+    "card-med-f3": "Pembelajaran fleksibel",
+    "card-med-f4": "Hubungan industri",
+    "card-med-btn": "Maklumat Lanjut",
+
+    /* ----- Bachelor of Education ----- */
+    "card-bed-title": "Ijazah Sarjana Muda Pendidikan",
+    "card-bed-m1": "4 Tahun",
+    "card-bed-m2": "Sepenuh Masa",
+    "card-bed-desc": "Ijazah pengajaran prasiswazah yang menyediakan pelajar untuk kerjaya dalam pendidikan.",
+    "card-bed-f1": "Praktikum pengajaran",
+    "card-bed-f2": "Pedagogi moden",
+    "card-bed-f3": "Literasi digital",
+    "card-bed-f4": "Sokongan penempatan kerja",
+    "card-bed-btn": "Maklumat Lanjut",
+
+    /* ----- MBA ----- */
+    "card-mba-title": "Sarjana Pentadbiran Perniagaan (MBA)",
+    "card-mba-m1": "1.5–2 Tahun",
+    "card-mba-m2": "Separuh Masa / Hujung Minggu",
+    "card-mba-desc": "Program pentadbiran perniagaan untuk profesional bekerja.",
+    "card-mba-f1": "Pembangunan kepimpinan",
+    "card-mba-f2": "Pemikiran strategik",
+    "card-mba-f3": "Peluang rangkaian",
+    "card-mba-f4": "Projek industri",
+    "card-mba-btn": "Maklumat Lanjut",
+
+    /* ----- Diploma Early Childhood ----- */
+    "card-dip-title": "Diploma Pendidikan Awal Kanak-kanak",
+    "card-dip-m1": "2–3 Tahun",
+    "card-dip-m2": "Sepenuh / Separuh Masa",
+    "card-dip-desc": "Program pendidikan awal kanak-kanak.",
+    "card-dip-f1": "Psikologi kanak-kanak",
+    "card-dip-f2": "Pembelajaran berasaskan bermain",
+    "card-dip-f3": "Reka bentuk kurikulum",
+    "card-dip-f4": "Latihan amali",
+    "card-dip-btn": "Maklumat Lanjut",
+
+    /* ----- Tadika / Taska ----- */
+    "card-tad-title": "Program TADIKA & TASKA",
+    "card-tad-m1": "Umur 2–6",
+    "card-tad-m2": "Sepenuh / Separuh Hari",
+    "card-tad-desc": "Perkhidmatan tadika dan taska berkualiti.",
+    "card-tad-f1": "Pembangunan holistik",
+    "card-tad-f2": "Pendidik berkelayakan",
+    "card-tad-f3": "Kemudahan selamat",
+    "card-tad-f4": "Makanan berkhasiat",
+    "card-tad-btn": "Maklumat Lanjut",
+
+    /* ================= WHY ================= */
+    "why-title-el": "Mengapa Pilih UPSI Holdings?",
+    "ben1-title-el": "100+ Tahun Kecemerlangan",
+    "ben1-desc-el": "Disokong oleh warisan seabad UPSI",
+    "ben2-title-el": "Fakulti Pakar",
+    "ben2-desc-el": "Belajar daripada pendidik berpengalaman",
+    "ben3-title-el": "Kelayakan Diiktiraf",
+    "ben3-desc-el": "Program diiktiraf oleh MQA",
+    "ben4-title-el": "Kemudahan Moden",
+    "ben4-desc-el": "Persekitaran pembelajaran bertaraf dunia",
+
+    /* ================= CTA ================= */
+    "cta-title-el": "Bersedia Untuk Memulakan Perjalanan Pendidikan Anda?",
+    "cta-desc-el": "Hubungi kami hari ini untuk mengetahui lebih lanjut tentang program kami.",
+    "cta-btn1-el": "Daftar Sekarang",
+    "cta-btn2-el": "Hubungi Kami",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+
+    "footer-address-label-el": "Pejabat Utama:",
+    "footer-phone-label-el": "Telefon:",
+    "footer-hosp-label-el": "Hospitaliti:",
+
+    "footer-about-head-el": "Tentang",
+    "footer-bod-el": "Lembaga Pengarah",
+    "footer-leaders-el": "Pemimpin",
+    "footer-gallery-el": "Galeri",
+
+    "footer-svc-head-el": "Perkhidmatan",
+    "footer-svc1-el": "Pendidikan & Latihan",
+    "footer-svc2-el": "Hospitaliti",
+    "footer-svc3-el": "Perkhidmatan Runcit",
+    "footer-svc4-el": "Konsultasi",
+    "footer-svc5-el": "Tenaga Solar",
+    "footer-svc6-el": "Pengurusan Kemudahan",
+
+    "footer-res-head-el": "Sumber",
+    "footer-career-el": "Kerjaya",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "Berita",
+    "footer-contact-el": "Hubungi Kami",
+
+    "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+},
+
+bi: {
+
+    /* ================= TOP BAR ================= */
+    "top-phone-text": "Got Questions? Call us: 012-2525 843",
+    "top-cta-el": "Contact Us",
+    "company-tagline": "Synergy of Resources & UPSI Expertise",
+
+    /* ================= NAVIGATION ================= */
+    "nav-home-el": "Home",
+    "nav-about-el": "About Us",
+    "nav-services-el": "Services",
+    "nav-products-el": "Our Products",
+    "nav-ads-el": "Ads",
+    "nav-career-el": "Career",
+    "nav-tender-el": "Tender",
+    "nav-media-el": "Media",
+    "nav-contact-btn-el": "Contact Us",
+
+    /* ================= DROPDOWN ================= */
+    "dd-bod-el": "Board of Directors",
+    "dd-leaders-el": "Leaders",
+    "dd-upsi-el": "About UPSI",
+
+    "dd-edu-el": "Education & Training",
+    "dd-hosp-el": "Training Center & Hospitality",
+    "dd-retail-el": "Retail & Services",
+    "dd-projects-el": "Projects Consultation",
+    "dd-solar-el": "Solar Energy Solutions",
+    "dd-facility-el": "Facility Management",
+
+    "dd-gallery-el": "Gallery",
+    "dd-news-el": "News",
+
+    /* ================= BREADCRUMB ================= */
+    "bc-home-el": "Home",
+    "bc-svc-el": "Services",
+    "bc-current-el": "Education & Training",
+
+    /* ================= HERO ================= */
+    "hero-title-el": "Education & Training",
+    "hero-desc-el": "Comprehensive Educational Programs Leveraging UPSI's Academic Excellence",
+
+    /* ================= OVERVIEW ================= */
+    "overview-title-el": "About Our Programs",
+    "overview-desc-el": "UPSI Holdings offers a comprehensive range of educational programs designed to develop human capital and prepare students for success in the modern workplace.",
+
+    /* ================= PROGRAMS ================= */
+    "programs-title-el": "Our Programs",
+
+    /* ===== PhD ===== */
+    "card-phd-title": "Doctor of Philosophy (PhD)",
+    "card-phd-m1": "3–5 Years",
+    "card-phd-m2": "Full / Part-time",
+    "card-phd-desc": "Advanced research programs in education, business, and social sciences.",
+    "card-phd-f1": "Research-based learning",
+    "card-phd-f2": "Expert supervision",
+    "card-phd-f3": "Conference opportunities",
+    "card-phd-f4": "Publication support",
+    "card-phd-btn": "Learn More",
+
+    /* ===== Master of Education ===== */
+    "card-med-title": "Master of Education",
+    "card-med-m1": "1–2 Years",
+    "card-med-m2": "Full / Part-time",
+    "card-med-desc": "Specialized teaching programs for educators looking to advance their careers.",
+    "card-med-f1": "Various specializations",
+    "card-med-f2": "Practitioner-focused",
+    "card-med-f3": "Flexible learning",
+    "card-med-f4": "Industry connections",
+    "card-med-btn": "Learn More",
+
+    /* ===== Bachelor of Education ===== */
+    "card-bed-title": "Bachelor of Education",
+    "card-bed-m1": "4 Years",
+    "card-bed-m2": "Full-time",
+    "card-bed-desc": "Undergraduate teaching degrees preparing students for careers in education.",
+    "card-bed-f1": "Teaching practicum",
+    "card-bed-f2": "Modern pedagogy",
+    "card-bed-f3": "Digital literacy",
+    "card-bed-f4": "Job placement support",
+    "card-bed-btn": "Learn More",
+
+    /* ===== MBA ===== */
+    "card-mba-title": "Master of Business Administration (MBA)",
+    "card-mba-m1": "1.5–2 Years",
+    "card-mba-m2": "Part-time / Weekend",
+    "card-mba-desc": "Business administration program for working professionals.",
+    "card-mba-f1": "Leadership development",
+    "card-mba-f2": "Strategic thinking",
+    "card-mba-f3": "Networking opportunities",
+    "card-mba-f4": "Industry projects",
+    "card-mba-btn": "Learn More",
+
+    /* ===== Diploma ===== */
+    "card-dip-title": "Diploma in Early Childhood Education",
+    "card-dip-m1": "2–3 Years",
+    "card-dip-m2": "Full / Part-time",
+    "card-dip-desc": "Early childhood education program.",
+    "card-dip-f1": "Child psychology",
+    "card-dip-f2": "Play-based learning",
+    "card-dip-f3": "Curriculum design",
+    "card-dip-f4": "Hands-on training",
+    "card-dip-btn": "Learn More",
+
+    /* ===== Tadika ===== */
+    "card-tad-title": "TADIKA & TASKA Programs",
+    "card-tad-m1": "Ages 2–6",
+    "card-tad-m2": "Full / Half-day",
+    "card-tad-desc": "Quality kindergarten and daycare services.",
+    "card-tad-f1": "Holistic development",
+    "card-tad-f2": "Qualified educators",
+    "card-tad-f3": "Safe facilities",
+    "card-tad-f4": "Nutritious meals",
+    "card-tad-btn": "Learn More",
+
+    /* ================= WHY ================= */
+    "why-title-el": "Why Choose UPSI Holdings?",
+    "ben1-title-el": "100+ Years Excellence",
+    "ben1-desc-el": "Backed by UPSI's century-long legacy",
+    "ben2-title-el": "Expert Faculty",
+    "ben2-desc-el": "Learn from experienced educators",
+    "ben3-title-el": "Recognized Qualifications",
+    "ben3-desc-el": "Accredited programs recognized by MQA",
+    "ben4-title-el": "Modern Facilities",
+    "ben4-desc-el": "State-of-the-art learning environments",
+
+    /* ================= CTA ================= */
+    "cta-title-el": "Ready to Start Your Educational Journey?",
+    "cta-desc-el": "Contact us today to learn more about our programs.",
+    "cta-btn1-el": "Apply Now",
+    "cta-btn2-el": "Contact Us",
+
+    /* ================= FOOTER ================= */
+    "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris.",
+    "footer-address-label-el": "Main Office:",
+    "footer-phone-label-el": "Phone:",
+    "footer-hosp-label-el": "Hospitality:",
+
+    "footer-about-head-el": "About",
+    "footer-bod-el": "Board of Directors",
+    "footer-leaders-el": "Leaders",
+    "footer-gallery-el": "Gallery",
+
+    "footer-svc-head-el": "Services",
+    "footer-svc1-el": "Education & Training",
+    "footer-svc2-el": "Hospitality",
+    "footer-svc3-el": "Retail Services",
+    "footer-svc4-el": "Consultation",
+    "footer-svc5-el": "Solar Energy",
+    "footer-svc6-el": "Facility Management",
+
+    "footer-res-head-el": "Resources",
+    "footer-career-el": "Career",
+    "footer-tender-el": "Tender",
+    "footer-news-el": "News",
+    "footer-contact-el": "Contact Us",
+
+    "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+}
+
+};
+
+function setLang(lang) {
+    currentLang = lang;
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t = T[lang]; if (!t) return;
+    Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', () => { setLang(localStorage.getItem('upsi-lang') || 'bm'); });
+</script>
+</body>
+</html>

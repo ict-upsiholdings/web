@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk Kami - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <link rel="stylesheet" href="service-cards.css">
+<style>
+/* ===== BACKGROUND ===== */
+.service-details-section{position:relative;background-image:url('image/building.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
+.service-details-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+.service-details-section .container{position:relative;z-index:1;}
+
+/* ===== SHOP GRID ===== */
+.shop-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.6rem;
+    margin-bottom:3rem;
+}
+@media(max-width:900px){.shop-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.shop-grid{grid-template-columns:1fr;}}
+
+.shop-card{
+    background:#fff;
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    overflow:hidden;
+    text-align:center;
+    transition:transform 0.22s,box-shadow 0.22s;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.shop-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.13);}
+
+.shop-card-img-wrap{
+    background:#f7f7f7;
+    padding:24px 20px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:200px;
+    overflow:hidden;
+}
+.shop-card-img-wrap img{
+    max-width:100%;
+    max-height:180px;
+    object-fit:contain;
+    transition:transform 0.3s ease;
+}
+.shop-card:hover .shop-card-img-wrap img{transform:scale(1.06);}
+
+.shop-card-body{
+    padding:16px 18px 22px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    align-items:center;
+    gap:14px;
+}
+.shop-card-name{
+    font-family:'Poppins',sans-serif;
+    font-size:0.85rem;
+    font-weight:700;
+    color:#c49a00;
+    text-align:center;
+    line-height:1.4;
+    text-transform:uppercase;
+    letter-spacing:0.2px;
+}
+.btn-shop-now{
+    display:inline-block;
+    padding:10px 30px;
+    background:#1a2c5b;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:0.8rem;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    border-radius:30px;
+    text-decoration:none;
+    transition:background 0.2s,transform 0.15s;
+    margin-top:auto;
+}
+.btn-shop-now:hover{background:#0d1e40;transform:scale(1.04);color:#fff;text-decoration:none;}
+
+/* ===== LANGUAGE DROPDOWN ===== */
+.nav-lang-dropdown{position:relative;}
+.nav-lang-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px solid #e0e4f0;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;color:#1a237e;padding:7px 13px;border-radius:8px;transition:background 0.2s,border-color 0.2s;}
+.nav-lang-btn:hover{background:#eef0fb;border-color:#c5cae9;}
+.nav-lang-btn .lang-arrow{font-size:0.65rem;color:#9ea8c8;transition:transform 0.2s;}
+.nav-lang-dropdown.open .lang-arrow{transform:rotate(180deg);}
+.nav-lang-flag{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.18);}
+.nav-lang-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1.5px solid #e0e4f0;border-radius:12px;box-shadow:0 10px 32px rgba(26,35,126,0.13);min-width:150px;overflow:hidden;z-index:9999;}
+.nav-lang-dropdown.open .nav-lang-menu{display:block;}
+.nav-lang-menu button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;background:none;border:none;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;color:#333;cursor:pointer;transition:background 0.15s;text-align:left;}
+.nav-lang-menu button:hover{background:#f0f2fb;color:#1a237e;}
+.nav-lang-menu button.active-lang{background:#e8eaf6;color:#1a237e;font-weight:700;}
+.nav-lang-menu button img{width:22px;height:15px;object-fit:cover;border-radius:3px;}
+.nav-lang-menu-divider{height:1px;background:#f0f2f8;margin:2px 0;}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar"><div class="top-bar-content"><div class="top-bar-left"><a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a><a href="mailto:info@upsiholdings.com"><span>📧</span> <span id="top-email-text">info@upsiholdings.com</span></a></div><div class="top-bar-right"><div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div><a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a></div></div></div>
+
+<!-- NAV -->
+<nav><div class="nav-container"><a href="index.html" class="logo-section"><img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;"><div class="company-info"><h1>UPSI HOLDINGS</h1><p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p></div></a>
+<ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="education.html"> <span id="dd-edu-el">Pendidikan &amp; Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan &amp; Hospitaliti</span></a>
+                    <a href="retail.html"> <span id="dd-retail-el">Runcit &amp; Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+            </ul>
+<div class="nav-right">
+    <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+    <div class="nav-lang-dropdown" id="navLangDropdown">
+        <button class="nav-lang-btn" onclick="toggleLangMenu()">
+            <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+            <span id="lang-label">Melayu</span>
+            <span class="lang-arrow">&#9662;</span>
+        </button>
+        <div class="nav-lang-menu" id="navLangMenu">
+            <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()"><img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu</button>
+            <div class="nav-lang-menu-divider"></div>
+            <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()"><img src="https://flagcdn.com/w40/gb.png" alt="EN"> English</button>
+        </div>
+    </div>
+</div></div></nav>
+
+<!-- HERO -->
+<section class="page-hero" style="background-image:url('image/merchandise.png');background-size:cover;background-position:center center;background-repeat:no-repeat;position:relative;overflow:hidden;">
+    <div class="breadcrumb" style="position:relative;z-index:1;"><a href="index.html" id="bc-home-el">Laman Utama</a> › <span id="bc-current-el">Produk Kami</span></div>
+    <h1 id="hero-title-el" style="position:relative;z-index:1;">Produk Kami</h1>
+    <p id="hero-desc-el" style="position:relative;z-index:1;">Merchandise Rasmi & Koleksi Eksklusif UPSI Holdings</p>
+</section>
+
+<!-- PRODUCTS ONLY -->
+<section class="service-details-section">
+<div class="container">
+
+    <div class="shop-grid">
+
+        <!-- 1: UG PLAT -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/UG.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🪪</div>'"
+                     alt="UG Plat">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp1-name">UG Plat</div>
+                <a href="https://www.ugplat.com.my/booking/" class="btn-shop-now" id="sp1-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 2: KEYCHAIN SILVER -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/Gold.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🔑</div>'"
+                     alt="100 Tahun UPSI Metal Keychain EKC 100AS">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp2-name">100 Tahun UPSI Metal Keychain (EKC 100AS)</div>
+                <a href="https://shopee.com.my/100-Tahun-UPSI-Metal-Keychain-(EKC-100AG)-i.395355783.10033563275?sp_atk=51ca4953-660d-4116-83d5-0b18bee8189e&xptdk=51ca4953-660d-4116-83d5-0b18bee8189e" class="btn-shop-now" id="sp2-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 3: KEYCHAIN GOLD -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/Silver.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🔑</div>'"
+                     alt="100 Tahun UPSI Metal Keychain EKC 100AG">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp3-name">100 Tahun UPSI Metal Keychain (EKC 100AG)</div>
+                <a href="https://shopee.com.my/100-Tahun-UPSI-Metal-Keychain-(EKC-100AS)-i.395355783.11433566036?sp_atk=36a0a83a-7c4b-4250-b88d-50e22f7c0f05&xptdk=36a0a83a-7c4b-4250-b88d-50e22f7c0f05" class="btn-shop-now" id="sp3-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 4: SMART JACKET -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/Jacket.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🧥</div>'"
+                     alt="Baju Smart Jacket UPSI">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp4-name">Baju Smart Jacket UPSI</div>
+                <a href="contact.html" class="btn-shop-now" id="sp4-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 5: SULAM BUDIMAN -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/Tshirt.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>👔</div>'"
+                     alt="Baju Sulam Budiman UPSI Collar">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp5-name">Baju Sulam Budiman UPSI - Collar</div>
+                <a href="https://shopee.com.my/BAJU-SULUH-BUDIMAN-UPSI-COLLAR-i.395355783.24869131220?sp_atk=574c9f44-387f-4ff9-b647-ff04906bffa0&xptdk=574c9f44-387f-4ff9-b647-ff04906bffa0" class="btn-shop-now" id="sp5-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 6: ZIGGY COLLAR -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/Baju.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>👕</div>'"
+                     alt="Baju Ziggy UPSI Collar">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp6-name">Baju Ziggy UPSI Collar</div>
+                <a href="https://shopee.com.my/BAJU-ZIGGY-UPSI-COLLAR-i.395355783.25422516939?sp_atk=08122e66-18f8-416f-b58b-c50c2ee56642&xptdk=08122e66-18f8-416f-b58b-c50c2ee56642" class="btn-shop-now" id="sp6-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <!-- 7: LANYARD BATIK -->
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/layard.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🪢</div>'"
+                     alt="New Lanyard Batik UPSI">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp7-name">New Lanyard Batik UPSI</div>
+                <a href="https://shopee.com.my/LANYARD-ABSTRACK-UPSI-RED-i.395355783.55502783253?extraParams=%7B%22display_model_id%22%3A310270058335%2C%22model_selection_logic%22%3A3%7D" class="btn-shop-now" id="sp7-btn">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="shop-card">
+            <div class="shop-card-img-wrap">
+                <img src="image/hoddie.png"
+                     onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\'font-size:4rem;\'>🔑</div>'"
+                     alt="VARSITY JACKET UPSI">
+            </div>
+            <div class="shop-card-body">
+                <div class="shop-card-name" id="sp2-name">VARSITY JACKET UPSI</div>
+                <a href="https://shopee.com.my/VARSITY-JACKET-UPSI-MAROON-i.395355783.27623768304?extraParams=%7B%22display_model_id%22%3A242485965826%2C%22model_selection_logic%22%3A3%7D" class="btn-shop-now" id="sp6-btn">Shop Now</a>
+            </div>
+        </div>
+
+    </div><!-- end shop-grid -->
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>UPSI HOLDINGS SDN BHD</h3><p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p><div class="footer-contact"><div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div><div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div><div class="footer-contact-item"><strong id="footer-hosp-label-el">Hospitaliti:</strong><span>05-448 1922</span></div></div><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a></div></div>
+<div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="our-products.html" id="footer-products-el">Produk Kami</a></li><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
+</div><div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div></div></footer>
+
+<script src="script.js"></script>
+<script>
+function toggleLangMenu(){document.getElementById('navLangDropdown').classList.toggle('open');}
+function closeLangMenu(){document.getElementById('navLangDropdown').classList.remove('open');}
+document.addEventListener('click',function(e){var d=document.getElementById('navLangDropdown');if(d&&!d.contains(e.target))d.classList.remove('open');});
+
+let currentLang='bm';
+
+const T={
+  bm:{
+    "top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843","top-cta-el":"Hubungi Kami",
+    "company-tagline":"Sinergi Sumber & Kepakaran UPSI",
+    "nav-home-el":"Laman Utama","nav-about-el":"Tentang Kami","nav-services-el":"Perkhidmatan",
+    "nav-products-el":"Produk Kami","nav-ads-el":"Iklan","nav-career-el":"Kerjaya",
+    "nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Hubungi Kami",
+    "dd-bod-el":"Lembaga Pengarah","dd-leaders-el":"Pemimpin","dd-upsi-el":"Tentang UPSI",
+    "dd-edu-el":"Pendidikan & Latihan","dd-hosp-el":"Pusat Latihan & Hospitaliti",
+    "dd-retail-el":"Runcit & Perkhidmatan","dd-projects-el":"Konsultasi Projek",
+    "dd-solar-el":"Penyelesaian Tenaga Solar","dd-facility-el":"Pengurusan Kemudahan",
+    "dd-gallery-el":"Galeri","dd-news-el":"Berita",
+    "bc-home-el":"Laman Utama","bc-current-el":"Produk Kami",
+    "hero-title-el":"Produk Kami","hero-desc-el":"Merchandise Rasmi & Koleksi Eksklusif UPSI Holdings",
+    "sp1-name":"UG Plat","sp1-btn":"Shop Now",
+    "sp2-name":"100 Tahun UPSI Metal Keychain (EKC 100AS)","sp2-btn":"Shop Now",
+    "sp3-name":"100 Tahun UPSI Metal Keychain (EKC 100AG)","sp3-btn":"Shop Now",
+    "sp4-name":"Baju Smart Jacket UPSI","sp4-btn":"Shop Now",
+    "sp5-name":"Baju Sulam Budiman UPSI - Collar","sp5-btn":"Shop Now",
+    "sp6-name":"Baju Ziggy UPSI Collar","sp6-btn":"Shop Now",
+    "sp7-name":"New Lanyard Batik UPSI","sp7-btn":"Shop Now",
+    "footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+    "footer-address-label-el":"Pejabat Utama:","footer-phone-label-el":"Telefon:","footer-hosp-label-el":"Hospitaliti:",
+    "footer-about-head-el":"Tentang","footer-bod-el":"Lembaga Pengarah","footer-leaders-el":"Pemimpin","footer-gallery-el":"Galeri",
+    "footer-svc-head-el":"Perkhidmatan","footer-svc1-el":"Pendidikan & Latihan","footer-svc2-el":"Hospitaliti",
+    "footer-svc3-el":"Perkhidmatan Runcit","footer-svc4-el":"Konsultasi","footer-svc5-el":"Tenaga Solar","footer-svc6-el":"Pengurusan Kemudahan",
+    "footer-res-head-el":"Sumber","footer-products-el":"Produk Kami","footer-career-el":"Kerjaya",
+    "footer-tender-el":"Tender","footer-news-el":"Berita","footer-contact-el":"Hubungi Kami",
+    "footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+  },
+  bi:{
+    "top-phone-text":"Got Questions? Call us: 012-2525 843","top-cta-el":"Contact Us",
+    "company-tagline":"Synergy of Resources & UPSI Expertise",
+    "nav-home-el":"Home","nav-about-el":"About Us","nav-services-el":"Services",
+    "nav-products-el":"Our Products","nav-ads-el":"Ads","nav-career-el":"Career",
+    "nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Contact Us",
+    "dd-bod-el":"Board of Directors","dd-leaders-el":"Leaders","dd-upsi-el":"About UPSI",
+    "dd-edu-el":"Education & Training","dd-hosp-el":"Training Center & Hospitality",
+    "dd-retail-el":"Retail & Services","dd-projects-el":"Projects Consultation",
+    "dd-solar-el":"Solar Energy Solutions","dd-facility-el":"Facility Management",
+    "dd-gallery-el":"Gallery","dd-news-el":"News",
+    "bc-home-el":"Home","bc-current-el":"Our Products",
+    "hero-title-el":"Our Products","hero-desc-el":"Official Merchandise & Exclusive UPSI Holdings Collection",
+    "sp1-name":"UG Plat","sp1-btn":"Shop Now",
+    "sp2-name":"100 Years UPSI Metal Keychain (EKC 100AS)","sp2-btn":"Shop Now",
+    "sp3-name":"100 Years UPSI Metal Keychain (EKC 100AG)","sp3-btn":"Shop Now",
+    "sp4-name":"UPSI Smart Jacket","sp4-btn":"Shop Now",
+    "sp5-name":"UPSI Sulam Budiman Shirt - Collar","sp5-btn":"Shop Now",
+    "sp6-name":"UPSI Ziggy Collar Shirt","sp6-btn":"Shop Now",
+    "sp7-name":"New UPSI Batik Lanyard","sp7-btn":"Shop Now",
+    "footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+    "footer-address-label-el":"Main Office:","footer-phone-label-el":"Phone:","footer-hosp-label-el":"Hospitality:",
+    "footer-about-head-el":"About","footer-bod-el":"Board of Directors","footer-leaders-el":"Leaders","footer-gallery-el":"Gallery",
+    "footer-svc-head-el":"Services","footer-svc1-el":"Education & Training","footer-svc2-el":"Hospitality",
+    "footer-svc3-el":"Retail Services","footer-svc4-el":"Consultation","footer-svc5-el":"Solar Energy","footer-svc6-el":"Facility Management",
+    "footer-res-head-el":"Resources","footer-products-el":"Our Products","footer-career-el":"Career",
+    "footer-tender-el":"Tender","footer-news-el":"News","footer-contact-el":"Contact Us",
+    "footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+  }
+};
+
+function setLang(lang){
+    currentLang=lang;
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t=T[lang];if(!t)return;
+    Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});
+    document.documentElement.lang=lang==='bm'?'ms':'en';
+    try{localStorage.setItem('upsi-lang',lang);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{setLang(localStorage.getItem('upsi-lang')||'bm');});
+</script>
+</body>
+</html>

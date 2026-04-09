@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri | UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <style>
+    .gallery-filter-section,
+    .gallery-section,
+    .video-gallery-section {
+        position: relative;
+        background-image: url('image/OFFICE.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .gallery-filter-section::before,
+    .gallery-section::before,
+    .video-gallery-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.87);
+        z-index: 0;
+        pointer-events: none;
+    }
+    .gallery-filter-section .container,
+    .gallery-section .container,
+    .video-gallery-section .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+    .nav-lang-dropdown { position: relative; }
+    .nav-lang-btn {
+        display: flex; align-items: center; gap: 6px;
+        background: none; border: 1.5px solid #e0e4f0;
+        cursor: pointer; font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem; font-weight: 600; color: #1a237e;
+        padding: 7px 13px; border-radius: 8px;
+        transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+    .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+    .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+    .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+    .nav-lang-menu {
+        display: none; position: absolute; right: 0; top: calc(100% + 8px);
+        background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+        box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+        overflow: hidden; z-index: 9999;
+    }
+    .nav-lang-dropdown.open .nav-lang-menu { display: block; }
+    .nav-lang-menu button {
+        display: flex; align-items: center; gap: 10px;
+        width: 100%; padding: 11px 16px; background: none; border: none;
+        font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+        color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+    }
+    .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+    .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+    .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+    .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px; width:auto; object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"> <span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+            <!-- END LANGUAGE DROPDOWN -->
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero gallery-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-media-el">Media</a> › <span id="bc-current-el">Galeri</span></div>
+    <h1 id="hero-title-el">Galeri</h1>
+    <p id="hero-desc-el">Teroka kemudahan, acara, dan momen-momen istimewa di UPSI Holdings</p>
+</section>
+
+<!-- Gallery Filter -->
+<section class="gallery-filter-section">
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all" id="filter-all-el">Semua</button>
+            <button class="filter-btn" data-category="facilities" id="filter-facilities-el">Kemudahan</button>
+            <button class="filter-btn" data-category="events" id="filter-events-el">Acara</button>
+            <button class="filter-btn" data-category="hospitality" id="filter-hospitality-el">Hospitaliti</button>
+            <button class="filter-btn" data-category="campus" id="filter-campus-el">Kampus</button>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <!-- Facilities -->
+        <div class="gallery-category">
+            <h3 class="gallery-category-title" id="cat1-title-el">Kemudahan Kami</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="facilities">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🏨</span><p>Scholar's Suites</p></div></div>
+                    <div class="gallery-caption"><h4 id="g1-title-el">Scholar's Suites</h4><p id="g1-desc-el">Penginapan selesa dengan pemandangan gunung</p></div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <div class="gallery-image"><div class="image-placeholder"><span>📊</span><p>Bilik Seminar</p></div></div>
+                    <div class="gallery-caption"><h4 id="g2-title-el">Bilik Seminar</h4><p id="g2-desc-el">Kemudahan mesyuarat bertaraf tinggi</p></div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🍽️</span><p>The Banjaran Cape</p></div></div>
+                    <div class="gallery-caption"><h4 id="g3-title-el">The Banjaran Cape</h4><p id="g3-desc-el">Perkhidmatan makan dan katering</p></div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🏕️</span><p>Ujana Escape</p></div></div>
+                    <div class="gallery-caption"><h4 id="g4-title-el">Ujana Escape</h4><p id="g4-desc-el">Kabin dan kawasan perkhemahan</p></div>
+                </div>
+            </div>
+        </div>
+        <!-- Events -->
+        <div class="gallery-category">
+            <h3 class="gallery-category-title" id="cat2-title-el">Acara & Program</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🎓</span><p>Sesi Latihan</p></div></div>
+                    <div class="gallery-caption"><h4 id="g5-title-el">Program Latihan</h4><p id="g5-desc-el">Bengkel pembangunan profesional</p></div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🎉</span><p>Acara Korporat</p></div></div>
+                    <div class="gallery-caption"><h4 id="g6-title-el">Acara Korporat</h4><p id="g6-desc-el">Persidangan dan seminar</p></div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🍴</span><p>Bufet Ramadan</p></div></div>
+                    <div class="gallery-caption"><h4 id="g7-title-el">Bufet Ramadan</h4><p id="g7-desc-el">Perayaan Iftar yang istimewa</p></div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🎂</span><p>Perayaan</p></div></div>
+                    <div class="gallery-caption"><h4 id="g8-title-el">Perayaan</h4><p id="g8-desc-el">Pesta hari jadi dan perhimpunan</p></div>
+                </div>
+            </div>
+        </div>
+        <!-- Campus -->
+        <div class="gallery-category">
+            <h3 class="gallery-category-title" id="cat3-title-el">Kampus & Persekitaran</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🏔️</span><p>Banjaran Titiwangsa</p></div></div>
+                    <div class="gallery-caption"><h4 id="g9-title-el">Pemandangan Gunung</h4><p id="g9-desc-el">Latar belakang Titiwangsa yang indah</p></div>
+                </div>
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🌳</span><p>Kawasan Kampus</p></div></div>
+                    <div class="gallery-caption"><h4 id="g10-title-el">Kampus UPSI</h4><p id="g10-desc-el">Persekitaran hijau yang subur</p></div>
+                </div>
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🏛️</span><p>Bangunan Utama</p></div></div>
+                    <div class="gallery-caption"><h4 id="g11-title-el">Senibina Kampus</h4><p id="g11-desc-el">Kemudahan dan reka bentuk moden</p></div>
+                </div>
+                <div class="gallery-item" data-category="campus">
+                    <div class="gallery-image"><div class="image-placeholder"><span>☀️</span><p>Panel Solar</p></div></div>
+                    <div class="gallery-caption"><h4 id="g12-title-el">Tenaga Solar</h4><p id="g12-desc-el">Inisiatif hijau yang mampan</p></div>
+                </div>
+            </div>
+        </div>
+        <!-- Hospitality -->
+        <div class="gallery-category">
+            <h3 class="gallery-category-title" id="cat4-title-el">Perkhidmatan Hospitaliti</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🛏️</span><p>Bilik Tetamu</p></div></div>
+                    <div class="gallery-caption"><h4 id="g13-title-el">Bilik Dalaman</h4><p id="g13-desc-el">Bilik yang selesa dan moden</p></div>
+                </div>
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🍳</span><p>Sarapan</p></div></div>
+                    <div class="gallery-caption"><h4 id="g14-title-el">Pengalaman Makan</h4><p id="g14-desc-el">Hidangan lazat dan katering</p></div>
+                </div>
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🏊</span><p>Rekreasi</p></div></div>
+                    <div class="gallery-caption"><h4 id="g15-title-el">Kemudahan Rekreasi</h4><p id="g15-desc-el">Kawasan masa lapang dan relaksasi</p></div>
+                </div>
+                <div class="gallery-item" data-category="hospitality">
+                    <div class="gallery-image"><div class="image-placeholder"><span>🧺</span><p>Perkhidmatan Dobi</p></div></div>
+                    <div class="gallery-caption"><h4 id="g16-title-el">Perkhidmatan Sokongan</h4><p id="g16-desc-el">Dobi dan khidmat bilik</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Gallery -->
+<section class="video-gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" id="video-title-el">Galeri Video</h2>
+            <p class="section-description" id="video-desc-el">Tonton kemudahan dan acara kami secara langsung</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-item"><div class="video-placeholder"><span>▶️</span><p id="v1-label-el">Lawatan Maya</p></div><h4 id="v1-title-el">Lawatan Maya UPSI Holdings</h4></div>
+            <div class="video-item"><div class="video-placeholder"><span>▶️</span><p>Scholar's Suites</p></div><h4 id="v2-title-el">Pameran Scholar's Suites</h4></div>
+            <div class="video-item"><div class="video-placeholder"><span>▶️</span><p id="v3-label-el">Sorotan Acara</p></div><h4 id="v3-title-el">Sorotan Acara Terkini</h4></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="about-upsi.html" id="footer-upsi-el">Tentang UPSI</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Gallery Filter
+const filterButtons = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.getAttribute('data-category');
+        galleryItems.forEach(item => {
+            item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? 'block' : 'none';
+        });
+    });
+});
+
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
+const T = {
+
+bm:{
+
+/* ================= TOP BAR ================= */
+"top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843",
+"top-cta-el":"Hubungi Kami",
+"company-tagline":"Sinergi Sumber & Kepakaran UPSI",
+
+/* ================= NAVIGATION ================= */
+"nav-home-el":"Laman Utama",
+"nav-about-el":"Tentang Kami",
+"nav-services-el":"Perkhidmatan",
+"nav-products-el":"Produk Kami",
+"nav-ads-el":"Iklan",
+"nav-career-el":"Kerjaya",
+"nav-tender-el":"Tender",
+"nav-media-el":"Media",
+"nav-contact-btn-el":"Hubungi Kami",
+
+/* ================= DROPDOWN ================= */
+"dd-bod-el":"Lembaga Pengarah",
+"dd-leaders-el":"Pemimpin",
+"dd-upsi-el":"Tentang UPSI",
+"dd-edu-el":"Pendidikan & Latihan",
+"dd-hosp-el":"Pusat Latihan & Hospitaliti",
+"dd-retail-el":"Runcit & Perkhidmatan",
+"dd-projects-el":"Konsultasi Projek",
+"dd-solar-el":"Penyelesaian Tenaga Solar",
+"dd-facility-el":"Pengurusan Kemudahan",
+"dd-gallery-el":"Galeri",
+"dd-news-el":"Berita",
+
+/* ================= BREADCRUMB ================= */
+"bc-home-el":"Laman Utama",
+"bc-media-el":"Media",
+"bc-current-el":"Galeri",
+
+/* ================= HERO ================= */
+"hero-title-el":"Galeri",
+"hero-desc-el":"Teroka kemudahan, acara, dan momen-momen istimewa di UPSI Holdings",
+
+/* ================= FILTER ================= */
+"filter-all-el":"Semua",
+"filter-facilities-el":"Kemudahan",
+"filter-events-el":"Acara",
+"filter-hospitality-el":"Hospitaliti",
+"filter-campus-el":"Kampus",
+
+/* ================= CATEGORY 1 ================= */
+"cat1-title-el":"Kemudahan Kami",
+
+"g1-title-el":"Scholar's Suites",
+"g1-desc-el":"Penginapan selesa dengan pemandangan gunung",
+
+"g2-title-el":"Bilik Seminar",
+"g2-desc-el":"Kemudahan mesyuarat bertaraf tinggi",
+
+"g3-title-el":"The Banjaran Cape",
+"g3-desc-el":"Perkhidmatan makan dan katering",
+
+"g4-title-el":"Ujana Escape",
+"g4-desc-el":"Kabin dan kawasan perkhemahan",
+
+/* ================= CATEGORY 2 ================= */
+"cat2-title-el":"Acara & Program",
+
+"g5-title-el":"Program Latihan",
+"g5-desc-el":"Bengkel pembangunan profesional",
+
+"g6-title-el":"Acara Korporat",
+"g6-desc-el":"Persidangan dan seminar",
+
+"g7-title-el":"Bufet Ramadan",
+"g7-desc-el":"Perayaan Iftar yang istimewa",
+
+"g8-title-el":"Perayaan",
+"g8-desc-el":"Pesta hari jadi dan perhimpunan",
+
+/* ================= CATEGORY 3 ================= */
+"cat3-title-el":"Kampus & Persekitaran",
+
+"g9-title-el":"Pemandangan Gunung",
+"g9-desc-el":"Latar belakang Titiwangsa yang indah",
+
+"g10-title-el":"Kampus UPSI",
+"g10-desc-el":"Persekitaran hijau yang subur",
+
+"g11-title-el":"Senibina Kampus",
+"g11-desc-el":"Kemudahan dan reka bentuk moden",
+
+"g12-title-el":"Tenaga Solar",
+"g12-desc-el":"Inisiatif hijau yang mampan",
+
+/* ================= CATEGORY 4 ================= */
+"cat4-title-el":"Perkhidmatan Hospitaliti",
+
+"g13-title-el":"Bilik Dalaman",
+"g13-desc-el":"Bilik yang selesa dan moden",
+
+"g14-title-el":"Pengalaman Makan",
+"g14-desc-el":"Hidangan lazat dan katering",
+
+"g15-title-el":"Kemudahan Rekreasi",
+"g15-desc-el":"Kawasan masa lapang dan relaksasi",
+
+"g16-title-el":"Perkhidmatan Sokongan",
+"g16-desc-el":"Dobi dan khidmat bilik",
+
+/* ================= VIDEO ================= */
+"video-title-el":"Galeri Video",
+"video-desc-el":"Tonton kemudahan dan acara kami secara langsung",
+
+"v1-label-el":"Lawatan Maya",
+"v1-title-el":"Lawatan Maya UPSI Holdings",
+
+"v2-title-el":"Pameran Scholar's Suites",
+
+"v3-label-el":"Sorotan Acara",
+"v3-title-el":"Sorotan Acara Terkini",
+
+/* ================= FOOTER ================= */
+"footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+"footer-address-label-el":"Pejabat Utama:",
+"footer-phone-label-el":"Telefon:",
+
+"footer-about-head-el":"Tentang",
+"footer-bod-el":"Lembaga Pengarah",
+"footer-leaders-el":"Pemimpin",
+"footer-upsi-el":"Tentang UPSI",
+
+"footer-svc-head-el":"Perkhidmatan",
+"footer-svc1-el":"Pendidikan & Latihan",
+"footer-svc2-el":"Hospitaliti",
+"footer-svc3-el":"Perkhidmatan Runcit",
+"footer-svc4-el":"Konsultasi",
+
+"footer-res-head-el":"Sumber",
+"footer-career-el":"Kerjaya",
+"footer-tender-el":"Tender",
+"footer-news-el":"Berita",
+
+"footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+
+},
+
+bi:{
+
+/* ================= TOP BAR ================= */
+"top-phone-text":"Got Questions? Call us: 012-2525 843",
+"top-cta-el":"Contact Us",
+"company-tagline":"Synergy of Resources & UPSI Expertise",
+
+/* ================= NAVIGATION ================= */
+"nav-home-el":"Home",
+"nav-about-el":"About Us",
+"nav-services-el":"Services",
+"nav-products-el":"Our Products",
+"nav-ads-el":"Ads",
+"nav-career-el":"Career",
+"nav-tender-el":"Tender",
+"nav-media-el":"Media",
+"nav-contact-btn-el":"Contact Us",
+
+/* ================= DROPDOWN ================= */
+"dd-bod-el":"Board of Directors",
+"dd-leaders-el":"Leaders",
+"dd-upsi-el":"About UPSI",
+"dd-edu-el":"Education & Training",
+"dd-hosp-el":"Training Center & Hospitality",
+"dd-retail-el":"Retail & Services",
+"dd-projects-el":"Projects Consultation",
+"dd-solar-el":"Solar Energy Solutions",
+"dd-facility-el":"Facility Management",
+"dd-gallery-el":"Gallery",
+"dd-news-el":"News",
+
+/* ================= BREADCRUMB ================= */
+"bc-home-el":"Home",
+"bc-media-el":"Media",
+"bc-current-el":"Gallery",
+
+/* ================= HERO ================= */
+"hero-title-el":"Gallery",
+"hero-desc-el":"Explore our facilities, events, and memorable moments at UPSI Holdings",
+
+/* ================= FILTER ================= */
+"filter-all-el":"All",
+"filter-facilities-el":"Facilities",
+"filter-events-el":"Events",
+"filter-hospitality-el":"Hospitality",
+"filter-campus-el":"Campus",
+
+/* ================= CATEGORY 1 ================= */
+"cat1-title-el":"Our Facilities",
+
+"g1-title-el":"Scholar's Suites",
+"g1-desc-el":"Comfortable accommodation with mountain views",
+
+"g2-title-el":"Seminar Rooms",
+"g2-desc-el":"State-of-the-art meeting facilities",
+
+"g3-title-el":"The Banjaran Cape",
+"g3-desc-el":"Dining and catering services",
+
+"g4-title-el":"Ujana Escape",
+"g4-desc-el":"Cabin and campsite retreat",
+
+/* ================= CATEGORY 2 ================= */
+"cat2-title-el":"Events & Programs",
+
+"g5-title-el":"Training Programs",
+"g5-desc-el":"Professional development workshops",
+
+"g6-title-el":"Corporate Events",
+"g6-desc-el":"Conferences and seminars",
+
+"g7-title-el":"Ramadan Buffet",
+"g7-desc-el":"Special Iftar celebrations",
+
+"g8-title-el":"Celebrations",
+"g8-desc-el":"Birthday parties and gatherings",
+
+/* ================= CATEGORY 3 ================= */
+"cat3-title-el":"Campus & Environment",
+
+"g9-title-el":"Mountain Views",
+"g9-desc-el":"Beautiful Titiwangsa backdrop",
+
+"g10-title-el":"UPSI Campus",
+"g10-desc-el":"Lush green surroundings",
+
+"g11-title-el":"Campus Architecture",
+"g11-desc-el":"Modern facilities and design",
+
+"g12-title-el":"Solar Energy",
+"g12-desc-el":"Sustainable green initiatives",
+
+/* ================= CATEGORY 4 ================= */
+"cat4-title-el":"Hospitality Services",
+
+"g13-title-el":"Room Interiors",
+"g13-desc-el":"Comfortable and modern rooms",
+
+"g14-title-el":"Dining Experience",
+"g14-desc-el":"Delicious meals and catering",
+
+"g15-title-el":"Recreation Facilities",
+"g15-desc-el":"Leisure and relaxation areas",
+
+"g16-title-el":"Support Services",
+"g16-desc-el":"Laundry and housekeeping",
+
+/* ================= VIDEO ================= */
+"video-title-el":"Video Gallery",
+"video-desc-el":"Watch our facilities and events in action",
+
+"v1-label-el":"Virtual Tour",
+"v1-title-el":"UPSI Holdings Virtual Tour",
+
+"v2-title-el":"Scholar's Suites Showcase",
+
+"v3-label-el":"Event Highlights",
+"v3-title-el":"Recent Events Highlights",
+
+/* ================= FOOTER ================= */
+"footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+"footer-address-label-el":"Main Office:",
+"footer-phone-label-el":"Phone:",
+
+"footer-about-head-el":"About",
+"footer-bod-el":"Board of Directors",
+"footer-leaders-el":"Leaders",
+"footer-upsi-el":"About UPSI",
+
+"footer-svc-head-el":"Services",
+"footer-svc1-el":"Education & Training",
+"footer-svc2-el":"Hospitality",
+"footer-svc3-el":"Retail Services",
+"footer-svc4-el":"Consultation",
+
+"footer-res-head-el":"Resources",
+"footer-career-el":"Career",
+"footer-tender-el":"Tender",
+"footer-news-el":"News",
+
+"footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+}
+};
+
+function setLang(lang) {
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t=T[lang]; if(!t) return;
+    Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});
+    document.documentElement.lang=lang==='bm'?'ms':'en';
+    try{localStorage.setItem('upsi-lang',lang);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{const s=localStorage.getItem('upsi-lang')||'bm';setLang(s);});
+</script>
+</body>
+</html>

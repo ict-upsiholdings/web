@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Kemas Kini - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <style>
+    .news-section {
+        position: relative;
+        background-image: url('image/OFFICE.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .news-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.87);
+        z-index: 0;
+        pointer-events: none;
+    }
+    .news-section .container { position: relative; z-index: 1; }
+
+    /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+    .nav-lang-dropdown { position: relative; }
+    .nav-lang-btn {
+        display: flex; align-items: center; gap: 6px;
+        background: none; border: 1.5px solid #e0e4f0;
+        cursor: pointer; font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem; font-weight: 600; color: #1a237e;
+        padding: 7px 13px; border-radius: 8px;
+        transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+    .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+    .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+    .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+    .nav-lang-menu {
+        display: none; position: absolute; right: 0; top: calc(100% + 8px);
+        background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+        box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+        overflow: hidden; z-index: 9999;
+    }
+    .nav-lang-dropdown.open .nav-lang-menu { display: block; }
+    .nav-lang-menu button {
+        display: flex; align-items: center; gap: 10px;
+        width: 100%; padding: 11px 16px; background: none; border: none;
+        font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+        color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+    }
+    .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+    .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+    .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+    .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px; width:auto; object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"> <span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"> <span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+            <!-- END LANGUAGE DROPDOWN -->
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero news-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-media-el">Media</a> › <span id="bc-current-el">Berita & Kemas Kini</span></div>
+    <h1 id="hero-title-el">Berita & Kemas Kini</h1>
+    <p id="hero-desc-el">Ikuti berita terkini dan pengumuman daripada UPSI Holdings</p>
+</section>
+
+<section class="news-section">
+    <div class="container">
+        <div class="news-layout">
+            <div class="main-news">
+                <!-- Featured -->
+                <div class="featured-news">
+                    <span class="news-badge featured" id="featured-badge-el">TERKEMUKA</span>
+                    <img src="https://via.placeholder.com/800x400" alt="Featured News" class="news-featured-image">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category" id="feat-cat-el">📢 Pengumuman</span>
+                            <span class="news-date">10 Februari 2026</span>
+                        </div>
+                        <h2 id="feat-title-el">UPSI Holdings Melancarkan Inisiatif Tenaga Solar Baharu</h2>
+                        <p id="feat-desc1-el">UPSI Holdings Sdn Bhd dengan bangganya mengumumkan pelancaran program tenaga solar kami yang komprehensif, bertujuan untuk mengurangkan jejak karbon dan mempromosikan penyelesaian tenaga mampan di semua kemudahan kami. Inisiatif ini dijangka menjimatkan kira-kira 30% kos tenaga setiap tahun.</p>
+                        <p id="feat-desc2-el">Pemasangan akan bermula di Scholar's Suites dan berkembang ke hartanah lain sepanjang tahun 2026. Kami telah bermitra dengan pembekal teknologi solar terkemuka untuk memastikan kualiti dan kecekapan tertinggi.</p>
+                        <button class="btn btn-primary" id="feat-btn-el">Baca Artikel Penuh</button>
+                    </div>
+                </div>
+
+                <!-- News Articles -->
+                <div class="news-list">
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="image/company-news.png" alt="News thumbnail">
+                            <span class="news-badge" id="a1-badge-el">Berita Syarikat</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a1-cat-el">🏢 Perniagaan</span>
+                                <span class="news-date">8 Februari 2026</span>
+                            </div>
+                            <h3 id="a1-title-el">The Banjaran Cape Memperkenalkan Menu Baharu untuk 2026</h3>
+                            <p id="a1-desc-el">Restoran tandatangan kami, The Banjaran Cape, memperkenalkan menu baharu yang menampilkan masakan tempatan dan antarabangsa, termasuk pakej Ramadan khas dan pilihan katering acara korporat.</p>
+                            <a href="#" class="read-more" id="a1-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="image/company-news.png" alt="News thumbnail">
+                            <span class="news-badge" id="a2-badge-el">Acara</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a2-cat-el">🎓 Pendidikan</span>
+                                <span class="news-date">5 Februari 2026</span>
+                            </div>
+                            <h3 id="a2-title-el">Pameran Pendidikan 2026 yang Berjaya di Kampus UPSI</h3>
+                            <p id="a2-desc-el">UPSI Holdings berjaya menganjurkan Pameran Pendidikan 2026, menarik lebih 1,000 peserta yang berminat dengan program pendidikan dan latihan kami dari TADIKA hingga PhD.</p>
+                            <a href="#" class="read-more" id="a2-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="https://via.placeholder.com/300x200" alt="News thumbnail">
+                            <span class="news-badge" id="a3-badge-el">Pencapaian</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a3-cat-el">🏆 Anugerah</span>
+                                <span class="news-date">1 Februari 2026</span>
+                            </div>
+                            <h3 id="a3-title-el">Scholar's Suites Menerima Anugerah Kecemerlangan Hospitaliti</h3>
+                            <p id="a3-desc-el">Kami berbesar hati menerima Anugerah Kecemerlangan Hospitaliti 2025 atas perkhidmatan dan kemudahan cemerlang di Scholar's Suites.</p>
+                            <a href="#" class="read-more" id="a3-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="https://via.placeholder.com/300x200" alt="News thumbnail">
+                            <span class="news-badge" id="a4-badge-el">Perkongsian</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a4-cat-el">🤝 Kerjasama</span>
+                                <span class="news-date">28 Januari 2026</span>
+                            </div>
+                            <h3 id="a4-title-el">Perkongsian Strategik dengan Hab Inovasi Teknologi</h3>
+                            <p id="a4-desc-el">UPSI Holdings telah menjalin perkongsian strategik dengan hab inovasi teknologi terkemuka Malaysia untuk membangunkan Sistem MyFIS Neo dan meningkatkan infrastruktur digital kami.</p>
+                            <a href="#" class="read-more" id="a4-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="https://via.placeholder.com/300x200" alt="News thumbnail">
+                            <span class="news-badge" id="a5-badge-el">Kemas Kini Kemudahan</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a5-cat-el">🏗️ Pembangunan</span>
+                                <span class="news-date">20 Januari 2026</span>
+                            </div>
+                            <h3 id="a5-title-el">Kabin & Tapak Perkhemahan Ujana Escape Kini Dibuka untuk Tempahan</h3>
+                            <p id="a5-desc-el">Ujana Escape kini rasmi dibuka, menawarkan penginapan kabin yang tenang dan kemudahan berkemah dikelilingi Banjaran Titiwangsa. Sesuai untuk pembinaan pasukan dan percutian keluarga.</p>
+                            <a href="#" class="read-more" id="a5-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                    <article class="news-article">
+                        <div class="news-thumbnail">
+                            <img src="https://via.placeholder.com/300x200" alt="News thumbnail">
+                            <span class="news-badge" id="a6-badge-el">CSR</span>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category" id="a6-cat-el">❤️ Komuniti</span>
+                                <span class="news-date">15 Januari 2026</span>
+                            </div>
+                            <h3 id="a6-title-el">Program Jangkauan Komuniti UPSI Holdings 2026</h3>
+                            <p id="a6-desc-el">Kami menganjurkan bengkel pendidikan dan menderma bahan pembelajaran kepada sekolah-sekolah kurang bernasib baik di daerah Tanjong Malim, memberi manfaat kepada lebih 500 pelajar.</p>
+                            <a href="#" class="read-more" id="a6-link-el">Baca Lagi →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn" id="pagination-next-el">Seterusnya →</button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="news-sidebar">
+                <div class="sidebar-widget">
+                    <h3 id="sidebar-cat-title-el">Kategori</h3>
+                    <ul class="category-list">
+                        <li><a href="#" id="sc1-el">📢 Semua Berita <span>(24)</span></a></li>
+                        <li><a href="#" id="sc2-el">🏢 Berita Syarikat <span>(8)</span></a></li>
+                        <li><a href="#" id="sc3-el">🎓 Pendidikan <span>(6)</span></a></li>
+                        <li><a href="#" id="sc4-el">🎉 Acara <span>(5)</span></a></li>
+                        <li><a href="#" id="sc5-el">🏆 Pencapaian <span>(3)</span></a></li>
+                        <li><a href="#" id="sc6-el">🤝 Perkongsian <span>(2)</span></a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 id="sidebar-recent-title-el">Kemas Kini Terkini</h3>
+                    <div class="recent-news">
+                        <div class="recent-item"><span class="recent-date">10 Feb 2026</span><a href="#" id="r1-el">Pelancaran Inisiatif Tenaga Solar</a></div>
+                        <div class="recent-item"><span class="recent-date">8 Feb 2026</span><a href="#" id="r2-el">Menu Baharu di The Banjaran Cape</a></div>
+                        <div class="recent-item"><span class="recent-date">5 Feb 2026</span><a href="#" id="r3-el">Kejayaan Pameran Pendidikan 2026</a></div>
+                        <div class="recent-item"><span class="recent-date">1 Feb 2026</span><a href="#" id="r4-el">Anugerah Kecemerlangan Hospitaliti</a></div>
+                    </div>
+                </div>
+                <div class="sidebar-widget newsletter">
+                    <h3 id="sidebar-newsletter-title-el">Ikuti Perkembangan</h3>
+                    <p id="sidebar-newsletter-desc-el">Langgan surat berita kami untuk berita dan kemas kini terkini.</p>
+                    <form class="newsletter-form">
+                        <input type="email" id="newsletter-placeholder-input" placeholder="Alamat e-mel anda" required>
+                        <button type="submit" class="btn btn-primary" id="sidebar-subscribe-btn-el">Langgan</button>
+                    </form>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 id="sidebar-follow-title-el">Ikuti Kami</h3>
+                    <div class="social-links-sidebar">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, Sultan Idris Education University, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                </div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="about-upsi.html" id="footer-upsi-el">Tentang UPSI</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
+const T = {
+    bm: {
+        // Top Bar
+        "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+        "top-cta-el": "Hubungi Kami",
+        "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+
+        // Navigation
+        "nav-home-el": "Laman Utama",
+        "nav-about-el": "Tentang Kami",
+        "nav-services-el": "Perkhidmatan",
+        "nav-products-el": "Produk Kami",
+        "nav-ads-el": "Iklan",
+        "nav-career-el": "Kerjaya",
+        "nav-tender-el": "Tender",
+        "nav-media-el": "Media",
+        "nav-contact-btn-el": "Hubungi Kami",
+
+        // Dropdowns
+        "dd-bod-el": "Lembaga Pengarah",
+        "dd-leaders-el": "Pemimpin",
+        "dd-upsi-el": "Tentang UPSI",
+        "dd-edu-el": "Pendidikan & Latihan",
+        "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+        "dd-retail-el": "Runcit & Perkhidmatan",
+        "dd-projects-el": "Konsultasi Projek",
+        "dd-solar-el": "Penyelesaian Tenaga Solar",
+        "dd-facility-el": "Pengurusan Kemudahan",
+        "dd-gallery-el": "Galeri",
+        "dd-news-el": "Berita",
+
+        // Breadcrumbs
+        "bc-home-el": "Laman Utama",
+        "bc-media-el": "Media",
+        "bc-current-el": "Berita & Kemas Kini",
+
+        // Hero Section
+        "hero-title-el": "Berita & Kemas Kini",
+        "hero-desc-el": "Ikuti berita terkini dan pengumuman daripada UPSI Holdings",
+
+        // Featured Article
+        "featured-badge-el": "TERKEMUKA",
+        "feat-cat-el": "📢 Pengumuman",
+        "feat-title-el": "UPSI Holdings Melancarkan Inisiatif Tenaga Solar Baharu",
+        "feat-desc1-el": "UPSI Holdings Sdn Bhd dengan bangganya mengumumkan pelancaran program tenaga solar kami yang komprehensif, bertujuan untuk mengurangkan jejak karbon dan mempromosikan penyelesaian tenaga mampan di semua kemudahan kami. Inisiatif ini dijangka menjimatkan kira-kira 30% kos tenaga setiap tahun.",
+        "feat-desc2-el": "Pemasangan akan bermula di Scholar's Suites dan berkembang ke hartanah lain sepanjang tahun 2026. Kami telah bermitra dengan pembekal teknologi solar terkemuka untuk memastikan kualiti dan kecekapan tertinggi.",
+        "feat-btn-el": "Baca Artikel Penuh",
+
+        // Articles
+        "a1-badge-el": "Berita Syarikat",
+        "a1-cat-el": "🏢 Perniagaan",
+        "a1-title-el": "The Banjaran Cape Memperkenalkan Menu Baharu untuk 2026",
+        "a1-desc-el": "Restoran tandatangan kami, The Banjaran Cape, memperkenalkan menu baharu yang menampilkan masakan tempatan dan antarabangsa, termasuk pakej Ramadan khas dan pilihan katering acara korporat.",
+        "a1-link-el": "Baca Lagi →",
+
+        "a2-badge-el": "Acara",
+        "a2-cat-el": "🎓 Pendidikan",
+        "a2-title-el": "Pameran Pendidikan 2026 yang Berjaya di Kampus UPSI",
+        "a2-desc-el": "UPSI Holdings berjaya menganjurkan Pameran Pendidikan 2026, menarik lebih 1,000 peserta yang berminat dengan program pendidikan dan latihan kami dari TADIKA hingga PhD.",
+        "a2-link-el": "Baca Lagi →",
+
+        "a3-badge-el": "Pencapaian",
+        "a3-cat-el": "🏆 Anugerah",
+        "a3-title-el": "Scholar's Suites Menerima Anugerah Kecemerlangan Hospitaliti",
+        "a3-desc-el": "Kami berbesar hati menerima Anugerah Kecemerlangan Hospitaliti 2025 atas perkhidmatan dan kemudahan cemerlang di Scholar's Suites.",
+        "a3-link-el": "Baca Lagi →",
+
+        "a4-badge-el": "Perkongsian",
+        "a4-cat-el": "🤝 Kerjasama",
+        "a4-title-el": "Perkongsian Strategik dengan Hab Inovasi Teknologi",
+        "a4-desc-el": "UPSI Holdings telah menjalin perkongsian strategik dengan hab inovasi teknologi terkemuka Malaysia untuk membangunkan Sistem MyFIS Neo dan meningkatkan infrastruktur digital kami.",
+        "a4-link-el": "Baca Lagi →",
+
+        "a5-badge-el": "Kemas Kini Kemudahan",
+        "a5-cat-el": "🏗️ Pembangunan",
+        "a5-title-el": "Kabin & Tapak Perkhemahan Ujana Escape Kini Dibuka untuk Tempahan",
+        "a5-desc-el": "Ujana Escape kini rasmi dibuka, menawarkan penginapan kabin yang tenang dan kemudahan berkemah dikelilingi Banjaran Titiwangsa. Sesuai untuk pembinaan pasukan dan percutian keluarga.",
+        "a5-link-el": "Baca Lagi →",
+
+        "a6-badge-el": "CSR",
+        "a6-cat-el": "❤️ Komuniti",
+        "a6-title-el": "Program Jangkauan Komuniti UPSI Holdings 2026",
+        "a6-desc-el": "Kami menganjurkan bengkel pendidikan dan menderma bahan pembelajaran kepada sekolah-sekolah kurang bernasib baik di daerah Tanjong Malim, memberi manfaat kepada lebih 500 pelajar.",
+        "a6-link-el": "Baca Lagi →",
+
+        // Pagination
+        "pagination-next-el": "Seterusnya →",
+
+        // Sidebar
+        "sidebar-cat-title-el": "Kategori",
+        "sc1-el": "📢 Semua Berita",
+        "sc2-el": "🏢 Berita Syarikat",
+        "sc3-el": "🎓 Pendidikan",
+        "sc4-el": "🎉 Acara",
+        "sc5-el": "🏆 Pencapaian",
+        "sc6-el": "🤝 Perkongsian",
+
+        "sidebar-recent-title-el": "Kemas Kini Terkini",
+        "r1-el": "Pelancaran Inisiatif Tenaga Solar",
+        "r2-el": "Menu Baharu di The Banjaran Cape",
+        "r3-el": "Kejayaan Pameran Pendidikan 2026",
+        "r4-el": "Anugerah Kecemerlangan Hospitaliti",
+
+        "sidebar-newsletter-title-el": "Ikuti Perkembangan",
+        "sidebar-newsletter-desc-el": "Langgan surat berita kami untuk berita dan kemas kini terkini.",
+        "sidebar-subscribe-btn-el": "Langgan",
+        "sidebar-follow-title-el": "Ikuti Kami",
+
+        // Footer
+        "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+        "footer-address-label-el": "Pejabat Utama:",
+        "footer-phone-label-el": "Telefon:",
+        "footer-about-head-el": "Tentang",
+        "footer-bod-el": "Lembaga Pengarah",
+        "footer-leaders-el": "Pemimpin",
+        "footer-upsi-el": "Tentang UPSI",
+        "footer-svc-head-el": "Perkhidmatan",
+        "footer-svc1-el": "Pendidikan & Latihan",
+        "footer-svc2-el": "Hospitaliti",
+        "footer-svc3-el": "Perkhidmatan Runcit",
+        "footer-res-head-el": "Sumber",
+        "footer-career-el": "Kerjaya",
+        "footer-tender-el": "Tender",
+        "footer-news-el": "Berita",
+        "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+    },
+
+    bi: {
+        // Top Bar
+        "top-phone-text": "Got Questions? Call us: 012-2525 843",
+        "top-cta-el": "Contact Us",
+        "company-tagline": "Synergy of Resources & UPSI Expertise",
+
+        // Navigation
+        "nav-home-el": "Home",
+        "nav-about-el": "About Us",
+        "nav-services-el": "Services",
+        "nav-products-el": "Our Products",
+        "nav-ads-el": "Ads",
+        "nav-career-el": "Career",
+        "nav-tender-el": "Tender",
+        "nav-media-el": "Media",
+        "nav-contact-btn-el": "Contact Us",
+
+        // Dropdowns
+        "dd-bod-el": "Board of Directors",
+        "dd-leaders-el": "Leaders",
+        "dd-upsi-el": "About UPSI",
+        "dd-edu-el": "Education & Training",
+        "dd-hosp-el": "Training Center & Hospitality",
+        "dd-retail-el": "Retail & Services",
+        "dd-projects-el": "Projects Consultation",
+        "dd-solar-el": "Solar Energy Solutions",
+        "dd-facility-el": "Facility Management",
+        "dd-gallery-el": "Gallery",
+        "dd-news-el": "News",
+
+        // Breadcrumbs
+        "bc-home-el": "Home",
+        "bc-media-el": "Media",
+        "bc-current-el": "News & Updates",
+
+        // Hero Section
+        "hero-title-el": "News & Updates",
+        "hero-desc-el": "Stay informed with the latest news and announcements from UPSI Holdings",
+
+        // Featured Article
+        "featured-badge-el": "FEATURED",
+        "feat-cat-el": "📢 Announcement",
+        "feat-title-el": "UPSI Holdings Launches New Solar Energy Initiative",
+        "feat-desc1-el": "UPSI Holdings Sdn Bhd is proud to announce the launch of our comprehensive solar energy program, aimed at reducing carbon footprint and promoting sustainable energy solutions across all our facilities. This initiative is expected to save an estimated 30% in energy costs annually.",
+        "feat-desc2-el": "The installation will begin at Scholar's Suites and expand to other properties throughout 2026. We have partnered with leading solar technology providers to ensure the highest quality and efficiency of our solar panel systems.",
+        "feat-btn-el": "Read Full Article",
+
+        // Articles
+        "a1-badge-el": "Company News",
+        "a1-cat-el": "🏢 Business",
+        "a1-title-el": "The Banjaran Cape Introduces New Menu for 2026",
+        "a1-desc-el": "Our signature restaurant, The Banjaran Cape, is excited to unveil a refreshed menu featuring local and international cuisine, including special Ramadan packages and corporate event catering options.",
+        "a1-link-el": "Read More →",
+
+        "a2-badge-el": "Events",
+        "a2-cat-el": "🎓 Education",
+        "a2-title-el": "Successful Education Fair 2026 at UPSI Campus",
+        "a2-desc-el": "UPSI Holdings successfully hosted the Education Fair 2026, attracting over 1,000 participants interested in our education and training programs from TADIKA to PhD.",
+        "a2-link-el": "Read More →",
+
+        "a3-badge-el": "Achievement",
+        "a3-cat-el": "🏆 Awards",
+        "a3-title-el": "Scholar's Suites Receives Hospitality Excellence Award",
+        "a3-desc-el": "We are honored to receive the Hospitality Excellence Award 2025 for our outstanding service and facilities at Scholar's Suites.",
+        "a3-link-el": "Read More →",
+
+        "a4-badge-el": "Partnership",
+        "a4-cat-el": "🤝 Collaboration",
+        "a4-title-el": "Strategic Partnership with Tech Innovation Hub",
+        "a4-desc-el": "UPSI Holdings has formed a strategic partnership with Malaysia's leading tech innovation hub to develop the MyFIS Neo System and enhance our digital infrastructure.",
+        "a4-link-el": "Read More →",
+
+        "a5-badge-el": "Facility Update",
+        "a5-cat-el": "🏗️ Development",
+        "a5-title-el": "Ujana Escape Cabin & Campsite Now Open for Bookings",
+        "a5-desc-el": "Ujana Escape is now officially open, offering serene cabin stays and camping facilities surrounded by the beautiful Titiwangsa Mountain Range. Perfect for team building and family retreats.",
+        "a5-link-el": "Read More →",
+
+        "a6-badge-el": "CSR",
+        "a6-cat-el": "❤️ Community",
+        "a6-title-el": "UPSI Holdings Community Outreach Program 2026",
+        "a6-desc-el": "We organized educational workshops and donated learning materials to underprivileged schools in the Tanjong Malim district, benefiting over 500 students.",
+        "a6-link-el": "Read More →",
+
+        // Pagination
+        "pagination-next-el": "Next →",
+
+        // Sidebar
+        "sidebar-cat-title-el": "Categories",
+        "sc1-el": "📢 All News",
+        "sc2-el": "🏢 Company News",
+        "sc3-el": "🎓 Education",
+        "sc4-el": "🎉 Events",
+        "sc5-el": "🏆 Achievements",
+        "sc6-el": "🤝 Partnerships",
+
+        "sidebar-recent-title-el": "Recent Updates",
+        "r1-el": "Solar Energy Initiative Launch",
+        "r2-el": "New Menu at The Banjaran Cape",
+        "r3-el": "Education Fair 2026 Success",
+        "r4-el": "Hospitality Excellence Award",
+
+        "sidebar-newsletter-title-el": "Stay Updated",
+        "sidebar-newsletter-desc-el": "Subscribe to our newsletter for the latest news and updates.",
+        "sidebar-subscribe-btn-el": "Subscribe",
+        "sidebar-follow-title-el": "Follow Us",
+
+        // Footer
+        "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+        "footer-address-label-el": "Main Office:",
+        "footer-phone-label-el": "Phone:",
+        "footer-about-head-el": "About",
+        "footer-bod-el": "Board of Directors",
+        "footer-leaders-el": "Leaders",
+        "footer-upsi-el": "About UPSI",
+        "footer-svc-head-el": "Services",
+        "footer-svc1-el": "Education & Training",
+        "footer-svc2-el": "Hospitality",
+        "footer-svc3-el": "Retail Services",
+        "footer-res-head-el": "Resources",
+        "footer-career-el": "Career",
+        "footer-tender-el": "Tender",
+        "footer-news-el": "News",
+        "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+    }
+};
+
+function setLang(lang) {
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t=T[lang]; if(!t) return;
+    Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});
+    // Special: newsletter input placeholder
+    const inp=document.getElementById('newsletter-placeholder-input');
+    if(inp) inp.placeholder=lang==='bm'?'Alamat e-mel anda':'Your email address';
+    document.documentElement.lang=lang==='bm'?'ms':'en';
+    try{localStorage.setItem('upsi-lang',lang);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{const s=localStorage.getItem('upsi-lang')||'bm';setLang(s);});
+</script>
+</body>
+</html>

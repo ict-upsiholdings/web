@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengurusan Kemudahan - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <link rel="stylesheet" href="service-cards.css">
+<style>
+.service-details-section{position:relative;background-image:url('image/building.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
+.service-details-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+.service-details-section .container{position:relative;z-index:1;}
+.edu-modal-overlay{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;}
+.edu-modal-overlay.active{display:flex;}
+.edu-modal-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.38);z-index:0;}
+.edu-modal-box{position:relative;z-index:1;background:rgba(255,255,255,0.88);backdrop-filter:blur(6px);max-width:680px;width:92%;max-height:85vh;overflow-y:auto;padding:52px 52px 44px;border-radius:2px;animation:eduFadeIn 0.28s ease;}
+@media(max-width:600px){.edu-modal-box{padding:40px 24px 32px;}}
+@keyframes eduFadeIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.edu-modal-close{position:absolute;top:20px;right:26px;font-size:1.6rem;background:none;border:none;cursor:pointer;color:#555;line-height:1;font-weight:300;}
+.edu-modal-close:hover{color:#000;}
+.edu-modal-title{font-family:'Raleway',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;color:#1a1a1a;line-height:1.2;}
+.edu-modal-divider{width:40px;height:3px;background:#888;margin-bottom:22px;}
+.edu-modal-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.edu-modal-meta span{background:#f0f9f5;color:#2a7d52;border:1px solid #b2e0cb;border-radius:20px;padding:4px 14px;font-size:0.83rem;font-family:'Open Sans',sans-serif;font-weight:500;}
+.edu-modal-desc{font-family:'Open Sans',sans-serif;font-size:0.97rem;line-height:1.8;color:#444;margin-bottom:20px;}
+.edu-modal-list{padding-left:22px;font-family:'Open Sans',sans-serif;font-size:0.93rem;line-height:1.85;color:#444;margin-bottom:28px;}
+.edu-modal-list li{margin-bottom:12px;}
+.edu-modal-list li strong{color:#1a1a1a;}
+.edu-modal-cta{display:inline-block;padding:12px 34px;background:#1a5c38;color:#fff;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;transition:background 0.2s;}
+.edu-modal-cta:hover{background:#134429;}
+.program-card{cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+.program-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12);}
+
+/* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
+.nav-lang-dropdown { position: relative; }
+.nav-lang-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1.5px solid #e0e4f0;
+    cursor: pointer; font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem; font-weight: 600; color: #1a237e;
+    padding: 7px 13px; border-radius: 8px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+.nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+.nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+.nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+.nav-lang-menu {
+    display: none; position: absolute; right: 0; top: calc(100% + 8px);
+    background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+    box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+    overflow: hidden; z-index: 9999;
+}
+.nav-lang-dropdown.open .nav-lang-menu { display: block; }
+.nav-lang-menu button {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; padding: 11px 16px; background: none; border: none;
+    font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+    color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+}
+.nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+.nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+.nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+.nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+</style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-content"><div class="top-bar-left"><a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a><a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a></div><div class="top-bar-right"><div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div><a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a></div></div></div>
+
+<nav><div class="nav-container"><a href="index.html" class="logo-section"><img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;"><div class="company-info"><h1>UPSI HOLDINGS</h1><p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p></div></a>
+<ul class="nav-menu">
+<li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+<li><a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a><div class="dropdown"><a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a><a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a><a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a></div></li>
+<li><a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a><div class="dropdown"><a href="education.html"> <span id="dd-edu-el">Pendidikan & Latihan</span></a><a href="hospitality.html"> <span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a><a href="retail.html"> <span id="dd-retail-el">Runcit & Perkhidmatan</span></a><a href="projects.html"> <span id="dd-projects-el">Konsultasi Projek</span></a><a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a><a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a></div></li>
+ <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li><li><a href="ads.html" id="nav-ads-el">Iklan</a></li><li><a href="career.html" id="nav-career-el">Kerjaya</a></li><li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+<li><a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a><div class="dropdown"><a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a><a href="news.html"><span id="dd-news-el">Berita</span></a></div></li>
+</ul>
+<div class="nav-right">
+    <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+    <!-- LANGUAGE DROPDOWN -->
+    <div class="nav-lang-dropdown" id="navLangDropdown">
+        <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
+            <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+            <span id="lang-label">Melayu</span>
+            <span class="lang-arrow">&#9662;</span>
+        </button>
+        <div class="nav-lang-menu" id="navLangMenu">
+            <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+            </button>
+            <div class="nav-lang-menu-divider"></div>
+            <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+            </button>
+        </div>
+    </div>
+    <!-- END LANGUAGE DROPDOWN -->
+</div></div></nav>
+
+<section class="page-hero facility-hero">
+    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-svc-el">Perkhidmatan</a> › <span id="bc-current-el">Pengurusan Kemudahan</span></div>
+    <h1 id="hero-title-el">Pengurusan Kemudahan</h1>
+    <p id="hero-desc-el">Pengurusan Kemudahan Komprehensif untuk Kampus Kota Meru dan Lebih Jauh</p>
+</section>
+
+<section class="service-details-section">
+    <div class="container">
+        <div class="service-overview">
+            <h2 id="overview-title-el">Perkhidmatan Pengurusan Kemudahan Profesional</h2>
+            <p id="overview-desc-el">UPSI Holdings menyediakan perkhidmatan pengurusan kemudahan yang komprehensif memastikan prestasi, keselamatan, dan keselesaan bangunan dan premis yang optimum. Pasukan berpengalaman kami menguruskan segala-galanya dari penyelenggaraan rutin hingga projek infrastruktur yang kompleks dengan profesionalisme dan kecekapan.</p>
+        </div>
+        <div class="section-title-bar"><span class="title-accent"></span><h2 id="fm-title-el">Perkhidmatan FM Kami</h2><div class="title-line"></div></div>
+        <div class="programs-grid">
+            <div class="program-card" data-index="01" onclick="openEduModal('building')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🔨</div><h3 id="c1-title">Penyelenggaraan Bangunan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m1">Komprehensif</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m2">Pencegahan & Reaktif</span></span></div>
+                <p class="program-desc" id="c1-desc">Perkhidmatan penyelenggaraan bangunan lengkap termasuk pembaikan struktur, pengecatan, kalis air, dan penjagaan am untuk mengekalkan nilai dan estetik hartanah.</p>
+                <ul class="program-features"><li id="c1-f1">Penyelenggaraan pencegahan</li><li id="c1-f2">Pembaikan pembetulan</li><li id="c1-f3">Pengecatan & hiasan</li><li id="c1-f4">Kalis air</li><li id="c1-f5">Kerja pertukangan</li><li id="c1-f6">Perkhidmatan paip</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c1-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="02" onclick="openEduModal('security')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🛡️</div><h3 id="c2-title">Perkhidmatan Keselamatan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m1">Perlindungan 24/7</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m2">Pengawal Terlatih</span></span></div>
+                <p class="program-desc" id="c2-desc">Perkhidmatan keselamatan profesional termasuk pengawalan berman, kawalan akses, pemantauan CCTV, dan perkhidmatan rondaan untuk memastikan keselamatan dan ketenteraman fikiran.</p>
+                <ul class="program-features"><li id="c2-f1">Pengawal keselamatan 24/7</li><li id="c2-f2">Sistem kawalan akses</li><li id="c2-f3">Pemantauan CCTV</li><li id="c2-f4">Perkhidmatan rondaan</li><li id="c2-f5">Laporan insiden</li><li id="c2-f6">Tindak balas kecemasan</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c2-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="03" onclick="openEduModal('cleaning')">
+                <div class="program-icon-wrap"><div class="program-icon-box">🧹</div><h3 id="c3-title">Perkhidmatan Pembersihan</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m1">Harian & Mendalam</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m2">Piawaian Antarabangsa</span></span></div>
+                <p class="program-desc" id="c3-desc">Perkhidmatan pembersihan profesional mengekalkan piawaian kebersihan dan higien untuk pejabat, kampus, dan bangunan komersial.</p>
+                <ul class="program-features"><li id="c3-f1">Pembersihan harian</li><li id="c3-f2">Pembersihan mendalam</li><li id="c3-f3">Sanitasi</li><li id="c3-f4">Pengurusan sisa</li><li id="c3-f5">Penjagaan lantai</li><li id="c3-f6">Pembersihan tingkap</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c3-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="04" onclick="openEduModal('space')">
+                <div class="program-icon-wrap"><div class="program-icon-box">📐</div><h3 id="c4-title">Pengurusan Ruang</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m1">Pengoptimuman</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m2">Berasaskan Data</span></span></div>
+                <p class="program-desc" id="c4-desc">Perancangan dan pengurusan ruang strategik untuk mengoptimumkan penggunaan kemudahan, meningkatkan aliran kerja, dan mengurangkan kos operasi.</p>
+                <ul class="program-features"><li id="c4-f1">Perancangan ruang</li><li id="c4-f2">Analisis penghunian</li><li id="c4-f3">Pengoptimuman susun atur</li><li id="c4-f4">Pengurusan perpindahan</li><li id="c4-f5">Penjejakan penggunaan</li><li id="c4-f6">Pengoptimuman kos</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c4-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="05" onclick="openEduModal('asset')">
+                <div class="program-icon-wrap"><div class="program-icon-box">💼</div><h3 id="c5-title">Pengurusan Aset</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m1">Sistem Berkomputer</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m2">Kitaran Hayat Penuh</span></span></div>
+                <p class="program-desc" id="c5-desc">Pengurusan aset komprehensif termasuk penjejakan, penjadualan penyelenggaraan, pengurusan kitaran hayat, dan perancangan penggantian.</p>
+                <ul class="program-features"><li id="c5-f1">Penjejakan aset</li><li id="c5-f2">Penjadualan penyelenggaraan</li><li id="c5-f3">Pengurusan kitaran hayat</li><li id="c5-f4">Kawalan inventori</li><li id="c5-f5">Penjejakan susut nilai</li><li id="c5-f6">Perancangan penggantian</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c5-btn">Maklumat Lanjut</span>
+            </div>
+            <div class="program-card" data-index="06" onclick="openEduModal('utility')">
+                <div class="program-icon-wrap"><div class="program-icon-box">⚡</div><h3 id="c6-title">Pengurusan Utiliti</h3></div>
+                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m1">Fokus Kecekapan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m2">Pemantauan Masa Nyata</span></span></div>
+                <p class="program-desc" id="c6-desc">Pengurusan utiliti termasuk elektrik, air, gas, dan sistem HVAC dengan fokus kepada kecekapan dan pengurangan kos.</p>
+                <ul class="program-features"><li id="c6-f1">Pengurusan tenaga</li><li id="c6-f2">Pemuliharaan air</li><li id="c6-f3">Pengoptimuman HVAC</li><li id="c6-f4">Pemantauan utiliti</li><li id="c6-f5">Analisis kos</li><li id="c6-f6">Inisiatif kemampanan</li></ul>
+                <div class="card-divider"></div><span class="btn-card" id="c6-btn">Maklumat Lanjut</span>
+            </div>
+        </div>
+        <div class="highlight-section">
+            <div class="highlight-content">
+                <h2 id="highlight-title-el">Projek Terkemuka: Kampus Kota Meru</h2>
+                <p id="highlight-desc-el">Sebagai penyedia pengurusan kemudahan yang dilantik untuk Kampus Kota Meru, kami membuktikan komitmen kami kepada kecemerlangan dalam pengurusan kemudahan pendidikan.</p>
+                <div class="highlight-stats">
+                    <div class="stat-item"><div class="stat-number">50,000+</div><div class="stat-label" id="stat1-label">Meter Persegi Diurus</div></div>
+                    <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label" id="stat2-label">Bangunan di Bawah Jagaan</div></div>
+                    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label" id="stat3-label">Ketersediaan Perkhidmatan</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="why-choose-section">
+            <h2 id="why-title-el">Mengapa Pilih Perkhidmatan FM Kami?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><div class="benefit-icon">✅</div><h3 id="ben1-title-el">Pengalaman Terbukti</h3><p id="ben1-desc-el">Pengalaman bertahun-tahun menguruskan kemudahan pelbagai merentas sektor</p></div>
+                <div class="benefit-item"><div class="benefit-icon">👥</div><h3 id="ben2-title-el">Pasukan Mahir</h3><p id="ben2-desc-el">Profesional berkelayakan dan terlatih komited kepada kecemerlangan</p></div>
+                <div class="benefit-item"><div class="benefit-icon">📊</div><h3 id="ben3-title-el">Dipacu Teknologi</h3><p id="ben3-desc-el">Sistem FM moden untuk pengurusan dan pelaporan yang cekap</p></div>
+                <div class="benefit-item"><div class="benefit-icon">💰</div><h3 id="ben4-title-el">Kos Efektif</h3><p id="ben4-desc-el">Operasi yang dioptimumkan mengurangkan kos kemudahan keseluruhan</p></div>
+            </div>
+        </div>
+        <div class="service-cta">
+            <h2 id="cta-title-el">Biarkan Kami Mengurus Kemudahan Anda</h2>
+            <p id="cta-desc-el">Bermitralah dengan kami untuk pengurusan kemudahan profesional yang memastikan hartanah anda terjaga dengan baik, selamat, dan beroperasi dengan cekap.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn1-el">Minta Cadangan</a>
+                <a href="tel:0122525843" class="btn btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn2-el">Hubungi: 012-2525 843</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>UPSI HOLDINGS SDN BHD</h3><p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p><div class="footer-contact"><div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div><div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div></div><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a></div></div>
+<div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
+<div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
+</div><div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div></div></footer>
+
+<div class="edu-modal-overlay" id="eduModal">
+    <div class="edu-modal-bg" id="eduModalBg"></div>
+    <div class="edu-modal-box">
+        <button class="edu-modal-close" onclick="closeEduModal()">&#x2715;</button>
+        <div class="edu-modal-title" id="eduModalTitle"></div>
+        <div class="edu-modal-divider"></div>
+        <div class="edu-modal-meta" id="eduModalMeta"></div>
+        <p class="edu-modal-desc" id="eduModalDesc"></p>
+        <ol class="edu-modal-list" id="eduModalList"></ol>
+        <a href="contact.html" class="edu-modal-cta" id="eduModalCta">Minta Perkhidmatan</a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEduModal();});
+let currentLang='bm';
+
+const eduDataBM={
+building:{title:"Penyelenggaraan Bangunan",bg:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80",meta:["Komprehensif","Pencegahan & Reaktif","Pasukan Di Tapak"],desc:"Perkhidmatan penyelenggaraan bangunan kami meliputi setiap aspek penjagaan hartanah — dari pemeriksaan rutin hingga pembaikan kecemasan — memastikan kemudahan anda kekal selamat, berfungsi, dan terpelihara pada setiap masa.",list:["<strong>Penyelenggaraan Pencegahan:</strong> Pemeriksaan dan servis berjadual untuk mengesan dan menyelesaikan isu sebelum ia meningkat menjadi kerosakan yang mahal.","<strong>Pembaikan Pembetulan:</strong> Tindak balas pantas terhadap kerosakan, kecacatan struktur, dan haus dengan pekerja mahir bersedia sedia.","<strong>Kerja Kemasan:</strong> Pengecatan, kalis air, pertukangan, dan penjagaan hiasan untuk memelihara integriti estetik dan struktur bangunan anda."]},
+security:{title:"Perkhidmatan Keselamatan",bg:"https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1400&q=80",meta:["Perlindungan 24/7","Pengawal Terlatih","Pemantauan CCTV"],desc:"Pasukan keselamatan profesional kami menyediakan perlindungan sepanjang masa untuk premis anda, menggabungkan tenaga manusia terlatih dengan teknologi pengawasan moden untuk menghalang ancaman dan bertindak balas dengan pantas terhadap insiden.",list:["<strong>Pengawalan Berman:</strong> Kakitangan keselamatan terlatih ditempatkan di titik akses utama dengan kelakuan profesional dan kemampuan tindak balas kecemasan.","<strong>Kawalan Akses & CCTV:</strong> Pemasangan dan pemantauan sistem akses elektronik dan kamera pengawasan untuk liputan yang komprehensif.","<strong>Rondaan & Pengurusan Insiden:</strong> Rondaan berjadual di seluruh kemudahan dengan laporan insiden terperinci dan prosedur eskalasi."]},
+cleaning:{title:"Perkhidmatan Pembersihan",bg:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80",meta:["Harian & Mendalam","Piawaian Antarabangsa","Mesra Alam"],desc:"Kami menyediakan perkhidmatan pembersihan profesional yang memenuhi piawaian higien antarabangsa, menjaga tempat kerja anda bersih, sihat, dan menarik untuk penghuni dan pelawat.",list:["<strong>Pembersihan Harian Rutin:</strong> Penyapuan, mopan, sanitasi tandas, dan pembuangan sisa secara berkala untuk mengekalkan piawaian higien harian.","<strong>Pembersihan Mendalam & Sanitasi:</strong> Pembersihan intensif berkala tentang permaidani, perabot, dinding, dan kawasan yang sukar dicapai menggunakan peralatan berkelas industri.","<strong>Penjagaan Lantai & Tingkap Khusus:</strong> Menggilap, membuffer, dan membersihkan tingkap secara profesional untuk mengekalkan permukaan yang bersih di seluruh kemudahan anda."]},
+space:{title:"Pengurusan Ruang",bg:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80",meta:["Pengoptimuman","Berasaskan Data","Pengurangan Kos"],desc:"Kami menggunakan strategi berasaskan data untuk menganalisis, merancang, dan mengoptimumkan penggunaan ruang dalam kemudahan anda — mengurangkan pembaziran, meningkatkan aliran kerja, dan memaksimumkan setiap meter persegi.",list:["<strong>Perancangan Ruang & Pengoptimuman Susun Atur:</strong> Penilaian dan reka bentuk semula profesional tentang susun atur lantai untuk meningkatkan fungsi dan kecekapan penghunian.","<strong>Analisis Penghunian:</strong> Penjejakan dan pelaporan masa nyata tentang penggunaan ruang untuk menyokong keputusan kemudahan berasaskan bukti.","<strong>Pengurusan Perpindahan:</strong> Menyelaraskan pemindahan dalaman dengan gangguan minimum kepada operasi harian dan produktiviti kakitangan."]},
+asset:{title:"Pengurusan Aset",bg:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80",meta:["Sistem Berkomputer","Kitaran Hayat Penuh","Kawalan Inventori"],desc:"Penyelesaian pengurusan aset komprehensif kami menjejaki setiap aset fizikal dari perolehan hingga pelupusan, memastikan penjadualan penyelenggaraan yang betul dan pulangan pelaburan maksimum.",list:["<strong>Penjejakan Aset & Inventori:</strong> Pangkalan data berpusat untuk semua aset kemudahan dengan penandaan kod bar atau RFID untuk penjejakan lokasi dan status masa nyata.","<strong>Penjadualan Penyelenggaraan:</strong> Amaran automatik dan jadual servis untuk memastikan aset berada dalam keadaan kerja yang optimum dan melanjutkan hayat berguna mereka.","<strong>Perancangan Kitaran Hayat & Penggantian:</strong> Analisis susut nilai dan perancangan ke hadapan untuk penggantian aset yang tepat masa bagi mengelakkan kegagalan yang tidak dijangka."]},
+utility:{title:"Pengurusan Utiliti",bg:"https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1400&q=80",meta:["Fokus Kecekapan","Pemantauan Masa Nyata","Pengurangan Kos"],desc:"Kami menguruskan semua sistem utiliti — elektrik, air, HVAC, dan lagi — dengan fokus kepada mengurangkan penggunaan, memangkas kos, dan menyokong objektif kemampanan anda.",list:["<strong>Pengurusan Tenaga & Air:</strong> Pemantauan dan pengoptimuman penggunaan elektrik dan air merentas semua sistem bangunan untuk mengurangkan bil utiliti.","<strong>Pengoptimuman HVAC:</strong> Servis berkala dan penjadualan pintar sistem penghawa dingin dan pengudaraan untuk keselesaan dan kecekapan tenaga.","<strong>Inisiatif Kemampanan:</strong> Pelaksanaan amalan hijau termasuk retrofit LED, sub-pengukuran, dan program pemuliharaan tenaga."]}
+};
+
+const eduDataBI={
+building:{title:"Building Maintenance",bg:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80",meta:["Comprehensive","Preventive & Reactive","On-site Team"],desc:"Our building maintenance services cover every aspect of property upkeep — from routine inspections to emergency repairs — ensuring your facility remains safe, functional, and well-presented at all times.",list:["<strong>Preventive Maintenance:</strong> Scheduled inspections and servicing to detect and resolve issues before they escalate into costly failures.","<strong>Corrective Repairs:</strong> Rapid response to breakdowns, structural defects, and wear-and-tear with skilled tradespeople on standby.","<strong>Finishing Works:</strong> Painting, waterproofing, carpentry, and decorative upkeep to preserve the aesthetic and structural integrity of your building."]},
+security:{title:"Security Services",bg:"https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1400&q=80",meta:["24/7 Protection","Trained Guards","CCTV Monitoring"],desc:"Our professional security team provides round-the-clock protection for your premises, combining trained manpower with modern surveillance technology to deter threats and respond swiftly to incidents.",list:["<strong>Manned Guarding:</strong> Trained security personnel stationed at key access points with professional conduct and emergency response capabilities.","<strong>Access Control & CCTV:</strong> Installation and monitoring of electronic access systems and surveillance cameras for comprehensive coverage.","<strong>Patrol & Incident Management:</strong> Scheduled patrols across the facility with detailed incident reporting and escalation procedures."]},
+cleaning:{title:"Cleaning Services",bg:"https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80",meta:["Daily & Deep Clean","International Standards","Eco-Friendly"],desc:"We deliver professional cleaning services that meet international hygiene standards, keeping your workplace spotless, healthy, and welcoming for occupants and visitors alike.",list:["<strong>Routine Daily Cleaning:</strong> Regular sweeping, mopping, sanitizing of washrooms, and waste disposal to maintain daily hygiene standards.","<strong>Deep Cleaning & Sanitization:</strong> Periodic intensive cleaning of carpets, upholstery, walls, and hard-to-reach areas using industrial-grade equipment.","<strong>Specialized Floor & Window Care:</strong> Polishing, buffing, and professional window cleaning to maintain pristine surfaces throughout your facility."]},
+space:{title:"Space Management",bg:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80",meta:["Optimization","Data-Driven","Cost Reduction"],desc:"We apply data-driven strategies to analyze, plan, and optimize the use of space within your facility — reducing waste, improving workflow, and maximizing every square meter.",list:["<strong>Space Planning & Layout Optimization:</strong> Professional assessment and redesign of floor layouts to improve functionality and occupancy efficiency.","<strong>Occupancy Analysis:</strong> Real-time tracking and reporting of space utilization to support evidence-based facility decisions.","<strong>Move Management:</strong> Coordinating internal relocations with minimal disruption to daily operations and staff productivity."]},
+asset:{title:"Asset Management",bg:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80",meta:["Computerized System","Full Lifecycle","Inventory Control"],desc:"Our comprehensive asset management solution tracks every physical asset from procurement to disposal, ensuring proper maintenance scheduling and maximum return on investment.",list:["<strong>Asset Tracking & Inventory:</strong> Centralized database of all facility assets with barcode or RFID tagging for real-time location and status tracking.","<strong>Maintenance Scheduling:</strong> Automated alerts and service schedules to keep assets in optimal working condition and extend their useful life.","<strong>Lifecycle & Replacement Planning:</strong> Depreciation analysis and forward planning for timely asset replacement to avoid unexpected failures."]},
+utility:{title:"Utility Management",bg:"https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1400&q=80",meta:["Efficiency Focus","Real-Time Monitoring","Cost Reduction"],desc:"We manage all utility systems — electricity, water, HVAC, and more — with a focus on reducing consumption, cutting costs, and supporting your sustainability objectives.",list:["<strong>Energy & Water Management:</strong> Monitoring and optimizing electricity and water consumption across all building systems to reduce utility bills.","<strong>HVAC Optimization:</strong> Regular servicing and smart scheduling of air conditioning and ventilation systems for comfort and energy efficiency.","<strong>Sustainability Initiatives:</strong> Implementation of green practices including LED retrofits, sub-metering, and energy conservation programs."]}
+};
+
+function openEduModal(key){
+    const d=currentLang==='bm'?eduDataBM[key]:eduDataBI[key];
+    const ctaTxt=currentLang==='bm'?'Minta Perkhidmatan':'Request Service';
+    document.getElementById('eduModalTitle').textContent=d.title;
+    document.getElementById('eduModalBg').style.backgroundImage=`url('${d.bg}')`;
+    document.getElementById('eduModalDesc').textContent=d.desc;
+    document.getElementById('eduModalMeta').innerHTML=d.meta.map(m=>`<span>${m}</span>`).join('');
+    document.getElementById('eduModalList').innerHTML=d.list.map(i=>`<li>${i}</li>`).join('');
+    document.getElementById('eduModalCta').textContent=ctaTxt;
+    document.getElementById('eduModal').classList.add('active');
+    document.body.style.overflow='hidden';
+}
+function closeEduModal(){document.getElementById('eduModal').classList.remove('active');document.body.style.overflow='';}
+document.getElementById('eduModal').addEventListener('click',function(e){if(e.target===this)closeEduModal();});
+
+const T = {
+
+bm: {
+
+  /* ================= TOP BAR ================= */
+  "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+  "top-cta-el": "Hubungi Kami",
+  "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+
+  /* ================= NAVIGATION ================= */
+  "nav-home-el": "Laman Utama",
+  "nav-about-el": "Tentang Kami",
+  "nav-services-el": "Perkhidmatan",
+  "nav-products-el": "Produk Kami",
+  "nav-ads-el": "Iklan",
+  "nav-career-el": "Kerjaya",
+  "nav-tender-el": "Tender",
+  "nav-media-el": "Media",
+  "nav-contact-btn-el": "Hubungi Kami",
+
+  /* ================= DROPDOWN ================= */
+  "dd-bod-el": "Lembaga Pengarah",
+  "dd-leaders-el": "Pemimpin",
+  "dd-upsi-el": "Tentang UPSI",
+  "dd-edu-el": "Pendidikan & Latihan",
+  "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+  "dd-retail-el": "Runcit & Perkhidmatan",
+  "dd-projects-el": "Konsultasi Projek",
+  "dd-solar-el": "Penyelesaian Tenaga Solar",
+  "dd-facility-el": "Pengurusan Kemudahan",
+  "dd-gallery-el": "Galeri",
+  "dd-news-el": "Berita",
+
+  /* ================= BREADCRUMB ================= */
+  "bc-home-el": "Laman Utama",
+  "bc-svc-el": "Perkhidmatan",
+  "bc-current-el": "Pengurusan Kemudahan",
+
+  /* ================= HERO ================= */
+  "hero-title-el": "Pengurusan Kemudahan",
+  "hero-desc-el": "Pengurusan Kemudahan Komprehensif untuk Kampus Kota Meru dan Lebih Jauh",
+
+  /* ================= OVERVIEW ================= */
+  "overview-title-el": "Perkhidmatan Pengurusan Kemudahan Profesional",
+  "overview-desc-el": "UPSI Holdings menyediakan perkhidmatan pengurusan kemudahan yang komprehensif memastikan prestasi, keselamatan, dan keselesaan bangunan dan premis yang optimum.",
+
+  /* ================= SERVICES ================= */
+  "fm-title-el": "Perkhidmatan FM Kami",
+
+  /* Building Maintenance */
+  "c1-title": "Penyelenggaraan Bangunan",
+  "c1-m1": "Komprehensif",
+  "c1-m2": "Pencegahan & Reaktif",
+  "c1-desc": "Perkhidmatan penyelenggaraan bangunan lengkap termasuk pembaikan struktur, pengecatan, kalis air, dan penjagaan am.",
+  "c1-f1": "Penyelenggaraan pencegahan",
+  "c1-f2": "Pembaikan pembetulan",
+  "c1-f3": "Pengecatan & hiasan",
+  "c1-f4": "Kalis air",
+  "c1-f5": "Kerja pertukangan",
+  "c1-f6": "Perkhidmatan paip",
+  "c1-btn": "Maklumat Lanjut",
+
+  /* Security */
+  "c2-title": "Perkhidmatan Keselamatan",
+  "c2-m1": "Perlindungan 24/7",
+  "c2-m2": "Pengawal Terlatih",
+  "c2-desc": "Perkhidmatan keselamatan profesional termasuk kawalan akses dan pemantauan CCTV.",
+  "c2-f1": "Pengawal keselamatan 24/7",
+  "c2-f2": "Sistem kawalan akses",
+  "c2-f3": "Pemantauan CCTV",
+  "c2-f4": "Perkhidmatan rondaan",
+  "c2-f5": "Laporan insiden",
+  "c2-f6": "Tindak balas kecemasan",
+  "c2-btn": "Maklumat Lanjut",
+
+  /* ================= HIGHLIGHT ================= */
+  "highlight-title-el": "Projek Terkemuka: Kampus Kota Meru",
+  "highlight-desc-el": "Sebagai penyedia pengurusan kemudahan yang dilantik untuk Kampus Kota Meru.",
+
+  "stat1-label": "Meter Persegi Diurus",
+  "stat2-label": "Bangunan di Bawah Jagaan",
+  "stat3-label": "Ketersediaan Perkhidmatan",
+
+  /* ================= WHY US ================= */
+  "why-title-el": "Mengapa Pilih Perkhidmatan FM Kami?",
+  "ben1-title-el": "Pengalaman Terbukti",
+  "ben1-desc-el": "Pengalaman bertahun-tahun menguruskan kemudahan pelbagai sektor.",
+  "ben2-title-el": "Pasukan Mahir",
+  "ben2-desc-el": "Profesional berkelayakan dan terlatih.",
+  "ben3-title-el": "Dipacu Teknologi",
+  "ben3-desc-el": "Sistem FM moden untuk pengurusan cekap.",
+  "ben4-title-el": "Kos Efektif",
+  "ben4-desc-el": "Operasi dioptimumkan mengurangkan kos.",
+
+  /* ================= CTA ================= */
+  "cta-title-el": "Biarkan Kami Mengurus Kemudahan Anda",
+  "cta-desc-el": "Bermitralah dengan kami untuk pengurusan kemudahan profesional.",
+  "cta-btn1-el": "Minta Cadangan",
+  "cta-btn2-el": "Hubungi: 012-2525 843",
+
+  /* ================= FOOTER ================= */
+  "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris.",
+  "footer-address-label-el": "Pejabat Utama:",
+  "footer-phone-label-el": "Telefon:",
+  "footer-about-head-el": "Tentang",
+  "footer-svc-head-el": "Perkhidmatan",
+  "footer-res-head-el": "Sumber",
+  "footer-contact-el": "Hubungi Kami",
+
+  "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+},
+
+bi:{
+
+/* ================= TOP BAR ================= */
+"top-phone-text":"Got Questions? Call us: 012-2525 843",
+"top-cta-el":"Contact Us",
+"company-tagline":"Synergy of Resources & UPSI Expertise",
+
+/* ================= NAVIGATION ================= */
+"nav-home-el":"Home",
+"nav-about-el":"About Us",
+"nav-services-el":"Services",
+"nav-products-el":"Our Products",
+"nav-ads-el":"Ads",
+"nav-career-el":"Career",
+"nav-tender-el":"Tender",
+"nav-media-el":"Media",
+"nav-contact-btn-el":"Contact Us",
+
+/* ================= DROPDOWN ================= */
+"dd-bod-el":"Board of Directors",
+"dd-leaders-el":"Leaders",
+"dd-upsi-el":"About UPSI",
+"dd-edu-el":"Education & Training",
+"dd-hosp-el":"Training Center & Hospitality",
+"dd-retail-el":"Retail & Services",
+"dd-projects-el":"Projects Consultation",
+"dd-solar-el":"Solar Energy Solutions",
+"dd-facility-el":"Facility Management",
+"dd-gallery-el":"Gallery",
+"dd-news-el":"News",
+
+/* ================= BREADCRUMB ================= */
+"bc-home-el":"Home",
+"bc-svc-el":"Services",
+"bc-current-el":"Facility Management",
+
+/* ================= HERO ================= */
+"hero-title-el":"Facility Management",
+"hero-desc-el":"Comprehensive Facility Management for Kampus Kota Meru and Beyond",
+
+/* ================= OVERVIEW ================= */
+"overview-title-el":"Professional Facility Management Services",
+"overview-desc-el":"UPSI Holdings provides comprehensive facility management services ensuring optimal performance, safety, and comfort of buildings and premises. Our experienced team manages everything from routine maintenance to complex infrastructure projects with professionalism and efficiency.",
+
+/* ================= SERVICES ================= */
+"fm-title-el":"Our FM Services",
+
+/* Building Maintenance */
+"c1-title":"Building Maintenance",
+"c1-m1":"Comprehensive",
+"c1-m2":"Preventive & Reactive",
+"c1-desc":"Complete building maintenance services including structural repairs, painting, waterproofing, and general upkeep to maintain property value and aesthetics.",
+"c1-f1":"Preventive maintenance",
+"c1-f2":"Corrective repairs",
+"c1-f3":"Painting & decoration",
+"c1-f4":"Waterproofing",
+"c1-f5":"Carpentry work",
+"c1-f6":"Plumbing services",
+"c1-btn":"Learn More",
+
+/* Security */
+"c2-title":"Security Services",
+"c2-m1":"24/7 Protection",
+"c2-m2":"Trained Guards",
+"c2-desc":"Professional security services including manned guarding, access control, CCTV monitoring, and patrol services to ensure safety and peace of mind.",
+"c2-f1":"24/7 security guards",
+"c2-f2":"Access control systems",
+"c2-f3":"CCTV monitoring",
+"c2-f4":"Patrol services",
+"c2-f5":"Incident reporting",
+"c2-f6":"Emergency response",
+"c2-btn":"Learn More",
+
+/* Cleaning */
+"c3-title":"Cleaning Services",
+"c3-m1":"Daily & Deep Clean",
+"c3-m2":"Intl. Standards",
+"c3-desc":"Professional cleaning services maintaining hygiene and cleanliness standards for offices, campuses, and commercial buildings.",
+"c3-f1":"Daily cleaning",
+"c3-f2":"Deep cleaning",
+"c3-f3":"Sanitization",
+"c3-f4":"Waste management",
+"c3-f5":"Floor care",
+"c3-f6":"Window cleaning",
+"c3-btn":"Learn More",
+
+/* Space Management */
+"c4-title":"Space Management",
+"c4-m1":"Optimization",
+"c4-m2":"Data-Driven",
+"c4-desc":"Strategic space planning and management to optimize facility utilization, improve workflow, and reduce operational costs.",
+"c4-f1":"Space planning",
+"c4-f2":"Occupancy analysis",
+"c4-f3":"Layout optimization",
+"c4-f4":"Move management",
+"c4-f5":"Utilization tracking",
+"c4-f6":"Cost optimization",
+"c4-btn":"Learn More",
+
+/* Asset Management */
+"c5-title":"Asset Management",
+"c5-m1":"Computerized System",
+"c5-m2":"Full Lifecycle",
+"c5-desc":"Comprehensive asset management including tracking, maintenance scheduling, lifecycle management, and replacement planning.",
+"c5-f1":"Asset tracking",
+"c5-f2":"Maintenance scheduling",
+"c5-f3":"Lifecycle management",
+"c5-f4":"Inventory control",
+"c5-f5":"Depreciation tracking",
+"c5-f6":"Replacement planning",
+"c5-btn":"Learn More",
+
+/* Utility Management */
+"c6-title":"Utility Management",
+"c6-m1":"Efficiency Focus",
+"c6-m2":"Real-Time Monitoring",
+"c6-desc":"Management of utilities including electricity, water, gas, and HVAC systems with focus on efficiency and cost reduction.",
+"c6-f1":"Energy management",
+"c6-f2":"Water conservation",
+"c6-f3":"HVAC optimization",
+"c6-f4":"Utility monitoring",
+"c6-f5":"Cost analysis",
+"c6-f6":"Sustainability initiatives",
+"c6-btn":"Learn More",
+
+/* ================= HIGHLIGHT ================= */
+"highlight-title-el":"Featured Project: Kampus Kota Meru",
+"highlight-desc-el":"As the appointed facility management provider for Kampus Kota Meru, we demonstrate our commitment to excellence in managing educational facilities.",
+
+"stat1-label":"Square Meters Managed",
+"stat2-label":"Buildings Under Care",
+"stat3-label":"Service Availability",
+
+/* ================= WHY CHOOSE US ================= */
+"why-title-el":"Why Choose Our FM Services?",
+"ben1-title-el":"Proven Experience",
+"ben1-desc-el":"Years of experience managing diverse facilities across sectors",
+"ben2-title-el":"Skilled Team",
+"ben2-desc-el":"Qualified and trained professionals committed to excellence",
+"ben3-title-el":"Technology-Driven",
+"ben3-desc-el":"Modern FM systems for efficient management and reporting",
+"ben4-title-el":"Cost-Effective",
+"ben4-desc-el":"Optimized operations reducing overall facility costs",
+
+/* ================= CTA ================= */
+"cta-title-el":"Let Us Manage Your Facility",
+"cta-desc-el":"Partner with us for professional facility management that ensures your property is well-maintained, secure, and operating efficiently.",
+"cta-btn1-el":"Request Proposal",
+"cta-btn2-el":"Call: 012-2525 843",
+
+/* ================= FOOTER ================= */
+"footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+"footer-address-label-el":"Main Office:",
+"footer-phone-label-el":"Phone:",
+"footer-about-head-el":"About",
+"footer-bod-el":"Board of Directors",
+"footer-leaders-el":"Leaders",
+"footer-gallery-el":"Gallery",
+
+"footer-svc-head-el":"Services",
+"footer-svc1-el":"Education & Training",
+"footer-svc2-el":"Hospitality",
+"footer-svc3-el":"Retail Services",
+"footer-svc4-el":"Consultation",
+"footer-svc5-el":"Solar Energy",
+"footer-svc6-el":"Facility Management",
+
+"footer-res-head-el":"Resources",
+"footer-career-el":"Career",
+"footer-tender-el":"Tender",
+"footer-news-el":"News",
+"footer-contact-el":"Contact Us",
+
+"footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
+
+},
+
+};
+
+function setLang(lang){
+    currentLang=lang;
+    var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
+    if(_f&&_l){_f.src=lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png';_f.alt=lang==='bm'?'MY':'EN';_l.textContent=lang==='bm'?'Melayu':'English';}
+    var _bm=document.getElementById('menu-btn-bm'),_bi=document.getElementById('menu-btn-bi');
+    if(_bm)_bm.classList.toggle('active-lang',lang==='bm');
+    if(_bi)_bi.classList.toggle('active-lang',lang==='bi');
+    const t=T[lang];if(!t)return;
+    Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});
+    document.documentElement.lang=lang==='bm'?'ms':'en';
+    try{localStorage.setItem('upsi-lang',lang);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{setLang(localStorage.getItem('upsi-lang')||'bm');});
+</script>
+</body>
+</html>
