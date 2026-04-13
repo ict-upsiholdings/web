@@ -17,6 +17,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        min-height: 60vh;        /* ← tinggi background */
     }
     .career-section::before {
         content: '';
@@ -28,7 +29,6 @@
     }
     .career-section .container { position: relative; z-index: 1; }
 
-    /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
     .nav-lang-dropdown { position: relative; }
     .nav-lang-btn {
         display: flex; align-items: center; gap: 6px;
@@ -63,6 +63,7 @@
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="top-bar">
     <div class="top-bar-content">
         <div class="top-bar-left">
@@ -76,6 +77,7 @@
     </div>
 </div>
 
+<!-- NAVBAR -->
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-section">
@@ -99,28 +101,27 @@
                 <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
-                    <a href="hospitality.html"> <span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
                     <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
                     <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
                     <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
-                    <a href="facility.html"> <span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
                 </div>
             </li>
             <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
             <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
-            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li class="active"><a href="career.html" id="nav-career-el">Kerjaya</a></li>
             <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
             <li>
                 <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
-                    <a href="news.html"> <span id="dd-news-el">Berita</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
                 </div>
             </li>
         </ul>
         <div class="nav-right">
             <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
-            <!-- LANGUAGE DROPDOWN -->
             <div class="nav-lang-dropdown" id="navLangDropdown">
                 <button class="nav-lang-btn" onclick="toggleLangMenu()">
                     <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
@@ -137,135 +138,28 @@
                     </button>
                 </div>
             </div>
-            <!-- END LANGUAGE DROPDOWN -->
         </div>
     </div>
 </nav>
 
+<!-- PAGE HERO -->
 <section class="page-hero career-hero">
-    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <span id="bc-current-el">Peluang Kerjaya</span></div>
+    <div class="breadcrumb">
+        <a href="index.html" id="bc-home-el">Laman Utama</a> ›
+        <span id="bc-current-el">Peluang Kerjaya</span>
+    </div>
     <h1 id="hero-title-el">Peluang Kerjaya</h1>
     <p id="hero-desc-el">Sertai pasukan kami dan jadilah sebahagian daripada misi kecemerlangan UPSI Holdings</p>
 </section>
 
+<!-- BACKGROUND SECTION (KOSONG) -->
 <section class="career-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag" id="section-tag-el">Sertai Kami</span>
-            <h2 class="section-title" id="section-title-el">Bina Masa Depan Anda Bersama UPSI Holdings</h2>
-            <p class="section-description" id="section-desc-el">Kami sentiasa mencari individu berbakat yang berkongsi komitmen kami terhadap kecemerlangan dan inovasi.</p>
-        </div>
-
-        <div class="why-join">
-            <h3 id="why-join-title-el">Mengapa Bekerja Bersama Kami?</h3>
-            <div class="benefits-grid">
-                <div class="benefit-card"><div class="benefit-icon">🎓</div><h4 id="ben1-title-el">Pembangunan Profesional</h4><p id="ben1-desc-el">Peluang pembelajaran berterusan dan kemajuan kerjaya</p></div>
-                <div class="benefit-card"><div class="benefit-icon">💰</div><h4 id="ben2-title-el">Pakej Kompetitif</h4><p id="ben2-desc-el">Gaji menarik dan faedah yang komprehensif</p></div>
-                <div class="benefit-card"><div class="benefit-icon">🤝</div><h4 id="ben3-title-el">Persekitaran Terbaik</h4><p id="ben3-desc-el">Budaya tempat kerja yang kolaboratif dan menyokong</p></div>
-                <div class="benefit-card"><div class="benefit-icon">⚖️</div><h4 id="ben4-title-el">Keseimbangan Kerja-Kehidupan</h4><p id="ben4-desc-el">Peraturan fleksibel dan program kesejahteraan pekerja</p></div>
-            </div>
-        </div>
-
-        <div class="job-listings">
-            <h3 id="openings-title-el">Jawatan Kosong Semasa</h3>
-
-            <!-- JOB 1 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h4 id="job1-title-el">Pengurus Pembangunan Perniagaan</h4>
-                        <div class="job-meta">
-                            <span class="job-location">📍 Tanjong Malim, Perak</span>
-                            <span class="job-type">💼 <span id="job1-type-el">Sepenuh Masa</span></span>
-                        </div>
-                    </div>
-                    <span class="job-posted" id="job1-posted-el">Disiarkan: 15 Jan 2026</span>
-                </div>
-                <div class="job-description">
-                    <p id="job1-desc-el">Kami mencari Pengurus Pembangunan Perniagaan yang berpengalaman untuk mengenal pasti peluang perniagaan baru dan memacu inisiatif pertumbuhan.</p>
-                    <h5 id="job1-req-title-el">Keperluan:</h5>
-                    <ul>
-                        <li id="job1-r1">Ijazah Sarjana Muda dalam Pentadbiran Perniagaan atau bidang berkaitan</li>
-                        <li id="job1-r2">Minimum 5 tahun pengalaman dalam pembangunan perniagaan</li>
-                        <li id="job1-r3">Kemahiran rundingan dan komunikasi yang kukuh</li>
-                        <li id="job1-r4">Mahir dalam Bahasa Malaysia dan Bahasa Inggeris</li>
-                    </ul>
-                </div>
-                <button class="btn btn-primary apply-btn" id="job1-btn-el">Mohon Sekarang</button>
-            </div>
-
-            <!-- JOB 2 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h4 id="job2-title-el">Penyelia Operasi Hospitaliti</h4>
-                        <div class="job-meta">
-                            <span class="job-location">📍 Scholar's Suites</span>
-                            <span class="job-type">💼 <span id="job2-type-el">Sepenuh Masa</span></span>
-                        </div>
-                    </div>
-                    <span class="job-posted" id="job2-posted-el">Disiarkan: 10 Jan 2026</span>
-                </div>
-                <div class="job-description">
-                    <p id="job2-desc-el">Sertai pasukan hospitaliti kami untuk memastikan penyampaian perkhidmatan yang cemerlang di pusat latihan dan kemudahan penginapan kami.</p>
-                    <h5 id="job2-req-title-el">Keperluan:</h5>
-                    <ul>
-                        <li id="job2-r1">Diploma/Ijazah dalam Pengurusan Hotel atau bidang berkaitan</li>
-                        <li id="job2-r2">Minimum 3 tahun dalam operasi hospitaliti</li>
-                        <li id="job2-r3">Mentaliti kecemerlangan perkhidmatan pelanggan</li>
-                        <li id="job2-r4">Pengalaman pengurusan acara adalah kelebihan</li>
-                    </ul>
-                </div>
-                <button class="btn btn-primary apply-btn" id="job2-btn-el">Mohon Sekarang</button>
-            </div>
-
-            <!-- JOB 3 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h4 id="job3-title-el">Eksekutif Pemasaran</h4>
-                        <div class="job-meta">
-                            <span class="job-location">📍 Tanjong Malim, Perak</span>
-                            <span class="job-type">💼 <span id="job3-type-el">Sepenuh Masa</span></span>
-                        </div>
-                    </div>
-                    <span class="job-posted" id="job3-posted-el">Disiarkan: 5 Jan 2026</span>
-                </div>
-                <div class="job-description">
-                    <p id="job3-desc-el">Profesional pemasaran kreatif diperlukan untuk membangunkan dan melaksanakan strategi pemasaran merentas semua bahagian perkhidmatan kami.</p>
-                    <h5 id="job3-req-title-el">Keperluan:</h5>
-                    <ul>
-                        <li id="job3-r1">Ijazah Sarjana Muda dalam Pemasaran atau bidang berkaitan</li>
-                        <li id="job3-r2">2-3 tahun pengalaman pemasaran</li>
-                        <li id="job3-r3">Kemahiran pemasaran digital yang kukuh</li>
-                        <li id="job3-r4">Pemikiran kreatif dan keupayaan analitik</li>
-                    </ul>
-                </div>
-                <button class="btn btn-primary apply-btn" id="job3-btn-el">Mohon Sekarang</button>
-            </div>
-        </div>
-
-        <div class="application-process">
-            <h3 id="how-apply-title-el">Cara Memohon</h3>
-            <div class="process-steps">
-                <div class="step"><div class="step-number">1</div><h4 id="step1-title-el">Hantar Permohonan</h4><p id="step1-desc-el">Klik "Mohon Sekarang" dan isi borang permohonan</p></div>
-                <div class="step-arrow">→</div>
-                <div class="step"><div class="step-number">2</div><h4 id="step2-title-el">Saringan Awal</h4><p id="step2-desc-el">Pasukan HR kami akan menyemak permohonan anda</p></div>
-                <div class="step-arrow">→</div>
-                <div class="step"><div class="step-number">3</div><h4 id="step3-title-el">Temuduga</h4><p id="step3-desc-el">Calon yang disenarai pendek akan dihubungi</p></div>
-                <div class="step-arrow">→</div>
-                <div class="step"><div class="step-number">4</div><h4 id="step4-title-el">Tawaran Kerja</h4><p id="step4-desc-el">Calon berjaya menerima surat tawaran</p></div>
-            </div>
-        </div>
-
-        <div class="general-application">
-            <h3 id="gen-app-title-el">Tidak Nampak Jawatan yang Sesuai?</h3>
-            <p id="gen-app-desc-el">Hantar resume anda dan kami akan mengingati anda untuk peluang masa hadapan.</p>
-            <button class="btn btn-secondary" id="gen-app-btn-el">Hantar Permohonan Am</button>
-        </div>
+        <!-- KANDUNGAN AKAN DITAMBAH DI SINI -->
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -303,273 +197,60 @@ document.addEventListener('click', function(e) {
 });
 
 const T = {
-
-/* ================================================================
-   BAHASA MELAYU
-================================================================ */
 bm: {
-
-    /* TOP BAR */
     "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
     "top-cta-el": "Hubungi Kami",
     "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
-
-    /* NAVIGATION */
-    "nav-home-el": "Laman Utama",
-    "nav-about-el": "Tentang Kami",
-    "nav-services-el": "Perkhidmatan",
-    "nav-products-el": "Produk Kami",
-    "nav-ads-el": "Iklan",
-    "nav-career-el": "Kerjaya",
-    "nav-tender-el": "Tender",
-    "nav-media-el": "Media",
+    "nav-home-el": "Laman Utama", "nav-about-el": "Tentang Kami",
+    "nav-services-el": "Perkhidmatan", "nav-products-el": "Produk Kami",
+    "nav-ads-el": "Iklan", "nav-career-el": "Kerjaya",
+    "nav-tender-el": "Tender", "nav-media-el": "Media",
     "nav-contact-btn-el": "Hubungi Kami",
-
-    /* DROPDOWN */
-    "dd-bod-el": "Lembaga Pengarah",
-    "dd-leaders-el": "Pemimpin",
-    "dd-upsi-el": "Tentang UPSI",
-    "dd-edu-el": "Pendidikan & Latihan",
-    "dd-hosp-el": "Pusat Latihan & Hospitaliti",
-    "dd-retail-el": "Runcit & Perkhidmatan",
-    "dd-projects-el": "Konsultasi Projek",
-    "dd-solar-el": "Penyelesaian Tenaga Solar",
-    "dd-facility-el": "Pengurusan Kemudahan",
-    "dd-gallery-el": "Galeri",
-    "dd-news-el": "Berita",
-
-    /* BREADCRUMB */
-    "bc-home-el": "Laman Utama",
-    "bc-current-el": "Peluang Kerjaya",
-
-    /* HERO */
+    "dd-bod-el": "Lembaga Pengarah", "dd-leaders-el": "Pemimpin",
+    "dd-upsi-el": "Tentang UPSI", "dd-edu-el": "Pendidikan & Latihan",
+    "dd-hosp-el": "Pusat Latihan & Hospitaliti", "dd-retail-el": "Runcit & Perkhidmatan",
+    "dd-projects-el": "Konsultasi Projek", "dd-solar-el": "Penyelesaian Tenaga Solar",
+    "dd-facility-el": "Pengurusan Kemudahan", "dd-gallery-el": "Galeri", "dd-news-el": "Berita",
+    "bc-home-el": "Laman Utama", "bc-current-el": "Peluang Kerjaya",
     "hero-title-el": "Peluang Kerjaya",
     "hero-desc-el": "Sertai pasukan kami dan jadilah sebahagian daripada misi kecemerlangan UPSI Holdings",
-
-    /* SECTION HEADER */
-    "section-tag-el": "Sertai Kami",
-    "section-title-el": "Bina Masa Depan Anda Bersama UPSI Holdings",
-    "section-desc-el": "Kami sentiasa mencari individu berbakat yang berkongsi komitmen kami terhadap kecemerlangan dan inovasi.",
-
-    /* WHY JOIN */
-    "why-join-title-el": "Mengapa Bekerja Bersama Kami?",
-    "ben1-title-el": "Pembangunan Profesional",
-    "ben1-desc-el": "Peluang pembelajaran berterusan dan kemajuan kerjaya",
-    "ben2-title-el": "Pakej Kompetitif",
-    "ben2-desc-el": "Gaji menarik dan faedah yang komprehensif",
-    "ben3-title-el": "Persekitaran Terbaik",
-    "ben3-desc-el": "Budaya tempat kerja yang kolaboratif dan menyokong",
-    "ben4-title-el": "Keseimbangan Kerja-Kehidupan",
-    "ben4-desc-el": "Peraturan fleksibel dan program kesejahteraan pekerja",
-
-    /* JOB OPENINGS */
-    "openings-title-el": "Jawatan Kosong Semasa",
-
-    /* Job 1 */
-    "job1-title-el": "Pengurus Pembangunan Perniagaan",
-    "job1-type-el": "Sepenuh Masa",
-    "job1-posted-el": "Disiarkan: 15 Jan 2026",
-    "job1-desc-el": "Kami mencari Pengurus Pembangunan Perniagaan yang berpengalaman untuk mengenal pasti peluang perniagaan baru dan memacu inisiatif pertumbuhan.",
-    "job1-req-title-el": "Keperluan:",
-    "job1-r1": "Ijazah Sarjana Muda dalam Pentadbiran Perniagaan atau bidang berkaitan",
-    "job1-r2": "Minimum 5 tahun pengalaman dalam pembangunan perniagaan",
-    "job1-r3": "Kemahiran rundingan dan komunikasi yang kukuh",
-    "job1-r4": "Mahir dalam Bahasa Malaysia dan Bahasa Inggeris",
-    "job1-btn-el": "Mohon Sekarang",
-
-    /* Job 2 */
-    "job2-title-el": "Penyelia Operasi Hospitaliti",
-    "job2-type-el": "Sepenuh Masa",
-    "job2-posted-el": "Disiarkan: 10 Jan 2026",
-    "job2-desc-el": "Sertai pasukan hospitaliti kami untuk memastikan penyampaian perkhidmatan yang cemerlang di pusat latihan dan kemudahan penginapan kami.",
-    "job2-req-title-el": "Keperluan:",
-    "job2-r1": "Diploma/Ijazah dalam Pengurusan Hotel atau bidang berkaitan",
-    "job2-r2": "Minimum 3 tahun dalam operasi hospitaliti",
-    "job2-r3": "Mentaliti kecemerlangan perkhidmatan pelanggan",
-    "job2-r4": "Pengalaman pengurusan acara adalah kelebihan",
-    "job2-btn-el": "Mohon Sekarang",
-
-    /* Job 3 */
-    "job3-title-el": "Eksekutif Pemasaran",
-    "job3-type-el": "Sepenuh Masa",
-    "job3-posted-el": "Disiarkan: 5 Jan 2026",
-    "job3-desc-el": "Profesional pemasaran kreatif diperlukan untuk membangunkan dan melaksanakan strategi pemasaran merentas semua bahagian perkhidmatan kami.",
-    "job3-req-title-el": "Keperluan:",
-    "job3-r1": "Ijazah Sarjana Muda dalam Pemasaran atau bidang berkaitan",
-    "job3-r2": "2-3 tahun pengalaman pemasaran",
-    "job3-r3": "Kemahiran pemasaran digital yang kukuh",
-    "job3-r4": "Pemikiran kreatif dan keupayaan analitik",
-    "job3-btn-el": "Mohon Sekarang",
-
-    /* HOW TO APPLY */
-    "how-apply-title-el": "Cara Memohon",
-    "step1-title-el": "Hantar Permohonan",
-    "step1-desc-el": "Klik \"Mohon Sekarang\" dan isi borang permohonan",
-    "step2-title-el": "Saringan Awal",
-    "step2-desc-el": "Pasukan HR kami akan menyemak permohonan anda",
-    "step3-title-el": "Temuduga",
-    "step3-desc-el": "Calon yang disenarai pendek akan dihubungi",
-    "step4-title-el": "Tawaran Kerja",
-    "step4-desc-el": "Calon berjaya menerima surat tawaran",
-
-    /* GENERAL APPLICATION */
-    "gen-app-title-el": "Tidak Nampak Jawatan yang Sesuai?",
-    "gen-app-desc-el": "Hantar resume anda dan kami akan mengingati anda untuk peluang masa hadapan.",
-    "gen-app-btn-el": "Hantar Permohonan Am",
-
-    /* FOOTER */
     "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
-    "footer-address-label-el": "Pejabat Utama:",
-    "footer-phone-label-el": "Telefon:",
-    "footer-about-head-el": "Tentang",
-    "footer-bod-el": "Lembaga Pengarah",
-    "footer-leaders-el": "Pemimpin",
-    "footer-gallery-el": "Galeri",
-    "footer-svc-head-el": "Perkhidmatan",
-    "footer-svc1-el": "Pendidikan & Latihan",
-    "footer-svc2-el": "Hospitaliti",
-    "footer-svc3-el": "Perkhidmatan Runcit",
-    "footer-res-head-el": "Sumber",
-    "footer-career-el": "Kerjaya",
-    "footer-tender-el": "Tender",
-    "footer-news-el": "Berita",
+    "footer-address-label-el": "Pejabat Utama:", "footer-phone-label-el": "Telefon:",
+    "footer-about-head-el": "Tentang", "footer-bod-el": "Lembaga Pengarah",
+    "footer-leaders-el": "Pemimpin", "footer-gallery-el": "Galeri",
+    "footer-svc-head-el": "Perkhidmatan", "footer-svc1-el": "Pendidikan & Latihan",
+    "footer-svc2-el": "Hospitaliti", "footer-svc3-el": "Perkhidmatan Runcit",
+    "footer-res-head-el": "Sumber", "footer-career-el": "Kerjaya",
+    "footer-tender-el": "Tender", "footer-news-el": "Berita",
     "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop"
-
 },
-
-/* ================================================================
-   BAHASA INGGERIS
-================================================================ */
 bi: {
-
-    /* TOP BAR */
     "top-phone-text": "Got Questions? Call us: 012-2525 843",
     "top-cta-el": "Contact Us",
     "company-tagline": "Synergy of Resources & UPSI Expertise",
-
-    /* NAVIGATION */
-    "nav-home-el": "Home",
-    "nav-about-el": "About Us",
-    "nav-services-el": "Services",
-    "nav-products-el": "Our Products",
-    "nav-ads-el": "Ads",
-    "nav-career-el": "Career",
-    "nav-tender-el": "Tender",
-    "nav-media-el": "Media",
+    "nav-home-el": "Home", "nav-about-el": "About Us",
+    "nav-services-el": "Services", "nav-products-el": "Our Products",
+    "nav-ads-el": "Ads", "nav-career-el": "Career",
+    "nav-tender-el": "Tender", "nav-media-el": "Media",
     "nav-contact-btn-el": "Contact Us",
-
-    /* DROPDOWN */
-    "dd-bod-el": "Board of Directors",
-    "dd-leaders-el": "Leaders",
-    "dd-upsi-el": "About UPSI",
-    "dd-edu-el": "Education & Training",
-    "dd-hosp-el": "Training Center & Hospitality",
-    "dd-retail-el": "Retail & Services",
-    "dd-projects-el": "Projects Consultation",
-    "dd-solar-el": "Solar Energy Solutions",
-    "dd-facility-el": "Facility Management",
-    "dd-gallery-el": "Gallery",
-    "dd-news-el": "News",
-
-    /* BREADCRUMB */
-    "bc-home-el": "Home",
-    "bc-current-el": "Career Opportunities",
-
-    /* HERO */
+    "dd-bod-el": "Board of Directors", "dd-leaders-el": "Leaders",
+    "dd-upsi-el": "About UPSI", "dd-edu-el": "Education & Training",
+    "dd-hosp-el": "Training Center & Hospitality", "dd-retail-el": "Retail & Services",
+    "dd-projects-el": "Projects Consultation", "dd-solar-el": "Solar Energy Solutions",
+    "dd-facility-el": "Facility Management", "dd-gallery-el": "Gallery", "dd-news-el": "News",
+    "bc-home-el": "Home", "bc-current-el": "Career Opportunities",
     "hero-title-el": "Career Opportunities",
     "hero-desc-el": "Join our team and be part of UPSI Holdings' mission of excellence",
-
-    /* SECTION HEADER */
-    "section-tag-el": "Join Us",
-    "section-title-el": "Build Your Future with UPSI Holdings",
-    "section-desc-el": "We are always looking for talented individuals who share our commitment to excellence and innovation.",
-
-    /* WHY JOIN */
-    "why-join-title-el": "Why Work With Us?",
-    "ben1-title-el": "Professional Development",
-    "ben1-desc-el": "Continuous learning opportunities and career advancement",
-    "ben2-title-el": "Competitive Package",
-    "ben2-desc-el": "Attractive salary and comprehensive benefits",
-    "ben3-title-el": "Great Environment",
-    "ben3-desc-el": "Collaborative and supportive workplace culture",
-    "ben4-title-el": "Work-Life Balance",
-    "ben4-desc-el": "Flexible arrangements and employee wellness programs",
-
-    /* JOB OPENINGS */
-    "openings-title-el": "Current Job Openings",
-
-    /* Job 1 */
-    "job1-title-el": "Business Development Manager",
-    "job1-type-el": "Full Time",
-    "job1-posted-el": "Posted: 15 Jan 2026",
-    "job1-desc-el": "We are seeking an experienced Business Development Manager to identify new business opportunities and drive growth initiatives.",
-    "job1-req-title-el": "Requirements:",
-    "job1-r1": "Bachelor's degree in Business Administration or related field",
-    "job1-r2": "Minimum 5 years of experience in business development",
-    "job1-r3": "Strong negotiation and communication skills",
-    "job1-r4": "Proficiency in Bahasa Malaysia and English",
-    "job1-btn-el": "Apply Now",
-
-    /* Job 2 */
-    "job2-title-el": "Hospitality Operations Supervisor",
-    "job2-type-el": "Full Time",
-    "job2-posted-el": "Posted: 10 Jan 2026",
-    "job2-desc-el": "Join our hospitality team to ensure outstanding service delivery at our training centre and accommodation facilities.",
-    "job2-req-title-el": "Requirements:",
-    "job2-r1": "Diploma/Degree in Hotel Management or related field",
-    "job2-r2": "Minimum 3 years in hospitality operations",
-    "job2-r3": "Customer service excellence mindset",
-    "job2-r4": "Event management experience is an advantage",
-    "job2-btn-el": "Apply Now",
-
-    /* Job 3 */
-    "job3-title-el": "Marketing Executive",
-    "job3-type-el": "Full Time",
-    "job3-posted-el": "Posted: 5 Jan 2026",
-    "job3-desc-el": "A creative marketing professional is needed to develop and implement marketing strategies across all our service divisions.",
-    "job3-req-title-el": "Requirements:",
-    "job3-r1": "Bachelor's degree in Marketing or related field",
-    "job3-r2": "2–3 years of marketing experience",
-    "job3-r3": "Strong digital marketing skills",
-    "job3-r4": "Creative thinking and analytical ability",
-    "job3-btn-el": "Apply Now",
-
-    /* HOW TO APPLY */
-    "how-apply-title-el": "How to Apply",
-    "step1-title-el": "Submit Application",
-    "step1-desc-el": "Click \"Apply Now\" and fill in the application form",
-    "step2-title-el": "Initial Screening",
-    "step2-desc-el": "Our HR team will review your application",
-    "step3-title-el": "Interview",
-    "step3-desc-el": "Shortlisted candidates will be contacted",
-    "step4-title-el": "Job Offer",
-    "step4-desc-el": "Successful candidates receive an offer letter",
-
-    /* GENERAL APPLICATION */
-    "gen-app-title-el": "Don't See a Suitable Position?",
-    "gen-app-desc-el": "Send us your resume and we will keep you in mind for future opportunities.",
-    "gen-app-btn-el": "Submit General Application",
-
-    /* FOOTER */
     "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
-    "footer-address-label-el": "Main Office:",
-    "footer-phone-label-el": "Phone:",
-    "footer-about-head-el": "About",
-    "footer-bod-el": "Board of Directors",
-    "footer-leaders-el": "Leaders",
-    "footer-gallery-el": "Gallery",
-    "footer-svc-head-el": "Services",
-    "footer-svc1-el": "Education & Training",
-    "footer-svc2-el": "Hospitality",
-    "footer-svc3-el": "Retail Services",
-    "footer-res-head-el": "Resources",
-    "footer-career-el": "Career",
-    "footer-tender-el": "Tender",
-    "footer-news-el": "News",
+    "footer-address-label-el": "Main Office:", "footer-phone-label-el": "Phone:",
+    "footer-about-head-el": "About", "footer-bod-el": "Board of Directors",
+    "footer-leaders-el": "Leaders", "footer-gallery-el": "Gallery",
+    "footer-svc-head-el": "Services", "footer-svc1-el": "Education & Training",
+    "footer-svc2-el": "Hospitality", "footer-svc3-el": "Retail Services",
+    "footer-res-head-el": "Resources", "footer-career-el": "Career",
+    "footer-tender-el": "Tender", "footer-news-el": "News",
     "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved. | Best viewed on desktop site"
-
 }
-
 };
 
 function setLang(lang) {
