@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iklan - UPSI Holdings Sdn Bhd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nav-shared.css">
+    <style>
+
+    /* ── ADS SECTION — sama style dengan career-section ── */
+    .ads-section {
+        position: relative;
+        background-image: url('image/OFFICE.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        padding: 60px 0 80px;
+    }
+    .ads-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.87);
+        z-index: 0;
+        pointer-events: none;
+    }
+    .ads-section .container {
+        position: relative;
+        z-index: 1;
+    }
+
+/* ── GALLERY ── */
+.ads-gallery {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* ── POSTER ── */
+.poster-item {
+    width: 50%;
+    margin-bottom: 60px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,35,126,0.12);
+    background: #000;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    cursor: pointer;
+    display: block;
+}
+.poster-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 40px rgba(26,35,126,0.20);
+}
+.poster-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* ── VIDEO ── */
+.video-item {
+    width: 90%;
+    margin-bottom: 60px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,35,126,0.14);
+    background: #000;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    display: block;
+}
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 40px rgba(26,35,126,0.22);
+}
+.video-item video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.video-item iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border: none;
+}
+    /* ── LANGUAGE DROPDOWN — sama dengan career.html ── */
+    .nav-lang-dropdown { position: relative; }
+    .nav-lang-btn {
+        display: flex; align-items: center; gap: 6px;
+        background: none; border: 1.5px solid #e0e4f0;
+        cursor: pointer; font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem; font-weight: 600; color: #1a237e;
+        padding: 7px 13px; border-radius: 8px;
+        transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+    .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+    .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+    .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+    .nav-lang-menu {
+        display: none; position: absolute; right: 0; top: calc(100% + 8px);
+        background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+        box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
+        overflow: hidden; z-index: 9999;
+    }
+    .nav-lang-dropdown.open .nav-lang-menu { display: block; }
+    .nav-lang-menu button {
+        display: flex; align-items: center; gap: 10px;
+        width: 100%; padding: 11px 16px; background: none; border: none;
+        font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+        color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+    }
+    .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+    .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+    .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+    .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════ -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px; width:auto; object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="about-upsi.html"><span id="dd-upsi-el">Tentang UPSI</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="solar.html"><span id="dd-solar-el">Penyelesaian Tenaga Solar</span></a>
+                    <a href="facility.html"><span id="dd-facility-el">Pengurusan Kemudahan</span></a>
+                </div>
+            </li>
+            <li><a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a></li>
+            <li class="active"><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO — sama class dengan career.html
+══════════════════════════════════════ -->
+<section class="page-hero ads-hero">
+    <div class="breadcrumb">
+        <a href="index.html" id="bc-home-el">Laman Utama</a> ›
+        <span id="bc-current-el">Iklan</span>
+    </div>
+    <h1 id="hero-title-el">Iklan</h1>
+    <p id="hero-desc-el">Poster &amp; Video Iklan Rasmi UPSI Holdings Sdn Bhd</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     ADS SECTION
+══════════════════════════════════════ -->
+<section class="ads-section">
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-tag" id="section-tag-el">Pengumuman Rasmi</span>
+            <h2 class="section-title" id="section-title-el">Iklan & Pengumuman</h2>
+            <p class="section-description" id="section-desc-el">Semua poster dan video iklan rasmi daripada UPSI Holdings Sdn Bhd.</p>
+        </div>
+
+        <div class="ads-gallery">
+
+            <!-- POSTER 1 -->
+            <div class="poster-item">
+                <img src="image/poster1.png" alt="Poster Iklan 1"
+                     onerror="this.parentElement.style.display='none'" />
+            </div>
+
+            <!-- POSTER 2 -->
+            <div class="poster-item">
+                <img src="image/poster2.png" alt="Poster Iklan 2"
+                     onerror="this.parentElement.style.display='none'" />
+            </div>
+
+            <div class="video-item">
+    <video controls>
+        <source src="video/promo-boling.mp4" type="video/mp4" />
+        Browser anda tidak menyokong video.
+    </video>
+</div>
+
+           <div class="video-item">
+    <video controls>
+        <source src="video/promo-ujana.mp4" type="video/mp4" />
+        Browser anda tidak menyokong video.
+    </video>
+</div>
+           
+            <!-- VIDEO 1 — gantikan ID_VIDEO_1 dengan ID YouTube sebenar -->
+        <div class="video-item" style="position:relative; cursor:pointer;"
+     onclick="window.open('https://www.youtube.com/watch?v=xybHz27SPe0','_blank')">
+    <img src="https://img.youtube.com/vi/xybHz27SPe0/maxresdefault.jpg"
+         alt="Video Iklan UPSI Holdings"
+         style="width:100%; display:block; border-radius:14px;" />
+    <!-- Butang Play -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                background:rgba(255,0,0,0.85);border-radius:50%;width:70px;height:70px;
+                display:flex;align-items:center;justify-content:center;">
+        <span style="color:white;font-size:28px;margin-left:5px;">▶</span>
+    </div>
+</div>
+
+ <!-- POSTER 3 -->
+            <div class="poster-item">
+                <img src="image/ads-poster-3.jpg" alt="Poster Iklan 3"
+                     onerror="this.parentElement.style.display='none'" />
+            </div>
+            <!-- POSTER 4 -->
+            <div class="poster-item">
+                <img src="image/ads-poster-4.jpg" alt="Poster Iklan 4"
+                     onerror="this.parentElement.style.display='none'" />
+            </div>
+
+            <!-- POSTER 5 -->
+            <div class="poster-item">
+                <img src="image/ads-poster-5.jpg" alt="Poster Iklan 5"
+                     onerror="this.parentElement.style.display='none'" />
+            </div>
+
+            <!-- TAMBAH LEBIH BANYAK POSTER / VIDEO DI SINI -->
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <strong id="footer-address-label-el">Pejabat Utama:</strong>
+                        <span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <strong id="footer-phone-label-el">Telefon:</strong>
+                        <span>012-2525 843</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-about-head-el">Tentang</h4>
+                <ul>
+                    <li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li>
+                    <li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li>
+                    <li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-svc-head-el">Perkhidmatan</h4>
+                <ul>
+                    <li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li>
+                    <li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li>
+                    <li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-res-head-el">Sumber</h4>
+                <ul>
+                    <li><a href="career.html" id="footer-career-el">Kerjaya</a></li>
+                    <li><a href="tender.html" id="footer-tender-el">Tender</a></li>
+                    <li><a href="news.html" id="footer-news-el">Berita</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script src="script.js"></script>
+<script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
+const T = {
+
+/* ================================================================
+   BAHASA MELAYU
+================================================================ */
+bm: {
+    "top-phone-text":       "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+    "top-cta-el":           "Hubungi Kami",
+    "company-tagline":      "Sinergi Sumber & Kepakaran UPSI",
+    "nav-home-el":          "Laman Utama",
+    "nav-about-el":         "Tentang Kami",
+    "nav-services-el":      "Perkhidmatan",
+    "nav-products-el":      "Produk Kami",
+    "nav-ads-el":           "Iklan",
+    "nav-career-el":        "Kerjaya",
+    "nav-tender-el":        "Tender",
+    "nav-media-el":         "Media",
+    "nav-contact-btn-el":   "Hubungi Kami",
+    "dd-bod-el":            "Lembaga Pengarah",
+    "dd-leaders-el":        "Pemimpin",
+    "dd-upsi-el":           "Tentang UPSI",
+    "dd-edu-el":            "Pendidikan & Latihan",
+    "dd-hosp-el":           "Pusat Latihan & Hospitaliti",
+    "dd-retail-el":         "Runcit & Perkhidmatan",
+    "dd-projects-el":       "Konsultasi Projek",
+    "dd-solar-el":          "Penyelesaian Tenaga Solar",
+    "dd-facility-el":       "Pengurusan Kemudahan",
+    "dd-gallery-el":        "Galeri",
+    "dd-news-el":           "Berita",
+    "bc-home-el":           "Laman Utama",
+    "bc-current-el":        "Iklan",
+    "hero-title-el":        "Iklan",
+    "hero-desc-el":         "Poster & Video Iklan Rasmi UPSI Holdings Sdn Bhd",
+    "section-tag-el":       "Pengumuman Rasmi",
+    "section-title-el":     "Iklan & Pengumuman",
+    "section-desc-el":      "Semua poster dan video iklan rasmi daripada UPSI Holdings Sdn Bhd.",
+    "footer-desc-el":           "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+    "footer-address-label-el":  "Pejabat Utama:",
+    "footer-phone-label-el":    "Telefon:",
+    "footer-about-head-el":     "Tentang",
+    "footer-bod-el":            "Lembaga Pengarah",
+    "footer-leaders-el":        "Pemimpin",
+    "footer-gallery-el":        "Galeri",
+    "footer-svc-head-el":       "Perkhidmatan",
+    "footer-svc1-el":           "Pendidikan & Latihan",
+    "footer-svc2-el":           "Hospitaliti",
+    "footer-svc3-el":           "Perkhidmatan Runcit",
+    "footer-res-head-el":       "Sumber",
+    "footer-career-el":         "Kerjaya",
+    "footer-tender-el":         "Tender",
+    "footer-news-el":           "Berita",
+    "footer-copyright-el":      "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop"
+},
+
+/* ================================================================
+   BAHASA INGGERIS
+================================================================ */
+bi: {
+    "top-phone-text":       "Got Questions? Call us: 012-2525 843",
+    "top-cta-el":           "Contact Us",
+    "company-tagline":      "Synergy of Resources & UPSI Expertise",
+    "nav-home-el":          "Home",
+    "nav-about-el":         "About Us",
+    "nav-services-el":      "Services",
+    "nav-products-el":      "Our Products",
+    "nav-ads-el":           "Ads",
+    "nav-career-el":        "Career",
+    "nav-tender-el":        "Tender",
+    "nav-media-el":         "Media",
+    "nav-contact-btn-el":   "Contact Us",
+    "dd-bod-el":            "Board of Directors",
+    "dd-leaders-el":        "Leaders",
+    "dd-upsi-el":           "About UPSI",
+    "dd-edu-el":            "Education & Training",
+    "dd-hosp-el":           "Training Center & Hospitality",
+    "dd-retail-el":         "Retail & Services",
+    "dd-projects-el":       "Projects Consultation",
+    "dd-solar-el":          "Solar Energy Solutions",
+    "dd-facility-el":       "Facility Management",
+    "dd-gallery-el":        "Gallery",
+    "dd-news-el":           "News",
+    "bc-home-el":           "Home",
+    "bc-current-el":        "Ads",
+    "hero-title-el":        "Ads",
+    "hero-desc-el":         "Official Posters & Videos from UPSI Holdings Sdn Bhd",
+    "section-tag-el":       "Official Announcements",
+    "section-title-el":     "Ads & Announcements",
+    "section-desc-el":      "All official posters and video advertisements from UPSI Holdings Sdn Bhd.",
+    "footer-desc-el":           "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+    "footer-address-label-el":  "Main Office:",
+    "footer-phone-label-el":    "Phone:",
+    "footer-about-head-el":     "About",
+    "footer-bod-el":            "Board of Directors",
+    "footer-leaders-el":        "Leaders",
+    "footer-gallery-el":        "Gallery",
+    "footer-svc-head-el":       "Services",
+    "footer-svc1-el":           "Education & Training",
+    "footer-svc2-el":           "Hospitality",
+    "footer-svc3-el":           "Retail Services",
+    "footer-res-head-el":       "Resources",
+    "footer-career-el":         "Career",
+    "footer-tender-el":         "Tender",
+    "footer-news-el":           "News",
+    "footer-copyright-el":      "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved. | Best viewed on desktop site"
+}
+
+};
+
+function setLang(lang) {
+    var _f = document.getElementById('lang-flag'), _l = document.getElementById('lang-label');
+    if (_f && _l) {
+        _f.src = lang === 'bm' ? 'https://flagcdn.com/w40/my.png' : 'https://flagcdn.com/w40/gb.png';
+        _f.alt = lang === 'bm' ? 'MY' : 'EN';
+        _l.textContent = lang === 'bm' ? 'Melayu' : 'English';
+    }
+    var _bm = document.getElementById('menu-btn-bm'), _bi = document.getElementById('menu-btn-bi');
+    if (_bm) _bm.classList.toggle('active-lang', lang === 'bm');
+    if (_bi) _bi.classList.toggle('active-lang', lang === 'bi');
+    const t = T[lang]; if (!t) return;
+    Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    document.title = lang === 'bm' ? 'Iklan - UPSI Holdings Sdn Bhd' : 'Ads - UPSI Holdings Sdn Bhd';
+    try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const s = localStorage.getItem('upsi-lang') || 'bm';
+    setLang(s);
+});
+</script>
+</body>
+</html>
