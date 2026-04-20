@@ -32,7 +32,9 @@
     .breadcrumb { font-family: 'Poppins', sans-serif; font-size: 0.8rem; margin-bottom: 14px; opacity: 0.75; }
     .breadcrumb a { color: #fff; text-decoration: none; }
 
-    .gallery-main { background: #f7f8fc; min-height: 60vh; padding: 52px 0 70px; }
+    .gallery-main { position: relative; min-height: 60vh; padding: 52px 0 70px; background-image: url('image/OFFICE.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; }
+    .gallery-main::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.87); z-index: 0; pointer-events: none; }
+    .gallery-main .container { position: relative; z-index: 1; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
     /* --- Album block --- */
