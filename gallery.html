@@ -6,235 +6,89 @@
     <title>Galeri | UPSI Holdings Sdn Bhd</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="nav-shared.css">
     <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ===== LANGUAGE DROPDOWN ===== */
     .nav-lang-dropdown { position: relative; }
-    .nav-lang-btn {
-        display: flex; align-items: center; gap: 6px;
-        background: none; border: 1.5px solid #e0e4f0;
-        cursor: pointer; font-family: 'Poppins', sans-serif;
-        font-size: 0.85rem; font-weight: 600; color: #1a237e;
-        padding: 7px 13px; border-radius: 8px;
-        transition: background 0.2s, border-color 0.2s;
-    }
-    .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+    .nav-lang-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px solid #e0e4f0; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; color: #1a237e; padding: 7px 13px; border-radius: 8px; transition: background 0.2s; }
+    .nav-lang-btn:hover { background: #eef0fb; }
     .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
     .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
-    .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
-    .nav-lang-menu {
-        display: none; position: absolute; right: 0; top: calc(100% + 8px);
-        background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
-        box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
-        overflow: hidden; z-index: 9999;
-    }
+    .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
+    .nav-lang-menu { display: none; position: absolute; right: 0; top: calc(100% + 8px); background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px; box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px; overflow: hidden; z-index: 9999; }
     .nav-lang-dropdown.open .nav-lang-menu { display: block; }
-    .nav-lang-menu button {
-        display: flex; align-items: center; gap: 10px;
-        width: 100%; padding: 11px 16px; background: none; border: none;
-        font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
-        color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
-    }
+    .nav-lang-menu button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px 16px; background: none; border: none; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500; color: #333; cursor: pointer; transition: background 0.15s; text-align: left; }
     .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
     .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
     .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
     .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
 
-    /* ===== PAGE HERO ===== */
-    .page-hero {
-        background: linear-gradient(135deg, #1a237e 0%, #1a5c38 100%);
-        padding: 60px 24px 50px;
-        text-align: center;
-        color: #fff;
-    }
+    .page-hero { background: linear-gradient(135deg, #1a237e 0%, #1a5c38 100%); padding: 60px 24px 50px; text-align: center; color: #fff; }
     .page-hero h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
     .page-hero p { font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.85; }
     .breadcrumb { font-family: 'Poppins', sans-serif; font-size: 0.8rem; margin-bottom: 14px; opacity: 0.75; }
     .breadcrumb a { color: #fff; text-decoration: none; }
 
-    /* ===== GALLERY MAIN ===== */
     .gallery-main { background: #f7f8fc; min-height: 60vh; padding: 52px 0 70px; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
-    /* Top row */
-    .gallery-toprow {
-        display: flex; align-items: center; justify-content: space-between;
-        margin-bottom: 36px; flex-wrap: wrap; gap: 14px;
-    }
-    .gallery-main-title {
-        font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 700;
-        color: #1a237e; border-left: 5px solid #1a5c38; padding-left: 14px; line-height: 1.3;
-    }
-    .upload-btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        background: #1a5c38; color: #fff; border: none; border-radius: 8px;
-        padding: 10px 20px; font-family: 'Poppins', sans-serif; font-size: 0.85rem;
-        font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s; white-space: nowrap;
-    }
-    .upload-btn:hover { background: #14472c; transform: translateY(-1px); }
+    /* --- Album block --- */
+    .album-block { margin-bottom: 50px; }
 
-    /* Albums list */
-    .albums-list { display: flex; flex-direction: column; gap: 52px; }
-
-    /* ===== ALBUM BLOCK ===== */
-    .album-block { background: #fff; border-radius: 16px; padding: 28px 28px 24px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-
-    .album-header {
-        display: flex; align-items: flex-start; justify-content: space-between;
-        margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
-    }
-    .album-title-wrap { display: flex; flex-direction: column; gap: 4px; }
     .album-title {
-        font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800;
-        color: #1a237e; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.35;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #1a237e;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border-left: 4px solid #1a5c38;
+        padding-left: 12px;
+        margin-bottom: 14px;
+        line-height: 1.45;
     }
-    .album-count {
-        font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 500; color: #888;
-    }
-    .album-add-btn {
-        display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
-        background: none; border: 1.5px solid #1a5c38; color: #1a5c38;
-        border-radius: 7px; padding: 7px 15px; font-family: 'Poppins', sans-serif;
-        font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.18s, color 0.18s;
-    }
-    .album-add-btn:hover { background: #1a5c38; color: #fff; }
 
-    /* ===== PHOTO GRID (no captions, just images) ===== */
-    .photo-grid-wrap { position: relative; }
-    .photo-grid-clip { overflow: hidden; }
+    /* 4-column grid, images only */
     .photo-grid {
-        display: flex; gap: 10px;
-        transition: transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
     }
 
-    /* Photo card — image only, no caption */
-    .photo-card {
-        flex: 0 0 calc(25% - 8px);
-        border-radius: 8px; overflow: hidden;
-        cursor: pointer; position: relative;
-        background: #e8eaf6;
+    .photo-item {
         aspect-ratio: 4/3;
+        overflow: hidden;
+        cursor: pointer;
+        background: #c5cae9;
     }
-    .photo-card img {
-        width: 100%; height: 100%; object-fit: cover; display: block;
-        transition: transform 0.35s ease;
+    .photo-item img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+        transition: transform 0.3s ease;
     }
-    .photo-card:hover img { transform: scale(1.05); }
-
-    /* Hover overlay — just a subtle dim, no text */
-    .photo-card::after {
-        content: ''; position: absolute; inset: 0;
-        background: rgba(0,0,0,0); transition: background 0.25s;
-    }
-    .photo-card:hover::after { background: rgba(0,0,0,0.15); }
-
-    /* Delete btn */
-    .photo-card-del {
-        position: absolute; top: 6px; right: 6px; width: 26px; height: 26px;
-        border-radius: 50%; background: rgba(0,0,0,0.55); color: #fff; border: none;
-        font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-        opacity: 0; transition: opacity 0.18s; z-index: 5;
-    }
-    .photo-card:hover .photo-card-del { opacity: 1; }
-
-    /* Carousel nav arrows */
-    .carousel-btn {
-        position: absolute; top: 50%; transform: translateY(-50%);
-        width: 38px; height: 38px; border-radius: 50%; border: none;
-        background: #1a237e; color: #fff; font-size: 1.3rem; cursor: pointer; z-index: 10;
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: background 0.18s;
-    }
-    .carousel-btn:hover { background: #1a5c38; }
-    .carousel-btn:disabled { background: #ccc; cursor: default; opacity: 0.5; }
-    .carousel-btn.prev { left: -19px; }
-    .carousel-btn.next { right: -19px; }
-
-    /* Dots */
-    .carousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 12px; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: #c5cae9; border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
-    .dot.active { background: #1a237e; transform: scale(1.4); }
-
-    /* Empty state */
-    .empty-album {
-        padding: 40px 20px; text-align: center; color: #b0b8d8;
-        font-family: 'Poppins', sans-serif; font-size: 0.85rem;
-    }
-    .empty-state {
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        padding: 80px 20px; color: #b0b8d8; font-family: 'Poppins', sans-serif; text-align: center; gap: 14px;
-    }
-    .empty-state svg { opacity: 0.3; }
-    .empty-state p { font-size: 0.95rem; }
-    .empty-state small { font-size: 0.82rem; color: #c5cae9; }
-
-    /* Modal */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 9998; align-items: center; justify-content: center; }
-    .modal-overlay.active { display: flex; }
-    .modal-box { background: #fff; border-radius: 16px; padding: 36px 32px; width: 420px; max-width: 95vw; box-shadow: 0 16px 60px rgba(0,0,0,0.18); }
-    .modal-box h3 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: #1a237e; margin-bottom: 20px; }
-    .modal-input { width: 100%; border: 1.5px solid #d0d4e8; border-radius: 8px; padding: 11px 14px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: #222; outline: none; transition: border-color 0.18s; margin-bottom: 18px; }
-    .modal-input:focus { border-color: #1a237e; }
-    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-    .modal-btn { padding: 9px 22px; border-radius: 8px; border: none; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.18s; }
-    .modal-btn.cancel { background: #f0f2fb; color: #1a237e; }
-    .modal-btn.cancel:hover { background: #e0e3f5; }
-    .modal-btn.confirm { background: #1a237e; color: #fff; }
-    .modal-btn.confirm:hover { background: #1a5c38; }
+    .photo-item:hover img { transform: scale(1.05); }
 
     /* Lightbox */
-    .lightbox-overlay {
-        display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92);
-        z-index: 9999; align-items: center; justify-content: center;
-    }
+    .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
     .lightbox-overlay.active { display: flex; }
-    .lightbox-inner {
-        position: relative; display: flex; align-items: center; justify-content: center;
-        max-width: 92vw; max-height: 92vh;
-    }
-    .lightbox-inner img {
-        max-width: 88vw; max-height: 88vh;
-        border-radius: 8px; object-fit: contain;
-        box-shadow: 0 12px 60px rgba(0,0,0,0.7);
-    }
-    .lb-close {
-        position: fixed; top: 20px; right: 24px;
-        background: rgba(255,255,255,0.12); border: none; color: #fff;
-        font-size: 1.6rem; cursor: pointer; width: 42px; height: 42px;
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        transition: background 0.18s; z-index: 10001;
-    }
-    .lb-close:hover { background: rgba(255,255,255,0.25); }
-    .lb-arrow {
-        position: fixed; top: 50%; transform: translateY(-50%);
-        background: rgba(255,255,255,0.1); border: none; color: #fff;
-        font-size: 2.4rem; cursor: pointer; width: 52px; height: 80px;
-        display: flex; align-items: center; justify-content: center;
-        border-radius: 8px; transition: background 0.18s; z-index: 10001;
-    }
+    .lb-close { position: fixed; top: 18px; right: 22px; background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 1.5rem; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.18s; z-index: 10001; }
+    .lb-close:hover { background: rgba(255,255,255,0.28); }
+    .lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 2.6rem; cursor: pointer; width: 52px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: background 0.18s; z-index: 10001; }
     .lb-arrow:hover { background: rgba(255,255,255,0.22); }
     .lb-prev { left: 10px; }
     .lb-next { right: 10px; }
+    .lb-img-wrap { max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+    .lb-img-wrap img { max-width: 88vw; max-height: 88vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 50px rgba(0,0,0,0.7); }
 
-    @media (max-width: 900px) {
-        .photo-card { flex: 0 0 calc(33.333% - 7px); }
-    }
-    @media (max-width: 620px) {
-        .photo-card { flex: 0 0 calc(50% - 5px); }
-        .carousel-btn.prev { left: -12px; }
-        .carousel-btn.next { right: -12px; }
-        .page-hero h1 { font-size: 1.8rem; }
-        .album-block { padding: 18px 16px; }
-    }
+    @media (max-width: 900px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 580px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } .page-hero h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="top-bar">
     <div class="top-bar-content">
         <div class="top-bar-left">
@@ -248,7 +102,6 @@
     </div>
 </div>
 
-<!-- NAV -->
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-section">
@@ -260,15 +113,13 @@
         </a>
         <ul class="nav-menu">
             <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
-            <li>
-                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
+            <li><a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
                     <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
                 </div>
             </li>
-            <li>
-                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
+            <li><a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
                     <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
@@ -280,8 +131,7 @@
             <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
             <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
             <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
-            <li>
-                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
+            <li><a href="#"><span id="nav-media-el">Media</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
                     <a href="news.html"><span id="dd-news-el">Berita</span></a>
@@ -297,20 +147,15 @@
                     <span class="lang-arrow">&#9662;</span>
                 </button>
                 <div class="nav-lang-menu">
-                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
-                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
-                    </button>
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()"><img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu</button>
                     <div class="nav-lang-menu-divider"></div>
-                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
-                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
-                    </button>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()"><img src="https://flagcdn.com/w40/gb.png" alt="EN"> English</button>
                 </div>
             </div>
         </div>
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="page-hero">
     <div class="breadcrumb">
         <a href="index.html" id="bc-home-el">Laman Utama</a> ›
@@ -321,21 +166,74 @@
     <p id="hero-desc-el">Teroka kemudahan, acara, dan momen-momen istimewa di UPSI Holdings</p>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery-main">
     <div class="container">
 
-        <div class="albums-list" id="albumsList">
-            <div class="empty-state" id="emptyState">
-                <svg width="72" height="72" fill="none" stroke="#b0b8d8" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <p id="empty-text-el">Tiada gambar lagi. Buat album baharu untuk mula!</p>
-                <small id="empty-sub-el">Klik butang "Album Baharu" di atas</small>
+        <!--
+        ====================================================
+        CARA TAMBAH ALBUM BARU:
+
+        Copy blok di bawah dan tampal selepas album terakhir.
+        Tukar tajuk dan src gambar.
+
+        <div class="album-block">
+            <h2 class="album-title">TAJUK ALBUM ANDA DI SINI</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="image/foto1.jpg" alt=""></div>
+                <div class="photo-item"><img src="image/foto2.jpg" alt=""></div>
+                <div class="photo-item"><img src="image/foto3.jpg" alt=""></div>
             </div>
         </div>
+        ====================================================
+        -->
+
+        <!-- ALBUM 1 -->
+        <div class="album-block">
+            <h2 class="album-title">MAJLIS MENANDATANGANI PERJANJIAN MEMORANDUM OF AGREEMENT (MOA) ANTARA UPSI HOLDINGS &amp; OPEN UNIVERSITY MALAYSIA</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646386331_1394016932767962_8004691917291031004_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646373749_1394017016101287_8914225377320843096_n-1-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646373467_1394016936101295_3566714151350324953_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646485456_1394016979434624_2268796851266127452_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646682576_1394017046101284_8940009852240954075_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646379915_1394017066101282_7353355617719548831_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/03/646507928_1394017009434621_6444178604848886103_n-480x358.jpg" alt=""></div>
+            </div>
+        </div>
+
+        <!-- ALBUM 2 -->
+        <div class="album-block">
+            <h2 class="album-title">MAJLIS PENUTUP RETREAT KEPIMPINAN DAN PENGURUSAN STRATEGIK BERSAMA YBM KPT</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/629585692_1370276961808626_7634786668007785268_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630471007_1370276725141983_6642515591808608106_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/628230454_1370276928475296_4398449275594983509_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630056576_1370276968475292_3747971752033412550_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/631248781_1370277038475285_2774948398495588924_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630391409_1370276865141969_9217836530068437507_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630535506_1370276885141967_4252123921890270536_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/629452687_1370276781808644_6687922085912648104_n-480x358.jpg" alt=""></div>
+            </div>
+        </div>
+
+        <!-- ALBUM 3 -->
+        <div class="album-block">
+            <h2 class="album-title">PEMBENTANGAN EKSEKUTIF: MEMACU PRESTASI, MENYELARASKAN STRATEGI</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/628244548_1370239331812389_3828315821721581808_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/628371317_1370239935145662_1701629063859383058_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/629697650_1370240048478984_9204627003987694606_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630037707_1370239201812402_8832328534934318087_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630057280_1370239855145670_1616902530892158443_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630122313_1370239195145736_2982925054102292107_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/630488150_1370238485145807_3422314793088043664_n-480x358.jpg" alt=""></div>
+                <div class="photo-item"><img src="https://upsiholdings.com/assets/2026/02/631000654_1370240555145600_3296949574914676293_n-480x358.jpg" alt=""></div>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -347,8 +245,7 @@
                     <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a>
-                    <a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a>
+                    <a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a>
                 </div>
             </div>
             <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul>
@@ -372,391 +269,71 @@
     </div>
 </footer>
 
-<!-- MODAL — New Album -->
-<div class="modal-overlay" id="newAlbumModal">
-    <div class="modal-box">
-        <h3 id="modal-title-el">Nama Album Baharu</h3>
-        <input class="modal-input" type="text" id="albumNameInput" placeholder="Cth: Majlis MOA 2025" maxlength="80">
-        <div class="modal-actions">
-            <button class="modal-btn cancel" onclick="closeNewAlbumModal()" id="modal-cancel-el">Batal</button>
-            <button class="modal-btn confirm" onclick="createAlbum()" id="modal-confirm-el">Buat Album</button>
-        </div>
-    </div>
-</div>
-
-<!-- LIGHTBOX — image only, no caption -->
+<!-- LIGHTBOX -->
 <div class="lightbox-overlay" id="lightbox">
-    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-close" onclick="closeLb()">✕</button>
     <button class="lb-arrow lb-prev" onclick="lbNav(-1)">&#8249;</button>
-    <div class="lightbox-inner">
-        <img id="lb-img" src="" alt="">
-    </div>
+    <div class="lb-img-wrap"><img id="lb-img" src="" alt=""></div>
     <button class="lb-arrow lb-next" onclick="lbNav(1)">&#8250;</button>
 </div>
 
-<input type="file" id="fileInput" accept="image/*" multiple style="display:none">
-
 <script src="script.js"></script>
 <script>
-// ============================================================
-// STATE
-// ============================================================
-let albums = [];
-let currentLang = 'bm';
-let pendingAlbumId = null;
-let lbAlbumId = null, lbPhotoIdx = 0;
-const carouselIdx = {};
+// Lightbox — klik gambar untuk besarkan
+let lbItems = [], lbIdx = 0;
 
-// ============================================================
-// ALBUM MODAL
-// ============================================================
-function openNewAlbumModal() {
-    document.getElementById('albumNameInput').value = '';
-    document.getElementById('newAlbumModal').classList.add('active');
-    setTimeout(() => document.getElementById('albumNameInput').focus(), 80);
-}
-function closeNewAlbumModal() {
-    document.getElementById('newAlbumModal').classList.remove('active');
-}
-function createAlbum() {
-    const name = document.getElementById('albumNameInput').value.trim();
-    if (!name) { document.getElementById('albumNameInput').focus(); return; }
-    const album = { id: 'a' + Date.now(), name, photos: [] };
-    albums.push(album);
-    carouselIdx[album.id] = 0;
-    closeNewAlbumModal();
-    renderAlbums();
-    triggerUpload(album.id);
-}
-
-// ============================================================
-// RENDER
-// ============================================================
-function renderAlbums() {
-    const list = document.getElementById('albumsList');
-    const empty = document.getElementById('emptyState');
-    Array.from(list.children).forEach(c => { if (c.id !== 'emptyState') c.remove(); });
-    if (albums.length === 0) { empty.style.display = 'flex'; return; }
-    empty.style.display = 'none';
-    albums.forEach(album => list.appendChild(buildAlbumBlock(album)));
-    albums.forEach(album => initCarousel(album.id));
-}
-
-function buildAlbumBlock(album) {
-    const wrap = document.createElement('div');
-    wrap.className = 'album-block';
-    wrap.id = 'album-' + album.id;
-
-    // Header — title + photo count on left, add button on right
-    const hdr = document.createElement('div');
-    hdr.className = 'album-header';
-
-    const tw = document.createElement('div');
-    tw.className = 'album-title-wrap';
-
-    const tEl = document.createElement('h3');
-    tEl.className = 'album-title';
-    tEl.textContent = album.name;
-
-    const cEl = document.createElement('span');
-    cEl.className = 'album-count';
-    cEl.textContent = album.photos.length + (currentLang === 'bm' ? ' gambar' : ' photos');
-
-    tw.append(tEl, cEl);
-
-    const addBtn = document.createElement('button');
-    addBtn.className = 'album-add-btn';
-    addBtn.innerHTML = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> ${currentLang === 'bm' ? 'Tambah Gambar' : 'Add Photos'}`;
-    addBtn.onclick = () => triggerUpload(album.id);
-
-    hdr.append(tw, addBtn);
-    wrap.appendChild(hdr);
-
-    // Photo grid carousel
-    const outer = document.createElement('div');
-    outer.className = 'photo-grid-wrap';
-
-    const prev = document.createElement('button');
-    prev.className = 'carousel-btn prev';
-    prev.id = 'prev-' + album.id;
-    prev.innerHTML = '&#8249;';
-
-    const next = document.createElement('button');
-    next.className = 'carousel-btn next';
-    next.id = 'next-' + album.id;
-    next.innerHTML = '&#8250;';
-
-    const clip = document.createElement('div');
-    clip.className = 'photo-grid-clip';
-
-    const track = document.createElement('div');
-    track.className = 'photo-grid';
-    track.id = 'track-' + album.id;
-
-    if (album.photos.length === 0) {
-        const ph = document.createElement('div');
-        ph.className = 'empty-album';
-        ph.textContent = currentLang === 'bm'
-            ? 'Belum ada gambar. Klik "Tambah Gambar" untuk muat naik.'
-            : 'No photos yet. Click "Add Photos" to upload.';
-        track.appendChild(ph);
-        prev.style.display = 'none';
-        next.style.display = 'none';
-    } else {
-        album.photos.forEach((photo, idx) => track.appendChild(buildPhotoCard(photo, idx, album.id)));
-    }
-
-    clip.appendChild(track);
-    outer.append(prev, clip, next);
-
-    const dots = document.createElement('div');
-    dots.className = 'carousel-dots';
-    dots.id = 'dots-' + album.id;
-
-    wrap.append(outer, dots);
-    return wrap;
-}
-
-function buildPhotoCard(photo, idx, albumId) {
-    const card = document.createElement('div');
-    card.className = 'photo-card';
-    card.onclick = () => openLightbox(albumId, idx);
-
-    const img = document.createElement('img');
-    img.src = photo.src;
-    img.alt = '';
-    img.loading = 'lazy';
-    card.appendChild(img);
-
-    const del = document.createElement('button');
-    del.className = 'photo-card-del';
-    del.textContent = '✕';
-    del.title = currentLang === 'bm' ? 'Padam' : 'Delete';
-    del.onclick = (e) => { e.stopPropagation(); deletePhoto(albumId, idx); };
-    card.appendChild(del);
-
-    return card;
-}
-
-function deletePhoto(albumId, idx) {
-    const album = albums.find(a => a.id === albumId);
-    if (album) { album.photos.splice(idx, 1); carouselIdx[albumId] = 0; renderAlbums(); }
-}
-
-// ============================================================
-// CAROUSEL
-// ============================================================
-function getPerPage() {
-    return window.innerWidth <= 620 ? 2 : window.innerWidth <= 900 ? 3 : 4;
-}
-
-function initCarousel(albumId) {
-    if (carouselIdx[albumId] == null) carouselIdx[albumId] = 0;
-    const prev = document.getElementById('prev-' + albumId);
-    const next = document.getElementById('next-' + albumId);
-    if (prev) prev.onclick = () => {
-        carouselIdx[albumId] = Math.max(0, carouselIdx[albumId] - getPerPage());
-        updateCarousel(albumId);
-    };
-    if (next) next.onclick = () => {
-        const album = albums.find(a => a.id === albumId);
-        if (!album) return;
-        carouselIdx[albumId] = Math.min(Math.max(0, album.photos.length - getPerPage()), carouselIdx[albumId] + getPerPage());
-        updateCarousel(albumId);
-    };
-    setTimeout(() => updateCarousel(albumId), 30);
-}
-
-function updateCarousel(albumId) {
-    const track = document.getElementById('track-' + albumId);
-    const dots = document.getElementById('dots-' + albumId);
-    const prev = document.getElementById('prev-' + albumId);
-    const next = document.getElementById('next-' + albumId);
-    if (!track) return;
-
-    const album = albums.find(a => a.id === albumId);
-    const total = album ? album.photos.length : 0;
-    const perPage = getPerPage();
-    const idx = carouselIdx[albumId] || 0;
-    const maxIdx = Math.max(0, total - perPage);
-
-    const card = track.querySelector('.photo-card');
-    if (card) {
-        const gap = 10;
-        track.style.transform = `translateX(-${idx * (card.offsetWidth + gap)}px)`;
-    }
-
-    if (prev) prev.disabled = idx === 0;
-    if (next) next.disabled = idx >= maxIdx || total <= perPage;
-
-    if (dots && total > 0) {
-        const pages = Math.ceil(total / perPage);
-        dots.innerHTML = '';
-        if (pages > 1) {
-            for (let i = 0; i < pages; i++) {
-                const d = document.createElement('button');
-                d.className = 'dot' + (Math.floor(idx / perPage) === i ? ' active' : '');
-                const pg = i;
-                d.onclick = () => { carouselIdx[albumId] = pg * perPage; updateCarousel(albumId); };
-                dots.appendChild(d);
-            }
-        }
-    }
-}
-
-window.addEventListener('resize', () => albums.forEach(a => updateCarousel(a.id)));
-
-// ============================================================
-// UPLOAD
-// ============================================================
-function triggerUpload(albumId) {
-    pendingAlbumId = albumId;
-    const inp = document.getElementById('fileInput');
-    inp.value = '';
-    inp.click();
-}
-
-document.getElementById('fileInput').addEventListener('change', function () {
-    const files = Array.from(this.files);
-    if (!files.length || !pendingAlbumId) return;
-    const album = albums.find(a => a.id === pendingAlbumId);
-    if (!album) return;
-    let loaded = 0;
-    files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            album.photos.push({ src: e.target.result, name: file.name.replace(/\.[^.]+$/, '') });
-            if (++loaded === files.length) { carouselIdx[album.id] = 0; renderAlbums(); }
-        };
-        reader.readAsDataURL(file);
+document.querySelectorAll('.photo-grid').forEach(grid => {
+    grid.querySelectorAll('.photo-item img').forEach((img, i) => {
+        img.parentElement.addEventListener('click', () => {
+            lbItems = Array.from(grid.querySelectorAll('.photo-item img'));
+            lbIdx = i;
+            document.getElementById('lb-img').src = lbItems[lbIdx].src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
     });
 });
 
-// ============================================================
-// LIGHTBOX
-// ============================================================
-function openLightbox(albumId, idx) {
-    lbAlbumId = albumId; lbPhotoIdx = idx;
-    showLbPhoto();
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-function showLbPhoto() {
-    const album = albums.find(a => a.id === lbAlbumId);
-    if (!album) return;
-    const p = album.photos[lbPhotoIdx];
-    if (!p) return;
-    document.getElementById('lb-img').src = p.src;
-}
 function lbNav(dir) {
-    const album = albums.find(a => a.id === lbAlbumId);
-    if (!album) return;
-    lbPhotoIdx = (lbPhotoIdx + dir + album.photos.length) % album.photos.length;
-    showLbPhoto();
+    lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+    document.getElementById('lb-img').src = lbItems[lbIdx].src;
 }
-function closeLightbox() {
+function closeLb() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
 }
-document.getElementById('lightbox').addEventListener('click', e => {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-});
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLb(); });
 document.addEventListener('keydown', e => {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Escape') closeLb();
     if (e.key === 'ArrowLeft') lbNav(-1);
     if (e.key === 'ArrowRight') lbNav(1);
 });
 
-// ============================================================
-// LANGUAGE
-// ============================================================
+// Language
 function toggleLangMenu() { document.getElementById('navLangDropdown').classList.toggle('open'); }
 function closeLangMenu() { document.getElementById('navLangDropdown').classList.remove('open'); }
-document.addEventListener('click', e => {
-    const d = document.getElementById('navLangDropdown');
-    if (d && !d.contains(e.target)) d.classList.remove('open');
-});
+document.addEventListener('click', e => { const d = document.getElementById('navLangDropdown'); if (d && !d.contains(e.target)) d.classList.remove('open'); });
 
 const T = {
-    bm: {
-        "top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843","top-cta-el":"Hubungi Kami","company-tagline":"Sinergi Sumber & Kepakaran UPSI",
-        "nav-home-el":"Laman Utama","nav-about-el":"Tentang Kami","nav-services-el":"Perkhidmatan","nav-products-el":"Produk Kami","nav-ads-el":"Iklan","nav-career-el":"Kerjaya","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Hubungi Kami",
-        "dd-bod-el":"Lembaga Pengarah","dd-leaders-el":"Pemimpin","dd-edu-el":"Pendidikan & Latihan","dd-hosp-el":"Pusat Latihan & Hospitaliti","dd-retail-el":"Runcit & Perkhidmatan","dd-projects-el":"Konsultasi Projek","dd-gallery-el":"Galeri","dd-news-el":"Berita",
-        "bc-home-el":"Laman Utama","bc-media-el":"Media","bc-current-el":"Galeri","hero-title-el":"Galeri","hero-desc-el":"Teroka kemudahan, acara, dan momen-momen istimewa di UPSI Holdings",
-        "gallery-main-title-el":"Album Foto","new-album-btn-el":"Album Baharu","empty-text-el":"Tiada gambar lagi. Buat album baharu untuk mula!","empty-sub-el":"Klik butang \"Album Baharu\" di atas",
-        "modal-title-el":"Nama Album Baharu","modal-cancel-el":"Batal","modal-confirm-el":"Buat Album",
-        "footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.","footer-address-label-el":"Pejabat Utama:","footer-phone-label-el":"Telefon:",
-        "footer-about-head-el":"Tentang","footer-bod-el":"Lembaga Pengarah","footer-leaders-el":"Pemimpin","footer-upsi-el":"Tentang UPSI","footer-svc-head-el":"Perkhidmatan","footer-svc1-el":"Pendidikan & Latihan","footer-svc2-el":"Hospitaliti","footer-svc3-el":"Perkhidmatan Runcit","footer-svc4-el":"Konsultasi","footer-res-head-el":"Sumber","footer-career-el":"Kerjaya","footer-tender-el":"Tender","footer-news-el":"Berita","footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
-    },
-    bi: {
-        "top-phone-text":"Got Questions? Call us: 012-2525 843","top-cta-el":"Contact Us","company-tagline":"Synergy of Resources & UPSI Expertise",
-        "nav-home-el":"Home","nav-about-el":"About Us","nav-services-el":"Services","nav-products-el":"Our Products","nav-ads-el":"Ads","nav-career-el":"Career","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Contact Us",
-        "dd-bod-el":"Board of Directors","dd-leaders-el":"Leaders","dd-edu-el":"Education & Training","dd-hosp-el":"Training Center & Hospitality","dd-retail-el":"Retail & Services","dd-projects-el":"Projects Consultation","dd-gallery-el":"Gallery","dd-news-el":"News",
-        "bc-home-el":"Home","bc-media-el":"Media","bc-current-el":"Gallery","hero-title-el":"Gallery","hero-desc-el":"Explore our facilities, events, and memorable moments at UPSI Holdings",
-        "gallery-main-title-el":"Photo Albums","new-album-btn-el":"New Album","empty-text-el":"No photos yet. Create a new album to get started!","empty-sub-el":"Click the \"New Album\" button above",
-        "modal-title-el":"New Album Name","modal-cancel-el":"Cancel","modal-confirm-el":"Create Album",
-        "footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.","footer-address-label-el":"Main Office:","footer-phone-label-el":"Phone:",
-        "footer-about-head-el":"About","footer-bod-el":"Board of Directors","footer-leaders-el":"Leaders","footer-upsi-el":"About UPSI","footer-svc-head-el":"Services","footer-svc1-el":"Education & Training","footer-svc2-el":"Hospitality","footer-svc3-el":"Retail Services","footer-svc4-el":"Consultation","footer-res-head-el":"Resources","footer-career-el":"Career","footer-tender-el":"Tender","footer-news-el":"News","footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
-    }
+    bm: { "top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843","top-cta-el":"Hubungi Kami","company-tagline":"Sinergi Sumber & Kepakaran UPSI","nav-home-el":"Laman Utama","nav-about-el":"Tentang Kami","nav-services-el":"Perkhidmatan","nav-products-el":"Produk Kami","nav-ads-el":"Iklan","nav-career-el":"Kerjaya","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Hubungi Kami","dd-bod-el":"Lembaga Pengarah","dd-leaders-el":"Pemimpin","dd-edu-el":"Pendidikan & Latihan","dd-hosp-el":"Pusat Latihan & Hospitaliti","dd-retail-el":"Runcit & Perkhidmatan","dd-projects-el":"Konsultasi Projek","dd-gallery-el":"Galeri","dd-news-el":"Berita","bc-home-el":"Laman Utama","bc-media-el":"Media","bc-current-el":"Galeri","hero-title-el":"Galeri","hero-desc-el":"Teroka kemudahan, acara, dan momen-momen istimewa di UPSI Holdings","footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris.","footer-address-label-el":"Pejabat Utama:","footer-phone-label-el":"Telefon:","footer-about-head-el":"Tentang","footer-bod-el":"Lembaga Pengarah","footer-leaders-el":"Pemimpin","footer-upsi-el":"Tentang UPSI","footer-svc-head-el":"Perkhidmatan","footer-svc1-el":"Pendidikan & Latihan","footer-svc2-el":"Hospitaliti","footer-svc3-el":"Perkhidmatan Runcit","footer-svc4-el":"Konsultasi","footer-res-head-el":"Sumber","footer-career-el":"Kerjaya","footer-tender-el":"Tender","footer-news-el":"Berita","footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara." },
+    bi: { "top-phone-text":"Got Questions? Call us: 012-2525 843","top-cta-el":"Contact Us","company-tagline":"Synergy of Resources & UPSI Expertise","nav-home-el":"Home","nav-about-el":"About Us","nav-services-el":"Services","nav-products-el":"Our Products","nav-ads-el":"Ads","nav-career-el":"Career","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Contact Us","dd-bod-el":"Board of Directors","dd-leaders-el":"Leaders","dd-edu-el":"Education & Training","dd-hosp-el":"Training Center & Hospitality","dd-retail-el":"Retail & Services","dd-projects-el":"Projects Consultation","dd-gallery-el":"Gallery","dd-news-el":"News","bc-home-el":"Home","bc-media-el":"Media","bc-current-el":"Gallery","hero-title-el":"Gallery","hero-desc-el":"Explore our facilities, events, and memorable moments at UPSI Holdings","footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris.","footer-address-label-el":"Main Office:","footer-phone-label-el":"Phone:","footer-about-head-el":"About","footer-bod-el":"Board of Directors","footer-leaders-el":"Leaders","footer-upsi-el":"About UPSI","footer-svc-head-el":"Services","footer-svc1-el":"Education & Training","footer-svc2-el":"Hospitality","footer-svc3-el":"Retail Services","footer-svc4-el":"Consultation","footer-res-head-el":"Resources","footer-career-el":"Career","footer-tender-el":"Tender","footer-news-el":"News","footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved." }
 };
 
 function setLang(lang) {
-    currentLang = lang;
     const f = document.getElementById('lang-flag'), l = document.getElementById('lang-label');
-    if (f && l) {
-        f.src = lang==='bm' ? 'https://flagcdn.com/w40/my.png' : 'https://flagcdn.com/w40/gb.png';
-        f.alt = lang==='bm' ? 'MY' : 'EN';
-        l.textContent = lang==='bm' ? 'Melayu' : 'English';
-    }
-    const bm = document.getElementById('menu-btn-bm'), bi = document.getElementById('menu-btn-bi');
-    if (bm) bm.classList.toggle('active-lang', lang==='bm');
-    if (bi) bi.classList.toggle('active-lang', lang==='bi');
+    if (f && l) { f.src = lang==='bm'?'https://flagcdn.com/w40/my.png':'https://flagcdn.com/w40/gb.png'; l.textContent = lang==='bm'?'Melayu':'English'; }
+    document.getElementById('menu-btn-bm')?.classList.toggle('active-lang', lang==='bm');
+    document.getElementById('menu-btn-bi')?.classList.toggle('active-lang', lang==='bi');
     const t = T[lang]; if (!t) return;
     Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
-    document.documentElement.lang = lang==='bm' ? 'ms' : 'en';
+    document.documentElement.lang = lang==='bm'?'ms':'en';
     try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
-    renderAlbums();
 }
 
-document.getElementById('albumNameInput').addEventListener('keydown', e => { if (e.key==='Enter') createAlbum(); });
-
 document.addEventListener('DOMContentLoaded', () => {
-    const saved = (() => { try { return localStorage.getItem('upsi-lang')||'bm'; } catch(e) { return 'bm'; } })();
+    const saved = (() => { try { return localStorage.getItem('upsi-lang')||'bm'; } catch(e){ return 'bm'; } })();
     setLang(saved);
-
-    // ===== CONTOH ALBUM — ganti src dengan path gambar sebenar =====
-    albums.push({
-        id: 'a_contoh1',
-        name: 'MAJLIS PENUTUP RETREAT KEPIMPINAN DAN PENGURUSAN STRATEGIK BERSAMA YBM KPT',
-        photos: [
-            { src: 'https://placehold.co/800x600/1a237e/ffffff?text=Foto+1', name: 'Foto 1' },
-            { src: 'https://placehold.co/800x600/1a5c38/ffffff?text=Foto+2', name: 'Foto 2' },
-            { src: 'https://placehold.co/800x600/3949ab/ffffff?text=Foto+3', name: 'Foto 3' },
-            { src: 'https://placehold.co/800x600/2e7d32/ffffff?text=Foto+4', name: 'Foto 4' },
-            { src: 'https://placehold.co/800x600/283593/ffffff?text=Foto+5', name: 'Foto 5' },
-            { src: 'https://placehold.co/800x600/1b5e20/ffffff?text=Foto+6', name: 'Foto 6' },
-            { src: 'https://placehold.co/800x600/0d47a1/ffffff?text=Foto+7', name: 'Foto 7' },
-            { src: 'https://placehold.co/800x600/33691e/ffffff?text=Foto+8', name: 'Foto 8' },
-        ]
-    });
-    carouselIdx['a_contoh1'] = 0;
-
-    albums.push({
-        id: 'a_contoh2',
-        name: 'MAJLIS ANUGERAH KECEMERLANGAN UPSI HOLDINGS 2025',
-        photos: [
-            { src: 'https://placehold.co/800x600/b71c1c/ffffff?text=Foto+1', name: 'Foto 1' },
-            { src: 'https://placehold.co/800x600/880e4f/ffffff?text=Foto+2', name: 'Foto 2' },
-            { src: 'https://placehold.co/800x600/4a148c/ffffff?text=Foto+3', name: 'Foto 3' },
-            { src: 'https://placehold.co/800x600/e65100/ffffff?text=Foto+4', name: 'Foto 4' },
-            { src: 'https://placehold.co/800x600/bf360c/ffffff?text=Foto+5', name: 'Foto 5' },
-        ]
-    });
-    carouselIdx['a_contoh2'] = 0;
-    // ===== TAMAT CONTOH =====
-
-    renderAlbums();
 });
 </script>
 </body>
