@@ -59,6 +59,65 @@
     .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
     .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
     .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+
+    /* ===== TENDER TABLE STYLE ===== */
+    .tender-table-wrap {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px rgba(26,35,126,0.08);
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+    .tender-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.92rem;
+    }
+    .tender-table thead tr {
+        background: #1a237e;
+        color: #fff;
+    }
+    .tender-table thead th {
+        padding: 16px 24px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-align: left;
+    }
+    .tender-table thead th:last-child {
+        text-align: right;
+        white-space: nowrap;
+        min-width: 130px;
+    }
+    .tender-table tbody tr {
+        border-bottom: 1px solid #eef0fb;
+        transition: background 0.15s;
+    }
+    .tender-table tbody tr:last-child { border-bottom: none; }
+    .tender-table tbody tr:hover { background: #f5f6fc; }
+    .tender-table tbody td {
+        padding: 18px 24px;
+        vertical-align: top;
+        color: #222;
+        line-height: 1.6;
+    }
+    .tender-table tbody td.td-date {
+        text-align: right;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #c0392b;
+        font-size: 0.9rem;
+        vertical-align: middle;
+    }
+    .tender-table tbody td a {
+        color: #1a237e;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .tender-table tbody td a:hover {
+        text-decoration: underline;
+        color: #283593;
+    }
     </style>
 </head>
 <body>
@@ -153,135 +212,64 @@
             <p class="section-description" id="section-desc-el">UPSI Holdings menjemput vendor dan kontraktor yang berkelayakan untuk menyertai proses tender kami.</p>
         </div>
 
-        <div class="tender-guidelines">
-            <h3 id="guidelines-title-el">Garis Panduan Penyerahan Tender</h3>
-            <div class="guidelines-grid">
-                <div class="guideline-card"><div class="guideline-icon">📋</div><h4 id="g1-title-el">Dokumentasi Lengkap</h4><p id="g1-desc-el">Pastikan semua dokumen yang diperlukan diserahkan dalam format yang ditetapkan</p></div>
-                <div class="guideline-card"><div class="guideline-icon">⏰</div><h4 id="g2-title-el">Tarikh Akhir Penyerahan</h4><p id="g2-desc-el">Penyerahan mesti diterima sebelum tarikh dan masa tutup</p></div>
-                <div class="guideline-card"><div class="guideline-icon">💼</div><h4 id="g3-title-el">Pendaftaran Syarikat</h4><p id="g3-desc-el">Pendaftaran SSM yang sah dan pensijilan yang diperlukan adalah wajib</p></div>
-                <div class="guideline-card"><div class="guideline-icon">✅</div><h4 id="g4-title-el">Pematuhan</h4><p id="g4-desc-el">Semua penyerahan mesti mematuhi terma dan syarat yang dinyatakan</p></div>
-            </div>
-        </div>
 
+
+        <!-- ===== SENARAI TENDER (FORMAT TABLE SEPERTI WEBSITE ASAL) ===== -->
         <div class="tender-listings">
-            <h3 id="active-tenders-title-el">Tender Aktif</h3>
+            <h3 id="active-tenders-title-el">Senarai Tender</h3>
 
-            <div class="tender-card active">
-                <div class="tender-status-badge" id="t1-badge-el">TERBUKA</div>
-                <div class="tender-header">
-                    <h4 id="t1-title-el">Bekalan Perkhidmatan Makanan & Minuman untuk The Banjaran Cape</h4>
-                    <div class="tender-meta"><span>Tender No: UHSB/T/2026/001</span><span id="t1-cat-el">Kategori: Perkhidmatan M&M</span></div>
-                </div>
-                <div class="tender-details">
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t1-pub-label-el">Diterbitkan:</strong> 1 Februari 2026</div>
-                        <div class="info-item"><strong id="t1-close-label-el">Tarikh Tutup:</strong> 28 Februari 2026, 5:00 PTG</div>
-                    </div>
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t1-period-label-el">Tempoh Kontrak:</strong> <span id="t1-period-el">12 Bulan (Boleh Diperbaharui)</span></div>
-                        <div class="info-item"><strong id="t1-value-label-el">Anggaran Nilai:</strong> RM 500,000 - RM 800,000</div>
-                    </div>
-                    <p id="t1-desc-el">UPSI Holdings menjemput vendor yang berkelayakan untuk mengemukakan cadangan bagi bekalan perkhidmatan makanan dan minuman di restoran The Banjaran Cape, termasuk katering untuk acara, perkhidmatan hi-tea, dan operasi harian.</p>
-                </div>
-                <div class="tender-actions">
-                    <button class="btn btn-primary" id="t1-btn1-el">Muat Turun Dokumen Tender</button>
-                    <button class="btn btn-secondary" id="t1-btn2-el">Hantar Tender</button>
-                </div>
-            </div>
-
-            <div class="tender-card active">
-                <div class="tender-status-badge" id="t2-badge-el">TERBUKA</div>
-                <div class="tender-header">
-                    <h4 id="t2-title-el">Perkhidmatan Pengurusan Kemudahan untuk Kampus Kota Meru</h4>
-                    <div class="tender-meta"><span>Tender No: UHSB/T/2026/002</span><span id="t2-cat-el">Kategori: Pengurusan Kemudahan</span></div>
-                </div>
-                <div class="tender-details">
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t2-pub-label-el">Diterbitkan:</strong> 5 Februari 2026</div>
-                        <div class="info-item"><strong id="t2-close-label-el">Tarikh Tutup:</strong> 5 Mac 2026, 5:00 PTG</div>
-                    </div>
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t2-period-label-el">Tempoh Kontrak:</strong> <span id="t2-period-el">24 Bulan</span></div>
-                        <div class="info-item"><strong id="t2-value-label-el">Anggaran Nilai:</strong> RM 1,200,000 - RM 1,500,000</div>
-                    </div>
-                    <p id="t2-desc-el">Mencari kontraktor pengurusan kemudahan yang berpengalaman untuk perkhidmatan penyelenggaraan bangunan, pembersihan, keselamatan, dan pengurusan utiliti yang komprehensif di Kampus Kota Meru.</p>
-                </div>
-                <div class="tender-actions">
-                    <button class="btn btn-primary" id="t2-btn1-el">Muat Turun Dokumen Tender</button>
-                    <button class="btn btn-secondary" id="t2-btn2-el">Hantar Tender</button>
-                </div>
-            </div>
-
-            <div class="tender-card active">
-                <div class="tender-status-badge" id="t3-badge-el">TERBUKA</div>
-                <div class="tender-header">
-                    <h4 id="t3-title-el">Bekalan & Pemasangan Sistem Tenaga Solar</h4>
-                    <div class="tender-meta"><span>Tender No: UHSB/T/2026/003</span><span id="t3-cat-el">Kategori: Teknologi Hijau</span></div>
-                </div>
-                <div class="tender-details">
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t3-pub-label-el">Diterbitkan:</strong> 8 Februari 2026</div>
-                        <div class="info-item"><strong id="t3-close-label-el">Tarikh Tutup:</strong> 10 Mac 2026, 5:00 PTG</div>
-                    </div>
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t3-period-label-el">Tempoh Kontrak:</strong> <span id="t3-period-el">Berasaskan Projek (6 bulan)</span></div>
-                        <div class="info-item"><strong id="t3-value-label-el">Anggaran Nilai:</strong> RM 800,000 - RM 1,000,000</div>
-                    </div>
-                    <p id="t3-desc-el">Pemasangan sistem panel solar di Scholar's Suites dan kemudahan UPSI Holdings yang lain, termasuk perkhidmatan penyelenggaraan selama 2 tahun selepas pemasangan.</p>
-                </div>
-                <div class="tender-actions">
-                    <button class="btn btn-primary" id="t3-btn1-el">Muat Turun Dokumen Tender</button>
-                    <button class="btn btn-secondary" id="t3-btn2-el">Hantar Tender</button>
-                </div>
+            <div class="tender-table-wrap">
+                <table class="tender-table">
+                    <thead>
+                        <tr>
+                            <th id="th-tajuk-el">Tajuk</th>
+                            <th id="th-tarikh-el">Tarikh Tutup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Tender 1 -->
+                        <tr>
+                            <td>
+                                <a href="https://upsiholdings.com/memindah-perabot-dan-memindah-semula-perabot-sedia-ada-membongkar-karpet-membekal-menghantar-memasang-lantai-vinyl-skirting-dan-floor-edges-membuang-sisa-pemb/" target="_blank" id="t1-title-el">
+                                    MEMINDAH PERABOT DAN MEMINDAH SEMULA PERABOT SEDIA ADA, MEMBONGKAR KARPET, MEMBEKAL, MENGHANTAR, MEMASANG LANTAI VINYL, 'SKIRTING' DAN 'FLOOR EDGES', MEMBUANG SISA PEMBINAAN DAN PENGUBAHSUAIAN, MEMBAIKI DAN MENGECAT SEMULA DINDING YANG TERJEJAS SEMASA KERJA PENGUBAHSUAIAN DIJALANKAN DI 97 BUAH BILIK PENGINAPAN DI SCHOLAR'S SUITES, KAMPUS SULTAN AZLAN SHAH, UNIVERSITI PENDIDIKAN SULTAN IDRIS
+                                </a>
+                            </td>
+                            <td class="td-date" id="t1-date-el">5/5/2025</td>
+                        </tr>
+                        <!-- Tender 2 -->
+                        <tr>
+                            <td>
+                                <a href="https://upsiholdings.com/membekal-menghantar-memasang-menguji-dan-mentauliah-peralatan-ict-tablet-kepada-universiti-pendidikan-sultan-idris-bagi-kegunaan-peserta-program-smart-home-schooling-bagi-calon-spm-kumpulan-b40/" target="_blank" id="t2-title-el">
+                                    MEMBEKAL, MENGHANTAR, MEMASANG, MENGUJI DAN MENTAULIAH PERALATAN ICT (TABLET) KEPADA UNIVERSITI PENDIDIKAN SULTAN IDRIS BAGI KEGUNAAN PESERTA PROGRAM SMART HOME SCHOOLING BAGI CALON SPM KUMPULAN B40
+                                </a>
+                            </td>
+                            <td class="td-date" id="t2-date-el">10/10/2024</td>
+                        </tr>
+                        <!-- Tender 3 -->
+                        <tr>
+                            <td>
+                                <a href="https://upsiholdings.com/tender-membekalkan-perkhidmatan-reka-bentuk-susun-atur-grafik-penyuntingan-dan-percetakan-modul-pentaksiran-asas-strategi-semantik-modul-pass/" target="_blank" id="t3-title-el">
+                                    TENDER MEMBEKALKAN PERKHIDMATAN REKA BENTUK, SUSUN ATUR, GRAFIK, PENYUNTINGAN DAN PERCETAKAN MODUL PENTAKSIRAN ASAS STRATEGI SEMANTIK (MODUL PASS)
+                                </a>
+                            </td>
+                            <td class="td-date" id="t3-date-el">10/10/2024</td>
+                        </tr>
+                        <!-- Tender 4 -->
+                        <tr>
+                            <td>
+                                <a href="https://upsiholdings.com/sebut-harga-bagi-kerja-kerja-pembaikan-lapang-sasar-golf/" target="_blank" id="t4-title-el">
+                                    SEBUT HARGA BAGI KERJA-KERJA PEMBAIKAN LAPANG SASAR GOLF DI KAMPUS SULTAN AZLAN SHAH, UNIVERSITI PENDIDIKAN SULTAN IDRIS (UPSI)
+                                </a>
+                            </td>
+                            <td class="td-date" id="t4-date-el">7/8/2024</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <!-- ===== END SENARAI TENDER ===== -->
 
-        <div class="tender-listings">
-            <h3 id="closed-tenders-title-el">Tender Baru Ditutup</h3>
-            <div class="tender-card closed">
-                <div class="tender-status-badge closed-badge" id="t4-badge-el">DITUTUP</div>
-                <div class="tender-header">
-                    <h4 id="t4-title-el">Pengubahsuaian Bilik Penginapan Scholar's Suites</h4>
-                    <div class="tender-meta"><span>Tender No: UHSB/T/2025/045</span><span id="t4-cat-el">Kategori: Pembinaan & Pengubahsuaian</span></div>
-                </div>
-                <div class="tender-details">
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t4-closed-label-el">Ditutup:</strong> 31 Januari 2026</div>
-                        <div class="info-item"><strong id="t4-status-label-el">Status:</strong> <span id="t4-status-el">Dalam Penilaian</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="tender-card closed">
-                <div class="tender-status-badge closed-badge" id="t5-badge-el">DITUTUP</div>
-                <div class="tender-header">
-                    <h4 id="t5-title-el">Naik Taraf Peralatan IT & Infrastruktur Rangkaian</h4>
-                    <div class="tender-meta"><span>Tender No: UHSB/T/2025/044</span><span id="t5-cat-el">Kategori: Perkhidmatan IT</span></div>
-                </div>
-                <div class="tender-details">
-                    <div class="tender-info-row">
-                        <div class="info-item"><strong id="t5-closed-label-el">Ditutup:</strong> 25 Januari 2026</div>
-                        <div class="info-item"><strong id="t5-status-label-el">Status:</strong> <span id="t5-status-el">Telah Dianugerahkan</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="quotation-section">
-            <h3 id="rfq-title-el">Permintaan Sebut Harga (PSH)</h3>
-            <p id="rfq-desc-el">Untuk keperluan perolehan yang lebih kecil, kami menerima sebut harga daripada vendor yang berdaftar.</p>
-            <div class="rfq-info">
-                <div class="rfq-card">
-                    <h4 id="rfq1-title-el">Pendaftaran Vendor</h4>
-                    <p id="rfq1-desc-el">Daftar sebagai vendor yang diluluskan untuk menerima pemberitahuan PSH bagi kategori perniagaan anda.</p>
-                    <button class="btn btn-primary" id="rfq1-btn-el">Daftar sebagai Vendor</button>
-                </div>
-                <div class="rfq-card">
-                    <h4 id="rfq2-title-el">Hantar Sebut Harga</h4>
-                    <p id="rfq2-desc-el">Vendor berdaftar boleh menghantar sebut harga melalui portal dalam talian atau melalui e-mel.</p>
-                    <button class="btn btn-secondary" id="rfq2-btn-el">Log Masuk Portal Vendor</button>
-                </div>
-            </div>
-        </div>
 
         <div class="tender-contact">
             <h3 id="contact-title-el">Perlukan Maklumat Lanjut?</h3>
@@ -333,142 +321,67 @@ document.addEventListener('click', function(e) {
 
 const T = {
   bm: {
-
-    // ── Top Bar ─────────────────────────────────────────────────────────────
-    "top-phone-text":       "Ada Pertanyaan? Hubungi kami: 012-2525 843",
-    "top-cta-el":           "Hubungi Kami",
-
-    // ── Company ─────────────────────────────────────────────────────────────
-    "company-tagline":      "Sinergi Sumber & Kepakaran UPSI",
-
-    // ── Nav ─────────────────────────────────────────────────────────────────
-    "nav-home-el":          "Laman Utama",
-    "nav-about-el":         "Tentang Kami",
-    "nav-services-el":      "Perkhidmatan",
-    "nav-products-el":      "Produk Kami",
-    "nav-ads-el":           "Iklan",
-    "nav-career-el":        "Kerjaya",
-    "nav-tender-el":        "Tender",
-    "nav-media-el":         "Media",
-    "nav-contact-btn-el":   "Hubungi Kami",
-
-    // ── Dropdown ────────────────────────────────────────────────────────────
-    "dd-bod-el":            "Lembaga Pengarah",
-    "dd-leaders-el":        "Pemimpin",
-    "dd-upsi-el":           "Tentang UPSI",
-    "dd-edu-el":            "Pendidikan & Latihan",
-    "dd-hosp-el":           "Pusat Latihan & Hospitaliti",
-    "dd-retail-el":         "Runcit & Perkhidmatan",
-    "dd-projects-el":       "Konsultasi Projek",
-    "dd-solar-el":          "Penyelesaian Tenaga Solar",
-    "dd-facility-el":       "Pengurusan Kemudahan",
-    "dd-gallery-el":        "Galeri",
-    "dd-news-el":           "Berita",
-
-    // ── Breadcrumb ──────────────────────────────────────────────────────────
-    "bc-home-el":           "Laman Utama",
-    "bc-current-el":        "Tender & Sebut Harga",
-
-    // ── Hero ────────────────────────────────────────────────────────────────
-    "hero-title-el":        "Tender & Sebut Harga",
-    "hero-desc-el":         "Peluang tender semasa dan notis perolehan daripada UPSI Holdings",
-
-    // ── Section ─────────────────────────────────────────────────────────────
-    "section-tag-el":       "Perolehan",
-    "section-title-el":     "Peluang Tender Semasa",
-    "section-desc-el":      "UPSI Holdings menjemput vendor dan kontraktor yang berkelayakan untuk menyertai proses tender kami.",
-
-    // ── Submission Guidelines ────────────────────────────────────────────────
-    "guidelines-title-el":  "Garis Panduan Penyerahan Tender",
-    "g1-title-el":          "Dokumentasi Lengkap",
-    "g1-desc-el":           "Pastikan semua dokumen yang diperlukan diserahkan dalam format yang ditetapkan",
-    "g2-title-el":          "Tarikh Akhir Penyerahan",
-    "g2-desc-el":           "Penyerahan mesti diterima sebelum tarikh dan masa tutup",
-    "g3-title-el":          "Pendaftaran Syarikat",
-    "g3-desc-el":           "Pendaftaran SSM yang sah dan pensijilan yang diperlukan adalah wajib",
-    "g4-title-el":          "Pematuhan",
-    "g4-desc-el":           "Semua penyerahan mesti mematuhi terma dan syarat yang dinyatakan",
-
-    // ── Active Tenders ───────────────────────────────────────────────────────
-    "active-tenders-title-el": "Tender Aktif",
-
-    // Tender 1
-    "t1-badge-el":          "TERBUKA",
-    "t1-title-el":          "Bekalan Perkhidmatan Makanan & Minuman untuk The Banjaran Cape",
-    "t1-cat-el":            "Kategori: Perkhidmatan M&M",
-    "t1-pub-label-el":      "Diterbitkan:",
-    "t1-close-label-el":    "Tarikh Tutup:",
-    "t1-period-label-el":   "Tempoh Kontrak:",
-    "t1-period-el":         "12 Bulan (Boleh Diperbaharui)",
-    "t1-value-label-el":    "Anggaran Nilai:",
-    "t1-desc-el":           "UPSI Holdings menjemput vendor yang berkelayakan untuk mengemukakan cadangan bagi bekalan perkhidmatan makanan dan minuman di restoran The Banjaran Cape, termasuk katering untuk acara, perkhidmatan hi-tea, dan operasi harian.",
-    "t1-btn1-el":           "Muat Turun Dokumen Tender",
-    "t1-btn2-el":           "Hantar Tender",
-
-    // Tender 2
-    "t2-badge-el":          "TERBUKA",
-    "t2-title-el":          "Perkhidmatan Pengurusan Kemudahan untuk Kampus Kota Meru",
-    "t2-cat-el":            "Kategori: Pengurusan Kemudahan",
-    "t2-pub-label-el":      "Diterbitkan:",
-    "t2-close-label-el":    "Tarikh Tutup:",
-    "t2-period-label-el":   "Tempoh Kontrak:",
-    "t2-period-el":         "24 Bulan",
-    "t2-value-label-el":    "Anggaran Nilai:",
-    "t2-desc-el":           "Mencari kontraktor pengurusan kemudahan yang berpengalaman untuk perkhidmatan penyelenggaraan bangunan, pembersihan, keselamatan, dan pengurusan utiliti yang komprehensif di Kampus Kota Meru.",
-    "t2-btn1-el":           "Muat Turun Dokumen Tender",
-    "t2-btn2-el":           "Hantar Tender",
-
-    // Tender 3
-    "t3-badge-el":          "TERBUKA",
-    "t3-title-el":          "Bekalan & Pemasangan Sistem Tenaga Solar",
-    "t3-cat-el":            "Kategori: Teknologi Hijau",
-    "t3-pub-label-el":      "Diterbitkan:",
-    "t3-close-label-el":    "Tarikh Tutup:",
-    "t3-period-label-el":   "Tempoh Kontrak:",
-    "t3-period-el":         "Berasaskan Projek (6 bulan)",
-    "t3-value-label-el":    "Anggaran Nilai:",
-    "t3-desc-el":           "Pemasangan sistem panel solar di Scholar's Suites dan kemudahan UPSI Holdings yang lain, termasuk perkhidmatan penyelenggaraan selama 2 tahun selepas pemasangan.",
-    "t3-btn1-el":           "Muat Turun Dokumen Tender",
-    "t3-btn2-el":           "Hantar Tender",
-
-    // ── Closed Tenders ───────────────────────────────────────────────────────
-    "closed-tenders-title-el": "Tender Baru Ditutup",
-
-    // Tender 4
-    "t4-badge-el":          "DITUTUP",
-    "t4-title-el":          "Pengubahsuaian Bilik Penginapan Scholar's Suites",
-    "t4-cat-el":            "Kategori: Pembinaan & Pengubahsuaian",
-    "t4-closed-label-el":   "Ditutup:",
-    "t4-status-label-el":   "Status:",
-    "t4-status-el":         "Dalam Penilaian",
-
-    // Tender 5
-    "t5-badge-el":          "DITUTUP",
-    "t5-title-el":          "Naik Taraf Peralatan IT & Infrastruktur Rangkaian",
-    "t5-cat-el":            "Kategori: Perkhidmatan IT",
-    "t5-closed-label-el":   "Ditutup:",
-    "t5-status-label-el":   "Status:",
-    "t5-status-el":         "Telah Dianugerahkan",
-
-    // ── RFQ ──────────────────────────────────────────────────────────────────
-    "rfq-title-el":         "Permintaan Sebut Harga (PSH)",
-    "rfq-desc-el":          "Untuk keperluan perolehan yang lebih kecil, kami menerima sebut harga daripada vendor yang berdaftar.",
-    "rfq1-title-el":        "Pendaftaran Vendor",
-    "rfq1-desc-el":         "Daftar sebagai vendor yang diluluskan untuk menerima pemberitahuan PSH bagi kategori perniagaan anda.",
-    "rfq1-btn-el":          "Daftar sebagai Vendor",
-    "rfq2-title-el":        "Hantar Sebut Harga",
-    "rfq2-desc-el":         "Vendor berdaftar boleh menghantar sebut harga melalui portal dalam talian atau melalui e-mel.",
-    "rfq2-btn-el":          "Log Masuk Portal Vendor",
-
-    // ── Contact ──────────────────────────────────────────────────────────────
+    "top-phone-text":           "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+    "top-cta-el":               "Hubungi Kami",
+    "company-tagline":          "Sinergi Sumber & Kepakaran UPSI",
+    "nav-home-el":              "Laman Utama",
+    "nav-about-el":             "Tentang Kami",
+    "nav-services-el":          "Perkhidmatan",
+    "nav-products-el":          "Produk Kami",
+    "nav-ads-el":               "Iklan",
+    "nav-career-el":            "Kerjaya",
+    "nav-tender-el":            "Tender",
+    "nav-media-el":             "Media",
+    "nav-contact-btn-el":       "Hubungi Kami",
+    "dd-bod-el":                "Lembaga Pengarah",
+    "dd-leaders-el":            "Pemimpin",
+    "dd-edu-el":                "Pendidikan & Latihan",
+    "dd-hosp-el":               "Pusat Latihan & Hospitaliti",
+    "dd-retail-el":             "Runcit & Perkhidmatan",
+    "dd-projects-el":           "Konsultasi Projek",
+    "dd-gallery-el":            "Galeri",
+    "dd-news-el":               "Berita",
+    "bc-home-el":               "Laman Utama",
+    "bc-current-el":            "Tender & Sebut Harga",
+    "hero-title-el":            "Tender & Sebut Harga",
+    "hero-desc-el":             "Peluang tender semasa dan notis perolehan daripada UPSI Holdings",
+    "section-tag-el":           "Perolehan",
+    "section-title-el":         "Peluang Tender Semasa",
+    "section-desc-el":          "UPSI Holdings menjemput vendor dan kontraktor yang berkelayakan untuk menyertai proses tender kami.",
+    "guidelines-title-el":      "Garis Panduan Penyerahan Tender",
+    "g1-title-el":              "Dokumentasi Lengkap",
+    "g1-desc-el":               "Pastikan semua dokumen yang diperlukan diserahkan dalam format yang ditetapkan",
+    "g2-title-el":              "Tarikh Akhir Penyerahan",
+    "g2-desc-el":               "Penyerahan mesti diterima sebelum tarikh dan masa tutup",
+    "g3-title-el":              "Pendaftaran Syarikat",
+    "g3-desc-el":               "Pendaftaran SSM yang sah dan pensijilan yang diperlukan adalah wajib",
+    "g4-title-el":              "Pematuhan",
+    "g4-desc-el":               "Semua penyerahan mesti mematuhi terma dan syarat yang dinyatakan",
+    "active-tenders-title-el":  "Senarai Tender",
+    "th-tajuk-el":              "Tajuk",
+    "th-tarikh-el":             "Tarikh Tutup",
+    "t1-title-el":              "MEMINDAH PERABOT DAN MEMINDAH SEMULA PERABOT SEDIA ADA, MEMBONGKAR KARPET, MEMBEKAL, MENGHANTAR, MEMASANG LANTAI VINYL, 'SKIRTING' DAN 'FLOOR EDGES', MEMBUANG SISA PEMBINAAN DAN PENGUBAHSUAIAN, MEMBAIKI DAN MENGECAT SEMULA DINDING YANG TERJEJAS SEMASA KERJA PENGUBAHSUAIAN DIJALANKAN DI 97 BUAH BILIK PENGINAPAN DI SCHOLAR'S SUITES, KAMPUS SULTAN AZLAN SHAH, UNIVERSITI PENDIDIKAN SULTAN IDRIS",
+    "t1-date-el":               "5/5/2025",
+    "t2-title-el":              "MEMBEKAL, MENGHANTAR, MEMASANG, MENGUJI DAN MENTAULIAH PERALATAN ICT (TABLET) KEPADA UNIVERSITI PENDIDIKAN SULTAN IDRIS BAGI KEGUNAAN PESERTA PROGRAM SMART HOME SCHOOLING BAGI CALON SPM KUMPULAN B40",
+    "t2-date-el":               "10/10/2024",
+    "t3-title-el":              "TENDER MEMBEKALKAN PERKHIDMATAN REKA BENTUK, SUSUN ATUR, GRAFIK, PENYUNTINGAN DAN PERCETAKAN MODUL PENTAKSIRAN ASAS STRATEGI SEMANTIK (MODUL PASS)",
+    "t3-date-el":               "10/10/2024",
+    "t4-title-el":              "SEBUT HARGA BAGI KERJA-KERJA PEMBAIKAN LAPANG SASAR GOLF DI KAMPUS SULTAN AZLAN SHAH, UNIVERSITI PENDIDIKAN SULTAN IDRIS (UPSI)",
+    "t4-date-el":               "7/8/2024",
+    "rfq-title-el":             "Permintaan Sebut Harga (PSH)",
+    "rfq-desc-el":              "Untuk keperluan perolehan yang lebih kecil, kami menerima sebut harga daripada vendor yang berdaftar.",
+    "rfq1-title-el":            "Pendaftaran Vendor",
+    "rfq1-desc-el":             "Daftar sebagai vendor yang diluluskan untuk menerima pemberitahuan PSH bagi kategori perniagaan anda.",
+    "rfq1-btn-el":              "Daftar sebagai Vendor",
+    "rfq2-title-el":            "Hantar Sebut Harga",
+    "rfq2-desc-el":             "Vendor berdaftar boleh menghantar sebut harga melalui portal dalam talian atau melalui e-mel.",
+    "rfq2-btn-el":              "Log Masuk Portal Vendor",
     "contact-title-el":         "Perlukan Maklumat Lanjut?",
     "contact-desc-el":          "Untuk pertanyaan tender, sila hubungi Jabatan Perolehan kami:",
     "contact-email-label-el":   "E-mel:",
     "contact-phone-label-el":   "Telefon:",
     "contact-hours-label-el":   "Waktu Pejabat:",
     "contact-hours-el":         "Isnin - Jumaat, 9:00 PG - 5:00 PTG",
-
-    // ── Footer ───────────────────────────────────────────────────────────────
     "footer-desc-el":           "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
     "footer-address-label-el":  "Pejabat Utama:",
     "footer-phone-label-el":    "Telefon:",
@@ -488,142 +401,67 @@ const T = {
   },
 
   bi: {
-
-    // ── Top Bar ─────────────────────────────────────────────────────────────
-    "top-phone-text":       "Got Questions? Call us: 012-2525 843",
-    "top-cta-el":           "Contact Us",
-
-    // ── Company ─────────────────────────────────────────────────────────────
-    "company-tagline":      "Synergy of Resources & UPSI Expertise",
-
-    // ── Nav ─────────────────────────────────────────────────────────────────
-    "nav-home-el":          "Home",
-    "nav-about-el":         "About Us",
-    "nav-services-el":      "Services",
-    "nav-products-el":      "Our Products",
-    "nav-ads-el":           "Ads",
-    "nav-career-el":        "Career",
-    "nav-tender-el":        "Tender",
-    "nav-media-el":         "Media",
-    "nav-contact-btn-el":   "Contact Us",
-
-    // ── Dropdown ────────────────────────────────────────────────────────────
-    "dd-bod-el":            "Board of Directors",
-    "dd-leaders-el":        "Leaders",
-    "dd-upsi-el":           "About UPSI",
-    "dd-edu-el":            "Education & Training",
-    "dd-hosp-el":           "Training Center & Hospitality",
-    "dd-retail-el":         "Retail & Services",
-    "dd-projects-el":       "Projects Consultation",
-    "dd-solar-el":          "Solar Energy Solutions",
-    "dd-facility-el":       "Facility Management",
-    "dd-gallery-el":        "Gallery",
-    "dd-news-el":           "News",
-
-    // ── Breadcrumb ──────────────────────────────────────────────────────────
-    "bc-home-el":           "Home",
-    "bc-current-el":        "Tender & Quotations",
-
-    // ── Hero ────────────────────────────────────────────────────────────────
-    "hero-title-el":        "Tender & Quotations",
-    "hero-desc-el":         "Current tender opportunities and procurement notices from UPSI Holdings",
-
-    // ── Section ─────────────────────────────────────────────────────────────
-    "section-tag-el":       "Procurement",
-    "section-title-el":     "Current Tender Opportunities",
-    "section-desc-el":      "UPSI Holdings invites qualified vendors and contractors to participate in our tender processes.",
-
-    // ── Submission Guidelines ────────────────────────────────────────────────
-    "guidelines-title-el":  "Tender Submission Guidelines",
-    "g1-title-el":          "Complete Documentation",
-    "g1-desc-el":           "Ensure all required documents are submitted in the specified format",
-    "g2-title-el":          "Submission Deadline",
-    "g2-desc-el":           "Submissions must be received before the closing date and time",
-    "g3-title-el":          "Company Registration",
-    "g3-desc-el":           "Valid SSM registration and necessary certifications required",
-    "g4-title-el":          "Compliance",
-    "g4-desc-el":           "All submissions must comply with stated terms and conditions",
-
-    // ── Active Tenders ───────────────────────────────────────────────────────
-    "active-tenders-title-el": "Active Tenders",
-
-    // Tender 1
-    "t1-badge-el":          "OPEN",
-    "t1-title-el":          "Supply of Food & Beverage Services for The Banjaran Cape",
-    "t1-cat-el":            "Category: F&B Services",
-    "t1-pub-label-el":      "Published:",
-    "t1-close-label-el":    "Closing Date:",
-    "t1-period-label-el":   "Contract Period:",
-    "t1-period-el":         "12 Months (Renewable)",
-    "t1-value-label-el":    "Estimated Value:",
-    "t1-desc-el":           "UPSI Holdings invites qualified vendors to submit proposals for the supply of food and beverage services at The Banjaran Cape restaurant, including catering for events, hi-tea services, and daily operations.",
-    "t1-btn1-el":           "Download Tender Document",
-    "t1-btn2-el":           "Submit Tender",
-
-    // Tender 2
-    "t2-badge-el":          "OPEN",
-    "t2-title-el":          "Facility Management Services for Kampus Kota Meru",
-    "t2-cat-el":            "Category: Facility Management",
-    "t2-pub-label-el":      "Published:",
-    "t2-close-label-el":    "Closing Date:",
-    "t2-period-label-el":   "Contract Period:",
-    "t2-period-el":         "24 Months",
-    "t2-value-label-el":    "Estimated Value:",
-    "t2-desc-el":           "Seeking experienced facility management contractors for comprehensive building maintenance, cleaning, security, and utility management services at Kampus Kota Meru.",
-    "t2-btn1-el":           "Download Tender Document",
-    "t2-btn2-el":           "Submit Tender",
-
-    // Tender 3
-    "t3-badge-el":          "OPEN",
-    "t3-title-el":          "Supply & Installation of Solar Energy System",
-    "t3-cat-el":            "Category: Green Technology",
-    "t3-pub-label-el":      "Published:",
-    "t3-close-label-el":    "Closing Date:",
-    "t3-period-label-el":   "Contract Period:",
-    "t3-period-el":         "Project-based (6 months)",
-    "t3-value-label-el":    "Estimated Value:",
-    "t3-desc-el":           "Installation of solar panel systems at Scholar's Suites and other UPSI Holdings facilities, including maintenance services for 2 years post-installation.",
-    "t3-btn1-el":           "Download Tender Document",
-    "t3-btn2-el":           "Submit Tender",
-
-    // ── Closed Tenders ───────────────────────────────────────────────────────
-    "closed-tenders-title-el": "Recently Closed Tenders",
-
-    // Tender 4
-    "t4-badge-el":          "CLOSED",
-    "t4-title-el":          "Renovation of Scholar's Suites Accommodation Rooms",
-    "t4-cat-el":            "Category: Construction & Renovation",
-    "t4-closed-label-el":   "Closed:",
-    "t4-status-label-el":   "Status:",
-    "t4-status-el":         "Under Evaluation",
-
-    // Tender 5
-    "t5-badge-el":          "CLOSED",
-    "t5-title-el":          "IT Equipment & Network Infrastructure Upgrade",
-    "t5-cat-el":            "Category: IT Services",
-    "t5-closed-label-el":   "Closed:",
-    "t5-status-label-el":   "Status:",
-    "t5-status-el":         "Awarded",
-
-    // ── RFQ ──────────────────────────────────────────────────────────────────
-    "rfq-title-el":         "Request for Quotation (RFQ)",
-    "rfq-desc-el":          "For smaller procurement needs, we accept quotations from registered vendors.",
-    "rfq1-title-el":        "Vendor Registration",
-    "rfq1-desc-el":         "Register as an approved vendor to receive RFQ notifications for your business category.",
-    "rfq1-btn-el":          "Register as Vendor",
-    "rfq2-title-el":        "Submit Quotation",
-    "rfq2-desc-el":         "Registered vendors can submit quotations through our online portal or via email.",
-    "rfq2-btn-el":          "Vendor Portal Login",
-
-    // ── Contact ──────────────────────────────────────────────────────────────
+    "top-phone-text":           "Got Questions? Call us: 012-2525 843",
+    "top-cta-el":               "Contact Us",
+    "company-tagline":          "Synergy of Resources & UPSI Expertise",
+    "nav-home-el":              "Home",
+    "nav-about-el":             "About Us",
+    "nav-services-el":          "Services",
+    "nav-products-el":          "Our Products",
+    "nav-ads-el":               "Ads",
+    "nav-career-el":            "Career",
+    "nav-tender-el":            "Tender",
+    "nav-media-el":             "Media",
+    "nav-contact-btn-el":       "Contact Us",
+    "dd-bod-el":                "Board of Directors",
+    "dd-leaders-el":            "Leaders",
+    "dd-edu-el":                "Education & Training",
+    "dd-hosp-el":               "Training Center & Hospitality",
+    "dd-retail-el":             "Retail & Services",
+    "dd-projects-el":           "Projects Consultation",
+    "dd-gallery-el":            "Gallery",
+    "dd-news-el":               "News",
+    "bc-home-el":               "Home",
+    "bc-current-el":            "Tender & Quotations",
+    "hero-title-el":            "Tender & Quotations",
+    "hero-desc-el":             "Current tender opportunities and procurement notices from UPSI Holdings",
+    "section-tag-el":           "Procurement",
+    "section-title-el":         "Current Tender Opportunities",
+    "section-desc-el":          "UPSI Holdings invites qualified vendors and contractors to participate in our tender processes.",
+    "guidelines-title-el":      "Tender Submission Guidelines",
+    "g1-title-el":              "Complete Documentation",
+    "g1-desc-el":               "Ensure all required documents are submitted in the specified format",
+    "g2-title-el":              "Submission Deadline",
+    "g2-desc-el":               "Submissions must be received before the closing date and time",
+    "g3-title-el":              "Company Registration",
+    "g3-desc-el":               "Valid SSM registration and necessary certifications required",
+    "g4-title-el":              "Compliance",
+    "g4-desc-el":               "All submissions must comply with stated terms and conditions",
+    "active-tenders-title-el":  "Tender Listings",
+    "th-tajuk-el":              "Title",
+    "th-tarikh-el":             "Closing Date",
+    "t1-title-el":              "MOVING FURNITURE AND RELOCATING EXISTING FURNITURE, REMOVING CARPET, SUPPLYING, DELIVERING, INSTALLING VINYL FLOORING, SKIRTING AND FLOOR EDGES, REMOVING CONSTRUCTION AND RENOVATION WASTE, REPAIRING AND REPAINTING AFFECTED WALLS DURING RENOVATION WORKS AT 97 ACCOMMODATION ROOMS AT SCHOLAR'S SUITES, SULTAN AZLAN SHAH CAMPUS, SULTAN IDRIS EDUCATION UNIVERSITY",
+    "t1-date-el":               "5/5/2025",
+    "t2-title-el":              "SUPPLY, DELIVERY, INSTALLATION, TESTING AND COMMISSIONING OF ICT EQUIPMENT (TABLETS) TO SULTAN IDRIS EDUCATION UNIVERSITY FOR USE BY SMART HOME SCHOOLING PROGRAMME PARTICIPANTS FOR SPM CANDIDATES FROM B40 GROUP",
+    "t2-date-el":               "10/10/2024",
+    "t3-title-el":              "TENDER FOR DESIGN, LAYOUT, GRAPHIC, EDITING AND PRINTING SERVICES FOR BASIC ASSESSMENT MODULE FOR SEMANTIC STRATEGY (MODUL PASS)",
+    "t3-date-el":               "10/10/2024",
+    "t4-title-el":              "QUOTATION FOR REPAIR WORKS AT GOLF DRIVING RANGE AT SULTAN AZLAN SHAH CAMPUS, SULTAN IDRIS EDUCATION UNIVERSITY (UPSI)",
+    "t4-date-el":               "7/8/2024",
+    "rfq-title-el":             "Request for Quotation (RFQ)",
+    "rfq-desc-el":              "For smaller procurement needs, we accept quotations from registered vendors.",
+    "rfq1-title-el":            "Vendor Registration",
+    "rfq1-desc-el":             "Register as an approved vendor to receive RFQ notifications for your business category.",
+    "rfq1-btn-el":              "Register as Vendor",
+    "rfq2-title-el":            "Submit Quotation",
+    "rfq2-desc-el":             "Registered vendors can submit quotations through our online portal or via email.",
+    "rfq2-btn-el":              "Vendor Portal Login",
     "contact-title-el":         "Need More Information?",
     "contact-desc-el":          "For tender enquiries, please contact our Procurement Department:",
     "contact-email-label-el":   "Email:",
     "contact-phone-label-el":   "Phone:",
     "contact-hours-label-el":   "Office Hours:",
     "contact-hours-el":         "Monday - Friday, 9:00 AM - 5:00 PM",
-
-    // ── Footer ───────────────────────────────────────────────────────────────
     "footer-desc-el":           "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
     "footer-address-label-el":  "Main Office:",
     "footer-phone-label-el":    "Phone:",
@@ -641,7 +479,6 @@ const T = {
     "footer-news-el":           "News",
     "footer-copyright-el":      "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved. | Best viewed on desktop site",
   },
-
 };
 
 function setLang(lang) {
