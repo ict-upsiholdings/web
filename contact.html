@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* ── PAGE HERO ── */
         .page-hero {
             background: linear-gradient(135deg, #1a237e 0%, #0d47a1 60%, #1565c0 100%);
             padding: 100px 24px 70px;
@@ -40,149 +41,164 @@
         .page-hero .breadcrumb a:hover { color: #fff; }
         .page-hero h1 { font-family:'Poppins',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;margin-bottom:14px;position:relative; }
         .page-hero p { color:rgba(255,255,255,0.7);font-size:1.05rem;max-width:500px;margin:0 auto;position:relative;font-family:'Roboto',sans-serif; }
-        .contact-page-section { background:#f5f7fa;padding:70px 0 90px; }
-        .contact-grid { max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start; }
-        @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px;}}
-        .info-panel{display:flex;flex-direction:column;gap:22px;}
-        .info-intro{font-family:'Roboto',sans-serif;font-size:0.97rem;color:#555;line-height:1.75;}
-        .info-intro strong{color:#1a237e;}
-        .office-card{background:#fff;border-radius:14px;padding:26px 26px 26px 30px;border:1px solid #e8ecf0;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.25s;}
-        .office-card:hover{box-shadow:0 10px 35px rgba(26,35,126,0.10);transform:translateY(-2px);}
-        .office-card .side-bar{position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#1a237e,#1565c0);border-radius:4px 0 0 4px;}
-        .office-card h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;color:#1a237e;margin-bottom:16px;}
-        .office-detail{display:flex;gap:13px;align-items:flex-start;margin-bottom:13px;}
-        .office-detail:last-child{margin-bottom:0;}
-        .detail-icon{width:36px;height:36px;background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
-        .detail-body{display:flex;flex-direction:column;}
-        .detail-body .dlabel{font-size:0.68rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:0.08em;font-family:'Poppins',sans-serif;margin-bottom:3px;}
-        .detail-body .dvalue{font-size:0.88rem;color:#555;line-height:1.55;font-family:'Roboto',sans-serif;}
-        .detail-body .dvalue a{color:#1a237e;text-decoration:none;font-weight:500;}
-        .detail-body .dvalue a:hover{color:#1565c0;text-decoration:underline;}
-        .social-title{font-size:0.7rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:0.1em;font-family:'Poppins',sans-serif;margin-bottom:11px;}
-        .social-row{display:flex;gap:10px;flex-wrap:wrap;}
-        .social-btn{display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:9px;font-size:0.8rem;font-weight:600;font-family:'Poppins',sans-serif;text-decoration:none;color:#1a237e;background:#fff;border:1.5px solid #e0e4f0;transition:all 0.22s;}
-        .social-btn:hover{background:#1a237e;color:#fff;border-color:#1a237e;}
-        .form-card{background:#fff;border-radius:18px;padding:42px 40px;border:1px solid #e8ecf0;box-shadow:0 6px 30px rgba(26,35,126,0.07);}
-        @media(max-width:540px){.form-card{padding:28px 20px;}}
-        .form-card h2{font-family:'Poppins',sans-serif;font-size:1.55rem;font-weight:700;color:#1a237e;margin-bottom:6px;}
-        .form-card .form-sub{color:#888;font-size:0.88rem;font-family:'Roboto',sans-serif;margin-bottom:30px;}
-        .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-        @media(max-width:520px){.form-row-2{grid-template-columns:1fr;}}
-        .fgroup{display:flex;flex-direction:column;margin-bottom:18px;}
-        .fgroup label{font-size:0.72rem;font-weight:700;color:#1a237e;text-transform:uppercase;letter-spacing:0.07em;font-family:'Poppins',sans-serif;margin-bottom:7px;}
-        .fgroup input,.fgroup select,.fgroup textarea{border:1.5px solid #e0e4f0;border-radius:10px;padding:12px 15px;font-size:0.92rem;font-family:'Roboto',sans-serif;color:#222;background:#f9fafc;transition:border-color 0.2s,box-shadow 0.2s;outline:none;width:100%;}
-        .fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:#1565c0;box-shadow:0 0 0 3px rgba(21,101,192,0.12);background:#fff;}
-        .fgroup textarea{resize:vertical;min-height:130px;}
-        .form-divider{height:1px;background:#eef0f5;margin:6px 0 22px;}
-        .btn-send{width:100%;padding:15px;background:linear-gradient(135deg,#1a237e 0%,#1565c0 100%);color:#fff;border:none;border-radius:12px;font-size:0.95rem;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:0.04em;cursor:pointer;transition:opacity 0.25s,transform 0.15s,box-shadow 0.25s;box-shadow:0 4px 16px rgba(21,101,192,0.3);}
-        .btn-send:hover{opacity:0.92;transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,101,192,0.35);}
-        .success-msg{display:none;text-align:center;padding:32px 16px;}
-        .success-msg .check-circle{width:72px;height:72px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;}
-        .success-msg h3{font-family:'Poppins',sans-serif;font-size:1.3rem;color:#1a237e;margin-bottom:10px;}
-        .success-msg p{color:#777;font-family:'Roboto',sans-serif;font-size:0.9rem;}
-        .map-section{max-width:1160px;margin:60px auto 0;padding:0 24px;}
-        .map-heading{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
-        .map-heading h2{font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:700;color:#1a237e;white-space:nowrap;}
-        .map-heading .line{flex:1;height:1px;background:#e0e4f0;}
-        .map-frame{border-radius:18px;overflow:hidden;border:1px solid #e0e4f0;box-shadow:0 6px 24px rgba(26,35,126,0.07);height:420px;}
-        .map-frame iframe{width:100%;height:100%;border:none;display:block;}
 
-        /* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* ── CONTACT SECTION ── */
+        .contact-page-section {
+            background: #f5f7fa;
+            padding: 70px 0 90px;
         }
-        .nav-lang-dropdown {
-            position: relative;
+        .contact-wrapper {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        .nav-lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: none;
-            border: 1.5px solid #e0e4f0;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1a237e;
-            padding: 7px 13px;
-            border-radius: 8px;
-            transition: background 0.2s, border-color 0.2s;
+
+        /* ── MAP + SOCIAL GRID ── */
+        .map-social-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 48px;
+            align-items: start;
         }
-        .nav-lang-btn:hover {
-            background: #eef0fb;
-            border-color: #c5cae9;
+        @media (max-width: 860px) {
+            .map-social-grid { grid-template-columns: 1fr; gap: 32px; }
         }
-        .nav-lang-btn .lang-arrow {
-            font-size: 0.65rem;
-            color: #9ea8c8;
-            transition: transform 0.2s;
-        }
-        .nav-lang-dropdown.open .lang-arrow {
-            transform: rotate(180deg);
-        }
-        .nav-lang-flag {
-            width: 22px;
-            height: 15px;
-            object-fit: cover;
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.18);
-        }
-        .nav-lang-menu {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: calc(100% + 8px);
-            background: #fff;
-            border: 1.5px solid #e0e4f0;
-            border-radius: 12px;
-            box-shadow: 0 10px 32px rgba(26,35,126,0.13);
-            min-width: 150px;
+
+        /* ── MAP ── */
+        .map-block {}
+        .map-frame {
+            border-radius: 18px;
             overflow: hidden;
-            z-index: 9999;
+            border: 1px solid #e0e4f0;
+            box-shadow: 0 6px 24px rgba(26,35,126,0.10);
+            height: 420px;
         }
-        .nav-lang-dropdown.open .nav-lang-menu {
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
             display: block;
         }
-        .nav-lang-menu button {
+        .open-maps-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #1565c0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .open-maps-link:hover { color: #1a237e; text-decoration: underline; }
+
+        /* ── SOCIAL PANEL ── */
+        .social-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .social-panel-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 4px;
+        }
+        .social-card {
             display: flex;
             align-items: center;
-            gap: 10px;
-            width: 100%;
-            padding: 11px 16px;
-            background: none;
-            border: none;
+            gap: 18px;
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px 22px;
+            border: 1px solid #e8ecf0;
+            text-decoration: none;
+            transition: box-shadow 0.25s, transform 0.2s, border-color 0.2s;
+        }
+        .social-card:hover {
+            box-shadow: 0 8px 28px rgba(26,35,126,0.12);
+            transform: translateY(-2px);
+            border-color: #c5cae9;
+        }
+        .social-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .social-icon-wrap svg {
+            width: 26px;
+            height: 26px;
+        }
+        .social-icon-wrap img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+        /* platform colours */
+        .sc-facebook  { background: #e7f0fd; }
+        .sc-instagram { background: linear-gradient(135deg, #fce4ec, #f8e0ff, #e8f4fd); }
+        .sc-tiktok    { background: #f0f0f0; }
+        .sc-youtube   { background: #fdecea; }
+        .sc-whatsapp  { background: #e8f5e9; }
+
+        .social-text-wrap {}
+        .social-platform {
             font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #333;
-            cursor: pointer;
-            transition: background 0.15s;
-            text-align: left;
-        }
-        .nav-lang-menu button:hover {
-            background: #f0f2fb;
-            color: #1a237e;
-        }
-        .nav-lang-menu button.active-lang {
-            background: #e8eaf6;
-            color: #1a237e;
+            font-size: 0.78rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 2px;
         }
-        .nav-lang-menu button img {
-            width: 22px;
-            height: 15px;
-            object-fit: cover;
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        .social-handle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.93rem;
+            color: #444;
+            font-weight: 400;
         }
-        .nav-lang-menu-divider {
-            height: 1px;
-            background: #f0f2f8;
-            margin: 2px 0;
+        /* label colours */
+        .label-facebook  { color: #1877f2; }
+        .label-instagram { color: #c2185b; }
+        .label-tiktok    { color: #111; }
+        .label-youtube   { color: #d32f2f; }
+        .label-whatsapp  { color: #25d366; }
+
+        /* ── LANGUAGE DROPDOWN ── */
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-lang-dropdown { position: relative; }
+        .nav-lang-btn {
+            display: flex; align-items: center; gap: 6px;
+            background: none; border: 1.5px solid #e0e4f0; cursor: pointer;
+            font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600;
+            color: #1a237e; padding: 7px 13px; border-radius: 8px;
+            transition: background 0.2s, border-color 0.2s;
         }
+        .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
+        .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
+        .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
+        .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
+        .nav-lang-menu {
+            display: none; position: absolute; right: 0; top: calc(100% + 8px);
+            background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
+            box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px; overflow: hidden; z-index: 9999;
+        }
+        .nav-lang-dropdown.open .nav-lang-menu { display: block; }
+        .nav-lang-menu button {
+            display: flex; align-items: center; gap: 10px; width: 100%;
+            padding: 11px 16px; background: none; border: none;
+            font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
+            color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
+        }
+        .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
+        .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
+        .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+        .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
     </style>
 </head>
 <body>
@@ -219,7 +235,7 @@
                 <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">▾</span></a>
                 <div class="dropdown">
                     <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
-                    <a href="leaders.html"> <span id="dd-leaders-el">Pemimpin</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
                 </div>
             </li>
             <li>
@@ -245,8 +261,6 @@
         </ul>
         <div class="nav-right">
             <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
-
-            <!-- LANGUAGE DROPDOWN -->
             <div class="nav-lang-dropdown" id="navLangDropdown">
                 <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
                     <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
@@ -263,132 +277,109 @@
                     </button>
                 </div>
             </div>
-            <!-- END LANGUAGE DROPDOWN -->
-
         </div>
     </div>
 </nav>
 
+<!-- PAGE HERO -->
 <section class="page-hero">
-    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a><span>›</span><span id="bc-current-el">Hubungi Kami</span></div>
+    <div class="breadcrumb">
+        <a href="index.html" id="bc-home-el">Laman Utama</a>
+        <span>›</span>
+        <span id="bc-current-el">Hubungi Kami</span>
+    </div>
     <h1 id="hero-title-el">Hubungi Kami</h1>
-    <p id="hero-desc-el">Untuk sebarang pertanyaan, sila hubungi atau emel kami. Atau isi borang hubungan di bawah.</p>
+    <p id="hero-desc-el">Untuk sebarang pertanyaan, sila hubungi atau emel kami.</p>
 </section>
 
+<!-- CONTACT SECTION: MAP + SOCIAL -->
 <section class="contact-page-section">
-    <div class="contact-grid">
-        <div class="info-panel">
-            <p class="info-intro" id="info-intro-el">Kami sedia membantu. Hubungi <strong>UPSI Holdings Sdn Bhd</strong> melalui mana-mana saluran di bawah dan pasukan kami akan membalas secepat mungkin.</p>
+    <div class="contact-wrapper">
+        <div class="map-social-grid">
 
-            <div class="office-card">
-                <div class="side-bar"></div>
-                <h3 id="hq-title-el">🏛️ Pejabat Utama (HQ)</h3>
-                <div class="office-detail">
-                    <div class="detail-icon">📍</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hq-addr-label-el">Alamat</span>
-                        <span class="dvalue">Level 1, Scholar's Suites,<br>Sultan Azlan Shah Campus,<br>Universiti Pendidikan Sultan Idris,<br>35900 Tanjong Malim, Perak.</span>
-                    </div>
+            <!-- LEFT: MAP -->
+            <div class="map-block">
+                <div class="map-frame">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d101.5197!3d3.6836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4f4c00000001%3A0x0!2sUniversiti+Pendidikan+Sultan+Idris%2C+35900+Tanjong+Malim%2C+Perak!5e0!3m2!1sen!2smy!4v1700000000000"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        id="map-iframe" title="Lokasi UPSI Holdings">
+                    </iframe>
                 </div>
-                <div class="office-detail">
-                    <div class="detail-icon">📞</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hq-phone-label-el">Telefon</span>
-                        <span class="dvalue"><a href="tel:+60122525843">012-2525 843</a></span>
+                <a href="https://maps.google.com/?q=Universiti+Pendidikan+Sultan+Idris,+Tanjong+Malim,+Perak" target="_blank" class="open-maps-link">
+                    🔗 <span id="open-maps-el">Buka dalam Maps</span> ↗
+                </a>
+            </div>
+
+            <!-- RIGHT: SOCIAL MEDIA -->
+            <div class="social-panel">
+                <p class="social-panel-title" id="social-panel-title-el">Ikuti & Hubungi Kami</p>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/UPSIholdings" target="_blank" class="social-card">
+                    <div class="social-icon-wrap sc-facebook">
+                        <svg viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                     </div>
-                </div>
-                <div class="office-detail">
-                    <div class="detail-icon">📧</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hq-email-label-el">E-mel</span>
-                        <span class="dvalue"><a href="mailto:info@upsiholdings.com">info@upsiholdings.com</a></span>
+                    <div class="social-text-wrap">
+                        <div class="social-platform label-facebook">FACEBOOK</div>
+                        <div class="social-handle">UPSI Holdings Sdn. Bhd.</div>
                     </div>
-                </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/upsi_holdingshq/" target="_blank" class="social-card">
+                    <div class="social-icon-wrap sc-instagram">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <defs><radialGradient id="ig" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#ffd600"/><stop offset="30%" stop-color="#ff6d00"/><stop offset="60%" stop-color="#e91e63"/><stop offset="100%" stop-color="#7b1fa2"/></radialGradient></defs>
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig)"/>
+                            <circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/>
+                        </svg>
+                    </div>
+                    <div class="social-text-wrap">
+                        <div class="social-platform label-instagram">INSTAGRAM</div>
+                        <div class="social-handle">@upsi_holdingshq</div>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@upsi_holdings" target="_blank" class="social-card">
+                    <div class="social-icon-wrap sc-tiktok">
+                        <svg viewBox="0 0 24 24" fill="#111"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+                    </div>
+                    <div class="social-text-wrap">
+                        <div class="social-platform label-tiktok">TIKTOK</div>
+                        <div class="social-handle">@upsi_holdingshq</div>
+                    </div>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@upsiholdings4106" target="_blank" class="social-card">
+                    <div class="social-icon-wrap sc-youtube">
+                        <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </div>
+                    <div class="social-text-wrap">
+                        <div class="social-platform label-youtube">YOUTUBE</div>
+                        <div class="social-handle">UPSI Holdings</div>
+                    </div>
+                </a>
+
                 <!-- WhatsApp -->
-                <div class="office-detail">
-                    <div class="detail-icon">💬</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hq-wa-label-el">WhatsApp</span>
-                        <span class="dvalue"><a href="https://wa.link/niud80" target="_blank">+6012 2525 843</a></span>
+                <a href="https://wa.link/niud80" target="_blank" class="social-card">
+                    <div class="social-icon-wrap sc-whatsapp">
+                        <svg viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </div>
-                </div>
-            </div>
-
-            <div class="office-card">
-                <div class="side-bar" style="background: linear-gradient(180deg,#0d47a1,#1e88e5);"></div>
-                <h3 id="hosp-title-el">🏨 Scholar's Suites (Hospitaliti)</h3>
-                <div class="office-detail">
-                    <div class="detail-icon">📞</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hosp-phone-label-el">Telefon</span>
-                        <span class="dvalue"><a href="tel:+6054481922">05-448 1922</a></span>
+                    <div class="social-text-wrap">
+                        <div class="social-platform label-whatsapp">WHATSAPP</div>
+                        <div class="social-handle">+6012 2525 843</div>
                     </div>
-                </div>
-                <div class="office-detail">
-                    <div class="detail-icon">🕐</div>
-                    <div class="detail-body">
-                        <span class="dlabel" id="hosp-hours-label-el">Waktu Operasi</span>
-                        <span class="dvalue" id="hosp-hours-val-el">Isnin – Jumaat: 8:00 PG – 5:00 PTG<br>Hujung Minggu & Cuti Umum: Mengikut Temujanji</span>
-                    </div>
-                </div>
+                </a>
             </div>
-
-            <div>
-                <p class="social-title" id="social-title-el">Ikuti Kami</p>
-                <div class="social-row">
-                    <a href="https://www.facebook.com/UPSIholdings" target="_blank" class="social-btn">📘 Facebook</a>
-                    <a href="https://www.instagram.com/upsi_holdingshq/" target="_blank" class="social-btn">📸 Instagram</a>
-                    <a href="https://www.tiktok.com/@upsi_holdings" target="_blank" class="social-btn">🎵 TikTok</a>
-                    <a href="https://www.youtube.com/@upsiholdings4106" target="_blank" class="social-btn">▶ YouTube</a>
-                    <a href="https://wa.link/niud80" target="_blank" class="social-btn">💬 WhatsApp</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-card">
-            <h2 id="form-title-el">Hantar Mesej</h2>
-            <p class="form-sub" id="form-sub-el">Isi borang di bawah dan kami akan menghubungi anda dalam masa 1–2 hari bekerja.</p>
-            <form id="contactForm" onsubmit="handleSubmit(event)">
-                <div class="form-row-2">
-                    <div class="fgroup"><label for="fname" id="label-name-el">Nama Penuh *</label><input type="text" id="fname" name="name" placeholder="cth. Ahmad Farid" required></div>
-                    <div class="fgroup"><label for="femail" id="label-email-el">E-mel *</label><input type="email" id="femail" name="email" placeholder="anda@email.com" required></div>
-                    <div class="fgroup"><label for="fcompany" id="label-company-el">Syarikat / Organisasi</label><input type="text" id="fcompany" name="company" placeholder="(Pilihan)"></div>
-                    <div class="fgroup"><label for="fphone" id="label-phone-el">No. Telefon</label><input type="tel" id="fphone" name="phone" placeholder="cth. 012-3456789"></div>
-                </div>
-                <div class="fgroup">
-                    <label for="fsubject" id="label-topic-el">Bahagian / Topik *</label>
-                    <select id="fsubject" name="subject" required>
-                        <option value="" disabled selected id="select-placeholder-el">— Pilih topik —</option>
-                        <option id="opt1-el">Pendidikan & Latihan</option>
-                        <option id="opt2-el">Pusat Latihan & Hospitaliti</option>
-                        <option id="opt3-el">Runcit & Perkhidmatan</option>
-                        <option id="opt4-el">Konsultasi Projek</option>
-                        <option id="opt5-el">Tenaga Solar</option>
-                        <option id="opt6-el">Pengurusan Kemudahan</option>
-                        <option id="opt7-el">Pertanyaan Umum</option>
-                        <option id="opt8-el">Lain-lain</option>
-                    </select>
-                </div>
-                <div class="form-divider"></div>
-                <div class="fgroup"><label for="fmessage" id="label-msg-el">Mesej Anda *</label><textarea id="fmessage" name="message" placeholder="Ceritakan bagaimana kami boleh membantu anda…" required></textarea></div>
-                <button type="submit" class="btn-send" id="btn-send-el">Hantar Mesej &nbsp;→</button>
-            </form>
-            <div class="success-msg" id="successMsg">
-                <div class="check-circle">✅</div>
-                <h3 id="success-title-el">Terima Kasih!</h3>
-                <p id="success-desc-el">Mesej anda telah diterima. Pasukan kami akan menghubungi anda dalam masa 1–2 hari bekerja.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="map-section">
-        <div class="map-heading"><h2 id="map-title-el">📍 Lokasi Kami</h2><div class="line"></div></div>
-        <div class="map-frame">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d101.5197!3d3.6836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4f4c00000001%3A0x0!2sUniversiti+Pendidikan+Sultan+Idris%2C+35900+Tanjong+Malim%2C+Perak!5e0!3m2!1sen!2smy!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="map-iframe" title="Lokasi UPSI Holdings"></iframe>
         </div>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -417,36 +408,19 @@
 
 <script src="script.js"></script>
 <script>
-/* ===================================================
-   FORM SUBMIT HANDLER
-=================================================== */
-function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-}
-
-/* ===================================================
-   LANGUAGE DROPDOWN TOGGLE
-=================================================== */
+/* ── LANGUAGE DROPDOWN ── */
 function toggleLangMenu() {
     document.getElementById('navLangDropdown').classList.toggle('open');
 }
-
 function closeLangMenu() {
     document.getElementById('navLangDropdown').classList.remove('open');
 }
-
 document.addEventListener('click', function(e) {
-    const dropdown = document.getElementById('navLangDropdown');
-    if (dropdown && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('open');
-    }
+    const d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
 });
 
-/* ===================================================
-   TRANSLATIONS
-=================================================== */
+/* ── TRANSLATIONS ── */
 const T = {
 bm: {
     "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
@@ -463,51 +437,18 @@ bm: {
     "nav-contact-btn-el": "Hubungi Kami",
     "dd-bod-el": "Lembaga Pengarah",
     "dd-leaders-el": "Pemimpin",
-    "dd-upsi-el": "Tentang UPSI",
     "dd-edu-el": "Pendidikan & Latihan",
     "dd-hosp-el": "Pusat Latihan & Hospitaliti",
     "dd-retail-el": "Runcit & Perkhidmatan",
     "dd-projects-el": "Konsultasi Projek",
-    "dd-solar-el": "Penyelesaian Tenaga Solar",
-    "dd-facility-el": "Pengurusan Kemudahan",
     "dd-gallery-el": "Galeri",
     "dd-news-el": "Berita",
     "bc-home-el": "Laman Utama",
     "bc-current-el": "Hubungi Kami",
     "hero-title-el": "Hubungi Kami",
-    "hero-desc-el": "Untuk sebarang pertanyaan, sila hubungi atau emel kami. Atau isi borang hubungan di bawah.",
-    "info-intro-el": "Kami sedia membantu. Hubungi UPSI Holdings Sdn Bhd melalui mana-mana saluran di bawah dan pasukan kami akan membalas secepat mungkin.",
-    "hq-title-el": "🏛️ Pejabat Utama (HQ)",
-    "hq-addr-label-el": "Alamat",
-    "hq-phone-label-el": "Telefon",
-    "hq-email-label-el": "E-mel",
-    "hq-wa-label-el": "WhatsApp",
-    "hosp-title-el": "🏨 Scholar's Suites (Hospitaliti)",
-    "hosp-phone-label-el": "Telefon",
-    "hosp-hours-label-el": "Waktu Operasi",
-    "hosp-hours-val-el": "Isnin – Jumaat: 8:00 PG – 5:00 PTG\nHujung Minggu & Cuti Umum: Mengikut Temujanji",
-    "social-title-el": "Ikuti Kami",
-    "form-title-el": "Hantar Mesej",
-    "form-sub-el": "Isi borang di bawah dan kami akan menghubungi anda dalam masa 1–2 hari bekerja.",
-    "label-name-el": "Nama Penuh *",
-    "label-email-el": "E-mel *",
-    "label-company-el": "Syarikat / Organisasi",
-    "label-phone-el": "No. Telefon",
-    "label-topic-el": "Bahagian / Topik *",
-    "select-placeholder-el": "— Pilih topik —",
-    "opt1-el": "Pendidikan & Latihan",
-    "opt2-el": "Pusat Latihan & Hospitaliti",
-    "opt3-el": "Runcit & Perkhidmatan",
-    "opt4-el": "Konsultasi Projek",
-    "opt5-el": "Tenaga Solar",
-    "opt6-el": "Pengurusan Kemudahan",
-    "opt7-el": "Pertanyaan Umum",
-    "opt8-el": "Lain-lain",
-    "label-msg-el": "Mesej Anda *",
-    "btn-send-el": "Hantar Mesej →",
-    "success-title-el": "Terima Kasih!",
-    "success-desc-el": "Mesej anda telah diterima. Pasukan kami akan menghubungi anda dalam masa 1–2 hari bekerja.",
-    "map-title-el": "📍 Lokasi Kami",
+    "hero-desc-el": "Untuk sebarang pertanyaan, sila hubungi atau emel kami.",
+    "social-panel-title-el": "Ikuti & Hubungi Kami",
+    "open-maps-el": "Buka dalam Maps",
     "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
     "footer-address-label-el": "Pejabat Utama:",
     "footer-phone-label-el": "Telefon:",
@@ -528,7 +469,6 @@ bm: {
     "footer-news-el": "Berita",
     "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara. | Terbaik dilihat pada skrin desktop"
 },
-
 bi: {
     "top-phone-text": "Got Questions? Call us: 012-2525 843",
     "top-cta-el": "Contact Us",
@@ -544,51 +484,18 @@ bi: {
     "nav-contact-btn-el": "Contact Us",
     "dd-bod-el": "Board of Directors",
     "dd-leaders-el": "Leaders",
-    "dd-upsi-el": "About UPSI",
     "dd-edu-el": "Education & Training",
     "dd-hosp-el": "Training Center & Hospitality",
     "dd-retail-el": "Retail & Services",
     "dd-projects-el": "Projects Consultation",
-    "dd-solar-el": "Solar Energy Solutions",
-    "dd-facility-el": "Facility Management",
     "dd-gallery-el": "Gallery",
     "dd-news-el": "News",
     "bc-home-el": "Home",
     "bc-current-el": "Contact Us",
     "hero-title-el": "Contact Us",
-    "hero-desc-el": "For any inquiries, please call or email us. Alternatively, fill in the contact form below.",
-    "info-intro-el": "We're here to help. Reach out to UPSI Holdings Sdn Bhd through any of the channels below and our team will respond as soon as possible.",
-    "hq-title-el": "🏛️ Main Office (HQ)",
-    "hq-addr-label-el": "Address",
-    "hq-phone-label-el": "Phone",
-    "hq-email-label-el": "Email",
-    "hq-wa-label-el": "WhatsApp",
-    "hosp-title-el": "🏨 Scholar's Suites (Hospitality)",
-    "hosp-phone-label-el": "Phone",
-    "hosp-hours-label-el": "Operating Hours",
-    "hosp-hours-val-el": "Monday – Friday: 8:00 AM – 5:00 PM\nWeekends & Public Holidays: By Appointment",
-    "social-title-el": "Follow Us",
-    "form-title-el": "Send a Message",
-    "form-sub-el": "Fill in the form below and we will get back to you within 1–2 working days.",
-    "label-name-el": "Full Name *",
-    "label-email-el": "Email *",
-    "label-company-el": "Company / Organisation",
-    "label-phone-el": "Phone Number",
-    "label-topic-el": "Department / Topic *",
-    "select-placeholder-el": "— Select a topic —",
-    "opt1-el": "Education & Training",
-    "opt2-el": "Training Center & Hospitality",
-    "opt3-el": "Retail & Services",
-    "opt4-el": "Projects Consultation",
-    "opt5-el": "Solar Energy",
-    "opt6-el": "Facility Management",
-    "opt7-el": "General Enquiry",
-    "opt8-el": "Others",
-    "label-msg-el": "Your Message *",
-    "btn-send-el": "Send Message →",
-    "success-title-el": "Thank You!",
-    "success-desc-el": "Your message has been received. Our team will contact you within 1–2 working days.",
-    "map-title-el": "📍 Our Location",
+    "hero-desc-el": "For any inquiries, please call or email us.",
+    "social-panel-title-el": "Follow & Contact Us",
+    "open-maps-el": "Open in Maps",
     "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
     "footer-address-label-el": "Main Office:",
     "footer-phone-label-el": "Phone:",
@@ -611,40 +518,24 @@ bi: {
 }
 };
 
-/* ===================================================
-   SET LANGUAGE
-=================================================== */
 function setLang(lang) {
     const t = T[lang];
     if (!t) return;
-
     const flagEl = document.getElementById('lang-flag');
     const labelEl = document.getElementById('lang-label');
     if (lang === 'bm') {
-        flagEl.src = 'https://flagcdn.com/w40/my.png';
-        flagEl.alt = 'MY';
-        labelEl.textContent = 'Melayu';
+        flagEl.src = 'https://flagcdn.com/w40/my.png'; flagEl.alt = 'MY'; labelEl.textContent = 'Melayu';
     } else {
-        flagEl.src = 'https://flagcdn.com/w40/gb.png';
-        flagEl.alt = 'EN';
-        labelEl.textContent = 'English';
+        flagEl.src = 'https://flagcdn.com/w40/gb.png'; flagEl.alt = 'EN'; labelEl.textContent = 'English';
     }
-
     document.getElementById('menu-btn-bm').classList.toggle('active-lang', lang === 'bm');
     document.getElementById('menu-btn-bi').classList.toggle('active-lang', lang === 'bi');
-
     Object.keys(t).forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = t[id];
     });
-
-    document.getElementById('fname').placeholder       = lang === 'bm' ? 'cth. Ahmad Farid'                               : 'e.g. Ahmad Farid';
-    document.getElementById('fcompany').placeholder    = lang === 'bm' ? '(Pilihan)'                                      : '(Optional)';
-    document.getElementById('fphone').placeholder      = lang === 'bm' ? 'cth. 012-3456789'                               : 'e.g. 012-3456789';
-    document.getElementById('fmessage').placeholder    = lang === 'bm' ? 'Ceritakan bagaimana kami boleh membantu anda…'  : 'Tell us how we can help you…';
-    document.getElementById('map-iframe').title        = lang === 'bm' ? 'Lokasi UPSI Holdings'                           : 'UPSI Holdings Location';
-    document.documentElement.lang                      = lang === 'bm' ? 'ms'                                             : 'en';
-
+    document.getElementById('map-iframe').title = lang === 'bm' ? 'Lokasi UPSI Holdings' : 'UPSI Holdings Location';
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
     try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
 }
 
