@@ -3,349 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita & Kemas Kini - UPSI Holdings Sdn Bhd</title>
+    <title>Berita & Kemas Kini | UPSI Holdings Sdn Bhd</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Include your existing styles.css and nav-shared.css here -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <!-- <link rel="stylesheet" href="nav-shared.css"> -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; color: #222; background: #f8f9fa; }
+    /* ===== TOP BAR ===== */
+    .top-bar{background:#1a237e;padding:8px 0;}
+    .top-bar-content{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .top-bar-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .top-bar-left a{color:rgba(255,255,255,0.85);font-size:0.8rem;font-family:'Roboto',sans-serif;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+    .top-bar-left a:hover{color:#fff;}
+    .top-bar-right{display:flex;align-items:center;gap:14px;}
+    .top-social a{color:rgba(255,255,255,0.65);font-size:0.75rem;text-decoration:none;padding:3px 8px;border-radius:4px;transition:background 0.2s,color 0.2s;font-family:'Roboto',sans-serif;}
+    .top-social a:hover{background:rgba(255,255,255,0.15);color:#fff;}
+    .top-cta{background:#fff;color:#1a237e !important;padding:5px 16px;border-radius:20px;font-weight:700;font-size:0.78rem;text-decoration:none;font-family:'Poppins',sans-serif;transition:background 0.2s;white-space:nowrap;}
+    .top-cta:hover{background:#e8eaf6;}
 
-    /* ===== NEWS SECTION WRAPPER ===== */
-    .news-section {
-        position: relative;
-        background-image: url('image/OFFICE.jpg'); /* ganti dengan gambar anda */
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        padding: 48px 0 60px;
-    }
-    .news-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.87);
-        z-index: 0;
-        pointer-events: none;
-    }
-    .news-section .container {
-        position: relative;
-        z-index: 1;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-    }
+    /* ===== NAVBAR ===== */
+    nav{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,0.10);position:sticky;top:0;z-index:900;}
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;}
+    .logo-section{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+    .company-info h1{font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:800;color:#1a237e;letter-spacing:0.04em;line-height:1.1;}
+    .company-info p{font-size:0.6rem;color:#888;font-family:'Roboto',sans-serif;line-height:1.2;}
+    .nav-menu{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center;}
+    .nav-menu>li{position:relative;}
+    .nav-menu>li>a{display:flex;align-items:center;gap:4px;padding:8px 13px;font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:600;color:#333;text-decoration:none;border-radius:6px;transition:background 0.2s,color 0.2s;white-space:nowrap;}
+    .nav-menu>li>a:hover,.nav-menu>li.active>a{color:#1a237e;background:#e8eaf6;}
+    .nav-menu>li>a .arrow{font-size:0.6rem;margin-top:1px;transition:transform 0.25s;display:inline-block;}
+    .nav-menu>li:hover>a .arrow{transform:rotate(180deg);}
+    .dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border-radius:10px;min-width:230px;box-shadow:0 8px 32px rgba(0,0,0,0.13);border:1px solid #e8eaf6;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.22s,transform 0.22s,visibility 0.22s;z-index:1000;padding:6px 0;}
+    .nav-menu>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+    .dropdown a{display:flex;align-items:center;gap:10px;padding:10px 18px;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:500;color:#444;text-decoration:none;transition:background 0.18s,color 0.18s;}
+    .dropdown a:hover{background:#e8eaf6;color:#1a237e;}
+    .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+    .nav-contact-btn{background:#1a237e;color:#fff;padding:8px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;font-family:'Poppins',sans-serif;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+    .nav-contact-btn:hover{background:#1565c0;}
 
-    /* ===== PAGE HERO HEADER ===== */
-    .page-hero {
-        position: relative;
-        width: 100%;
-        min-height: 320px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 80px 24px 60px;
-        overflow: hidden;
-        /* Ganti URL ini dengan gambar anda: url('image/news-hero.jpg') */
-        background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&auto=format&fit=crop&q=80');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-    }
-    .page-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.55);
-        z-index: 0;
-    }
-    /* Semua kandungan hero */
-    .page-hero > * { position: relative; z-index: 1; }
-    /* Breadcrumb */
-    .breadcrumb {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(255,255,255,0.18);
-        border: 1px solid rgba(255,255,255,0.35);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.90);
-        margin-bottom: 24px;
-    }
-    .breadcrumb a {
-        color: rgba(255,255,255,0.85);
-        text-decoration: none;
-        transition: color 0.15s;
-    }
-    .breadcrumb a:hover { color: #fff; }
-    .breadcrumb .bc-current { color: #fff; font-weight: 600; }
-    .breadcrumb .bc-sep { color: rgba(255,255,255,0.50); font-size: 0.75rem; }
-    /* Hero title */
-    .page-hero h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 800;
-        color: #fff;
-        line-height: 1.2;
-        margin-bottom: 16px;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.55);
-    }
-    /* Hero description */
-    .page-hero p {
-        font-size: 1rem;
-        color: rgba(255,255,255,0.90);
-        max-width: 560px;
-        line-height: 1.7;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.45);
-    }
+    /* ===== LANGUAGE DROPDOWN ===== */
+    .nav-lang-dropdown{position:relative;}
+    .nav-lang-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px solid #e0e4f0;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;color:#1a237e;padding:7px 13px;border-radius:8px;transition:background 0.2s,border-color 0.2s;}
+    .nav-lang-btn:hover{background:#eef0fb;border-color:#c5cae9;}
+    .nav-lang-btn .lang-arrow{font-size:0.65rem;color:#9ea8c8;transition:transform 0.2s;}
+    .nav-lang-dropdown.open .lang-arrow{transform:rotate(180deg);}
+    .nav-lang-flag{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.18);}
+    .nav-lang-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1.5px solid #e0e4f0;border-radius:12px;box-shadow:0 10px 32px rgba(26,35,126,0.13);min-width:150px;overflow:hidden;z-index:9999;}
+    .nav-lang-dropdown.open .nav-lang-menu{display:block;}
+    .nav-lang-menu button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;background:none;border:none;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;color:#333;cursor:pointer;transition:background 0.15s;text-align:left;}
+    .nav-lang-menu button:hover{background:#f0f2fb;color:#1a237e;}
+    .nav-lang-menu button.active-lang{background:#e8eaf6;color:#1a237e;font-weight:700;}
+    .nav-lang-menu button img{width:22px;height:15px;object-fit:cover;border-radius:3px;}
+    .nav-lang-menu-divider{height:1px;background:#f0f2f8;margin:2px 0;}
+
+    /* ===== PAGE HERO ===== */
+    .page-hero{position:relative;padding:100px 24px 70px;text-align:center;overflow:hidden;background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&auto=format&fit=crop&q=80');background-size:cover;background-position:center center;background-repeat:no-repeat;}
+    /* Tukar URL gambar hero kepada gambar anda sendiri:
+       background-image: url('image/news-hero.jpg'); */
+    .page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:0;pointer-events:none;}
+    .page-hero>*{position:relative;z-index:1;}
+    .page-hero .breadcrumb{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);padding:6px 18px;border-radius:50px;font-size:0.78rem;color:rgba(255,255,255,0.85);margin-bottom:20px;font-family:'Poppins',sans-serif;}
+    .page-hero .breadcrumb a{color:rgba(255,255,255,0.85);text-decoration:none;}
+    .page-hero .breadcrumb a:hover{color:#fff;}
+    .page-hero .breadcrumb .bc-sep{color:rgba(255,255,255,0.45);}
+    .page-hero .breadcrumb .bc-current{color:#fff;font-weight:600;}
+    .page-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:12px;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+    .page-hero p{color:rgba(255,255,255,0.8);font-size:1rem;max-width:480px;margin:0 auto;font-family:'Roboto',sans-serif;}
+
+    /* ===== NEWS SECTION ===== */
+    .news-section{position:relative;background-image:url('image/OFFICE.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;padding:48px 0 60px;}
+    .news-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
+    .news-section .container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px;}
 
     /* ===== NEWS LAYOUT ===== */
-    .news-layout {
-        display: block;
-    }
+    .news-layout{display:block;}
 
     /* ===== FEATURED NEWS ===== */
-    .featured-news {
-        background: #fff;
-        border: 2px solid #1a5c38;
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 28px;
-        box-shadow: 0 4px 24px rgba(26, 92, 56, 0.07);
-    }
-    .news-featured-image {
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        background: linear-gradient(135deg, #e1f5ee, #d4edda);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 60px;
-    }
-    .featured-news .news-content {
-        padding: 28px;
-    }
+    .featured-news{background:#fff;border:2px solid #1a5c38;border-radius:16px;overflow:hidden;margin-bottom:28px;box-shadow:0 4px 24px rgba(26,92,56,0.07);}
+    .news-featured-image{width:100%;height:280px;object-fit:cover;background:linear-gradient(135deg,#e1f5ee,#d4edda);display:flex;align-items:center;justify-content:center;font-size:60px;}
+    .featured-news .news-content{padding:28px;}
 
     /* ===== NEWS LIST ===== */
-    .news-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-    @media (max-width: 640px) {
-        .news-list { grid-template-columns: 1fr; }
-    }
+    .news-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    @media(max-width:640px){.news-list{grid-template-columns:1fr;}}
 
     /* ===== NEWS ARTICLE CARD ===== */
-    .news-article {
-        background: #fff;
-        border: 0.5px solid #dde3f0;
-        border-radius: 14px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .news-article:hover {
-        box-shadow: 0 6px 24px rgba(26, 35, 126, 0.10);
-        transform: translateY(-2px);
-    }
-    .news-thumbnail {
-        position: relative;
-        width: 100%;
-        height: 160px;
-        overflow: hidden;
-        background: linear-gradient(135deg, #e8eaf6, #c5cae9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 42px;
-    }
-    .news-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .news-thumbnail .news-badge {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-    .news-article .news-content {
-        padding: 16px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
+    .news-article{background:#fff;border:0.5px solid #dde3f0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;}
+    .news-article:hover{box-shadow:0 6px 24px rgba(26,35,126,0.10);transform:translateY(-2px);}
+    .news-thumbnail{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,#e8eaf6,#c5cae9);display:flex;align-items:center;justify-content:center;font-size:42px;}
+    .news-thumbnail img{width:100%;height:100%;object-fit:cover;}
+    .news-thumbnail .news-badge{position:absolute;top:10px;left:10px;}
+    .news-article .news-content{padding:16px;flex:1;display:flex;flex-direction:column;gap:8px;}
 
     /* ===== BADGES ===== */
-    .news-badge {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 20px;
-        letter-spacing: 0.3px;
-    }
-    .news-badge.featured    { background: #1a5c38; color: #fff; }
-    .news-badge.berita      { background: #e8eaf6; color: #3c3489; }
-    .news-badge.acara       { background: #e1f5ee; color: #085041; }
-    .news-badge.pencapaian  { background: #faeeda; color: #633806; }
-    .news-badge.kerjasama   { background: #e6f1fb; color: #0c447c; }
-    .news-badge.csr         { background: #fcebeb; color: #791f1f; }
-    .news-badge.kemaskini   { background: #eaf3de; color: #3b6d11; }
+    .news-badge{display:inline-block;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.3px;}
+    .news-badge.featured{background:#1a5c38;color:#fff;}
+    .news-badge.berita{background:#e8eaf6;color:#3c3489;}
+    .news-badge.acara{background:#e1f5ee;color:#085041;}
+    .news-badge.pencapaian{background:#faeeda;color:#633806;}
+    .news-badge.kerjasama{background:#e6f1fb;color:#0c447c;}
+    .news-badge.csr{background:#fcebeb;color:#791f1f;}
+    .news-badge.kemaskini{background:#eaf3de;color:#3b6d11;}
 
     /* ===== NEWS META ===== */
-    .news-meta {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-    .news-category {
-        font-size: 12px;
-        font-weight: 500;
-        color: #555;
-    }
-    .news-date {
-        font-size: 12px;
-        color: #888;
-        margin-left: auto;
-    }
+    .news-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .news-category{font-size:12px;font-weight:500;color:#555;}
+    .news-date{font-size:12px;color:#888;margin-left:auto;}
 
     /* ===== HEADLINES ===== */
-    .featured-news h2 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #1a237e;
-        line-height: 1.4;
-        margin: 4px 0;
-    }
-    .news-article h3 {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #1a237e;
-        line-height: 1.5;
-        flex: 1;
-    }
+    .featured-news h2{font-size:1.4rem;font-weight:700;color:#1a237e;line-height:1.4;margin:4px 0;}
+    .news-article h3{font-size:0.95rem;font-weight:600;color:#1a237e;line-height:1.5;flex:1;}
 
     /* ===== DESCRIPTION ===== */
-    .featured-news p {
-        font-size: 0.95rem;
-        color: #444;
-        line-height: 1.75;
-        margin-bottom: 8px;
-    }
-    .news-article .news-desc {
-        font-size: 0.82rem;
-        color: #555;
-        line-height: 1.7;
-        flex: 1;
-    }
+    .featured-news p{font-size:0.95rem;color:#444;line-height:1.75;margin-bottom:8px;}
+    .news-article .news-desc{font-size:0.82rem;color:#555;line-height:1.7;flex:1;}
 
     /* ===== BUTTONS ===== */
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        border-radius: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.18s, color 0.18s, border-color 0.18s;
-    }
-    .btn-primary {
-        background: #1a5c38;
-        color: #fff;
-        border: none;
-        padding: 10px 22px;
-        font-size: 0.9rem;
-        margin-top: 8px;
-    }
-    .btn-primary:hover { background: #145230; }
+    .btn{display:inline-flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-weight:600;border-radius:8px;cursor:pointer;text-decoration:none;transition:background 0.18s,color 0.18s,border-color 0.18s;}
+    .btn-primary{background:#1a5c38;color:#fff;border:none;padding:10px 22px;font-size:0.9rem;margin-top:8px;}
+    .btn-primary:hover{background:#145230;}
+    .read-more{display:inline-flex;align-items:center;gap:4px;font-size:0.82rem;font-weight:600;color:#1a5c38;background:none;border:0.5px solid #1a5c38;padding:6px 14px;border-radius:8px;cursor:pointer;text-decoration:none;transition:background 0.15s,color 0.15s;margin-top:auto;align-self:flex-start;}
+    .read-more:hover{background:#1a5c38;color:#fff;}
 
-    .read-more {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: #1a5c38;
-        background: none;
-        border: 0.5px solid #1a5c38;
-        padding: 6px 14px;
-        border-radius: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.15s, color 0.15s;
-        margin-top: auto;
-        align-self: flex-start;
-    }
-    .read-more:hover { background: #1a5c38; color: #fff; }
-
-    /* ===== PLACEHOLDER EMOJI IMAGE ===== */
-    /* Remove this block once you add real images */
-    .img-placeholder {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 42px;
-    }
+    /* ===== IMG PLACEHOLDER ===== */
+    .img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:42px;}
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     BAHAGIAN BERITA - Copy dari sini ke dalam news.html anda
-     ============================================================ -->
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <a href="tel:+60122525843"><span>📞</span> <span id="top-phone-text">Ada Pertanyaan? Hubungi kami: 012-2525 843</span></a>
+            <a href="mailto:info@upsiholdings.com"><span>📧</span> info@upsiholdings.com</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-social"><a href="#">FB</a><a href="#">IG</a><a href="#">YT</a></div>
+            <a href="contact.html" class="top-cta" id="top-cta-el">Hubungi Kami</a>
+        </div>
+    </div>
+</div>
 
-<!-- PAGE HERO HEADER — full width, di luar news-section -->
-<!-- Untuk guna gambar sendiri, tukar dalam CSS: background-image: url('image/news-hero.jpg') -->
-<div class="page-hero">
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo-section">
+            <img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;">
+            <div class="company-info">
+                <h1>UPSI HOLDINGS</h1>
+                <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home-el">Laman Utama</a></li>
+            <li>
+                <a href="#"><span id="nav-about-el">Tentang Kami</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="board-of-directors.html"><span id="dd-bod-el">Lembaga Pengarah</span></a>
+                    <a href="leaders.html"><span id="dd-leaders-el">Pemimpin</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><span id="nav-services-el">Perkhidmatan</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="education.html"><span id="dd-edu-el">Pendidikan &amp; Latihan</span></a>
+                    <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan &amp; Hospitaliti</span></a>
+                    <a href="retail.html"><span id="dd-retail-el">Runcit &amp; Perkhidmatan</span></a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a>
+                </div>
+            </li>
+            <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
+            <li><a href="career.html" id="nav-career-el">Kerjaya</a></li>
+            <li><a href="tender.html" id="nav-tender-el">Tender</a></li>
+            <li>
+                <a href="#"><span id="nav-media-el">Media</span> <span class="arrow">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="gallery.html"><span id="dd-gallery-el">Galeri</span></a>
+                    <a href="news.html"><span id="dd-news-el">Berita</span></a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
+            <!-- LANGUAGE DROPDOWN -->
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
+                    </button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
     <div class="breadcrumb">
         <a href="index.html" id="bc-home-el">Laman Utama</a>
-        <span class="bc-sep">›</span>
+        <span class="bc-sep">&#8250;</span>
         <a href="#" id="bc-media-el">Media</a>
-        <span class="bc-sep">›</span>
+        <span class="bc-sep">&#8250;</span>
         <span class="bc-current" id="bc-current-el">Berita &amp; Kemas Kini</span>
     </div>
     <h1 id="hero-title-el">Berita &amp; Kemas Kini</h1>
     <p id="hero-desc-el">Ikuti berita terkini dan pengumuman daripada UPSI Holdings</p>
-</div>
+</section>
 
+<!-- ===== NEWS SECTION ===== -->
 <section class="news-section">
     <div class="container">
-
         <div class="news-layout">
-
-            <!-- ===== MAIN CONTENT ===== -->
             <div class="main-news">
 
                 <!-- FEATURED ARTICLE -->
                 <div class="featured-news">
-                    <span class="news-badge featured" id="featured-badge-el"
-                          style="margin: 20px 0 0 20px; display:inline-block;">TERKEMUKA</span>
-
-                    <!-- Ganti <div> dengan <img src="..." alt="..."> jika ada gambar -->
-                    <div class="news-featured-image">🏫</div>
-                    <!-- Contoh dengan gambar sebenar:
-                    <img src="image/news-sk-taiping.png" alt="UPSI Holdings SK Taiping" class="news-featured-image"> -->
-
+                    <span class="news-badge featured" id="featured-badge-el" style="margin:20px 0 0 20px;display:inline-block;">TERKEMUKA</span>
+                    <img src="image/skTaiping.png" alt="..." class="news-featured-image">
                     <div class="news-content">
                         <div class="news-meta">
                             <span class="news-category" id="feat-cat-el">📢 Pengumuman</span>
@@ -358,14 +243,12 @@
                     </div>
                 </div>
 
-                <!-- NEWS LIST (grid 2 kolum) -->
+                <!-- NEWS LIST -->
                 <div class="news-list">
 
-                    <!-- Artikel 1 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/honor-upsi.jpg" alt="UPSI HONOR MoU"> -->
-                            <div class="img-placeholder">🤖</div>
+                            <img src="image/honor.png" alt="..." class="news-featured-image">
                             <span class="news-badge kerjasama" id="a1-badge-el">Kerjasama</span>
                         </div>
                         <div class="news-content">
@@ -379,11 +262,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 2 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/sk-proton-city.jpg" alt="SK Proton City"> -->
-                            <div class="img-placeholder">📚</div>
+                           <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge csr" id="a2-badge-el">CSR</span>
                         </div>
                         <div class="news-content">
@@ -397,11 +278,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 3 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/solar.jpg" alt="Solar Energy"> -->
-                            <div class="img-placeholder">☀️</div>
+                            <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge kemaskini" id="a3-badge-el">Pengumuman</span>
                         </div>
                         <div class="news-content">
@@ -415,11 +294,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 4 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/banjaran-cape.jpg" alt="The Banjaran Cape"> -->
-                            <div class="img-placeholder">🍽️</div>
+                            <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge berita" id="a4-badge-el">Berita Syarikat</span>
                         </div>
                         <div class="news-content">
@@ -433,11 +310,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 5 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/education-fair.jpg" alt="Pameran Pendidikan"> -->
-                            <div class="img-placeholder">🎓</div>
+                            <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge acara" id="a5-badge-el">Acara</span>
                         </div>
                         <div class="news-content">
@@ -451,11 +326,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 6 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/scholars-suites.jpg" alt="Scholar's Suites"> -->
-                            <div class="img-placeholder">🏆</div>
+                           <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge pencapaian" id="a6-badge-el">Pencapaian</span>
                         </div>
                         <div class="news-content">
@@ -469,11 +342,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 7 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/ujana-escape.jpg" alt="Ujana Escape"> -->
-                            <div class="img-placeholder">⛺</div>
+                            <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge kemaskini" id="a7-badge-el">Kemas Kini Kemudahan</span>
                         </div>
                         <div class="news-content">
@@ -487,11 +358,9 @@
                         </div>
                     </article>
 
-                    <!-- Artikel 8 -->
                     <article class="news-article">
                         <div class="news-thumbnail">
-                            <!-- <img src="image/community.jpg" alt="Program Komuniti"> -->
-                            <div class="img-placeholder">❤️</div>
+                            <img src="image/ncia.png" alt="..." class="news-featured-image">
                             <span class="news-badge csr" id="a8-badge-el">CSR</span>
                         </div>
                         <div class="news-content">
@@ -506,25 +375,103 @@
                     </article>
 
                 </div><!-- /news-list -->
-
-
             </div><!-- /main-news -->
-
         </div><!-- /news-layout -->
     </div><!-- /container -->
 </section>
 
-<!-- ============================================================
-     TERJEMAHAN (BM / BI) — sama seperti halaman asal anda
-     ============================================================ -->
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, Sultan Idris Education University, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">&#120143;</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">&#9654;</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-about-head-el">Tentang</h4>
+                <ul>
+                    <li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li>
+                    <li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li>
+                    <li><a href="about-upsi.html" id="footer-upsi-el">Tentang UPSI</a></li>
+                    <li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-svc-head-el">Perkhidmatan</h4>
+                <ul>
+                    <li><a href="education.html" id="footer-svc1-el">Pendidikan &amp; Latihan</a></li>
+                    <li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li>
+                    <li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li>
+                    <li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 id="footer-res-head-el">Sumber</h4>
+                <ul>
+                    <li><a href="career.html" id="footer-career-el">Kerjaya</a></li>
+                    <li><a href="tender.html" id="footer-tender-el">Tender</a></li>
+                    <li><a href="news.html" id="footer-news-el">Berita</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="footer-copyright-el">&#169; Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="script.js"></script>
 <script>
+function toggleLangMenu() {
+    document.getElementById('navLangDropdown').classList.toggle('open');
+}
+function closeLangMenu() {
+    document.getElementById('navLangDropdown').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+    var d = document.getElementById('navLangDropdown');
+    if (d && !d.contains(e.target)) d.classList.remove('open');
+});
+
 const T = {
     bm: {
-        "hero-title-el": "Berita & Kemas Kini",
-        "hero-desc-el": "Ikuti berita terkini dan pengumuman daripada UPSI Holdings",
+        "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
+        "top-cta-el": "Hubungi Kami",
+        "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
+        "nav-home-el": "Laman Utama",
+        "nav-about-el": "Tentang Kami",
+        "nav-services-el": "Perkhidmatan",
+        "nav-products-el": "Produk Kami",
+        "nav-ads-el": "Iklan",
+        "nav-career-el": "Kerjaya",
+        "nav-tender-el": "Tender",
+        "nav-media-el": "Media",
+        "nav-contact-btn-el": "Hubungi Kami",
+        "dd-bod-el": "Lembaga Pengarah",
+        "dd-leaders-el": "Pemimpin",
+        "dd-edu-el": "Pendidikan & Latihan",
+        "dd-hosp-el": "Pusat Latihan & Hospitaliti",
+        "dd-retail-el": "Runcit & Perkhidmatan",
+        "dd-projects-el": "Konsultasi Projek",
+        "dd-gallery-el": "Galeri",
+        "dd-news-el": "Berita",
         "bc-home-el": "Laman Utama",
         "bc-media-el": "Media",
         "bc-current-el": "Berita & Kemas Kini",
+        "hero-title-el": "Berita & Kemas Kini",
+        "hero-desc-el": "Ikuti berita terkini dan pengumuman daripada UPSI Holdings",
         "featured-badge-el": "TERKEMUKA",
         "feat-cat-el": "📢 Pengumuman",
         "feat-title-el": "UPSI Holdings Perkukuh Pendidikan Digital, Tingkat Kemahiran 3M SK Taiping",
@@ -562,14 +509,52 @@ const T = {
         "a8-badge-el": "CSR", "a8-cat-el": "❤️ Komuniti",
         "a8-title-el": "Program Jangkauan Komuniti UPSI Holdings 2026",
         "a8-desc-el": "Bengkel pendidikan dan bahan pembelajaran diderma kepada sekolah kurang bernasib baik di Tanjong Malim, manfaat lebih 500 pelajar.",
-        "a8-link-el": "Baca Lagi →"
+        "a8-link-el": "Baca Lagi →",
+        "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+        "footer-address-label-el": "Pejabat Utama:",
+        "footer-phone-label-el": "Telefon:",
+        "footer-about-head-el": "Tentang",
+        "footer-bod-el": "Lembaga Pengarah",
+        "footer-leaders-el": "Pemimpin",
+        "footer-upsi-el": "Tentang UPSI",
+        "footer-gallery-el": "Galeri",
+        "footer-svc-head-el": "Perkhidmatan",
+        "footer-svc1-el": "Pendidikan & Latihan",
+        "footer-svc2-el": "Hospitaliti",
+        "footer-svc3-el": "Perkhidmatan Runcit",
+        "footer-svc4-el": "Konsultasi",
+        "footer-res-head-el": "Sumber",
+        "footer-career-el": "Kerjaya",
+        "footer-tender-el": "Tender",
+        "footer-news-el": "Berita",
+        "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
     },
     bi: {
-        "hero-title-el": "News & Updates",
-        "hero-desc-el": "Stay informed with the latest news and announcements from UPSI Holdings",
+        "top-phone-text": "Got Questions? Call us: 012-2525 843",
+        "top-cta-el": "Contact Us",
+        "company-tagline": "Synergy of Resources & UPSI Expertise",
+        "nav-home-el": "Home",
+        "nav-about-el": "About Us",
+        "nav-services-el": "Services",
+        "nav-products-el": "Our Products",
+        "nav-ads-el": "Ads",
+        "nav-career-el": "Career",
+        "nav-tender-el": "Tender",
+        "nav-media-el": "Media",
+        "nav-contact-btn-el": "Contact Us",
+        "dd-bod-el": "Board of Directors",
+        "dd-leaders-el": "Leaders",
+        "dd-edu-el": "Education & Training",
+        "dd-hosp-el": "Training Center & Hospitality",
+        "dd-retail-el": "Retail & Services",
+        "dd-projects-el": "Projects Consultation",
+        "dd-gallery-el": "Gallery",
+        "dd-news-el": "News",
         "bc-home-el": "Home",
         "bc-media-el": "Media",
         "bc-current-el": "News & Updates",
+        "hero-title-el": "News & Updates",
+        "hero-desc-el": "Stay informed with the latest news and announcements from UPSI Holdings",
         "featured-badge-el": "FEATURED",
         "feat-cat-el": "📢 Announcement",
         "feat-title-el": "UPSI Holdings Strengthens Digital Education, Improves 3M Skills at SK Taiping",
@@ -607,24 +592,46 @@ const T = {
         "a8-badge-el": "CSR", "a8-cat-el": "❤️ Community",
         "a8-title-el": "UPSI Holdings Community Outreach Program 2026",
         "a8-desc-el": "Educational workshops and learning materials donated to underprivileged schools in Tanjong Malim, benefiting over 500 students.",
-        "a8-link-el": "Read More →"
+        "a8-link-el": "Read More →",
+        "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+        "footer-address-label-el": "Main Office:",
+        "footer-phone-label-el": "Phone:",
+        "footer-about-head-el": "About",
+        "footer-bod-el": "Board of Directors",
+        "footer-leaders-el": "Leaders",
+        "footer-upsi-el": "About UPSI",
+        "footer-gallery-el": "Gallery",
+        "footer-svc-head-el": "Services",
+        "footer-svc1-el": "Education & Training",
+        "footer-svc2-el": "Hospitality",
+        "footer-svc3-el": "Retail Services",
+        "footer-svc4-el": "Consultation",
+        "footer-res-head-el": "Resources",
+        "footer-career-el": "Career",
+        "footer-tender-el": "Tender",
+        "footer-news-el": "News",
+        "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
     }
 };
 
-/* Panggil setLang() dari script.js asal anda */
-function setLangNews(lang) {
+function setLang(lang) {
+    var _f = document.getElementById('lang-flag'), _l = document.getElementById('lang-label');
+    if (_f && _l) {
+        _f.src = lang === 'bm' ? 'https://flagcdn.com/w40/my.png' : 'https://flagcdn.com/w40/gb.png';
+        _f.alt = lang === 'bm' ? 'MY' : 'EN';
+        _l.textContent = lang === 'bm' ? 'Melayu' : 'English';
+    }
+    var _bm = document.getElementById('menu-btn-bm'), _bi = document.getElementById('menu-btn-bi');
+    if (_bm) _bm.classList.toggle('active-lang', lang === 'bm');
+    if (_bi) _bi.classList.toggle('active-lang', lang === 'bi');
     const t = T[lang]; if (!t) return;
-    Object.keys(t).forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = t[id];
-    });
+    Object.keys(t).forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t[id]; });
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
 }
 
-/* Auto-load bahasa dari localStorage (selaras dengan script.js asal) */
 document.addEventListener('DOMContentLoaded', () => {
-    let lang = 'bm';
-    try { lang = localStorage.getItem('upsi-lang') || 'bm'; } catch(e) {}
-    setLangNews(lang);
+    setLang(localStorage.getItem('upsi-lang') || 'bm');
 });
 </script>
 
