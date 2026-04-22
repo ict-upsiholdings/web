@@ -67,6 +67,63 @@
 .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
 .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
 .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+
+/* ===== PROJECT GALLERY SECTION ===== */
+.proj-gallery-grid {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.proj-gallery-grid img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+.proj-gallery-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+/* Lightbox */
+.gallery-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-lightbox.active { display: flex; }
+.gallery-lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.gallery-lightbox-close {
+    position: absolute;
+    top: 20px; right: 28px;
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.8;
+}
+.gallery-lightbox-close:hover { opacity: 1; }
+@media (max-width: 700px) {
+    .proj-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+    .proj-gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
 </style>
 </head>
 <body>
@@ -145,71 +202,23 @@
 
 <section class="service-details-section">
     <div class="container">
-        <div class="service-overview">
-            <h2 id="overview-title-el">Perkhidmatan Konsultasi Pakar</h2>
-            <p id="overview-desc-el">UPSI Holdings menyediakan perkhidmatan konsultasi projek yang komprehensif memanfaatkan pengalaman dan kepakaran kami yang luas. Dari perancangan strategik hingga pelaksanaan teknikal, kami membimbing organisasi melalui pelaksanaan projek yang berjaya dengan kecemerlangan profesional dan metodologi yang telah terbukti.</p>
+
+        <div style="text-align:center;padding:2rem 0 1.5rem;">
+            <img src="https://upsiholdings.com/assets/2024/06/logo-ncer-malaysia-768x284.png" alt="NCER Malaysia" style="max-width:320px;width:100%;height:auto;">
         </div>
-        <div class="section-title-bar"><span class="title-accent"></span><h2 id="services-title-el">Perkhidmatan Konsultasi Kami</h2><div class="title-line"></div></div>
-        <div class="programs-grid">
-            <div class="program-card" data-index="01" onclick="openEduModal('pm')">
-                <div class="program-icon-wrap"><div class="program-icon-box">📊</div><h3 id="c1-title">Pengurusan Projek</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m1">Hujung ke Hujung</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m2">Bertauliah PMI</span></span></div>
-                <p class="program-desc" id="c1-desc">Perkhidmatan pengurusan projek komprehensif memastikan projek anda diselesaikan tepat masa, dalam belanjawan, dan mengikut spesifikasi menggunakan amalan terbaik industri.</p>
-                <ul class="program-features"><li id="c1-f1">Perancangan & penjadualan</li><li id="c1-f2">Peruntukan sumber</li><li id="c1-f3">Pengurusan risiko</li><li id="c1-f4">Jaminan kualiti</li><li id="c1-f5">Pengurusan pihak berkepentingan</li><li id="c1-f6">Pemantauan kemajuan</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c1-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="02" onclick="openEduModal('strategic')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🎯</div><h3 id="c2-title">Perancangan Strategik</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m1">Strategi Perniagaan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m2">Penglibatan Fleksibel</span></span></div>
-                <p class="program-desc" id="c2-desc">Perkhidmatan perancangan strategik untuk membantu organisasi mentakrifkan visi, menetapkan objektif, dan membangunkan pelan tindakan untuk pertumbuhan yang mampan.</p>
-                <ul class="program-features"><li id="c2-f1">Analisis SWOT</li><li id="c2-f2">Kajian pasaran</li><li id="c2-f3">Penetapan matlamat</li><li id="c2-f4">Perancangan tindakan</li><li id="c2-f5">Metrik prestasi</li><li id="c2-f6">Peta jalan pelaksanaan</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c2-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="03" onclick="openEduModal('bizdev')">
-                <div class="program-icon-wrap"><div class="program-icon-box">💡</div><h3 id="c3-title">Pembangunan Perniagaan</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m1">Strategi Pertumbuhan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m2">Berasaskan Data</span></span></div>
-                <p class="program-desc" id="c3-desc">Perundingan pembangunan perniagaan untuk mengenal pasti peluang, membangunkan strategi, dan melaksanakan inisiatif yang mendorong pertumbuhan organisasi.</p>
-                <ul class="program-features"><li id="c3-f1">Pengembangan pasaran</li><li id="c3-f2">Pembangunan perkongsian</li><li id="c3-f3">Pengoptimuman hasil</li><li id="c3-f4">Penambahbaikan proses</li><li id="c3-f5">Strategi inovasi</li><li id="c3-f6">Analisis persaingan</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c3-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="04" onclick="openEduModal('partnership')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🤝</div><h3 id="c4-title">Pembangunan Perkongsian</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m1">Perikatan Strategik</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m2">Rangkaian Luas</span></span></div>
-                <p class="program-desc" id="c4-desc">Memudahkan perkongsian dan kerjasama strategik yang mewujudkan nilai bersama, meluaskan keupayaan, dan membuka peluang baru untuk pertumbuhan.</p>
-                <ul class="program-features"><li id="c4-f1">Pengenalpastian rakan kongsi</li><li id="c4-f2">Usaha wajar</li><li id="c4-f3">Sokongan rundingan</li><li id="c4-f4">Penstrukturan perjanjian</li><li id="c4-f5">Pengurusan hubungan</li><li id="c4-f6">Penjejakan prestasi</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c4-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="05" onclick="openEduModal('myfis')">
-                <div class="program-icon-wrap"><div class="program-icon-box">💻</div><h3 id="c5-title">Sistem MyFIS Neo</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m1">Sistem Maklumat Kewangan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m2">Berasaskan Awan</span></span></div>
-                <p class="program-desc" id="c5-desc">Sistem maklumat kewangan canggih yang menyediakan penyelesaian komprehensif untuk belanjawan, perakaunan, dan pengurusan kewangan dengan pelaporan masa nyata.</p>
-                <ul class="program-features"><li id="c5-f1">Perancangan belanjawan</li><li id="c5-f2">Pelaporan kewangan</li><li id="c5-f3">Pengurusan akaun</li><li id="c5-f4">Analitik masa nyata</li><li id="c5-f5">Kebolehcapaian awan</li><li id="c5-f6">Latihan & sokongan</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c5-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="06" onclick="openEduModal('technical')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🔧</div><h3 id="c6-title">Penasihat Teknikal</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m1">Pelbagai Disiplin</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m2">Pakar Berkelayakan</span></span></div>
-                <p class="program-desc" id="c6-desc">Perkhidmatan penasihat teknikal pakar merentas pelbagai domain termasuk kejuruteraan, IT, pendidikan, dan pengurusan yang memberikan panduan khusus.</p>
-                <ul class="program-features"><li id="c6-f1">Penilaian teknikal</li><li id="c6-f2">Reka bentuk penyelesaian</li><li id="c6-f3">Kajian kebolehlaksanaan</li><li id="c6-f4">Pemilihan teknologi</li><li id="c6-f5">Sokongan pelaksanaan</li><li id="c6-f6">Pemindahan pengetahuan</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c6-btn">Maklumat Lanjut</span>
-            </div>
-        </div>
-        <div class="why-choose-section">
-            <h2 id="why-title-el">Mengapa Pilih Perkhidmatan Konsultasi Kami?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item"><div class="benefit-icon">🎓</div><h3 id="ben1-title-el">Kecemerlangan Akademik</h3><p id="ben1-desc-el">Disokong oleh penyelidikan dan kepakaran akademik UPSI</p></div>
-                <div class="benefit-item"><div class="benefit-icon">📈</div><h3 id="ben2-title-el">Rekod Prestasi Terbukti</h3><p id="ben2-desc-el">Projek berjaya merentas pelbagai industri dan sektor</p></div>
-                <div class="benefit-item"><div class="benefit-icon">🔬</div><h3 id="ben3-title-el">Pendekatan Berasaskan Penyelidikan</h3><p id="ben3-desc-el">Penyelesaian berasaskan bukti yang dilandasi penyelidikan terkini</p></div>
-                <div class="benefit-item"><div class="benefit-icon">👥</div><h3 id="ben4-title-el">Pasukan Pakar</h3><p id="ben4-desc-el">Profesional berkelayakan dengan kepakaran dan pengalaman pelbagai</p></div>
-            </div>
-        </div>
-        <div class="service-cta">
-            <h2 id="cta-title-el">Bersedia Untuk Memulakan Projek Anda?</h2>
-            <p id="cta-desc-el">Jadualkan perundingan percuma dengan pakar kami hari ini. Mari berbincang bagaimana kami boleh membantu anda mencapai matlamat projek dan objektif organisasi.</p>
-            <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
-                <a href="contact.html" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn1-el">Jadualkan Perundingan</a>
-                <a href="mailto:info@upsiholdings.com" class="btn btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn2-el">Emel Kami</a>
-            </div>
+
+        <!-- GALLERY GAMBAR PROJEK -->
+        <div class="proj-gallery-grid">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9847-scaled-480x358.jpg" alt="Gambar Projek 1" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9916-scaled-480x358.jpg" alt="Gambar Projek 2" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9917-scaled-480x358.jpg" alt="Gambar Projek 3" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9874-scaled-480x358.jpg" alt="Gambar Projek 4" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9898-scaled-480x358.jpg" alt="Gambar Projek 5" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9938-scaled-480x358.jpg" alt="Gambar Projek 6" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9943-scaled-480x358.jpg" alt="Gambar Projek 7" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/IMG_9950-scaled-480x358.jpg" alt="Gambar Projek 8" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/ncer-600x467.jpeg" alt="Gambar Projek 9" onclick="openLightbox(this.src)">
+            <img src="https://upsiholdings.com/assets/2024/08/NCIA1-700x540.jpg" alt="Gambar Projek 10" onclick="openLightbox(this.src)">
         </div>
     </div>
 </section>
@@ -234,6 +243,12 @@
     </div>
 </div>
 
+<!-- LIGHTBOX untuk gallery gambar -->
+<div class="gallery-lightbox" id="galleryLightbox" onclick="closeLightbox()">
+    <button class="gallery-lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <img id="lightboxImg" src="" alt="Gambar Projek">
+</div>
+
 <script src="script.js"></script>
 <script>
 /* ===================================================
@@ -251,9 +266,27 @@ document.addEventListener('click', function(e) {
 });
 
 /* ===================================================
+   LIGHTBOX
+=================================================== */
+function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('galleryLightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('galleryLightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/* ===================================================
    MODAL
 =================================================== */
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeEduModal(); });
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeEduModal();
+        closeLightbox();
+    }
+});
 let currentLang = 'bm';
 
 const eduDataBM = {
@@ -420,13 +453,9 @@ document.getElementById('eduModal').addEventListener('click', function(e) {
 const T = {
 
 bm: {
-
-    /* ================= TOP BAR ================= */
     "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
     "top-cta-el": "Hubungi Kami",
     "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
-
-    /* ================= NAVIGATION ================= */
     "nav-home-el": "Laman Utama",
     "nav-about-el": "Tentang Kami",
     "nav-services-el": "Perkhidmatan",
@@ -436,8 +465,6 @@ bm: {
     "nav-tender-el": "Tender",
     "nav-media-el": "Media",
     "nav-contact-btn-el": "Hubungi Kami",
-
-    /* ================= DROPDOWN ================= */
     "dd-bod-el": "Lembaga Pengarah",
     "dd-leaders-el": "Pemimpin",
     "dd-upsi-el": "Tentang UPSI",
@@ -449,24 +476,14 @@ bm: {
     "dd-facility-el": "Pengurusan Kemudahan",
     "dd-gallery-el": "Galeri",
     "dd-news-el": "Berita",
-
-    /* ================= BREADCRUMB ================= */
     "bc-home-el": "Laman Utama",
     "bc-svc-el": "Perkhidmatan",
     "bc-current-el": "Konsultasi Projek",
-
-    /* ================= HERO ================= */
     "hero-title-el": "Konsultasi Projek",
     "hero-desc-el": "Perkhidmatan Konsultasi Profesional untuk Pelbagai Projek dan Inisiatif",
-
-    /* ================= OVERVIEW ================= */
     "overview-title-el": "Perkhidmatan Konsultasi Pakar",
     "overview-desc-el": "UPSI Holdings menyediakan perkhidmatan konsultasi projek yang komprehensif memanfaatkan pengalaman dan kepakaran kami yang luas. Dari perancangan strategik hingga pelaksanaan teknikal, kami membimbing organisasi melalui pelaksanaan projek yang berjaya dengan kecemerlangan profesional dan metodologi yang telah terbukti.",
-
-    /* ================= SERVICES ================= */
     "services-title-el": "Perkhidmatan Konsultasi Kami",
-
-    /* ---- Service 1 ---- */
     "c1-title": "Pengurusan Projek",
     "c1-m1": "Hujung ke Hujung",
     "c1-m2": "Bertauliah PMI",
@@ -478,8 +495,6 @@ bm: {
     "c1-f5": "Pengurusan pihak berkepentingan",
     "c1-f6": "Pemantauan kemajuan",
     "c1-btn": "Maklumat Lanjut",
-
-    /* ---- Service 2 ---- */
     "c2-title": "Perancangan Strategik",
     "c2-m1": "Strategi Perniagaan",
     "c2-m2": "Penglibatan Fleksibel",
@@ -491,8 +506,6 @@ bm: {
     "c2-f5": "Metrik prestasi",
     "c2-f6": "Peta jalan pelaksanaan",
     "c2-btn": "Maklumat Lanjut",
-
-    /* ---- Service 3 ---- */
     "c3-title": "Pembangunan Perniagaan",
     "c3-m1": "Strategi Pertumbuhan",
     "c3-m2": "Berasaskan Data",
@@ -504,8 +517,6 @@ bm: {
     "c3-f5": "Strategi inovasi",
     "c3-f6": "Analisis persaingan",
     "c3-btn": "Maklumat Lanjut",
-
-    /* ---- Service 4 ---- */
     "c4-title": "Pembangunan Perkongsian",
     "c4-m1": "Perikatan Strategik",
     "c4-m2": "Rangkaian Luas",
@@ -517,8 +528,6 @@ bm: {
     "c4-f5": "Pengurusan hubungan",
     "c4-f6": "Penjejakan prestasi",
     "c4-btn": "Maklumat Lanjut",
-
-    /* ---- Service 5 ---- */
     "c5-title": "Sistem MyFIS Neo",
     "c5-m1": "Sistem Maklumat Kewangan",
     "c5-m2": "Berasaskan Awan",
@@ -530,8 +539,6 @@ bm: {
     "c5-f5": "Kebolehcapaian awan",
     "c5-f6": "Latihan & sokongan",
     "c5-btn": "Maklumat Lanjut",
-
-    /* ---- Service 6 ---- */
     "c6-title": "Penasihat Teknikal",
     "c6-m1": "Pelbagai Disiplin",
     "c6-m2": "Pakar Berkelayakan",
@@ -543,8 +550,6 @@ bm: {
     "c6-f5": "Sokongan pelaksanaan",
     "c6-f6": "Pemindahan pengetahuan",
     "c6-btn": "Maklumat Lanjut",
-
-    /* ================= BENEFITS ================= */
     "why-title-el": "Mengapa Pilih Perkhidmatan Konsultasi Kami?",
     "ben1-title-el": "Kecemerlangan Akademik",
     "ben1-desc-el": "Disokong oleh penyelidikan dan kepakaran akademik UPSI",
@@ -554,14 +559,10 @@ bm: {
     "ben3-desc-el": "Penyelesaian berasaskan bukti yang dilandasi penyelidikan terkini",
     "ben4-title-el": "Pasukan Pakar",
     "ben4-desc-el": "Profesional berkelayakan dengan kepakaran dan pengalaman pelbagai",
-
-    /* ================= CTA ================= */
     "cta-title-el": "Bersedia Untuk Memulakan Projek Anda?",
     "cta-desc-el": "Jadualkan perundingan percuma dengan pakar kami hari ini.",
     "cta-btn1-el": "Jadualkan Perundingan",
     "cta-btn2-el": "Emel Kami",
-
-    /* ================= FOOTER ================= */
     "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
     "footer-address-label-el": "Pejabat Utama:",
     "footer-phone-label-el": "Telefon:",
@@ -569,7 +570,6 @@ bm: {
     "footer-bod-el": "Lembaga Pengarah",
     "footer-leaders-el": "Pemimpin",
     "footer-gallery-el": "Galeri",
-
     "footer-svc-head-el": "Perkhidmatan",
     "footer-svc1-el": "Pendidikan & Latihan",
     "footer-svc2-el": "Hospitaliti",
@@ -577,24 +577,18 @@ bm: {
     "footer-svc4-el": "Konsultasi",
     "footer-svc5-el": "Tenaga Solar",
     "footer-svc6-el": "Pengurusan Kemudahan",
-
     "footer-res-head-el": "Sumber",
     "footer-career-el": "Kerjaya",
     "footer-tender-el": "Tender",
     "footer-news-el": "Berita",
     "footer-contact-el": "Hubungi Kami",
-
     "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
 },
 
 bi: {
-
-    /* ================= TOP BAR ================= */
     "top-phone-text": "Got Questions? Call us: 012-2525 843",
     "top-cta-el": "Contact Us",
     "company-tagline": "Synergy of Resources & UPSI Expertise",
-
-    /* ================= NAVIGATION ================= */
     "nav-home-el": "Home",
     "nav-about-el": "About Us",
     "nav-services-el": "Services",
@@ -604,8 +598,6 @@ bi: {
     "nav-tender-el": "Tender",
     "nav-media-el": "Media",
     "nav-contact-btn-el": "Contact Us",
-
-    /* ================= DROPDOWN ================= */
     "dd-bod-el": "Board of Directors",
     "dd-leaders-el": "Leaders",
     "dd-upsi-el": "About UPSI",
@@ -617,24 +609,14 @@ bi: {
     "dd-facility-el": "Facility Management",
     "dd-gallery-el": "Gallery",
     "dd-news-el": "News",
-
-    /* ================= BREADCRUMB ================= */
     "bc-home-el": "Home",
     "bc-svc-el": "Services",
     "bc-current-el": "Project Consultation",
-
-    /* ================= HERO ================= */
     "hero-title-el": "Project Consultation",
     "hero-desc-el": "Professional Consultation Services for Various Projects and Initiatives",
-
-    /* ================= OVERVIEW ================= */
     "overview-title-el": "Expert Consultation Services",
     "overview-desc-el": "UPSI Holdings provides comprehensive project consultation services leveraging our extensive experience and expertise. From strategic planning to technical implementation, we guide organizations through successful project execution with professional excellence and proven methodologies.",
-
-    /* ================= SERVICES ================= */
     "services-title-el": "Our Consultation Services",
-
-    /* ---- Service 1 ---- */
     "c1-title": "Project Management",
     "c1-m1": "End-to-End",
     "c1-m2": "PMI Certified",
@@ -646,8 +628,6 @@ bi: {
     "c1-f5": "Stakeholder management",
     "c1-f6": "Progress monitoring",
     "c1-btn": "Learn More",
-
-    /* ---- Service 2 ---- */
     "c2-title": "Strategic Planning",
     "c2-m1": "Business Strategy",
     "c2-m2": "Flexible Engagement",
@@ -659,8 +639,6 @@ bi: {
     "c2-f5": "Performance metrics",
     "c2-f6": "Implementation roadmap",
     "c2-btn": "Learn More",
-
-    /* ---- Service 3 ---- */
     "c3-title": "Business Development",
     "c3-m1": "Growth Strategies",
     "c3-m2": "Data-Driven",
@@ -672,8 +650,6 @@ bi: {
     "c3-f5": "Innovation strategies",
     "c3-f6": "Competitive analysis",
     "c3-btn": "Learn More",
-
-    /* ---- Service 4 ---- */
     "c4-title": "Partnership Development",
     "c4-m1": "Strategic Alliances",
     "c4-m2": "Extensive Network",
@@ -685,8 +661,6 @@ bi: {
     "c4-f5": "Relationship management",
     "c4-f6": "Performance tracking",
     "c4-btn": "Learn More",
-
-    /* ---- Service 5 ---- */
     "c5-title": "MyFIS Neo System",
     "c5-m1": "Financial Information System",
     "c5-m2": "Cloud-Based",
@@ -698,8 +672,6 @@ bi: {
     "c5-f5": "Cloud accessibility",
     "c5-f6": "Training & support",
     "c5-btn": "Learn More",
-
-    /* ---- Service 6 ---- */
     "c6-title": "Technical Advisory",
     "c6-m1": "Multiple Disciplines",
     "c6-m2": "Qualified Experts",
@@ -711,8 +683,6 @@ bi: {
     "c6-f5": "Implementation support",
     "c6-f6": "Knowledge transfer",
     "c6-btn": "Learn More",
-
-    /* ================= BENEFITS ================= */
     "why-title-el": "Why Choose Our Consultation Services?",
     "ben1-title-el": "Academic Excellence",
     "ben1-desc-el": "Backed by UPSI's research and academic expertise",
@@ -722,14 +692,10 @@ bi: {
     "ben3-desc-el": "Evidence-based solutions grounded in the latest research",
     "ben4-title-el": "Expert Team",
     "ben4-desc-el": "Qualified professionals with diverse expertise and experience",
-
-    /* ================= CTA ================= */
     "cta-title-el": "Ready to Start Your Project?",
     "cta-desc-el": "Schedule a free consultation with our experts today. Let's discuss how we can help you achieve your project goals and organizational objectives.",
     "cta-btn1-el": "Schedule Consultation",
     "cta-btn2-el": "Email Us",
-
-    /* ================= FOOTER ================= */
     "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
     "footer-address-label-el": "Main Office:",
     "footer-phone-label-el": "Phone:",
@@ -737,7 +703,6 @@ bi: {
     "footer-bod-el": "Board of Directors",
     "footer-leaders-el": "Leaders",
     "footer-gallery-el": "Gallery",
-
     "footer-svc-head-el": "Services",
     "footer-svc1-el": "Education & Training",
     "footer-svc2-el": "Hospitality",
@@ -745,13 +710,11 @@ bi: {
     "footer-svc4-el": "Consultation",
     "footer-svc5-el": "Solar Energy",
     "footer-svc6-el": "Facility Management",
-
     "footer-res-head-el": "Resources",
     "footer-career-el": "Career",
     "footer-tender-el": "Tender",
     "footer-news-el": "News",
     "footer-contact-el": "Contact Us",
-
     "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
 }
 
@@ -765,7 +728,6 @@ function setLang(lang) {
     const t = T[lang];
     if (!t) return;
 
-    // Update flag & label
     const flagEl = document.getElementById('lang-flag');
     const labelEl = document.getElementById('lang-label');
     if (lang === 'bm') {
@@ -778,11 +740,9 @@ function setLang(lang) {
         labelEl.textContent = 'English';
     }
 
-    // Highlight active menu item
     document.getElementById('menu-btn-bm').classList.toggle('active-lang', lang === 'bm');
     document.getElementById('menu-btn-bi').classList.toggle('active-lang', lang === 'bi');
 
-    // Apply all translations
     Object.keys(t).forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = t[id];
@@ -792,7 +752,6 @@ function setLang(lang) {
     try { localStorage.setItem('upsi-lang', lang); } catch(e) {}
 }
 
-// Load saved language on page ready
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('upsi-lang') || 'bm';
     setLang(saved);
