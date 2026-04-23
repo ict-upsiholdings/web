@@ -12,64 +12,156 @@
     <link rel="stylesheet" href="nav-shared.css">
     <link rel="stylesheet" href="service-cards.css">
 <style>
-.service-details-section{position:relative;background-image:url('image/building.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;background-attachment:fixed;}
-.service-details-section::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.87);z-index:0;pointer-events:none;}
-.service-details-section .container{position:relative;z-index:1;}
-.edu-modal-overlay{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;}
-.edu-modal-overlay.active{display:flex;}
-.edu-modal-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.38);z-index:0;}
-.edu-modal-box{position:relative;z-index:1;background:rgba(255,255,255,0.88);backdrop-filter:blur(6px);max-width:680px;width:92%;max-height:85vh;overflow-y:auto;padding:52px 52px 44px;border-radius:2px;animation:eduFadeIn 0.28s ease;}
-@media(max-width:600px){.edu-modal-box{padding:40px 24px 32px;}}
-@keyframes eduFadeIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.edu-modal-close{position:absolute;top:20px;right:26px;font-size:1.6rem;background:none;border:none;cursor:pointer;color:#555;line-height:1;font-weight:300;}
-.edu-modal-close:hover{color:#000;}
-.edu-modal-title{font-family:'Raleway',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;color:#1a1a1a;line-height:1.2;}
-.edu-modal-divider{width:40px;height:3px;background:#888;margin-bottom:22px;}
-.edu-modal-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
-.edu-modal-meta span{background:#f0f9f5;color:#2a7d52;border:1px solid #b2e0cb;border-radius:20px;padding:4px 14px;font-size:0.83rem;font-family:'Open Sans',sans-serif;font-weight:500;}
-.edu-modal-desc{font-family:'Open Sans',sans-serif;font-size:0.97rem;line-height:1.8;color:#444;margin-bottom:20px;}
-.edu-modal-list{padding-left:22px;font-family:'Open Sans',sans-serif;font-size:0.93rem;line-height:1.85;color:#444;margin-bottom:28px;}
-.edu-modal-list li{margin-bottom:12px;}
-.edu-modal-list li strong{color:#1a1a1a;}
-.edu-modal-cta{display:inline-block;padding:12px 34px;background:#1a5c38;color:#fff;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;transition:background 0.2s;}
-.edu-modal-cta:hover{background:#134429;}
-.program-card{cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
-.program-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12);}
-
-/* ===== LANGUAGE DROPDOWN IN NAVBAR ===== */
-.nav-lang-dropdown { position: relative; }
-.nav-lang-btn {
-    display: flex; align-items: center; gap: 6px;
-    background: none; border: 1.5px solid #e0e4f0;
-    cursor: pointer; font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem; font-weight: 600; color: #1a237e;
-    padding: 7px 13px; border-radius: 8px;
-    transition: background 0.2s, border-color 0.2s;
+.hosp-page-section {
+    position: relative;
+    background-image: url('image/building.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+.hosp-page-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.87);
+    z-index: 0;
+    pointer-events: none;
+}
+.hosp-page-section .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+}
+.hosp-hero-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 52px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+.hosp-facility-block {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid #ddd;
+}
+.hosp-facility-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.hosp-facility-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.hosp-facility-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a5c38;
+    margin-bottom: 18px;
+}
+.hosp-facility-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.97rem;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+.hosp-info-stats {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.hosp-stat-item {
+    background: #f0f9f5;
+    border: 1px solid #b2e0cb;
+    border-radius: 6px;
+    padding: 12px 20px;
+    text-align: center;
+}
+.hosp-stat-item strong {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 800;
+    color: #1a5c38;
+}
+.hosp-stat-item span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    color: #666;
+}
+.hosp-book-btn {
+    display: inline-block;
+    padding: 11px 32px;
+    background: #1a5c38;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    transition: background 0.2s;
+    display: inline-block;
+}
+.hosp-book-btn:hover { background: #134429; }
+.hosp-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+.hosp-photo-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.hosp-photo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.hosp-photo-grid img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+}
+.hosp-ujana-banner {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+/* LANG DROPDOWN */
+.nav-lang-dropdown { position: relative; }
+.nav-lang-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px solid #e0e4f0; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; color: #1a237e; padding: 7px 13px; border-radius: 8px; transition: background 0.2s, border-color 0.2s; }
 .nav-lang-btn:hover { background: #eef0fb; border-color: #c5cae9; }
 .nav-lang-btn .lang-arrow { font-size: 0.65rem; color: #9ea8c8; transition: transform 0.2s; }
 .nav-lang-dropdown.open .lang-arrow { transform: rotate(180deg); }
 .nav-lang-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.18); }
-.nav-lang-menu {
-    display: none; position: absolute; right: 0; top: calc(100% + 8px);
-    background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px;
-    box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px;
-    overflow: hidden; z-index: 9999;
-}
+.nav-lang-menu { display: none; position: absolute; right: 0; top: calc(100% + 8px); background: #fff; border: 1.5px solid #e0e4f0; border-radius: 12px; box-shadow: 0 10px 32px rgba(26,35,126,0.13); min-width: 150px; overflow: hidden; z-index: 9999; }
 .nav-lang-dropdown.open .nav-lang-menu { display: block; }
-.nav-lang-menu button {
-    display: flex; align-items: center; gap: 10px;
-    width: 100%; padding: 11px 16px; background: none; border: none;
-    font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500;
-    color: #333; cursor: pointer; transition: background 0.15s; text-align: left;
-}
+.nav-lang-menu button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px 16px; background: none; border: none; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500; color: #333; cursor: pointer; transition: background 0.15s; text-align: left; }
 .nav-lang-menu button:hover { background: #f0f2fb; color: #1a237e; }
 .nav-lang-menu button.active-lang { background: #e8eaf6; color: #1a237e; font-weight: 700; }
 .nav-lang-menu button img { width: 22px; height: 15px; object-fit: cover; border-radius: 3px; }
 .nav-lang-menu-divider { height: 1px; background: #f0f2f8; margin: 2px 0; }
+@media(max-width:768px){
+    .hosp-photo-grid { grid-template-columns: repeat(2,1fr); }
+    .hosp-photo-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
+}
 </style>
 </head>
 <body>
+
 <div class="top-bar">
     <div class="top-bar-content">
         <div class="top-bar-left">
@@ -86,7 +178,7 @@
 <nav>
     <div class="nav-container">
         <a href="index.html" class="logo-section">
-            <img src="image/logo.png" style="height:50px; width:auto; object-fit:contain;">
+            <img src="image/logo.png" style="height:50px;width:auto;object-fit:contain;">
             <div class="company-info">
                 <h1>UPSI HOLDINGS</h1>
                 <p id="company-tagline">Sinergi Sumber & Kepakaran UPSI</p>
@@ -107,8 +199,8 @@
                     <a href="education.html"><span id="dd-edu-el">Pendidikan & Latihan</span></a>
                     <a href="hospitality.html"><span id="dd-hosp-el">Pusat Latihan & Hospitaliti</span></a>
                     <a href="retail.html"><span id="dd-retail-el">Runcit & Perkhidmatan</span></a>
-                    <a href="projects.html"> <span id="dd-projects-el">Konsultasi Projek</span></a>
-                  <a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a>
+                    <a href="projects.html"><span id="dd-projects-el">Konsultasi Projek</span></a>
+                    <a href="our product.html" id="nav-products-el" style="color:#1a5c38;font-weight:700;">Produk Kami</a>
                 </div>
             </li>
             <li><a href="ads.html" id="nav-ads-el">Iklan</a></li>
@@ -124,505 +216,190 @@
         </ul>
         <div class="nav-right">
             <a href="contact.html" class="nav-contact-btn" id="nav-contact-btn-el">Hubungi Kami</a>
-    <!-- LANGUAGE DROPDOWN -->
-    <div class="nav-lang-dropdown" id="navLangDropdown">
-        <button class="nav-lang-btn" onclick="toggleLangMenu()" id="nav-lang-toggle">
-            <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
-            <span id="lang-label">Melayu</span>
-            <span class="lang-arrow">&#9662;</span>
-        </button>
-        <div class="nav-lang-menu" id="navLangMenu">
-            <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()">
-                <img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu
-            </button>
-            <div class="nav-lang-menu-divider"></div>
-            <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()">
-                <img src="https://flagcdn.com/w40/gb.png" alt="EN"> English
-            </button>
+            <div class="nav-lang-dropdown" id="navLangDropdown">
+                <button class="nav-lang-btn" onclick="toggleLangMenu()">
+                    <img class="nav-lang-flag" id="lang-flag" src="https://flagcdn.com/w40/my.png" alt="flag">
+                    <span id="lang-label">Melayu</span>
+                    <span class="lang-arrow">&#9662;</span>
+                </button>
+                <div class="nav-lang-menu" id="navLangMenu">
+                    <button id="menu-btn-bm" onclick="setLang('bm');closeLangMenu()"><img src="https://flagcdn.com/w40/my.png" alt="MY"> Melayu</button>
+                    <div class="nav-lang-menu-divider"></div>
+                    <button id="menu-btn-bi" onclick="setLang('bi');closeLangMenu()"><img src="https://flagcdn.com/w40/gb.png" alt="EN"> English</button>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- END LANGUAGE DROPDOWN -->
-</div></div></nav>
+</nav>
 
-<!-- HERO -->
 <section class="page-hero hospitality-hero">
-    <div class="breadcrumb"><a href="index.html" id="bc-home-el">Laman Utama</a> › <a href="#" id="bc-svc-el">Perkhidmatan</a> › <span id="bc-current-el">Pusat Latihan & Hospitaliti</span></div>
+    <div class="breadcrumb">
+        <a href="index.html" id="bc-home-el">Laman Utama</a> ›
+        <a href="#" id="bc-svc-el">Perkhidmatan</a> ›
+        <span id="bc-current-el">Pusat Latihan & Hospitaliti</span>
+    </div>
     <h1 id="hero-title-el">Pusat Latihan & Hospitaliti</h1>
     <p id="hero-desc-el">Kemudahan Bertaraf Dunia untuk Persidangan, Latihan, dan Penginapan</p>
 </section>
 
-<!-- CONTENT -->
-<section class="service-details-section">
+<section class="hosp-page-section">
     <div class="container">
-        <div class="service-overview">
-            <h2 id="overview-title-el">Rasai Kecemerlangan dalam Hospitaliti</h2>
-            <p id="overview-desc-el">UPSI Holdings menawarkan kemudahan hospitaliti dan latihan yang komprehensif berlatar belakang indah Banjaran Titiwangsa. Kemudahan bertaraf dunia kami direka untuk menyediakan keselesaan, kemudahan, dan kecemerlangan untuk semua keperluan acara dan penginapan anda.</p>
-        </div>
-        <div class="section-title-bar"><span class="title-accent"></span><h2 id="facilities-title-el">Kemudahan Kami</h2><div class="title-line"></div></div>
-        <div class="programs-grid">
-            <div class="program-card" data-index="01" onclick="openEduModal('seminar')">
-                <div class="program-icon-wrap"><div class="program-icon-box">📊</div><h3 id="c1-title">Bilik Seminar</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m1">Sehingga 300 pax</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c1-m2">4 Dewan</span></span></div>
-                <p class="program-desc" id="c1-desc">Kemudahan seminar terkini dilengkapi teknologi audio-visual moden, tempat duduk selesa, dan suasana profesional untuk persidangan, bengkel, dan sesi latihan.</p>
-                <ul class="program-features"><li id="c1-f1">Projektor & skrin LCD</li><li id="c1-f2">Sistem bunyi</li><li id="c1-f3">Dewan berhawa dingin</li><li id="c1-f4">WiFi berkelajuan tinggi</li><li id="c1-f5">Kawasan pecahan</li><li id="c1-f6">Persediaan profesional</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c1-btn">Maklumat Lanjut</span>
+
+        <!-- HEADER IMAGE -->
+        <img src="https://upsiholdings.com/assets/2024/04/hospitaliti-e1713688652727.png"
+             alt="Hospitality Training Center UPSI"
+             class="hosp-hero-img">
+
+        <!-- 1. SCHOLAR'S SUITES -->
+        <div class="hosp-facility-block">
+            <div class="hosp-facility-title" id="s1-title">Hospitality Training Center</div>
+            <div class="hosp-facility-subtitle" id="s1-subtitle">Scholar's Suites Tanjong Malim</div>
+            <div class="hosp-info-stats">
+                <div class="hosp-stat-item">
+                    <strong id="s1-est-val">Oktober 2018</strong>
+                    <span id="s1-est-label">Ditubuhkan</span>
+                </div>
+                <div class="hosp-stat-item">
+                    <strong id="s1-loc-val">Sultan Azlan Shah Campus, UPSI</strong>
+                    <span id="s1-loc-label">Lokasi</span>
+                </div>
+                <div class="hosp-stat-item">
+                    <strong>100 <span id="s1-rooms-label">Bilik Penginapan</span></strong>
+                    <span id="s1-rooms-desc">Dikelilingi Banjaran Titiwangsa</span>
+                </div>
             </div>
-            <div class="program-card" data-index="02" onclick="openEduModal('suites')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🛏️</div><h3 id="c2-title">Scholar's Suites</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m1">100 Bilik</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c2-m2">Pemandangan Gunung</span></span></div>
-                <p class="program-desc" id="c2-desc">Bilik penginapan selesa dikelilingi pemandangan indah Banjaran Titiwangsa, menawarkan tempat istirehat yang aman untuk program latihan, persidangan, dan penginapan lanjutan.</p>
-                <ul class="program-features"><li id="c2-f1">Bilik bersih & selesa</li><li id="c2-f2">Hawa dingin</li><li id="c2-f3">Akses WiFi</li><li id="c2-f4">Pengemasan harian</li><li id="c2-f5">Keselamatan 24 jam</li><li id="c2-f6">Pemandangan gunung</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c2-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="03" onclick="openEduModal('ujana')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🏕️</div><h3 id="c3-title">Ujana Escape</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m1">Kabin & Tapak Perkhemahan</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c3-m2">Percutian Alam</span></span></div>
-                <p class="program-desc" id="c3-desc">Pengalaman luar yang unik menggabungkan keselesaan kabin dengan keseronokan berkhemah. Sesuai untuk pembinaan pasukan, retret, dan pencinta alam yang mencari ketenangan.</p>
-                <ul class="program-features"><li id="c3-f1">Kabin selesa</li><li id="c3-f2">Kawasan perkhemahan</li><li id="c3-f3">Laluan alam semula jadi</li><li id="c3-f4">Kemudahan BBQ</li><li id="c3-f5">Aktiviti pembinaan pasukan</li><li id="c3-f6">Persekitaran indah</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c3-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="04" onclick="openEduModal('banjaran')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🍽️</div><h3 id="c4-title">The Banjaran Cape</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m1">Katering Penuh</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c4-m2">Acara & Fungsi</span></span></div>
-                <p class="program-desc" id="c4-desc">Perkhidmatan katering komprehensif menawarkan Hi-Tea, bufet, makan tengahari, makan malam, dan pakej acara istimewa. Sesuai untuk semua majlis dari perjumpaan santai hingga fungsi rasmi.</p>
-                <ul class="program-features"><li id="c4-f1">Pakej Hi-Tea</li><li id="c4-f2">Bufet Makan Tengahari & Malam</li><li id="c4-f3">Bufet Iftar Ramadan</li><li id="c4-f4">Pakej hari jadi</li><li id="c4-f5">Acara korporat</li><li id="c4-f6">Menu khusus</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c4-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="05" onclick="openEduModal('laundry')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🧺</div><h3 id="c5-title">Perkhidmatan Dobi</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m1">Profesional</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c5-m2">Siap Cepat</span></span></div>
-                <p class="program-desc" id="c5-desc">Perkhidmatan dobi profesional untuk tetamu dan pelanggan, memastikan pakaian segar dan bersih dengan masa siap yang cepat dan kadar yang berpatutan.</p>
-                <ul class="program-features"><li id="c5-f1">Basuh & kering</li><li id="c5-f2">Perkhidmatan menyeterika</li><li id="c5-f3">Perkhidmatan hari sama</li><li id="c5-f4">Harga kompetitif</li><li id="c5-f5">Detergen berkualiti</li><li id="c5-f6">Pengendalian teliti</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c5-btn">Maklumat Lanjut</span>
-            </div>
-            <div class="program-card" data-index="06" onclick="openEduModal('event')">
-                <div class="program-icon-wrap"><div class="program-icon-box">🎪</div><h3 id="c6-title">Pengurusan Acara</h3></div>
-                <div class="program-meta"><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m1">Penyelesaian Lengkap</span></span><span class="meta-tag"><span class="meta-dot"></span><span id="c6-m2">Pasukan Pro</span></span></div>
-                <p class="program-desc" id="c6-desc">Perkhidmatan pengurusan acara penuh termasuk perancangan, penyelarasan, dan pelaksanaan untuk persidangan, seminar, perkahwinan, dan majlis istimewa.</p>
-                <ul class="program-features"><li id="c6-f1">Perancangan acara</li><li id="c6-f2">Persediaan venue</li><li id="c6-f3">Peralatan AV</li><li id="c6-f4">Penyelarasan katering</li><li id="c6-f5">Sokongan pendaftaran</li><li id="c6-f6">Pengurusan di tapak</li></ul>
-                <div class="card-divider"></div><span class="btn-card" id="c6-btn">Maklumat Lanjut</span>
+            <a href="https://scholarssuites.com.my/" target="_blank" class="hosp-book-btn" id="s1-book-btn">Tempah Sekarang</a>
+            <div class="hosp-photo-grid">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05880-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05875-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05871-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05870-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05869-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05856-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05876-scaled-480x358.jpg" alt="Scholar's Suites">
+                <img src="https://upsiholdings.com/assets/2024/04/DSC05854-scaled-480x358.jpg" alt="Scholar's Suites">
             </div>
         </div>
-        <div class="why-choose-section">
-            <h2 id="why-title-el">Mengapa Pilih Kemudahan Kami?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item"><div class="benefit-icon">🌄</div><h3 id="ben1-title-el">Lokasi Indah</h3><p id="ben1-desc-el">Persekitaran cantik dengan pemandangan Banjaran Titiwangsa</p></div>
-                <div class="benefit-item"><div class="benefit-icon">⚡</div><h3 id="ben2-title-el">Kemudahan Moden</h3><p id="ben2-desc-el">Peralatan bertaraf dunia dan kemudahan yang selesa</p></div>
-                <div class="benefit-item"><div class="benefit-icon">👨‍💼</div><h3 id="ben3-title-el">Perkhidmatan Profesional</h3><p id="ben3-desc-el">Kakitangan berpengalaman komited kepada kepuasan anda</p></div>
-                <div class="benefit-item"><div class="benefit-icon">💰</div><h3 id="ben4-title-el">Kadar Kompetitif</h3><p id="ben4-desc-el">Kemudahan berkualiti pada harga yang berbaloi</p></div>
+
+        <!-- 2. 4 SEMINAR ROOMS -->
+        <div class="hosp-facility-block">
+            <div class="hosp-facility-title" id="s2-title">4 Bilik Seminar</div>
+            <div class="hosp-facility-desc" id="s2-desc">Kapasiti 300 pax</div>
+            <div class="hosp-photo-grid">
+                <img src="https://upsiholdings.com/assets/2024/04/news-3-6625d6f91a928-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/id-obj34397437-1653386550-6625d6d64bb28-480x358.jpg" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/photo-2023-09-22-23-40-55-6625d6d3c1e1e-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc03917-6625d6d1be362-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/photo-2023-09-22-23-40-07-6625d6d1c60ea-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc-0056-6625d6cfa20bd-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc04121-6625d6cd893b7-480x358.webp" alt="Seminar Room">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc05383-6625d6cd8fee6-480x358.webp" alt="Seminar Room">
             </div>
         </div>
-        <div class="service-cta">
-            <h2 id="cta-title-el">Bersedia Untuk Tempah Acara Anda?</h2>
-            <p id="cta-desc-el">Hubungi kami hari ini untuk membincangkan keperluan anda dan dapatkan sebut harga yang disesuaikan untuk acara, program latihan, atau keperluan penginapan anda.</p>
-            <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
-                <a href="tel:054481922" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn1-el">Hubungi: 05-448 1922</a>
-                <a href="mailto:info@upsiholdings.com" class="btn btn-secondary" style="font-size:1.1rem;padding:1rem 2.5rem;" id="cta-btn2-el">Emel Kami</a>
+
+        <!-- 3. THE BANJARAN CAPE -->
+        <div class="hosp-facility-block">
+            <div class="hosp-facility-title" id="s3-title">The Banjaran Cape</div>
+            <div class="hosp-facility-desc" id="s3-desc">Hi-Tea, Katering, Makan Tengahari & Malam, Bufet Iftar Ramadan, Majlis Hari Jadi, Acara Rasmi & Santai.</div>
+            <div class="hosp-photo-grid cols-2">
+                <img src="https://upsiholdings.com/assets/2024/04/photo_2023-04-04_11-15-10-480x358.jpg" alt="The Banjaran Cape">
+                <img src="https://upsiholdings.com/assets/2024/04/CAFE-480x358.jpg" alt="The Banjaran Cape Cafe">
             </div>
         </div>
+
+        <!-- 4. LAUNDRY SERVICES -->
+        <div class="hosp-facility-block">
+            <div class="hosp-facility-title" id="s4-title">Perkhidmatan Dobi</div>
+            <div class="hosp-facility-desc" id="s4-desc">Scholar's Suites menawarkan perkhidmatan dobi kepada tetamu hotel, organisasi kerajaan dan swasta, sekolah, hotel bajet, dan usahawan.</div>
+            <div class="hosp-photo-grid cols-3">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc05926-6625db2e882f8-480x358.webp" alt="Laundry Services">
+                <img src="https://upsiholdings.com/assets/2024/04/dsc05934-6625db2f73a81-480x358.webp" alt="Laundry Services">
+                <img src="https://upsiholdings.com/assets/2024/04/dobi-480x324.jpg" alt="Laundry Services">
+            </div>
+        </div>
+
+        <!-- 5. UJANA ESCAPE -->
+        <div class="hosp-facility-block">
+            <img src="https://upsiholdings.com/assets/2024/08/banner-kini-DIBUKA-UJANA-ESCAPE-10x6ft_Artboard-3-1-1024x614.jpg"
+                 alt="Ujana Escape Banner"
+                 class="hosp-ujana-banner">
+            <div class="hosp-facility-title" id="s5-title">Ujana Escape</div>
+            <a href="https://scholarssuites.com.my/our-rooms/ujana-escape/" target="_blank" class="hosp-book-btn" id="s5-book-btn">Tempah Sekarang</a>
+            <div class="hosp-photo-grid">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-24-2024-06-04-09-30-00-667ed08666276-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-25-2024-05-31-08-59-13-667ed0c7eb4ee-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-46-2024-05-31-08-59-13-667ed0e7c6186-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-48-2024-05-31-08-59-13-667ed0eab93fd-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-7-2024-05-31-08-59-13-667ed0ad5f03c-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-2024-05-06-21-03-04-667ed0fa7f921-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/photo-11-2024-06-04-09-30-00-667ed07443598-480x358.webp" alt="Ujana Escape">
+                <img src="https://upsiholdings.com/assets/2024/06/standard-queen-667ed0f376342-480x358.webp" alt="Ujana Escape Standard Queen">
+                <img src="https://upsiholdings.com/assets/2024/06/standard-twins-667ed0f3b070c-480x358.webp" alt="Ujana Escape Standard Twins">
+            </div>
+        </div>
+
     </div>
 </section>
 
-<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>UPSI HOLDINGS SDN BHD</h3><p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p><div class="footer-contact"><div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div><div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div><div class="footer-contact-item"><strong id="footer-hosp-label-el">Hospitaliti:</strong><span>05-448 1922</span></div></div><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a></div></div>
-<div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
-<div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
-<div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
-</div><div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div></div></footer>
-
-<div class="edu-modal-overlay" id="eduModal">
-    <div class="edu-modal-bg" id="eduModalBg"></div>
-    <div class="edu-modal-box">
-        <button class="edu-modal-close" onclick="closeEduModal()">&#x2715;</button>
-        <div class="edu-modal-title" id="eduModalTitle"></div>
-        <div class="edu-modal-divider"></div>
-        <div class="edu-modal-meta" id="eduModalMeta"></div>
-        <p class="edu-modal-desc" id="eduModalDesc"></p>
-        <ol class="edu-modal-list" id="eduModalList"></ol>
-        <a href="contact.html" class="edu-modal-cta" id="eduModalCta">Tempah Sekarang</a>
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>UPSI HOLDINGS SDN BHD</h3>
+                <p id="footer-desc-el">Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.</p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item"><strong id="footer-address-label-el">Pejabat Utama:</strong><span>Level 1, Scholar's Suites, Sultan Azlan Shah Campus, 35900 Tanjong Malim, Perak.</span></div>
+                    <div class="footer-contact-item"><strong id="footer-phone-label-el">Telefon:</strong><span>012-2525 843</span></div>
+                    <div class="footer-contact-item"><strong id="footer-hosp-label-el">Hospitaliti:</strong><span>05-448 1922</span></div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a><a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div class="footer-links"><h4 id="footer-about-head-el">Tentang</h4><ul><li><a href="board-of-directors.html" id="footer-bod-el">Lembaga Pengarah</a></li><li><a href="leaders.html" id="footer-leaders-el">Pemimpin</a></li><li><a href="gallery.html" id="footer-gallery-el">Galeri</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-svc-head-el">Perkhidmatan</h4><ul><li><a href="education.html" id="footer-svc1-el">Pendidikan & Latihan</a></li><li><a href="hospitality.html" id="footer-svc2-el">Hospitaliti</a></li><li><a href="retail.html" id="footer-svc3-el">Perkhidmatan Runcit</a></li><li><a href="projects.html" id="footer-svc4-el">Konsultasi</a></li><li><a href="solar.html" id="footer-svc5-el">Tenaga Solar</a></li><li><a href="facility.html" id="footer-svc6-el">Pengurusan Kemudahan</a></li></ul></div>
+            <div class="footer-links"><h4 id="footer-res-head-el">Sumber</h4><ul><li><a href="career.html" id="footer-career-el">Kerjaya</a></li><li><a href="tender.html" id="footer-tender-el">Tender</a></li><li><a href="news.html" id="footer-news-el">Berita</a></li><li><a href="contact.html" id="footer-contact-el">Hubungi Kami</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p id="footer-copyright-el">© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara.</p></div>
     </div>
-</div>
+</footer>
 
 <script src="script.js"></script>
 <script>
-function toggleLangMenu() {
-    document.getElementById('navLangDropdown').classList.toggle('open');
-}
-function closeLangMenu() {
-    document.getElementById('navLangDropdown').classList.remove('open');
-}
-document.addEventListener('click', function(e) {
-    var d = document.getElementById('navLangDropdown');
-    if (d && !d.contains(e.target)) d.classList.remove('open');
-});
-
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEduModal();});
+function toggleLangMenu(){document.getElementById('navLangDropdown').classList.toggle('open');}
+function closeLangMenu(){document.getElementById('navLangDropdown').classList.remove('open');}
+document.addEventListener('click',function(e){var d=document.getElementById('navLangDropdown');if(d&&!d.contains(e.target))d.classList.remove('open');});
 let currentLang='bm';
-
-const eduDataBM={
-seminar:{title:"Bilik Seminar",bg:"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1400&q=80",meta:["Sehingga 300 pax","4 Dewan","Persediaan AV Penuh"],desc:"Bilik seminar kami dilengkapi teknologi audio-visual terkini dan direka untuk keselesaan serta produktiviti maksimum. Sesuai untuk latihan korporat, persidangan akademik, bengkel, dan pembentangan berskala besar.",list:["<strong>Peralatan Audio-Visual:</strong> Projektor LCD berkualiti tinggi, skrin unjuran, sistem bunyi profesional, dan mikrofon wayarles untuk pembentangan yang lancar.","<strong>Sambungan & Keselesaan:</strong> WiFi berkelajuan tinggi, dewan berhawa dingin dengan susunan tempat duduk ergonomik, dan kawasan pecahan khusus untuk perbincangan kumpulan.","<strong>Konfigurasi Fleksibel:</strong> Dewan boleh disusun dalam gaya teater, bilik darjah, bentuk U, atau banquet mengikut sifat acara anda."]},
-suites:{title:"Scholar's Suites",bg:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80",meta:["100 Bilik","Pemandangan Gunung","Keselamatan 24 Jam"],desc:"Terletak di dalam kampus UPSI yang indah dengan pemandangan menakjubkan Banjaran Titiwangsa, Scholar's Suites menyediakan tempat istirehat yang aman dan selesa untuk peserta program latihan, persidangan, dan acara akademik.",list:["<strong>Penginapan Selesa:</strong> Bilik yang lengkap dengan hawa dingin, katil selesa, WiFi dalam bilik, dan pengemasan harian untuk pengalaman seolah-olah di rumah sendiri.","<strong>Keselamatan & Ketenangan Fikiran:</strong> Kakitangan keselamatan sepanjang masa dan pengawasan memastikan keselamatan dan privasi semua tetamu sepanjang penginapan.","<strong>Persekitaran Indah:</strong> Dikelilingi kehijauan dan pemandangan gunung, menyediakan persekitaran yang tenang dan memberi inspirasi untuk pembelajaran dan refleksi."]},
-ujana:{title:"Ujana Escape",bg:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1400&q=80",meta:["Kabin & Tapak Perkhemahan","Percutian Alam","Pembinaan Pasukan"],desc:"Ujana Escape menawarkan gabungan unik antara keselesaan dan pengembaraan dalam suasana alam terbuka yang semula jadi. Sama ada anda merancang retret pembinaan pasukan korporat, percutian alam, atau pengalaman berkemah berkumpulan, Ujana menyediakan latar belakang yang sempurna.",list:["<strong>Kemudahan Kabin & Berkemah:</strong> Pilih antara kabin kayu yang selesa dengan kemudahan asas atau kawasan perkhemahan terbuka dengan tempat berlindung, bilik air komunal, dan lubang BBQ.","<strong>Aktiviti Alam Semula Jadi:</strong> Laluan alam semula jadi berpandu, permainan luar, trekking hutan, dan aktiviti pembinaan pasukan difasilitasi oleh penyelaras luar yang berpengalaman.","<strong>Pakej Retret:</strong> Pakej yang boleh disesuaikan untuk kumpulan korporat, sekolah, dan tempahan peribadi termasuk makanan, aktiviti, dan penginapan."]},
-banjaran:{title:"The Banjaran Cape",bg:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80",meta:["Katering Penuh","Acara & Fungsi","Menu Khusus"],desc:"The Banjaran Cape adalah outlet katering dan makan utama UPSI Holdings, menawarkan pelbagai pakej makanan dan minuman untuk acara korporat, fungsi sosial, dan perayaan istimewa.",list:["<strong>Pakej Pelbagai:</strong> Daripada hidangan Hi-Tea kasual hingga bufet makan malam Melayu dan Barat yang lengkap — pakej menu kami direka untuk setiap majlis dan bajet.","<strong>Majlis Istimewa:</strong> Perayaan hari jadi, makan malam ulang tahun, bufet Iftar Ramadan, dan majlis perkahwinan diuruskan dengan perhatian peribadi yang teliti.","<strong>Katering Korporat:</strong> Katering perkhidmatan penuh untuk seminar, AGM, pelancaran produk, dan fungsi korporat lain dengan persediaan di tapak dan pasukan perkhidmatan profesional."]},
-laundry:{title:"Perkhidmatan Dobi",bg:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80",meta:["Profesional","Hari Sama Tersedia","Kadar Berpatutan"],desc:"Perkhidmatan dobi profesional kami memastikan tetamu dan kakitangan menikmati pakaian yang segar dan bersih sepanjang penginapan mereka — dengan masa siap yang boleh dipercayai dan pengendalian yang teliti untuk semua jenis pakaian.",list:["<strong>Perkhidmatan Dobi Penuh:</strong> Basuh, kering, dan lipat pakaian seharian, kain linen, dan tuala menggunakan detergen berkualiti dan peralatan dobi moden.","<strong>Menyeterika & Menekan:</strong> Perkhidmatan menyeterika dan menekan profesional untuk pakaian rasmi, uniform, dan pakaian acara agar anda sentiasa kemas.","<strong>Perkhidmatan Ekspres:</strong> Siap pada hari yang sama tersedia untuk permintaan segera, dengan pengambilan dan penghantaran ke bilik atau pejabat anda atas permintaan."]},
-event:{title:"Pengurusan Acara",bg:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80",meta:["Penyelesaian Lengkap","Pasukan Pro","Hujung ke Hujung"],desc:"Pasukan pengurusan acara kami yang berpengalaman mengambil berat setiap perincian — dari perancangan awal dan persediaan venue hingga penyelarasan pada hari acara dan penutup selepas acara — supaya anda boleh fokus kepada perkara yang paling penting.",list:["<strong>Perancangan & Penyelarasan:</strong> Penyelaras acara khusus membantu dengan pembangunan konsep, penjadualan, penghubung vendor, dan perancangan logistik untuk pelaksanaan yang lancar.","<strong>Persediaan Venue & AV:</strong> Persediaan profesional pentas, latar belakang, tempat duduk, pencahayaan, dan peralatan audio-visual disesuaikan dengan tema dan keperluan acara anda.","<strong>Pengurusan Di Tapak:</strong> Pasukan sokongan di tapak penuh semasa acara anda termasuk pembantu pendaftaran, pengiring, juruteknik AV, dan penyelaras katering."]}
-};
-
-const eduDataBI={
-seminar:{title:"Seminar Rooms",bg:"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1400&q=80",meta:["Up to 300 pax","4 Halls","Full AV Setup"],desc:"Our seminar rooms are equipped with the latest audio-visual technology and designed for maximum comfort and productivity. Ideal for corporate training, academic conferences, workshops, and large-scale presentations.",list:["<strong>Audio-Visual Equipment:</strong> High-definition LCD projectors, projection screens, professional sound systems, and wireless microphones for seamless presentations.","<strong>Connectivity & Comfort:</strong> High-speed WiFi, air-conditioned halls with ergonomic seating arrangements, and dedicated breakout areas for group discussions.","<strong>Flexible Configuration:</strong> Halls can be set in theatre, classroom, U-shape, or banquet style to suit the nature of your event."]},
-suites:{title:"Scholar's Suites",bg:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80",meta:["100 Rooms","Mountain View","24-Hr Security"],desc:"Nestled within the scenic UPSI campus with breathtaking views of the Titiwangsa Mountain Range, Scholar's Suites provides a peaceful and comfortable retreat for participants attending training programs, conferences, and academic events.",list:["<strong>Comfortable Accommodations:</strong> Well-appointed rooms with air-conditioning, comfortable beds, in-room WiFi, and daily housekeeping for a home-away-from-home experience.","<strong>Security & Peace of Mind:</strong> Round-the-clock security personnel and surveillance ensuring the safety and privacy of all guests throughout their stay.","<strong>Scenic Environment:</strong> Surrounded by lush greenery and mountain views, providing a calm and inspiring environment conducive to learning and reflection."]},
-ujana:{title:"Ujana Escape",bg:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1400&q=80",meta:["Cabin & Campsite","Nature Retreat","Team Building"],desc:"Ujana Escape offers a unique blend of comfort and adventure in a natural outdoor setting. Whether you're planning a corporate team-building retreat, a nature escape, or a group camping experience, Ujana provides the perfect backdrop.",list:["<strong>Cabin & Camping Facilities:</strong> Choose from cozy wooden cabins with basic amenities or open camping grounds with shelter, communal bathrooms, and BBQ pits.","<strong>Nature Activities:</strong> Guided nature trails, outdoor games, jungle trekking, and team-building activities facilitated by experienced outdoor coordinators.","<strong>Retreat Packages:</strong> Customizable packages for corporate groups, schools, and private bookings including meals, activities, and accommodation."]},
-banjaran:{title:"The Banjaran Cape",bg:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80",meta:["Full Catering","Events & Functions","Custom Menus"],desc:"The Banjaran Cape is UPSI Holdings' premier catering and dining outlet, offering a full range of food and beverage packages for corporate events, social functions, and special celebrations.",list:["<strong>Diverse Packages:</strong> From casual Hi-Tea spreads to full Malay and Western buffet dinners — our menu packages are designed to suit every occasion and budget.","<strong>Special Occasions:</strong> Birthday celebrations, anniversary dinners, Iftar Ramadan buffets, and wedding receptions handled with personalised attention to detail.","<strong>Corporate Catering:</strong> Full-service catering for seminars, AGMs, product launches, and other corporate functions with on-site setup and professional service team."]},
-laundry:{title:"Laundry Services",bg:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80",meta:["Professional","Same-Day Available","Affordable Rates"],desc:"Our professional laundry service ensures that guests and staff enjoy fresh, clean clothing throughout their stay — with reliable turnaround times and careful handling of all garment types.",list:["<strong>Full Laundry Service:</strong> Washing, drying, and folding of everyday clothes, linens, and towels using quality detergents and modern laundry equipment.","<strong>Ironing & Pressing:</strong> Professional ironing and pressing service for formal wear, uniforms, and event attire to keep you looking your best.","<strong>Express Service:</strong> Same-day turnaround available for urgent requests, with collection and delivery to your room or office upon request."]},
-event:{title:"Event Management",bg:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80",meta:["Complete Solutions","Pro Team","End-to-End"],desc:"Our experienced event management team takes care of every detail — from initial planning and venue setup to on-the-day coordination and post-event wrap-up — so you can focus on what matters most.",list:["<strong>Planning & Coordination:</strong> Dedicated event coordinators assist with concept development, scheduling, vendor liaison, and logistical planning for seamless execution.","<strong>Venue & AV Setup:</strong> Professional setup of stages, backdrops, seating, lighting, and audio-visual equipment tailored to your event theme and requirements.","<strong>On-Site Management:</strong> Full on-site support team during your event including registration assistants, ushers, AV technicians, and catering coordinators."]}
-};
-                          
-function openEduModal(key){
-    const d=currentLang==='bm'?eduDataBM[key]:eduDataBI[key];
-    const ctaText=currentLang==='bm'?'Tempah Sekarang':'Book Now';
-    document.getElementById('eduModalTitle').textContent=d.title;
-    document.getElementById('eduModalBg').style.backgroundImage=`url('${d.bg}')`;
-    document.getElementById('eduModalDesc').textContent=d.desc;
-    document.getElementById('eduModalMeta').innerHTML=d.meta.map(m=>`<span>${m}</span>`).join('');
-    document.getElementById('eduModalList').innerHTML=d.list.map(i=>`<li>${i}</li>`).join('');
-    document.getElementById('eduModalCta').textContent=ctaText;
-    document.getElementById('eduModal').classList.add('active');
-    document.body.style.overflow='hidden';
+const T={
+bm:{
+"top-phone-text":"Ada Pertanyaan? Hubungi kami: 012-2525 843","top-cta-el":"Hubungi Kami","company-tagline":"Sinergi Sumber & Kepakaran UPSI",
+"nav-home-el":"Laman Utama","nav-about-el":"Tentang Kami","nav-services-el":"Perkhidmatan","nav-products-el":"Produk Kami","nav-ads-el":"Iklan","nav-career-el":"Kerjaya","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Hubungi Kami",
+"dd-bod-el":"Lembaga Pengarah","dd-leaders-el":"Pemimpin","dd-edu-el":"Pendidikan & Latihan","dd-hosp-el":"Pusat Latihan & Hospitaliti","dd-retail-el":"Runcit & Perkhidmatan","dd-projects-el":"Konsultasi Projek","dd-gallery-el":"Galeri","dd-news-el":"Berita",
+"bc-home-el":"Laman Utama","bc-svc-el":"Perkhidmatan","bc-current-el":"Pusat Latihan & Hospitaliti",
+"hero-title-el":"Pusat Latihan & Hospitaliti","hero-desc-el":"Kemudahan Bertaraf Dunia untuk Persidangan, Latihan, dan Penginapan",
+"s1-title":"Hospitality Training Center","s1-subtitle":"Scholar's Suites Tanjong Malim","s1-est-val":"Oktober 2018","s1-est-label":"Ditubuhkan","s1-loc-val":"Sultan Azlan Shah Campus, UPSI","s1-loc-label":"Lokasi","s1-rooms-label":"Bilik Penginapan","s1-rooms-desc":"Dikelilingi Banjaran Titiwangsa","s1-book-btn":"Tempah Sekarang",
+"s2-title":"4 Bilik Seminar","s2-desc":"Kapasiti 300 pax",
+"s3-title":"The Banjaran Cape","s3-desc":"Hi-Tea, Katering, Makan Tengahari & Malam, Bufet Iftar Ramadan, Majlis Hari Jadi, Acara Rasmi & Santai.",
+"s4-title":"Perkhidmatan Dobi","s4-desc":"Scholar's Suites menawarkan perkhidmatan dobi kepada tetamu hotel, organisasi kerajaan dan swasta, sekolah, hotel bajet, dan usahawan.",
+"s5-title":"Ujana Escape","s5-book-btn":"Tempah Sekarang",
+"footer-desc-el":"Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
+"footer-address-label-el":"Pejabat Utama:","footer-phone-label-el":"Telefon:","footer-hosp-label-el":"Hospitaliti:","footer-about-head-el":"Tentang","footer-bod-el":"Lembaga Pengarah","footer-leaders-el":"Pemimpin","footer-gallery-el":"Galeri","footer-svc-head-el":"Perkhidmatan","footer-svc1-el":"Pendidikan & Latihan","footer-svc2-el":"Hospitaliti","footer-svc3-el":"Perkhidmatan Runcit","footer-svc4-el":"Konsultasi","footer-svc5-el":"Tenaga Solar","footer-svc6-el":"Pengurusan Kemudahan","footer-res-head-el":"Sumber","footer-career-el":"Kerjaya","footer-tender-el":"Tender","footer-news-el":"Berita","footer-contact-el":"Hubungi Kami","footer-copyright-el":"© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
+},
+bi:{
+"top-phone-text":"Got Questions? Call us: 012-2525 843","top-cta-el":"Contact Us","company-tagline":"Synergy of Resources & UPSI Expertise",
+"nav-home-el":"Home","nav-about-el":"About Us","nav-services-el":"Services","nav-products-el":"Our Products","nav-ads-el":"Ads","nav-career-el":"Career","nav-tender-el":"Tender","nav-media-el":"Media","nav-contact-btn-el":"Contact Us",
+"dd-bod-el":"Board of Directors","dd-leaders-el":"Leaders","dd-edu-el":"Education & Training","dd-hosp-el":"Training Center & Hospitality","dd-retail-el":"Retail & Services","dd-projects-el":"Projects Consultation","dd-gallery-el":"Gallery","dd-news-el":"News",
+"bc-home-el":"Home","bc-svc-el":"Services","bc-current-el":"Training Center & Hospitality",
+"hero-title-el":"Training Center & Hospitality","hero-desc-el":"World-Class Facilities for Conferences, Training, and Accommodation",
+"s1-title":"Hospitality Training Center","s1-subtitle":"Scholar's Suites Tanjong Malim","s1-est-val":"October 2018","s1-est-label":"Established","s1-loc-val":"Sultan Azlan Shah Campus, UPSI","s1-loc-label":"Location","s1-rooms-label":"Accommodation Rooms","s1-rooms-desc":"Surrounded by Titiwangsa Mountain Range","s1-book-btn":"Book Now",
+"s2-title":"4 Seminar Rooms","s2-desc":"Capacity 300 pax",
+"s3-title":"The Banjaran Cape","s3-desc":"Hi-Tea, Catering, Lunch & Dinner, Buffet Iftar Ramadan, Birthday Party, Official & Casual event.",
+"s4-title":"Laundry Services","s4-desc":"Scholar's Suites offers laundry services to hotel guests, government and private organizations, schools, budget hotels, and entrepreneurs.",
+"s5-title":"Ujana Escape","s5-book-btn":"Book Now",
+"footer-desc-el":"The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
+"footer-address-label-el":"Main Office:","footer-phone-label-el":"Phone:","footer-hosp-label-el":"Hospitality:","footer-about-head-el":"About","footer-bod-el":"Board of Directors","footer-leaders-el":"Leaders","footer-gallery-el":"Gallery","footer-svc-head-el":"Services","footer-svc1-el":"Education & Training","footer-svc2-el":"Hospitality","footer-svc3-el":"Retail Services","footer-svc4-el":"Consultation","footer-svc5-el":"Solar Energy","footer-svc6-el":"Facility Management","footer-res-head-el":"Resources","footer-career-el":"Career","footer-tender-el":"Tender","footer-news-el":"News","footer-contact-el":"Contact Us","footer-copyright-el":"© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
 }
-function closeEduModal(){document.getElementById('eduModal').classList.remove('active');document.body.style.overflow='';}
-document.getElementById('eduModal').addEventListener('click',function(e){if(e.target===this)closeEduModal();});
-
-const T = {
-  bm: {
-    // --- Header ---
-    "top-phone-text": "Ada Pertanyaan? Hubungi kami: 012-2525 843",
-    "top-cta-el": "Hubungi Kami",
-    "company-tagline": "Sinergi Sumber & Kepakaran UPSI",
-
-    // --- Navigation ---
-    "nav-home-el": "Laman Utama",
-    "nav-about-el": "Tentang Kami",
-    "nav-services-el": "Perkhidmatan",
-    "nav-products-el": "Produk Kami",
-    "nav-ads-el": "Iklan",
-    "nav-career-el": "Kerjaya",
-    "nav-tender-el": "Tender",
-    "nav-media-el": "Media",
-    "nav-contact-btn-el": "Hubungi Kami",
-
-    // --- Dropdowns ---
-    "dd-bod-el": "Lembaga Pengarah",
-    "dd-leaders-el": "Pemimpin",
-    "dd-upsi-el": "Tentang UPSI",
-    "dd-edu-el": "Pendidikan & Latihan",
-    "dd-hosp-el": "Pusat Latihan & Hospitaliti",
-    "dd-retail-el": "Runcit & Perkhidmatan",
-    "dd-projects-el": "Konsultasi Projek",
-    "dd-solar-el": "Penyelesaian Tenaga Solar",
-    "dd-facility-el": "Pengurusan Kemudahan",
-    "dd-gallery-el": "Galeri",
-    "dd-news-el": "Berita",
-
-    // --- Breadcrumbs ---
-    "bc-home-el": "Laman Utama",
-    "bc-svc-el": "Perkhidmatan",
-    "bc-current-el": "Pusat Latihan & Hospitaliti",
-
-    // --- Hero Section ---
-    "hero-title-el": "Pusat Latihan & Hospitaliti",
-    "hero-desc-el": "Kemudahan Bertaraf Dunia untuk Persidangan, Latihan, dan Penginapan",
-
-    // --- Overview ---
-    "overview-title-el": "Rasai Kecemerlangan dalam Hospitaliti",
-    "overview-desc-el": "UPSI Holdings menawarkan kemudahan hospitaliti dan latihan yang komprehensif berlatar belakang indah Banjaran Titiwangsa. Kemudahan bertaraf dunia kami direka untuk menyediakan keselesaan, kemudahan, dan kecemerlangan untuk semua keperluan acara dan penginapan anda.",
-
-    // --- Facilities ---
-    "facilities-title-el": "Kemudahan Kami",
-    
-    // Facility 1
-    "c1-title": "Bilik Seminar",
-    "c1-m1": "Sehingga 300 pax",
-    "c1-m2": "4 Dewan",
-    "c1-desc": "Kemudahan seminar terkini dilengkapi teknologi audio-visual moden, tempat duduk selesa, dan suasana profesional untuk persidangan, bengkel, dan sesi latihan.",
-    "c1-f1": "Projektor & skrin LCD",
-    "c1-f2": "Sistem bunyi",
-    "c1-f3": "Dewan berhawa dingin",
-    "c1-f4": "WiFi berkelajuan tinggi",
-    "c1-f5": "Kawasan pecahan",
-    "c1-f6": "Persediaan profesional",
-    "c1-btn": "Maklumat Lanjut",
-
-    // Facility 2
-    "c2-title": "Scholar's Suites",
-    "c2-m1": "100 Bilik",
-    "c2-m2": "Pemandangan Gunung",
-    "c2-desc": "Bilik penginapan selesa dikelilingi pemandangan indah Banjaran Titiwangsa, menawarkan tempat istirehat yang aman untuk program latihan, persidangan, dan penginapan lanjutan.",
-    "c2-f1": "Bilik bersih & selesa",
-    "c2-f2": "Hawa dingin",
-    "c2-f3": "Akses WiFi",
-    "c2-f4": "Pengemasan harian",
-    "c2-f5": "Keselamatan 24 jam",
-    "c2-f6": "Pemandangan gunung",
-    "c2-btn": "Maklumat Lanjut",
-
-    // Facility 3
-    "c3-title": "Ujana Escape",
-    "c3-m1": "Kabin & Tapak Perkhemahan",
-    "c3-m2": "Percutian Alam",
-    "c3-desc": "Pengalaman luar yang unik menggabungkan keselesaan kabin dengan keseronokan berkhemah. Sesuai untuk pembinaan pasukan, retret, dan pencinta alam yang mencari ketenangan.",
-    "c3-f1": "Kabin selesa",
-    "c3-f2": "Kawasan perkhemahan",
-    "c3-f3": "Laluan alam semula jadi",
-    "c3-f4": "Kemudahan BBQ",
-    "c3-f5": "Aktiviti pembinaan pasukan",
-    "c3-f6": "Persekitaran indah",
-    "c3-btn": "Maklumat Lanjut",
-
-    // Facility 4
-    "c4-title": "The Banjaran Cape",
-    "c4-m1": "Katering Penuh",
-    "c4-m2": "Acara & Fungsi",
-    "c4-desc": "Perkhidmatan katering komprehensif menawarkan Hi-Tea, bufet, makan tengahari, makan malam, dan pakej acara istimewa. Sesuai untuk semua majlis dari perjumpaan santai hingga fungsi rasmi.",
-    "c4-f1": "Pakej Hi-Tea",
-    "c4-f2": "Bufet Makan Tengahari & Malam",
-    "c4-f3": "Bufet Iftar Ramadan",
-    "c4-f4": "Pakej hari jadi",
-    "c4-f5": "Acara korporat",
-    "c4-f6": "Menu khusus",
-    "c4-btn": "Maklumat Lanjut",
-
-    // Facility 5
-    "c5-title": "Perkhidmatan Dobi",
-    "c5-m1": "Profesional",
-    "c5-m2": "Siap Cepat",
-    "c5-desc": "Perkhidmatan dobi profesional untuk tetamu dan pelanggan, memastikan pakaian segar dan bersih dengan masa siap yang cepat dan kadar yang berpatutan.",
-    "c5-f1": "Basuh & kering",
-    "c5-f2": "Perkhidmatan menyeterika",
-    "c5-f3": "Perkhidmatan hari sama",
-    "c5-f4": "Harga kompetitif",
-    "c5-f5": "Detergen berkualiti",
-    "c5-f6": "Pengendalian teliti",
-    "c5-btn": "Maklumat Lanjut",
-
-    // Facility 6
-    "c6-title": "Pengurusan Acara",
-    "c6-m1": "Penyelesaian Lengkap",
-    "c6-m2": "Pasukan Pro",
-    "c6-desc": "Perkhidmatan pengurusan acara penuh termasuk perancangan, penyelarasan, dan pelaksanaan untuk persidangan, seminar, perkahwinan, dan majlis istimewa.",
-    "c6-f1": "Perancangan acara",
-    "c6-f2": "Persediaan venue",
-    "c6-f3": "Peralatan AV",
-    "c6-f4": "Penyelarasan katering",
-    "c6-f5": "Sokongan pendaftaran",
-    "c6-f6": "Pengurusan di tapak",
-    "c6-btn": "Maklumat Lanjut",
-
-    // --- Why Choose Us ---
-    "why-title-el": "Mengapa Pilih Kemudahan Kami?",
-    "ben1-title-el": "Lokasi Indah",
-    "ben1-desc-el": "Persekitaran cantik dengan pemandangan Banjaran Titiwangsa",
-    "ben2-title-el": "Kemudahan Moden",
-    "ben2-desc-el": "Peralatan bertaraf dunia dan kemudahan yang selesa",
-    "ben3-title-el": "Perkhidmatan Profesional",
-    "ben3-desc-el": "Kakitangan berpengalaman komited kepada kepuasan anda",
-    "ben4-title-el": "Kadar Kompetitif",
-    "ben4-desc-el": "Kemudahan berkualiti pada harga yang berbaloi",
-
-    // --- Call To Action ---
-    "cta-title-el": "Bersedia Untuk Tempah Acara Anda?",
-    "cta-desc-el": "Hubungi kami hari ini untuk membincangkan keperluan anda dan dapatkan sebut harga yang disesuaikan untuk acara, program latihan, atau keperluan penginapan anda.",
-    "cta-btn1-el": "Hubungi: 05-448 1922",
-    "cta-btn2-el": "Emel Kami",
-
-    // --- Footer ---
-    "footer-desc-el": "Sayap pengkomersialan Universiti Pendidikan Sultan Idris, komited terhadap kecemerlangan dalam pendidikan, hospitaliti, dan pembangunan perniagaan.",
-    "footer-address-label-el": "Pejabat Utama:",
-    "footer-phone-label-el": "Telefon:",
-    "footer-hosp-label-el": "Hospitaliti:",
-    "footer-about-head-el": "Tentang",
-    "footer-bod-el": "Lembaga Pengarah",
-    "footer-leaders-el": "Pemimpin",
-    "footer-gallery-el": "Galeri",
-    "footer-svc-head-el": "Perkhidmatan",
-    "footer-svc1-el": "Pendidikan & Latihan",
-    "footer-svc2-el": "Hospitaliti",
-    "footer-svc3-el": "Perkhidmatan Runcit",
-    "footer-svc4-el": "Konsultasi",
-    "footer-svc5-el": "Tenaga Solar",
-    "footer-svc6-el": "Pengurusan Kemudahan",
-    "footer-res-head-el": "Sumber",
-    "footer-career-el": "Kerjaya",
-    "footer-tender-el": "Tender",
-    "footer-news-el": "Berita",
-    "footer-contact-el": "Hubungi Kami",
-    "footer-copyright-el": "© Hak Cipta 2026. UPSI HOLDINGS SDN BHD. Hak cipta terpelihara."
-  },
-
-  bi: {
-    // --- Header ---
-    "top-phone-text": "Got Questions? Call us: 012-2525 843",
-    "top-cta-el": "Contact Us",
-    "company-tagline": "Synergy of Resources & UPSI Expertise",
-
-    // --- Navigation ---
-    "nav-home-el": "Home",
-    "nav-about-el": "About Us",
-    "nav-services-el": "Services",
-    "nav-products-el": "Our Products",
-    "nav-ads-el": "Ads",
-    "nav-career-el": "Career",
-    "nav-tender-el": "Tender",
-    "nav-media-el": "Media",
-    "nav-contact-btn-el": "Contact Us",
-
-    // --- Dropdowns ---
-    "dd-bod-el": "Board of Directors",
-    "dd-leaders-el": "Leaders",
-    "dd-upsi-el": "About UPSI",
-    "dd-edu-el": "Education & Training",
-    "dd-hosp-el": "Training Center & Hospitality",
-    "dd-retail-el": "Retail & Services",
-    "dd-projects-el": "Projects Consultation",
-    "dd-solar-el": "Solar Energy Solutions",
-    "dd-facility-el": "Facility Management",
-    "dd-gallery-el": "Gallery",
-    "dd-news-el": "News",
-
-    // --- Breadcrumbs ---
-    "bc-home-el": "Home",
-    "bc-svc-el": "Services",
-    "bc-current-el": "Training Center & Hospitality",
-
-    // --- Hero Section ---
-    "hero-title-el": "Training Center & Hospitality",
-    "hero-desc-el": "World-Class Facilities for Conferences, Training, and Accommodation",
-
-    // --- Overview ---
-    "overview-title-el": "Experience Excellence in Hospitality",
-    "overview-desc-el": "UPSI Holdings offers comprehensive hospitality and training facilities set against the beautiful backdrop of the Titiwangsa Mountain Range. Our state-of-the-art facilities are designed to provide comfort, convenience, and excellence for all your event and accommodation needs.",
-
-    // --- Facilities ---
-    "facilities-title-el": "Our Facilities",
-    
-    // Facility 1
-    "c1-title": "Seminar Rooms",
-    "c1-m1": "Up to 300 pax",
-    "c1-m2": "4 Halls",
-    "c1-desc": "State-of-the-art seminar facilities equipped with modern audio-visual technology, comfortable seating, and professional ambiance for conferences, workshops, and training sessions.",
-    "c1-f1": "LCD projectors & screens",
-    "c1-f2": "Sound systems",
-    "c1-f3": "Air-conditioned halls",
-    "c1-f4": "High-speed WiFi",
-    "c1-f5": "Breakout areas",
-    "c1-f6": "Professional setup",
-    "c1-btn": "Learn More",
-
-    // Facility 2
-    "c2-title": "Scholar's Suites",
-    "c2-m1": "100 Rooms",
-    "c2-m2": "Mountain View",
-    "c2-desc": "Comfortable accommodation rooms surrounded by the scenic Titiwangsa Mountain Range, offering a peaceful retreat for training programs, conferences, and extended stays.",
-    "c2-f1": "Clean & comfortable rooms",
-    "c2-f2": "Air-conditioning",
-    "c2-f3": "WiFi access",
-    "c2-f4": "Daily housekeeping",
-    "c2-f5": "24-hour security",
-    "c2-f6": "Mountain views",
-    "c2-btn": "Learn More",
-
-    // Facility 3
-    "c3-title": "Ujana Escape",
-    "c3-m1": "Cabin & Campsite",
-    "c3-m2": "Nature Retreat",
-    "c3-desc": "Unique outdoor experience combining the comfort of cabins with the adventure of camping. Perfect for team building, retreats, and nature lovers seeking tranquility.",
-    "c3-f1": "Cozy cabins",
-    "c3-f2": "Camping grounds",
-    "c3-f3": "Nature trails",
-    "c3-f4": "BBQ facilities",
-    "c3-f5": "Team building activities",
-    "c3-f6": "Scenic surroundings",
-    "c3-btn": "Learn More",
-
-    // Facility 4
-    "c4-title": "The Banjaran Cape",
-    "c4-m1": "Full Catering",
-    "c4-m2": "Events & Functions",
-    "c4-desc": "Comprehensive catering services offering Hi-Tea, buffets, lunch, dinner, and special event packages. Perfect for all occasions from casual gatherings to formal functions.",
-    "c4-f1": "Hi-Tea packages",
-    "c4-f2": "Lunch & Dinner buffets",
-    "c4-f3": "Buffet Iftar Ramadan",
-    "c4-f4": "Birthday packages",
-    "c4-f5": "Corporate events",
-    "c4-f6": "Custom menus",
-    "c4-btn": "Learn More",
-
-    // Facility 5
-    "c5-title": "Laundry Services",
-    "c5-m1": "Professional",
-    "c5-m2": "Fast Turnaround",
-    "c5-desc": "Professional laundry services for guests and clients, ensuring fresh and clean garments with quick turnaround times and affordable rates.",
-    "c5-f1": "Washing & drying",
-    "c5-f2": "Ironing services",
-    "c5-f3": "Same-day service",
-    "c5-f4": "Competitive pricing",
-    "c5-f5": "Quality detergents",
-    "c5-f6": "Careful handling",
-    "c5-btn": "Learn More",
-
-    // Facility 6
-    "c6-title": "Event Management",
-    "c6-m1": "Complete Solutions",
-    "c6-m2": "Pro Team",
-    "c6-desc": "Full event management services including planning, coordination, and execution for conferences, seminars, weddings, and special occasions.",
-    "c6-f1": "Event planning",
-    "c6-f2": "Venue setup",
-    "c6-f3": "AV equipment",
-    "c6-f4": "Catering coordination",
-    "c6-f5": "Registration support",
-    "c6-f6": "On-site management",
-    "c6-btn": "Learn More",
-
-    // --- Why Choose Us ---
-    "why-title-el": "Why Choose Our Facilities?",
-    "ben1-title-el": "Scenic Location",
-    "ben1-desc-el": "Beautiful surroundings with Titiwangsa Mountain views",
-    "ben2-title-el": "Modern Facilities",
-    "ben2-desc-el": "State-of-the-art equipment and comfortable amenities",
-    "ben3-title-el": "Professional Service",
-    "ben3-desc-el": "Experienced staff committed to your satisfaction",
-    "ben4-title-el": "Competitive Rates",
-    "ben4-desc-el": "Quality facilities at affordable, value-for-money prices",
-
-    // --- Call To Action ---
-    "cta-title-el": "Ready to Book Your Event?",
-    "cta-desc-el": "Contact us today to discuss your requirements and get a customized quote for your event, training program, or accommodation needs.",
-    "cta-btn1-el": "Call: 05-448 1922",
-    "cta-btn2-el": "Email Us",
-
-    // --- Footer ---
-    "footer-desc-el": "The commercialization arm of Universiti Pendidikan Sultan Idris, committed to excellence in education, hospitality, and business development.",
-    "footer-address-label-el": "Main Office:",
-    "footer-phone-label-el": "Phone:",
-    "footer-hosp-label-el": "Hospitality:",
-    "footer-about-head-el": "About",
-    "footer-bod-el": "Board of Directors",
-    "footer-leaders-el": "Leaders",
-    "footer-gallery-el": "Gallery",
-    "footer-svc-head-el": "Services",
-    "footer-svc1-el": "Education & Training",
-    "footer-svc2-el": "Hospitality",
-    "footer-svc3-el": "Retail Services",
-    "footer-svc4-el": "Consultation",
-    "footer-svc5-el": "Solar Energy",
-    "footer-svc6-el": "Facility Management",
-    "footer-res-head-el": "Resources",
-    "footer-career-el": "Career",
-    "footer-tender-el": "Tender",
-    "footer-news-el": "News",
-    "footer-contact-el": "Contact Us",
-    "footer-copyright-el": "© Copyright 2026. UPSI HOLDINGS SDN BHD. All rights reserved."
-  }
 };
-
 function setLang(lang){
     currentLang=lang;
     var _f=document.getElementById('lang-flag'),_l=document.getElementById('lang-label');
